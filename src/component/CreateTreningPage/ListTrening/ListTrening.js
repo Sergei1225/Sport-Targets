@@ -31,6 +31,7 @@ export const ListTrening = ({ data }) => {
 
     // console.log(allItemsList);
     // console.log(forDeleteSelector);
+    // console.log(forDeleteSelector);
 
     useEffect(() => {
         dispatch(treningsGetAll(dataItems));
