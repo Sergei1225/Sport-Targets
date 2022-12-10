@@ -1,0 +1,16 @@
+.navBar{
+    min-height: 40px;
+    background-color: black;
+    &__wrapper {
+        display: flex;
+    }
+    &__back{
+        cursor: pointer;
+        min-width: 120px;
+        color:  white;
+    }
+    &__links{
+        flex: 1 0 auto;
+        margin-top: 0;
+    }
+}

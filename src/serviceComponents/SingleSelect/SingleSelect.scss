@@ -1,0 +1,90 @@
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.customSelect {
+    &__control {
+        color: black !important;
+        border: none !important;
+        background-color: black !important;
+        border-radius: 20px !important;
+        box-shadow: none !important;
+        font-size: 30px;
+        line-height: 34px;
+        &--is-focused {
+            border: none !important;
+            color: white !important;
+        }
+        &--menu-is-open {
+            background-color: black !important;
+            font-size: 30px;
+            line-height: 34px;
+        }
+    }
+    &__clear-indicator {
+        color: white !important;
+    }
+    &__single-value {
+        color: white !important;
+        animation: show 0.5s linear !important;
+    }
+    &__multi-value {
+        border-radius: 10px !important;
+        background-color: white !important;
+        animation: show 0.5s linear;
+        &__label {
+            font-size: 20px !important;
+        }
+        &__remove {
+            color: black !important;
+        }
+    }
+    &__menu-notice {
+        background-color: white !important;
+        color: black !important;
+        animation: show 0.5s linear !important; ///
+    }
+    &__menu {
+        border-radius: 25px !important;
+        font-size: 30px;
+        line-height: 34px;
+        &-list {
+            padding: 0 !important;
+            border-radius: 25px !important;
+        }
+    }
+    &__option {
+        border-radius: 20px !important;
+        text-align: center !important;
+        &--is-focused {
+            background-color: black !important;
+            color: white !important;
+        }
+    }
+    &__input-container {
+        color: white !important;
+        width: 50px !important;
+        animation: show 0.5s linear !important;
+    }
+    &__value-container {
+        padding: 5px 15px !important;
+        text-align: center !important;
+        cursor: text;
+        & div {
+            width: auto !important;
+        }
+    }
+    &__placeholder {
+        color: white !important;
+    }
+    &__indicator {
+        cursor: pointer !important;
+    }
+}
+
+

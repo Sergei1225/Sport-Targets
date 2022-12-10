@@ -1,0 +1,9 @@
+.customLink{
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+    &__activeLink{
+        @extend .customLink;
+        color: red;
+    }
+}

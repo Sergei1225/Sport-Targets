@@ -1,0 +1,38 @@
+@import-normalize;
+/* сбросил стили */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+@import './baseClasses.scss';
+@import './Transition.scss';
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    a {
+        text-decoration: none;
+        text-decoration-thickness: none;
+        display: inline-block;
+    }
+  
+    
+    --basicPaddingComp: 50px;
+    --baseMarginComp: 40px;
+    --baseMarginElem: 25px;
+    --see: black;
+    font-family: "Roboto Condensed", sans-serif;
+    --baseFontSizeContent: 18px;
+    --baseLineHeigthContent: 22px;
+
+    // для перехода от белого в чёрный
+    --backgroungToggle: white;
+    --colorToggle: black;
+
+    // из черного в белый
+    --backgroungToggleReverse: black;
+    --colorToggleReverse: white;
+}
+
+.container{
+    max-width: 968px;
+    margin: 0 auto;
+}

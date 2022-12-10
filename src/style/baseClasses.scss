@@ -1,0 +1,77 @@
+@import './baseVisual.scss';
+@import './baseFontsSize.scss';
+
+.footerDown {
+    min-height: 100vh;
+}
+
+.basePositionBlock {
+    margin-top: 20px;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.basePositionElement {
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.basePositionElementNoMT {
+    padding: 10px;
+    margin-top: 0;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.baseFlexGapNoJC{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.baseFlexGap{
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.baseFlexGapWrap{
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.baseFlexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.baseImgCover{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.baseFlexColumnCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.basePaddingBottom {
+    padding-bottom: 20px;
+}
+
+.baseGridTwoColumn {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: minmax(250px, auto);
+    gap: 20px
+}

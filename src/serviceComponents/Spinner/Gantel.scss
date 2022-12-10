@@ -1,0 +1,43 @@
+.gantel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__inner{
+        animation-name: spinnerGantel;
+        animation-duration: 0.8s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        //animation-direction: alternate-reverse;
+        //animation-delay: 1s;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &_small {
+        min-width: 50px;
+        min-height: 50px;
+    }
+    &_big {
+        min-width: 150px;
+        min-height: 150px;
+    }
+}
+
+
+
+@keyframes spinnerGantel {
+    0%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    // 50%{
+    //     transform: rotate(180deg);
+    // }
+
+    100%{
+        opacity: 0.5;
+        transform: rotate(360deg);
+    }
+}

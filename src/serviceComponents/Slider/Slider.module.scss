@@ -1,0 +1,31 @@
+.slider{
+    &__wrapper{
+        overflow: hidden;
+        min-height: 300px;
+    }
+    &__wrapperLine{
+        display: flex;
+        transition: all 0.5s linear;
+        min-width: 100%;
+        height: 100%;
+    }
+    &__item{
+        min-width: 100%;
+        min-height: 100%;
+        //border: solid 1px black;
+        border-radius: 20px;
+        &_black{
+            background-color: gray;
+        }
+        &_red{
+            background-color: red;
+        }
+        &_green{
+            background-color: green;
+        }
+    }
+    &__btns{
+        display: flex;
+        justify-content: space-between;
+    }
+}
