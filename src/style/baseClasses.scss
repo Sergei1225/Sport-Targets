@@ -75,3 +75,19 @@
     grid-auto-rows: minmax(250px, auto);
     gap: 20px
 }
+
+
+.baseToggleVisible {
+    transition: all 1.5s linear;
+    overflow: hidden;
+}
+
+.baseActiveVisible {
+    @extend .baseToggleVisible;
+    max-height: 350px;
+}
+.baseHiddenVisible {
+    @extend .baseToggleVisible;
+    max-height: 0px;
+}
+

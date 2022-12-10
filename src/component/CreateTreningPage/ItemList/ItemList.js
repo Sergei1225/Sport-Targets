@@ -6,20 +6,34 @@ import list from "../../../img/ItemListCreateTrening/icon/list.png";
 import star from "../../../img/ItemListCreateTrening/icon/star.png";
 
 export const ItemListCreateTrening = (props) => {
-    let { id, name, img, repeats, weight, forDelete, priority, addForDelete, priorityTren, deleteOneTren } = props;
+    let { 
+        id, 
+        name, 
+        img, 
+        repeats,
+        weight, 
+        forDelete, 
+        priority, 
+        addForDelete, 
+        priorityTren, 
+        deleteOneTren, 
+        typeOfExercise,
+        fullTime 
+    } = props;
 
     let styleWrapper;
 
     if (img.length < 1) img = ["https://i.ytimg.com/vi/za4aqmV_j0M/maxresdefault.jpg"];
-    if (repeats.length < 1) repeats = ["No data"];
-    if (weight.length < 1) weight = ["No data"];
+    if (!repeats || repeats.length < 1) repeats = ["No data"];
+    if (!weight || weight.length < 1) weight = ["No data"];
 
     if(forDelete) styleWrapper += ` ${s.itemList__forDelete}`;
     if(priority) styleWrapper += ` ${s.itemList__prioroty}`;
+    if(!fullTime) fullTime = 1000;
 
     return (
-        <div key={id} className={`${s.itemList} ${styleWrapper} basePositionBlock baseFlexGapNoJC `}>
-            <div className={`${s.itemList__drag} basePositionElementNoMT`}>|||</div>
+        <div draggable={false} key={id} className={`${s.itemList} ${styleWrapper} basePositionBlock baseFlexGapNoJC `}>
+            {/* <div className={`${s.itemList__drag} basePositionElementNoMT`}>|||</div> */}
             <div className={`${s.itemList__img} basePositionElementNoMT`}>
                 <img className={`baseImgCover`} src={[img]} alt="imgList" />
             </div>
@@ -30,14 +44,24 @@ export const ItemListCreateTrening = (props) => {
                     >
                         {name.toUpperCase()}
                     </div>
-                    <div className={`${s.itemList__text_item} basePositionElement`}>
-                        <span className={`baseFontContentBigBold`}>Repeats </span>
-                        {repeats.join(" / ")}
-                    </div>
-                    <div className={`${s.itemList__text_item} basePositionElement`}>
-                        <span className={`baseFontContentBigBold`}>Weight </span>
-                        {weight.join(" / ")}
-                    </div>
+                    {typeOfExercise === "base" ? 
+                        <>
+                            <div className={`${s.itemList__text_item} basePositionElement`}>
+                            <span className={`baseFontContentBigBold`}>Repeats  </span>
+                                {repeats.join(" / ")}
+                            </div>
+                            <div className={`${s.itemList__text_item} basePositionElement`}>
+                                <span className={`baseFontContentBigBold`}>Weight  </span>
+                                {weight.join(" / ")}
+                            </div>
+                        </>
+                        :
+                        <div className={`${s.itemList__text_item} basePositionElement`}>
+                                <span className={`baseFontContentBigBold`}>Time </span>
+                                {fullTime}min
+                        </div>
+                    }
+                    
                 </div>
                 <div className={`${s.itemList__func} basePositionElementNoMT baseFlexGap`}>
                     <div onClick={() => addForDelete(id, forDelete)} className={`${s.itemList__func_item} baseSizeImgSmall`}>

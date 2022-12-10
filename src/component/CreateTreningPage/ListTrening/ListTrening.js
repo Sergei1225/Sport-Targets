@@ -2,21 +2,24 @@ import s from "./ListTrening.module.scss";
 
 import { ItemListCreateTrening } from "../ItemList/ItemList";
 import { dataItems } from "./dataListSample";
+import { CustomButton } from "../../BaseComponents/CustomComponents";
+
+import {
+    selectorsAdapter,
+    priorityTren,
+    deleteListTren,
+    deleteAllTren,
+    addToDelete,
+    getAlllistTrenings, 
+    deleteOneTrening,
+    deleteSomeTrening
+} from "./listSliceCreateTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import {
-    treningsGetAll,
-    selectorsAdapter,
-    addTrening,
-    deleteTren,
-    priorityTren,
-    deleteListTren,
-    deleteAllTren,
-    addToDelete,
-} from "./listSliceCreateTrening";
+
 
 export const ListTrening = ({ data }) => {
     //console.log("рендер  " + title);
@@ -34,7 +37,7 @@ export const ListTrening = ({ data }) => {
     // console.log(forDeleteSelector);
 
     useEffect(() => {
-        dispatch(treningsGetAll(dataItems));
+        dispatch(getAlllistTrenings());
     }, []);
 
     const addForDelete = (id, forDelete) => {
@@ -46,7 +49,11 @@ export const ListTrening = ({ data }) => {
     };
 
     const deleteOneTren = (id) => {
-        dispatch(deleteTren(id));
+        dispatch(deleteOneTrening(id));
+    };
+
+    const deleteSomeTren = () => {
+        dispatch(deleteSomeTrening());
     };
 
 
@@ -75,8 +82,16 @@ export const ListTrening = ({ data }) => {
     return (
         <>
             <div className="basePositionBlock baseFlexGapNoJC">
-                <button onClick={() => dispatch(deleteListTren())}>Удалить выбранное</button>
-                <button onClick={() => dispatch(deleteAllTren())}>Удалить всё</button>
+                <CustomButton
+                        //active={}
+                        funk={deleteSomeTren}
+                        innerValue={"Delete list exercises"}
+                    />
+                <CustomButton
+                    //active={}
+                    //funk={deleteAllTunnings}
+                    innerValue={"Delete all"}
+                />
             </div>
 
             {loadingView}

@@ -1,20 +1,57 @@
-import { dataItems } from "./dataListSample";
+import { createEntityAdapter, createSelector, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { randomId } from "../../../service/RandomId";
+import { RequestBase } from "../../../service/RequestBase";
 
-import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
+const { simpleReqest } = RequestBase();
+
+const prepareItem = (itemData, order) => ({
+    repeats: [],
+    weight: [],
+    forDelete: false,
+    priority: false, 
+    order: order,
+    ...itemData
+})
+
+export const getAlllistTrenings = createAsyncThunk(
+    "listCreateTrening/getAlllistTrenings",
+    async () => {
+        return await simpleReqest("listExersises")
+    }
+);
+
+export const addTunigedTrening = createAsyncThunk(
+    "listCreateTrening/addTunigedTrening",
+    async (action, {getState}) => {
+        const order = getState().listCreateTrening.ids.length;
+        const newItem =  prepareItem(action, order);
+        await simpleReqest("listExersises", "POST", newItem);
+        return newItem;
+    }
+);
+
+export const deleteOneTrening = createAsyncThunk(
+    "listCreateTrening/deleteOneTrening",
+    async (action) => {
+        await simpleReqest(`listExersises/${action}`, "DELETE");
+        return action;
+    }
+);
+
+export const deleteSomeTrening = createAsyncThunk(
+    "listCreateTrening/deleteSomeTrening",
+    async ( _, { getState }) => {
+        const ids = getState().listCreateTrening.listForDelete;
+        if(!ids || ids.length === 0) return
+        console.log(ids);
+        await Promise.all(ids.map(id => simpleReqest(`listExersises/${id}`, "DELETE")))
+        return ids;
+    }
+);
 
 const listAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.order - a.order
 });
-
-const booksAdapter = createEntityAdapter({
-    // Assume IDs are stored in a field other than `book.id`
-    selectId: (book) => book.bookId,
-    // Keep the "all IDs" array sorted based on book titles
-    sortComparer: (a, b) => a.title.localeCompare(b.title),
-  })
-  
 
 const listSliceCreateTrening = createSlice({
     name: "listCreateTrening",
@@ -28,7 +65,6 @@ const listSliceCreateTrening = createSlice({
         addTrening: listAdapter.addOne,
         deleteTren: (state, { payload }) => {
             listAdapter.removeOne(state, payload)
-            console.log(state.ids.length)
         },
         deleteListTren: (state) => listAdapter.removeMany(state, [...state.listForDelete]),
         priorityTren: (state, { payload }) =>
@@ -39,21 +75,46 @@ const listSliceCreateTrening = createSlice({
             !forDelete
                 ? state.listForDelete.push(id)
                 : (state.listForDelete = state.listForDelete.filter((item) => item !== id));
+            const foo = [...state.listForDelete]
+            console.log(foo)
         },
-        deleteAllTren: listAdapter.removeAll,
-        addChoosedTren: (state, { payload }) => {
-            const newItem = {
-                ...payload,
-                id: randomId(),
-                repeats: [],
-                weight: [],
-                forDelete: false,
-                priority: false
-            }
-            console.log(newItem);
-            listAdapter.addOne(state, newItem);
-        }
+        deleteAllTren: listAdapter.removeAll
     },
+    extraReducers: (builder) => {
+        builder.addCase(getAlllistTrenings.fulfilled, (state, { payload }) => {
+            listAdapter.setAll(state, payload)
+            console.log('данные получены')
+        })
+        builder.addCase(getAlllistTrenings.rejected, (state, action) => {
+            console.log('произошла ошибка')
+        });
+        builder.addCase(addTunigedTrening.fulfilled, (state, { payload }) => {
+            console.log(payload)
+            listAdapter.addOne(state, payload)
+            console.log('данные получены тюнингованный айтем')
+        });
+        builder.addCase(addTunigedTrening.rejected, (state, action) => {
+            console.log('произошла ошибка тюнингованный айтем')
+        });
+        builder.addCase(deleteOneTrening.fulfilled, (state, { payload }) => {
+            listAdapter.removeOne(state, payload)
+            console.log('удалено одно упражнение')
+        })
+        builder.addCase(deleteOneTrening.rejected, (state, action) => {
+            console.log('произошла ошибка удаления')
+        });
+        builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
+            console.log(payload);
+            if(!payload || payload.length === 0) return
+            listAdapter.removeMany(state, [...state.listForDelete]);
+            state.listForDelete = [];
+            console.log('удалено много упражнений')
+        })
+        builder.addCase(deleteSomeTrening.rejected, (state, action) => {
+            console.log('произошла ошибка много удалений')
+        });
+
+    } 
 });
 
 const { actions, reducer } = listSliceCreateTrening;
@@ -70,6 +131,5 @@ export const {
     deleteListTren,
     deleteAllTren,
     addToDelete,
-    addChoosedTren
 } = actions;
 

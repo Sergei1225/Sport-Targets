@@ -5,6 +5,7 @@ import { TuningTrening } from "../TuningTrening/TuningTrening";
 import { SimpleTuning } from "../SimpleTuning/SimpleTuning";
 
 import { getSelectedItems, deleteSelectedItem, deleteAllSelectedItem } from "./sliceConstrTrening";
+import { addTunigedTrening } from "../ListTrening/listSliceCreateTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useMemo } from "react";
@@ -30,7 +31,17 @@ export const ConstrTrening = () => {
         dispatch(deleteAllSelectedItem())
     }
 
-    console.log('dsd');
+    const saveTren = (newItem) => {
+        const base = itemsForTuning.find(item => item.id === newItem.id);
+        
+        const fullNewItem = {
+            ...base,
+            ...newItem
+        }
+        console.log(fullNewItem)
+        dispatch(addTunigedTrening(fullNewItem))
+        dispatch(deleteSelectedItem(fullNewItem.id))
+    }
 
     const tuningTrenings = (data) => {
         if (data.length === 0) return null;
@@ -41,6 +52,7 @@ export const ConstrTrening = () => {
                     key={item.id}
                     title={item.name}
                     id={item.id}
+                    saveItem={saveTren}
                 />
             ) : (
                 <SimpleTuning
@@ -48,6 +60,7 @@ export const ConstrTrening = () => {
                     key={item.id}
                     title={item.name}
                     id={item.id}
+                    saveItem={saveTren}
                 />
             );
             return <CSSTransition key={item.id} timeout={500} classNames="baseTransition">{itemTurning}</CSSTransition>

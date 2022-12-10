@@ -22,7 +22,7 @@ export const deleteSelectedItem = createAsyncThunk(
 
 export const deleteAllSelectedItem = createAsyncThunk(
     "constrTrening/deleteAllSelectedItem",
-    async (_, {getState}) => {
+    async (_, { getState }) => {
         const { simpleReqest } = RequestBase();
         const ids = getState().constrTrening.dataSelectedItemsIds;
         await Promise.all(ids.map(id => simpleReqest(`selectedExercises/${id}`, "DELETE")))

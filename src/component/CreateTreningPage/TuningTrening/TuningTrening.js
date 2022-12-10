@@ -8,26 +8,22 @@ import { ComponentSwitch } from "../../../serviceComponents/ComponentSwitch/Comp
 import { AddTrening } from "../AddTrening/AddTrening";
 import { CustomButton } from "../../BaseComponents/CustomComponents";
 
-const dataRepeat = [
-    { value: 20, id: "GdsjjstGYuisda64%7722j" },
-    { value: 100, id: "Jjdsu768sda64%7722j" },
-    { value: 27, id: "poHkds77n3nmkdfisda64%7722j" },
-];
-
 export const TuningTrening = (props) => {
     const { title, id, saveItem, imgSrc, deleteItem } = props;
-    const [itemsValue, setItemsValue] = useState(dataRepeat);
-    const [valueError, setValueError] = useState(null);
+    const [itemsValue, setItemsValue] = useState([]);
+    const [itemsWeight, setItemsWeight] = useState(null);
+    const [valueErrorRepeat, setValueErrorRepeat] = useState(null);
+    const [valueErrorWeigth, setValueError] = useState(null);
 
-    const addItem = useCallback(
+    const addItemRepeat = useCallback(
         (value) => {
             if (itemsValue.length > 15) {
-                setValueError("Error: soo much elements");
-                setTimeout(() => setValueError(""), 3000);
+                setValueErrorRepeat("Error: soo much elements");
+                setTimeout(() => setValueErrorRepeat(""), 3000);
                 return;
             } else if (!value) {
-                setValueError("Error: not value");
-                setTimeout(() => setValueError(""), 3000);
+                setValueErrorRepeat("Error: not value");
+                setTimeout(() => setValueErrorRepeat(""), 3000);
                 return;
             } else {
                 const newItem = { value, id: randomId() };
@@ -37,17 +33,36 @@ export const TuningTrening = (props) => {
         [itemsValue]
     );
 
+    const addItemWeight = (value) => {
+        if (itemsWeight.length > 15) {
+            setValueError("Error: soo much elements");
+            setTimeout(() => setValueError(""), 3000);
+            return;
+        } else if (!value) {
+            setValueError("Error: not value");
+            setTimeout(() => setValueError(""), 3000);
+            return;
+        } else {
+            const newItem = { value, id: randomId() };
+            setItemsWeight((itemsValue) => [...itemsValue, newItem]);
+        }
+    };
+
     const deleteItemRepeat = (idItem) => {
         setItemsValue((itemsValue) => itemsValue.filter(({ id }) => id !== idItem));
     };
 
-    const createItems = (data) => {
-        if (!data || data.length < 1) return null;
+    const deleteItemWeights = (idItem) => {
+        setItemsWeight((itemsValue) => itemsValue.filter(({ id }) => id !== idItem));
+    };
+
+    const createItems = (data, deleteFunc) => {
+        if (!data || data.length === 0) return null;
         const items = data.map(({ value, id }) => {
             return (
                 <CSSTransition key={id} timeout={500} classNames="baseTransition">
                     <div
-                        onClick={() => deleteItemRepeat(id)}
+                        onClick={() => deleteFunc && deleteFunc(id)}
                         key={id}
                         className={`${"basePositionElement"}`}
                     >
@@ -65,7 +80,14 @@ export const TuningTrening = (props) => {
         );
     };
 
-    const itemsView = createItems(itemsValue);
+    const savingItem = () => ({
+        id: id,
+        repeats: itemsValue.map((item) => item.value),
+        weight: itemsWeight ? itemsWeight.map((item) => item.value) : [],
+    });
+
+    const itemsView = createItems(itemsValue, deleteItemRepeat);
+    const itemsViewWeigth = createItems(itemsWeight, deleteItemWeights);
 
     //console.log(itemsView);
 
@@ -75,12 +97,12 @@ export const TuningTrening = (props) => {
                 <img src={cross} alt="cross" />
             </div>
             <div className={` ${"baseFontTitleSmall"} basePositionElement`}>{title}</div>
-            <AddTrening getValue={addItem} imgSrc={imgSrc}/>
+            <AddTrening getValue={addItemRepeat} imgSrc={imgSrc} />
             <ComponentSwitch
-                logicValue={valueError}
+                logicValue={valueErrorRepeat}
                 styleDiv={""}
                 styleActive={"basePositionElement baseError"}
-                innerValueTrue={valueError}
+                innerValueTrue={valueErrorRepeat}
                 innerValueFalse={""}
             />
             <div className={` ${"basePositionBlock baseFontContentBold"}`}>
@@ -91,11 +113,38 @@ export const TuningTrening = (props) => {
             ) : (
                 <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>No data</div>
             )}
-            <CustomButton
-                //active={}
-                funk={() => saveItem()}
-                innerValue={"Save exersice"}
-            />
+            <div className={` ${!itemsWeight ? "baseActiveVisible" : "baseHiddenVisible "}`}>
+                <CustomButton
+                    funk={() => setItemsWeight([])}
+                    innerValue={"Add weights"}
+                />
+            </div>
+            <div className={` ${itemsWeight ? "baseActiveVisible" : "baseHiddenVisible "}`}>
+                <div className={` ${"basePositionBlock baseFontContentBold"}`}>Weights</div>
+                <AddTrening title={"Weight"} max={300} getValue={addItemWeight} imgSrc={imgSrc} />
+                <ComponentSwitch
+                    logicValue={valueErrorWeigth}
+                    styleDiv={""}
+                    styleActive={"basePositionElement baseError"}
+                    innerValueTrue={valueErrorWeigth}
+                    innerValueFalse={""}
+                />
+                {itemsViewWeigth ? (
+                    itemsViewWeigth
+                ) : (
+                    <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>No data</div>
+                )}
+                <CustomButton
+                    //active={}
+                    funk={() => saveItem && saveItem(savingItem())}
+                    innerValue={"Save exersice"}
+                />
+                <CustomButton
+                    //active={}
+                    funk={() => setItemsWeight(null)}
+                    innerValue={"Delete weights"}
+                />
+            </div>
         </div>
     );
 };
