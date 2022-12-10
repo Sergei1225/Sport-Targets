@@ -30,6 +30,8 @@ export const ConstrTrening = () => {
         dispatch(deleteAllSelectedItem())
     }
 
+    console.log('dsd');
+
     const tuningTrenings = (data) => {
         if (data.length === 0) return null;
         return data.map((item) => {
