@@ -1,19 +1,21 @@
 import s from "./ListTrening.module.scss";
 
-import { ItemListCreateTrening } from "../ItemList/ItemList";
+import { ItemList } from "../ItemList/ItemList";
 import { dataItems } from "./dataListSample";
 import { CustomButton } from "../../BaseComponents/CustomComponents";
 
 import {
     selectorsAdapter,
     priorityTren,
-    deleteListTren,
-    deleteAllTren,
     addToDelete,
     getAlllistTrenings, 
     deleteOneTrening,
-    deleteSomeTrening
+    deleteSomeTrening,
+    deleteAllTrening,
+    addForEditor
 } from "./listSliceCreateTrening";
+
+import { setOneTrening } from "../ConstrTrening/sliceConstrTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
@@ -55,6 +57,14 @@ export const ListTrening = ({ data }) => {
     const deleteSomeTren = () => {
         dispatch(deleteSomeTrening());
     };
+    const deleteTrenAll = () => {
+        dispatch(deleteAllTrening());
+    };
+    const addEditor = (id) => {
+        const item = allItemsList.find(item => item.id === id)
+        dispatch(addForEditor(item));
+        dispatch(setOneTrening(item));
+    };
 
 
     const createContentItems = (data) => {
@@ -63,12 +73,13 @@ export const ListTrening = ({ data }) => {
 
             return (
                 <CSSTransition key={id} timeout={600} classNames="baseTransition">
-                    <ItemListCreateTrening
+                    <ItemList
                         key={id}
                         {...item}
                         addForDelete={addForDelete}
                         priorityTren={changePriorityTren}
                         deleteOneTren={deleteOneTren}
+                        editor={addEditor}
                     />
                 </CSSTransition>
             );
@@ -83,13 +94,11 @@ export const ListTrening = ({ data }) => {
         <>
             <div className="basePositionBlock baseFlexGapNoJC">
                 <CustomButton
-                        //active={}
                         funk={deleteSomeTren}
                         innerValue={"Delete list exercises"}
                     />
                 <CustomButton
-                    //active={}
-                    //funk={deleteAllTunnings}
+                    funk={deleteTrenAll}
                     innerValue={"Delete all"}
                 />
             </div>

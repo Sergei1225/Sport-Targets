@@ -49,6 +49,10 @@ const sliceConstrTrening = createSlice({
             state.dataSelectedItems = [];
             state.dataSelectedItemsIds = [];
         },
+        setOneTrening: (state, { payload }) => {
+            state.dataSelectedItems = [...state.dataSelectedItems, payload];
+            state.dataSelectedItemsIds = [...state.dataSelectedItemsIds, payload.id];
+        }
     },
     extraReducers: (builder) => { 
         builder.addCase(getSelectedItems.pending, (state, action) => {});
@@ -82,7 +86,8 @@ export default reducer;
 
 export const {
     setDataForTuning,
-    deleteAllSelected
+    deleteAllSelected,
+    setOneTrening
 } = actions;
 
 export const listItems = createSelector(

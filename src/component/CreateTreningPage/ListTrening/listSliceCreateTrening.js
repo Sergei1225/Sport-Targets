@@ -1,32 +1,51 @@
-import { createEntityAdapter, createSelector, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+    createEntityAdapter,
+    createSelector,
+    createSlice,
+    createAsyncThunk,
+} from "@reduxjs/toolkit";
 
 import { RequestBase } from "../../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
 
 const prepareItem = (itemData, order) => ({
-    repeats: [],
-    weight: [],
     forDelete: false,
-    priority: false, 
-    order: order,
-    ...itemData
-})
+    priority: false,
+    order: itemData.order ? itemData.order : order,
+    ...itemData,
+});
 
 export const getAlllistTrenings = createAsyncThunk(
     "listCreateTrening/getAlllistTrenings",
     async () => {
-        return await simpleReqest("listExersises")
+        return await simpleReqest("listExersises");
     }
 );
 
 export const addTunigedTrening = createAsyncThunk(
     "listCreateTrening/addTunigedTrening",
-    async (action, {getState}) => {
-        const order = getState().listCreateTrening.ids.length;
-        const newItem =  prepareItem(action, order);
+    async (action, { getState }) => {
+        let order;
+        const orderList = getState().listCreateTrening.entities;
+        const lastOrder = Object.entries(orderList);
+
+        if (lastOrder.length === 0) order = 0;
+        else order = +lastOrder.at(-1)[1].order + 1;
+
+        const newItem = prepareItem(action, order);
         await simpleReqest("listExersises", "POST", newItem);
         return newItem;
+    }
+);
+
+export const addForEditor = createAsyncThunk(
+    "listCreateTrening/addForEditor",
+    async (action) => {
+        console.log(action);
+        await simpleReqest("selectedExercises", "POST", action);
+        await simpleReqest(`listExersises/${action.id}`, "DELETE");
+        return action.id;
     }
 );
 
@@ -40,17 +59,27 @@ export const deleteOneTrening = createAsyncThunk(
 
 export const deleteSomeTrening = createAsyncThunk(
     "listCreateTrening/deleteSomeTrening",
-    async ( _, { getState }) => {
+    async (_, { getState }) => {
         const ids = getState().listCreateTrening.listForDelete;
-        if(!ids || ids.length === 0) return
+        if (!ids || ids.length === 0) return;
+        await Promise.all(ids.map((id) => simpleReqest(`listExersises/${id}`, "DELETE")));
+        return ids;
+    }
+);
+
+export const deleteAllTrening = createAsyncThunk(
+    "listCreateTrening/deleteAllTrening",
+    async (_, { getState }) => {
+        const ids = getState().listCreateTrening.ids;
         console.log(ids);
-        await Promise.all(ids.map(id => simpleReqest(`listExersises/${id}`, "DELETE")))
+        if (!ids || ids.length === 0) return;
+        await Promise.all(ids.map((id) => simpleReqest(`listExersises/${id}`, "DELETE")));
         return ids;
     }
 );
 
 const listAdapter = createEntityAdapter({
-    sortComparer: (a, b) => b.order - a.order
+    sortComparer: (a, b) => b.order - a.order,
 });
 
 const listSliceCreateTrening = createSlice({
@@ -58,13 +87,13 @@ const listSliceCreateTrening = createSlice({
     initialState: listAdapter.getInitialState({
         loadingStatus: "idle",
         listForDelete: [],
-        editElementId: "82era3273nsdnHkskiew"
+        editElementId: "82era3273nsdnHkskiew",
     }),
     reducers: {
         treningsGetAll: listAdapter.setAll,
         addTrening: listAdapter.addOne,
         deleteTren: (state, { payload }) => {
-            listAdapter.removeOne(state, payload)
+            listAdapter.removeOne(state, payload);
         },
         deleteListTren: (state) => listAdapter.removeMany(state, [...state.listForDelete]),
         priorityTren: (state, { payload }) =>
@@ -75,46 +104,57 @@ const listSliceCreateTrening = createSlice({
             !forDelete
                 ? state.listForDelete.push(id)
                 : (state.listForDelete = state.listForDelete.filter((item) => item !== id));
-            const foo = [...state.listForDelete]
-            console.log(foo)
         },
-        deleteAllTren: listAdapter.removeAll
+        deleteAllTren: listAdapter.removeAll,
     },
     extraReducers: (builder) => {
         builder.addCase(getAlllistTrenings.fulfilled, (state, { payload }) => {
-            listAdapter.setAll(state, payload)
-            console.log('данные получены')
-        })
+            listAdapter.setAll(state, payload);
+            console.log("данные получены");
+        });
         builder.addCase(getAlllistTrenings.rejected, (state, action) => {
-            console.log('произошла ошибка')
+            console.log("произошла ошибка");
         });
         builder.addCase(addTunigedTrening.fulfilled, (state, { payload }) => {
-            console.log(payload)
-            listAdapter.addOne(state, payload)
-            console.log('данные получены тюнингованный айтем')
+            console.log(payload);
+            listAdapter.addOne(state, payload);
+            console.log("данные получены тюнингованный айтем");
         });
         builder.addCase(addTunigedTrening.rejected, (state, action) => {
-            console.log('произошла ошибка тюнингованный айтем')
+            console.log("произошла ошибка тюнингованный айтем");
         });
         builder.addCase(deleteOneTrening.fulfilled, (state, { payload }) => {
-            listAdapter.removeOne(state, payload)
-            console.log('удалено одно упражнение')
-        })
+            listAdapter.removeOne(state, payload);
+            console.log("удалено одно упражнение");
+        });
         builder.addCase(deleteOneTrening.rejected, (state, action) => {
-            console.log('произошла ошибка удаления')
+            console.log("произошла ошибка удаления");
         });
         builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
             console.log(payload);
-            if(!payload || payload.length === 0) return
+            if (!payload || payload.length === 0) return;
             listAdapter.removeMany(state, [...state.listForDelete]);
             state.listForDelete = [];
-            console.log('удалено много упражнений')
-        })
-        builder.addCase(deleteSomeTrening.rejected, (state, action) => {
-            console.log('произошла ошибка много удалений')
+            console.log("удалено много упражнений");
         });
-
-    } 
+        builder.addCase(deleteSomeTrening.rejected, (state, action) => {
+            console.log("произошла ошибка много удалений");
+        });
+        builder.addCase(deleteAllTrening.fulfilled, (state) => {
+            listAdapter.removeAll(state);
+            console.log("удалены все");
+        });
+        builder.addCase(deleteAllTrening.rejected, (state, action) => {
+            console.log("произошла ошибка удаление всех");
+        });
+        builder.addCase(addForEditor.fulfilled, (state, { payload }) => {
+            listAdapter.removeOne(state, payload);
+            console.log("добавлена для редактирования");
+        });
+        builder.addCase(addForEditor.rejected, (state, action) => {
+            console.log("ошибка редактирования");
+        });
+    },
 });
 
 const { actions, reducer } = listSliceCreateTrening;
@@ -132,4 +172,3 @@ export const {
     deleteAllTren,
     addToDelete,
 } = actions;
-

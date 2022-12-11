@@ -71,6 +71,7 @@ export const SelectExercise = () => {
     const saveExersice = () => {
         if(!selectedItemsList || selectedItemsList.length === 0) return;
         dispatch(saveExercise(selectedItemsList));
+        navigate('/')
     };
 
     return (

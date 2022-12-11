@@ -1,21 +1,28 @@
 {
-  "selectedExercises": [
+  "selectedExercises": [],
+  "listExersises": [
     {
-      "id": "S8LQ5U1Q4-740C6zQ0_T294xQ69-73",
-      "name": "Bench press",
+      "forDelete": false,
+      "priority": false,
+      "order": 0,
+      "id": "3DVF1yHW8_iT48k421_80H0JgIp_9f",
+      "name": "Squats",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "chest"
+        "legs"
       ],
-      "typeOfExercise": "base"
-    }
-  ],
-  "listExersises": [
+      "typeOfExercise": "base",
+      "repeats": [],
+      "weight": []
+    },
     {
-      "id": "Lu1mR4a3z-N12r26Lv-433335ED_85",
+      "forDelete": false,
+      "priority": false,
+      "order": 3,
+      "id": "3Dix9V48c_70653ja3_4zp5100Q-8v",
       "name": "Pull-ups",
       "img": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
@@ -27,107 +34,48 @@
       ],
       "typeOfExercise": "base",
       "repeats": [],
-      "weight": [],
-      "forDelete": false,
-      "priority": false,
-      "order": 0
+      "weight": []
     },
     {
-      "repeats": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
-      "weight": [],
-      "forDelete": false,
-      "priority": false,
-      "order": 1,
-      "id": "X22R70Qz9-L8USGG78-LJW303ny-O4",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "repeats": [
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
-      "weight": [
-        20,
-        20,
-        205,
-        205,
-        205,
-        205,
-        205,
-        25,
-        25,
-        25
-      ],
-      "forDelete": false,
-      "priority": false,
-      "order": 2,
-      "id": "90n5w5ZvO_O8m74502_36F2Noy8-a7",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "repeats": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
-      "weight": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
       "forDelete": false,
       "priority": false,
       "order": 3,
-      "id": "ZT1UQ7G6Y_m678tau3-h46AF49V-iZ",
-      "name": "Swing to the side",
+      "id": "C25hw93sQ_3j662vTC-f5575Kq8-74",
+      "name": "Bench press",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdzcO6cDfT682kZLN9ePlQ-7gbka2DB6r_cQ&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "delta"
+        "chest"
       ],
-      "typeOfExercise": "base"
+      "typeOfExercise": "base",
+      "repeats": [],
+      "weight": []
+    },
+    {
+      "forDelete": false,
+      "priority": false,
+      "order": 2,
+      "id": "07u4316n0_5R9b83rS_0RT8uRXo-0I",
+      "name": "twisting",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ54LcR48ikad4dcdgK_yuz9jSW_kZo-MnXA&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "press"
+      ],
+      "typeOfExercise": "base",
+      "repeats": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "weight": []
     }
   ],
   "dataBase": [

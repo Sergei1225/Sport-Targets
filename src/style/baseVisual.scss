@@ -45,4 +45,18 @@
     transition: all 1s;
 }
 
+.baseToggleVisible {
+    transition: all 1.5s linear;
+    overflow: hidden;
+}
+
+.baseActiveVisible {
+    @extend .baseToggleVisible;
+    max-height: 500px;
+}
+.baseHiddenVisible {
+    @extend .baseToggleVisible;
+    max-height: 0px;
+    padding: 0;
+}
 

@@ -53,6 +53,7 @@ export const ConstrTrening = () => {
                     title={item.name}
                     id={item.id}
                     saveItem={saveTren}
+                    imgSrc={item.img}
                 />
             ) : (
                 <SimpleTuning
@@ -61,6 +62,7 @@ export const ConstrTrening = () => {
                     title={item.name}
                     id={item.id}
                     saveItem={saveTren}
+                    imgSrc={item.img}
                 />
             );
             return <CSSTransition key={item.id} timeout={500} classNames="baseTransition">{itemTurning}</CSSTransition>
@@ -79,8 +81,11 @@ export const ConstrTrening = () => {
                     subtile={"You can quickly select the desired exercises and customize"}
                 />
             </div>
-            <div className={`${"basePositionBlock"}`} onClick={() => navigate("/chooseExercise")}>
-                <button className={` ${"basePositionElement baseBtn"}`}>Choose exercise</button>
+            <div className={`${"basePositionBlock"}`}>
+                <CustomButton
+                    funk={() => navigate("/chooseExercise")}
+                    innerValue={"Choose exercise"}
+                />
             </div>
             <div className={`${s.constrTren}  ${"basePositionBlock"}`}>
                 <CustomTitle

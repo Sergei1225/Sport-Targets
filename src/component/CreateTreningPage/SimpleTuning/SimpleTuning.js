@@ -1,3 +1,4 @@
+import s from './SimpleTuning.module.scss';
 import cross from "../../../img/ItemListCreateTrening/icon/can.png";
 
 import { AddTrening } from "../AddTrening/AddTrening";
@@ -6,7 +7,7 @@ import { ComponentSwitch } from "../../../serviceComponents/ComponentSwitch/Comp
 import { useState } from "react";
 
 export const SimpleTuning = (props) => {
-    const { title, id, deleteItem} = props;
+    const { title, id, deleteItem, imgSrc, saveItem} = props;
 
     const [valueError, setValueError] = useState(null);
 
@@ -15,7 +16,8 @@ export const SimpleTuning = (props) => {
             setValueError("Error: not value");
             setTimeout(() => setValueError(""), 3000);
         } else {
-            console.log(value);
+            const newItem = { id, fullTime: value }
+            saveItem(newItem)
         }
     };
 
@@ -24,14 +26,25 @@ export const SimpleTuning = (props) => {
             <div onClick={() => deleteItem(id)}>
                 <img src={cross} alt="cross" />
             </div>
-            <div className={` ${"baseFontTitleSmall"} basePositionElement`}>{title}</div>
-            <AddTrening
-                title={"Time"}
-                btn={"Save exersice"}
-                metering={"min"}
-                getValue={getValue}
-                max={200}
-            />
+            <div className={` ${s.simpleTuning__header} baseFlex`}>
+                <div className={` ${s.simpleTuning__title} `}>
+                    <div className={` ${"baseFontTitleSmall"} basePositionElementNoMT`}>
+                        {title}
+                    </div>
+                    <AddTrening
+                        title={"Time"}
+                        btn={"Save exersice"}
+                        metering={"min"}
+                        getValue={getValue}
+                        max={200}
+                        />
+                </div>
+                <div className={` ${s.simpleTuning__img} `}>
+                    <div className={`${s.simpleTuning__img_inner} basePositionElementNoMT`}>
+                        <img className={`baseImgCover`} src={[imgSrc]} alt="imgList" />
+                    </div>
+                </div>
+            </div>
             <ComponentSwitch
                 logicValue={valueError}
                 styleDiv={""}

@@ -5,7 +5,7 @@ import cross from "../../../img/ItemListCreateTrening/icon/can.png";
 import list from "../../../img/ItemListCreateTrening/icon/list.png";
 import star from "../../../img/ItemListCreateTrening/icon/star.png";
 
-export const ItemListCreateTrening = (props) => {
+export const ItemList = (props) => {
     let { 
         id, 
         name, 
@@ -18,7 +18,8 @@ export const ItemListCreateTrening = (props) => {
         priorityTren, 
         deleteOneTren, 
         typeOfExercise,
-        fullTime 
+        fullTime,
+        editor 
     } = props;
 
     let styleWrapper;
@@ -44,7 +45,8 @@ export const ItemListCreateTrening = (props) => {
                     >
                         {name.toUpperCase()}
                     </div>
-                    {typeOfExercise === "base" ? 
+                    {
+                        typeOfExercise === "base" ? 
                         <>
                             <div className={`${s.itemList__text_item} basePositionElement`}>
                             <span className={`baseFontContentBigBold`}>Repeats  </span>
@@ -61,7 +63,6 @@ export const ItemListCreateTrening = (props) => {
                                 {fullTime}min
                         </div>
                     }
-                    
                 </div>
                 <div className={`${s.itemList__func} basePositionElementNoMT baseFlexGap`}>
                     <div onClick={() => addForDelete(id, forDelete)} className={`${s.itemList__func_item} baseSizeImgSmall`}>
@@ -70,7 +71,7 @@ export const ItemListCreateTrening = (props) => {
                     <div onClick={() => priorityTren(id, priority)} className={`${s.itemList__func_item} baseSizeImgSmall`}>
                         <img className={`baseImgCover`} src={star} alt="imgFunction" />
                     </div>
-                    <div className={`${s.itemList__func_item} baseSizeImgSmall`}>
+                    <div onClick={() => editor(id)} className={`${s.itemList__func_item} baseSizeImgSmall`}>
                         <img className={`baseImgCover`} src={paint} alt="imgFunction" />
                     </div>
                     <div onClick={() => deleteOneTren(id)} className={`${s.itemList__func_item} baseSizeImgSmall`}>
