@@ -9,7 +9,7 @@ import { ViewAddWeights } from "../../../View/ViewAddWeights/ViewAddWeights";
 import { ViewAddRepeats } from "../../../View/ViewAddRepeats/ViewAddRepeats";
 
 export const TuningTrening = (props) => {
-    const { title, id, saveItem, imgSrc, deleteItem } = props;
+    const { title, id, saveItem, imgSrc, deleteItem, order } = props;
     const [itemsValue, setItemsValue] = useState([]);
     const [itemsWeight, setItemsWeight] = useState(null);
     const [valueErrorRepeat, setValueErrorRepeat] = useState(null);
@@ -96,8 +96,18 @@ export const TuningTrening = (props) => {
 
     return (
         <div className={`${s.tuning} ${"basePositionBlock"}`}>
-            <div onClick={() => deleteItem(id)}>
-                <img src={cross} alt="cross" />
+            <div className={`${s.itemList__editor} baseFlexGapSB`}>
+                {
+                    order ? 
+                    <div className={`${s.itemList__editor} basePositionElementNoMT baseFontContentBold`}>
+                        EDITING ITEM                              
+                    </div>
+                    :
+                    null
+                }
+                <div onClick={() => deleteItem(id)}>
+                    <img src={cross} alt="cross" />
+                </div>
             </div>
             <ViewAddRepeats
                 title={title}

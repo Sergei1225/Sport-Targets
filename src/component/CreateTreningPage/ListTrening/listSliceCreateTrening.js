@@ -31,7 +31,7 @@ export const addTunigedTrening = createAsyncThunk(
         const lastOrder = Object.entries(orderList);
 
         if (lastOrder.length === 0) order = 0;
-        else order = +lastOrder.at(-1)[1].order + 1;
+        else order = +lastOrder[lastOrder.length - 1][1].order + 1;
 
         const newItem = prepareItem(action, order);
         await simpleReqest("listExersises", "POST", newItem);

@@ -7,7 +7,7 @@ import { ComponentSwitch } from "../../../serviceComponents/ComponentSwitch/Comp
 import { useState } from "react";
 
 export const SimpleTuning = (props) => {
-    const { title, id, deleteItem, imgSrc, saveItem} = props;
+    const { title, id, deleteItem, imgSrc, saveItem, order} = props;
 
     const [valueError, setValueError] = useState(null);
 
@@ -23,8 +23,18 @@ export const SimpleTuning = (props) => {
 
     return (
         <div className={` ${"basePositionBlock"}`}>
-            <div onClick={() => deleteItem(id)}>
-                <img src={cross} alt="cross" />
+            <div className={`${s.itemList__editor} baseFlexGapSB`}>
+                {
+                    order ? 
+                    <div className={`${s.itemList__editor} basePositionElementNoMT baseFontContentBold`}>
+                         EDITING ITEM                               
+                    </div>
+                    :
+                    null
+                }
+                <div onClick={() => deleteItem(id)}>
+                    <img src={cross} alt="cross" />
+                </div>
             </div>
             <div className={` ${s.simpleTuning__header} baseFlex`}>
                 <div className={` ${s.simpleTuning__title} `}>

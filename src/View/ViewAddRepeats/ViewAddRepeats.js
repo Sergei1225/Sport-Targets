@@ -30,7 +30,7 @@ export const ViewAddRepeats = (props) => {
             <div className={` ${"basePositionBlock baseFontContentBold"}`}>
                 Approaches: {itemsValue.length}
             </div>
-            {arrValues ? arrValues : <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>No data</div>}
+            {arrValues ? arrValues : null}
         </div>
     );
 };

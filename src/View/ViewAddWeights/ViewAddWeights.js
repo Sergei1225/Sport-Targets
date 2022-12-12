@@ -15,7 +15,7 @@ export const ViewAddWeights = (props) => {
                 innerValueTrue={valueError}
                 innerValueFalse={""}
             />
-            {arrValues ? arrValues : <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>No data</div>}
+            {arrValues ? arrValues : null}
             <CustomButton
                 funk={() => funkChangeState(null)}
                 innerValue={"Delete weights"}

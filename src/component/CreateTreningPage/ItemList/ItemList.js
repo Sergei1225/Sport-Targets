@@ -19,7 +19,7 @@ export const ItemList = (props) => {
         deleteOneTren, 
         typeOfExercise,
         fullTime,
-        editor 
+        editor, 
     } = props;
 
     let styleWrapper;
@@ -34,7 +34,7 @@ export const ItemList = (props) => {
 
     return (
         <div draggable={false} key={id} className={`${s.itemList} ${styleWrapper} basePositionBlock baseFlexGapNoJC `}>
-            {/* <div className={`${s.itemList__drag} basePositionElementNoMT`}>|||</div> */}
+            
             <div className={`${s.itemList__img} basePositionElementNoMT`}>
                 <img className={`baseImgCover`} src={[img]} alt="imgList" />
             </div>

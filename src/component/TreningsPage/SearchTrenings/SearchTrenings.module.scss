@@ -1,0 +1,12 @@
+
+.searchTrenings{
+    &__title{
+
+    }
+    &__search{
+        flex: 1 1 200px;
+        input {
+            width: 90%;
+        }
+    }
+}

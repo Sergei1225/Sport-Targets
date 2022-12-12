@@ -4,7 +4,7 @@ import { listItems, addSelectedItem } from "../SelectExercise/sliceSelectExercis
 import { listMainItems, listAllItems } from "./sliceListExercise";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import {useMemo } from "react";
+import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 export const ListExercise = (props) => {
@@ -20,7 +20,7 @@ export const ListExercise = (props) => {
     //console.log('рендер листа')
 
     const createList = (data) => {
-        if(!data) return null;
+        if (!data) return null;
         return data.map((item) => {
             return (
                 <CSSTransition key={item.id} timeout={600} classNames="baseTransition">
@@ -44,5 +44,7 @@ export const ListExercise = (props) => {
         return createList(listChoose);
     }, [listChoose]);
 
-    return <TransitionGroup className="baseFlexGapWrap basePaddingBottom">{itemsList}</TransitionGroup>;
+    return (
+        <TransitionGroup className="baseFlexGapWrap basePaddingBottom">{itemsList}</TransitionGroup>
+    );
 };

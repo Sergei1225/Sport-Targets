@@ -1,7 +1,7 @@
 import s from "./App.scss";
 
 import { Layout } from "../Layout/Layout";
-import { CreateTreningPage, ChooseExercisePage } from "../../pages/pages.js";
+import { CreateTreningPage, ChooseExercisePage, TreningsPage } from "../../pages/pages.js";
 
 import { setDataTrening } from "./sliceDataBase";
 
@@ -25,7 +25,7 @@ function App() {
                 <Route path={"/"} element={<Layout />}>
                     <Route index element={<CreateTreningPage />} />
                     <Route path="/chooseExercise" element={<ChooseExercisePage />} />
-                    <Route path="/two" element={<NotFound />} />
+                    <Route path="/two" element={<TreningsPage />} />
                     <Route path="/three" element={<ChooseExercisePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
