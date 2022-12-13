@@ -1,259 +1,215 @@
 {
-  "selectedExercises": [
-    {
-      "id": "z989GsTE3-tJ5186mo-13s5F27n-8C",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base"
-    }
-  ],
-  "listExersises": [
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 0,
-      "id": "3DVF1yHW8_iT48k421_80H0JgIp_9f",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 3,
-      "id": "C25hw93sQ_3j662vTC-f5575Kq8-74",
-      "name": "Bench press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "chest"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
-      "weight": [
-        114,
-        114,
-        114,
-        114,
-        114,
-        114,
-        114
-      ]
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 5,
-      "id": "7i78Uml87_Wx30V1Li_d05Qzpl0_5Z",
-      "name": "Walking",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic",
-      "fullTime": 199
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 3,
-      "id": "u65D10595_67X4u7UU_09ydO0Ie_0K",
-      "name": "Pull-ups",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "back",
-        "biceps"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [
-        18,
-        18
-      ],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 6,
-      "id": "F2knwq36y-ul7tiov5_73298WA7-06",
-      "name": "French press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "triceps"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [
-        20,
-        20,
-        20,
-        20,
-        20,
-        20,
-        20
-      ],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 7,
-      "id": "11f5LO46E-7U907636-a0qUwv43_5T",
-      "name": "Walking",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic",
-      "fullTime": 174
-    }
-  ],
-  "dataBase": [
-    {
-      "id": "hgHGJudsj7^5^8dshhdsjds67hHGT",
-      "name": "Pull-ups",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "back",
-        "biceps"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "4994349^5^8dshhdsjds67hHGT",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "14365dsj7^5^8dshhdsjds67hHGT",
-      "name": "Bench press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "chest"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "45565443sdsdds8dshhdsjds6hjhj",
-      "name": "French press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "triceps"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "df23245bfgSDSshhdsjds6111",
-      "name": "twisting",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ54LcR48ikad4dcdgK_yuz9jSW_kZo-MnXA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "press"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "dJJDK843443ds8dshhds454545",
-      "name": "Swing to the side",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdzcO6cDfT682kZLN9ePlQ-7gbka2DB6r_cQ&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "delta"
-      ],
-      "typeOfExercise": "base"
-    },
-    {
-      "id": "4334s8dshhsdJDKsldsdsde44",
-      "name": "Shrugs",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "trapezoid"
-      ],
-      "typeOfExercise": "base"
-    }
-  ],
-  "dataAerobic": [
-    {
-      "id": "hgHGdfh4545dsjds67hHGT",
-      "name": "Run",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic"
-    },
-    {
-      "id": "787885^8dshhdsjdsvvbbvGT",
-      "name": "Walking",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic"
-    }
-  ]
+    "selectedExercises": [],
+    "listTrenings": [
+        {
+            "id": "sdnsd673823nm8m3j3j2832gfGGHha",
+            "name": "first trening",
+            "date": "2022.02.12",
+            "forDelete": false,
+            "order": 0,
+            "favorite": false,
+            "listExersises": [
+                {
+                    "forDelete": false,
+                    "priority": false,
+                    "order": 3,
+                    "id": "C25hw93sQ_3j662vTC-f5575Kq8-74",
+                    "name": "Bench press",
+                    "img": [
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
+                    ],
+                    "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+                    "workingParts": ["chest"],
+                    "typeOfExercise": "base",
+                    "repeats": [20, 20, 20, 20, 20, 20, 20],
+                    "weight": [114, 114, 114, 114, 114, 114, 114]
+                }
+            ]
+        }
+    ],
+    "listExersises": [
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 0,
+            "id": "3DVF1yHW8_iT48k421_80H0JgIp_9f",
+            "name": "Squats",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "base",
+            "repeats": [],
+            "weight": []
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 3,
+            "id": "C25hw93sQ_3j662vTC-f5575Kq8-74",
+            "name": "Bench press",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["chest"],
+            "typeOfExercise": "base",
+            "repeats": [20, 20, 20, 20, 20, 20, 20],
+            "weight": [114, 114, 114, 114, 114, 114, 114]
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 7,
+            "id": "11f5LO46E-7U907636-a0qUwv43_5T",
+            "name": "Walking",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "aerobic",
+            "fullTime": 174
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 8,
+            "id": "T4Y941691-eQ97oU2L_e0Iro0LB_G6",
+            "name": "Swing to the side",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdzcO6cDfT682kZLN9ePlQ-7gbka2DB6r_cQ&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["delta"],
+            "typeOfExercise": "base",
+            "repeats": [11, 11, 11, 11, 11],
+            "weight": []
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 9,
+            "id": "66T6WvrSV-0h825306-84ngh6xc-50",
+            "name": "twisting",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ54LcR48ikad4dcdgK_yuz9jSW_kZo-MnXA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["press"],
+            "typeOfExercise": "base",
+            "repeats": [10, 10, 10, 10, 10],
+            "weight": []
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 10,
+            "id": "VbgFh1K1k-Ztlz6T60-5k4C30zm-y8",
+            "name": "Shrugs",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["trapezoid"],
+            "typeOfExercise": "base",
+            "repeats": [7, 7, 7, 7, 7, 7],
+            "weight": [91, 91, 91, 91, 91, 91]
+        }
+    ],
+    "dataBase": [
+        {
+            "id": "hgHGJudsj7^5^8dshhdsjds67hHGT",
+            "name": "Pull-ups",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["back", "biceps"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "4994349^5^8dshhdsjds67hHGT",
+            "name": "Squats",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "14365dsj7^5^8dshhdsjds67hHGT",
+            "name": "Bench press",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTleMqQVY09_624M-xgjZUn9ShF74UtssZqIw&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["chest"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "45565443sdsdds8dshhdsjds6hjhj",
+            "name": "French press",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["triceps"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "df23245bfgSDSshhdsjds6111",
+            "name": "twisting",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ54LcR48ikad4dcdgK_yuz9jSW_kZo-MnXA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["press"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "dJJDK843443ds8dshhds454545",
+            "name": "Swing to the side",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdzcO6cDfT682kZLN9ePlQ-7gbka2DB6r_cQ&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["delta"],
+            "typeOfExercise": "base"
+        },
+        {
+            "id": "4334s8dshhsdJDKsldsdsde44",
+            "name": "Shrugs",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["trapezoid"],
+            "typeOfExercise": "base"
+        }
+    ],
+    "dataAerobic": [
+        {
+            "id": "hgHGdfh4545dsjds67hHGT",
+            "name": "Run",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "aerobic"
+        },
+        {
+            "id": "787885^8dshhdsjdsvvbbvGT",
+            "name": "Walking",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "aerobic"
+        }
+    ]
 }

@@ -1,40 +1,36 @@
-import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
-import useRequest from "../../services/hookRequest";
-import { ResponseInfo } from "../../services/Request";
+import { createSlice, createAsyncThunk, createSelector, createEntityAdapter } from "@reduxjs/toolkit";
+import { dataTreningsItems } from "./dataTreningsItems";
 
-export const dataTrenFetching = createAsyncThunk("base/traningsFetching", async () => {
-    const { request } = useRequest();
-    return await request("http://localhost:3001/dataTren");
-});
+export const dataTrenFetching = createAsyncThunk("base/traningsFetching", async () => {});
 
 const initialState = {
-    dataTren: [],
-    loadingStatus: "idle",
+    dataTren: dataTreningsItems,
+    loadingStatus: "loading",
     visibleView: "list",
-    forDeleteItems: ''
+    forDeleteItems: [],
 };
 
-const sliceBaseTrenings = createSlice({
-    name: "base",
-    initialState,
+const listAdapter = createEntityAdapter();
+
+const sliceListTrenings = createSlice({
+    name: "listTrenings",
+    initialState: listAdapter.getInitialState({
+        loadingStatus: "loading",
+        visibleView: "list",
+        forDeleteItems: [],
+    }),
     reducers: {
+        setTrenings: listAdapter.setAll,
         baseDeleteItem: (state, action) => {
             state.dataTren = state.dataTren.filter((item) => item.id !== action.payload);
-            const { response } = ResponseInfo();
-            const urlDelete = `http://localhost:3001/dataTren/${action.payload}`;
 
-            response(urlDelete, "DELETE")
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
         },
         changeView: (state, action) => {
             state.visibleView = action.payload;
         },
-        changeForDelete: (state, action) => {
-
-        },
+        changeForDelete: (state, action) => {},
         baseChangeProp: {
-            reducer: (state, {payload}) => {
+            reducer: (state, { payload }) => {
                 state.dataTren = state.dataTren.map((item) => {
                     return item.id === payload.id
                         ? {
@@ -64,9 +60,11 @@ const sliceBaseTrenings = createSlice({
     },
 });
 
-const { actions, reducer } = sliceBaseTrenings;
+const { actions, reducer } = sliceListTrenings;
 
 export default reducer;
+
+export const selectorsAdapter = listAdapter.getSelectors((state) => state.listTrenings);
 
 const sortData = (data, sortProp) => {
     let sortedArr = null;
@@ -105,26 +103,32 @@ const searchData = (data, searchValue, searchParameter) => {
     } else {
         return data.filter(
             (item) =>
-                item[searchParameter].toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) >
-                -1
+                item[searchParameter].toLowerCase().indexOf(searchValue.toLocaleLowerCase()) > -1
         );
     }
 };
 
 export const filtredItems = createSelector(
-    (state) => state.base.dataTren,
-    (state) => state.headerMyTren.sortProp,
-    (state) => state.filterTrens.filterValue,
-    (state) => state.searchTrenings.searchValue,
-    (state) => state.searchTrenings.searchParameter,
+    (state) => state.listTrenings.dataTren,
 
-    (data, sortProp, filter, searchValue, searchParameter) => {
-        const sortedData = sortData(data, sortProp);
-        const filtredData = filterData(sortedData, filter);
-        const serchedData = searchData(filtredData, searchValue, searchParameter);
-
-        return serchedData;
+    (data) => {
+        return data;
     }
 );
+// export const filtredItems = createSelector(
+//     (state) => state.listTrenings.dataTren,
+//     (state) => state.headerMyTren.sortProp,
+//     (state) => state.filterTrens.filterValue,
+//     (state) => state.searchTrenings.searchValue,
+//     (state) => state.searchTrenings.searchParameter,
 
-export const { baseDeleteItem, baseChangeProp, changeView, changeForDelete } = actions;
+//     (data, sortProp, filter, searchValue, searchParameter) => {
+//         const sortedData = sortData(data, sortProp);
+//         const filtredData = filterData(sortedData, filter);
+//         const serchedData = searchData(filtredData, searchValue, searchParameter);
+
+//         return serchedData;
+//     }
+// );
+
+export const { baseDeleteItem, baseChangeProp, changeView, changeForDelete, setTrenings } = actions;

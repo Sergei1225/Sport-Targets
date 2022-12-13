@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     sortProp: "",
     dataOption: [
-        { value: "date", inner: "Дате" },
-        { value: "name", inner: "По названию" },
-        { value: "", inner: "Сортировать по" },
+        { value: "date", inner: "Date" },
+        { value: "name", inner: "Name" },
+        { value: "", inner: "Sorting" },
     ],
 };
 

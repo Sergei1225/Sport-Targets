@@ -1,7 +1,7 @@
 import { HeaderTrenings } from "./HeaderTrening/HeaderTrenings";
-// import BaseTrenings from "./BaseTrenings/BaseTrenings";
-import {FiltersTren} from "./FiltersTren/FiltersTren";
-import {SearchTrenings} from "./SearchTrenings/SearchTrenings";
+import { ListTrenings } from "./ListTrenings/ListTrenings";
+import { FiltersTren } from "./FiltersTren/FiltersTren";
+import { SearchTrenings } from "./SearchTrenings/SearchTrenings";
 
 export const TreningsPage = () => {
     return (
@@ -9,7 +9,7 @@ export const TreningsPage = () => {
             <HeaderTrenings />
             <SearchTrenings />
             <FiltersTren />
-            {/* <BaseTrenings /> */}
+            <ListTrenings />
         </section>
     );
 };

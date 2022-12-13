@@ -32,8 +32,8 @@ const sliceFilterTren = createSlice({
     name: "filterTrens",
     initialState,
     reducers: {
-        changeFilterTren: (state, action) => {
-            state.filterValue = action.payload;
+        changeFilterTren: (state, {payload}) => {
+            state.filterValue = payload;
         },
     }
 });

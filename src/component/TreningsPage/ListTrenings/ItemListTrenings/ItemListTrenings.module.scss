@@ -1,0 +1,17 @@
+
+.itemTrenings {
+    &__date, &__name{
+        align-self: center;
+    }
+    &__exercise{
+        // max-width: 300px;
+        flex: 0 0 280px;
+    }
+    &__name{
+        flex: 0 0 120px;
+    }
+    &__func{
+        flex: 1 1 300px;
+    }
+
+}

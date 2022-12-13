@@ -12,7 +12,8 @@ import {
     deleteOneTrening,
     deleteSomeTrening,
     deleteAllTrening,
-    addForEditor
+    addForEditor,
+    filtredItems
 } from "./listSliceCreateTrening";
 
 import { setOneTrening } from "../ConstrTrening/sliceConstrTrening";

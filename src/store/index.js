@@ -9,6 +9,7 @@ import constrTrening from "../component/CreateTreningPage/ConstrTrening/sliceCon
 import headerTrenings from "../component/TreningsPage/HeaderTrening/sliceHeaderTrenings";
 import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearchTrenings";
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
+import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
 
 const stringMiddleware = () => (next) => (action) => {
     return typeof action === "string" ? next({ type: action }) : next(action);
@@ -22,9 +23,10 @@ const store = configureStore({
         selectExercise,
         listExercise,
         constrTrening,
+        listTrenings,
         headerTrenings,
         searchTrenings,
-        filterTrens
+        filterTrens,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),

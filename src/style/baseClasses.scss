@@ -1,5 +1,6 @@
 @import "./baseVisual.scss";
 @import "./baseFontsSize.scss";
+@import "./baseIcons.scss";
 
 .footerDown {
     min-height: 100vh;
@@ -17,6 +18,10 @@
     margin-top: 10px;
     border: 2px solid black;
     border-radius: 20px;
+}
+.basePositionElementNoMT {
+    @extend .basePositionElement;
+    margin-top: 0px;
 }
 
 .basePositionElementNoMT {
@@ -59,6 +64,11 @@
     width: 100%;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.baseFlexColumn {
+    display: flex;
+    flex-direction: column;
 }
 
 .baseFlexColumnCenter {
