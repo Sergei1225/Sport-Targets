@@ -1,7 +1,8 @@
 import s from "./HeaderTrenings.module.scss";
 import { srcImages } from "../../../img/srcImages";
 
-import { headerChangeProp, deleteAllHead } from "./sliceHeaderTrenings";
+import { headerChangeProp } from "./sliceHeaderTrenings";
+import { deleteSomeTrening } from "../ListTrenings/sliceListTrenings";
 
 import { CustomSelect, CustomButton } from "../../BaseComponents/CustomComponents";
 import { BaseHeader } from "../../BaseHeader/BaseHeader";
@@ -17,8 +18,8 @@ export const HeaderTrenings = () => {
         dispatch(headerChangeProp(value));
     };
 
-    const deleteAllHeadFunc = () => {
-        dispatch(deleteAllHead());
+    const deleteListForDelete = () => {
+        dispatch(deleteSomeTrening());
     };
 
     console.log("хеадер");
@@ -34,7 +35,7 @@ export const HeaderTrenings = () => {
                         dataOption={dataOption}
                         valueSelect={valueSelect}
                     />
-                    <CustomButton funk={deleteAllHeadFunc} innerValue={"Delete selected"} />
+                    <CustomButton funk={deleteListForDelete} innerValue={"Delete selected"} />
                 </div>
             </div>
         </div>

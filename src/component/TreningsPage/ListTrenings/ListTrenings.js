@@ -3,10 +3,14 @@ import s from "./ListTrenings.module.scss";
 import { ItemListTrenings } from "./ItemListTrenings/ItemListTrenings";
 
 import {
-    baseDeleteItem,
-    baseChangeProp,
     filtredItems,
     setTrenings,
+    deleteOneTrening,
+    statusTrening,
+    addToDelete,
+    getMyTreningItems,
+    favoriteTrening,
+    statusTrenings
 } from "./sliceListTrenings";
 import { selectorsAdapter } from "./sliceListTrenings";
 
@@ -20,28 +24,44 @@ export const ListTrenings = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(setTrenings(dataTreningsItems));
+        dispatch(getMyTreningItems());
+        //dispatch(setTrenings(dataTreningsItems));
     }, []);
 
     const allItemsList = useSelector(selectorsAdapter.selectAll);
     const itemsList = useSelector(filtredItems);
     const loadingStatus = useSelector((state) => state.listTrenings.loadingStatus);
     const visibleView = useSelector((state) => state.listTrenings.visibleView);
+    console.log(itemsList)
 
-    const changeProp = (id, prop) => {
-        dispatch(baseChangeProp(id, prop));
+    const changeMark = (id, favorite) => {
+        dispatch(favoriteTrening({ id, favorite }));
+    };
+
+    const changeStatus = (id, status) => {
+        dispatch(statusTrenings({ id, status }));
     };
 
     const deleteItem = (id) => {
-        dispatch(baseDeleteItem(id));
+        dispatch(deleteOneTrening(id));
+    };
+
+    const addToDeleteList = (id, forDelete) => {
+        dispatch(addToDelete( id, forDelete ));
     };
 
     const createItems = (data) => {
-        if(!data || data.length === 0) return null
+        if (!data || data.length === 0) return null;
         return data.map((item) => {
             return (
                 <CSSTransition key={item.id} timeout={600} classNames="baseTransition">
-                    <ItemListTrenings {...item} changeProp={changeProp} deleteItem={deleteItem} />
+                    <ItemListTrenings
+                        {...item}
+                        changeProp={changeMark}
+                        deleteItem={deleteItem}
+                        changeStatus={changeStatus}
+                        addToDelete={addToDeleteList}
+                    />
                 </CSSTransition>
             );
         });
@@ -52,9 +72,9 @@ export const ListTrenings = () => {
     console.log("рендер листайтема");
 
     return (
-        <div className={`${s.baseTrenings__view} basePositionBlock `}>
-            <div className={s.baseTrenings__title}>List trenings</div>
-            <TransitionGroup >{itemsTrening}</TransitionGroup>
+        <div className={`${s.listTrenings} basePositionBlock `}>
+            <div className={`${s.listTrenings__title} baseFontTitleSmall`}>List trenings</div>
+            <TransitionGroup>{itemsTrening}</TransitionGroup>
         </div>
     );
 };

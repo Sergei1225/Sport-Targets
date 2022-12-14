@@ -108,6 +108,7 @@ export const dataTreningsItems = [
         forDelete: false,
         order: 0,
         favorite: false,
+        status: 'past',
         listExersises: [
             {
                 "forDelete": false,
@@ -171,7 +172,7 @@ export const dataTreningsItems = [
             }
             
         ],
-        status: 'past'
+        
     },
     {
         id: "2343dss823nm8m3j3j2832gfGGHha",
@@ -180,6 +181,7 @@ export const dataTreningsItems = [
         forDelete: false,
         order: 0,
         favorite: true,
+        status: 'future',
         listExersises: [
             {
                 "forDelete": false,
@@ -213,6 +215,6 @@ export const dataTreningsItems = [
             }
             
         ],
-        status: 'future'
+        
     },
 ]

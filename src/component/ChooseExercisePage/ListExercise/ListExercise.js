@@ -33,6 +33,7 @@ export const ListExercise = (props) => {
                         key={item.id}
                         list={true}
                         workingParts={item.workingParts}
+                        coup={true}
                     />
                 </CSSTransition>
             );

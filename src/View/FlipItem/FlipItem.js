@@ -3,7 +3,7 @@ import s from "./FlipItem.module.scss";
 import cross from "../../img/ItemListCreateTrening/icon/can.png";
 
 export const FlipItem = (props) => {
-    let { name, baseImg, descr, addfunc, list, id, deleteItem, workingParts } = props;
+    let { name, baseImg, descr, addfunc, list, id, deleteItem, workingParts, coup, hoverBack } = props;
     // list для кнопки добавления
 
 
@@ -17,9 +17,12 @@ export const FlipItem = (props) => {
     if(!workingParts || workingParts.length === 0 ) workingParts = ['legs', 'arms'];
     if(workingParts.length > 3) workingParts = workingParts.slice(0, 3)
 
+    const styleCoup = coup ? s.flipItem__coup : '';
+    const styleHover = hoverBack ? s.flipItem__hoverBack : '';
+
     return (
-        <div className={`${s.flipItem__wrapper}`}>
-            <div className={`${s.flipItem}`}>
+        <div className={`${s.flipItem__wrapper} ${styleHover}`}>
+            <div className={`${s.flipItem} ${styleCoup} `}>
                 <div className={`${s.flipItem__front} baseBorderRadius baseBoxShadow`}>
                     <div className={`${s.flipItem__img} `}>
                         <img className={`baseImgCover `} src={baseImg} alt="flipItem" />

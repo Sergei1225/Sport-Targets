@@ -20,6 +20,7 @@ export const AddedItems = (props) => {
                         id={item.id}
                         deleteItem={deleteSelectedItem}
                         workingParts={item.workingParts}
+                        hoverBack={true}
                     />
                 </CSSTransition>
             );

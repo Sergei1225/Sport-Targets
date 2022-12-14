@@ -1,6 +1,6 @@
 .flipItem {
     width: 280px;
-    height: 350px;
+    height: 320px;
     position: relative;
     perspective: 1000px;
     padding: 5px;
@@ -52,12 +52,21 @@
             flex: 1 0 auto;
         }
     }
-    &:hover{
-        .flipItem__front{
-            transform: rotateY(180deg);
+    &__hoverBack{
+        &:hover{
+            background-color: rgb(143, 140, 140);
+            transition: all 0.5s linear;
+            transform: translate(0,-10px);
         }
-        .flipItem__back{
-            transform: rotateY(360deg);
+    }
+    &__coup{
+        &:hover{
+            .flipItem__front{
+                transform: rotateY(180deg);
+            }
+            .flipItem__back{
+                transform: rotateY(360deg);
+            }
         }
     }
 }

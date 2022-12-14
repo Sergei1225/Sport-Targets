@@ -26,6 +26,8 @@ export const getAlllistTrenings = createAsyncThunk(
 export const addTunigedTrening = createAsyncThunk(
     "listCreateTrening/addTunigedTrening",
     async (action, { getState }) => {
+        // let arrSort = [];
+        // for (let item in data) arrSort.push(data[item]);
         let order;
         const orderList = getState().listCreateTrening.entities;
         const lastOrder = Object.entries(orderList);
@@ -96,9 +98,9 @@ const listSliceCreateTrening = createSlice({
             listAdapter.removeOne(state, payload);
         },
         deleteListTren: (state) => listAdapter.removeMany(state, [...state.listForDelete]),
-        priorityTren: (state, { payload }) =>
+        priorityTren: (state, { payload }) => // вот эта рабочая
             listAdapter.upsertOne(state, { id: payload.id, priority: !payload.priority }),
-        addToDelete: (state, { payload }) => {
+        addToDelete: (state, { payload }) => { // и эта остальные нет
             const { id, forDelete } = payload;
             listAdapter.upsertOne(state, { id, forDelete: !forDelete });
             !forDelete

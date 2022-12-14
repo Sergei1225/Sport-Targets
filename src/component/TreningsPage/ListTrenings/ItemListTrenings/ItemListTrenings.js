@@ -1,15 +1,37 @@
 import s from "./ItemListTrenings.module.scss";
 
+import { paint, cross, list, star } from "../../../../img/srcIcons";
+
 import { CustomButton } from "../../../BaseComponents/CustomComponents";
 
 export const ItemListTrenings = (props) => {
-    const { name, id, date, listExersises, favorite, changeProp, deleteItem } = props;
+    const {
+        name,
+        id,
+        date,
+        listExersises,
+        favorite,
+        changeProp,
+        forDelete,
+        deleteItem,
+        status,
+        changeStatus,
+        addToDelete,
+    } = props;
 
     const lineExercise = listExersises.map((item) => item.name).join(", ");
+    const styleMark = favorite ? "baseMark" : "";
+    const styleDelete = forDelete ? "baseForDelete" : "";
 
     return (
-        <div key={id} className={`${s.itemTrenings} basePositionElement baseFlex baseFontContent`}>
-            <div className={`${s.itemTrenings__date} baseFontContentBigBold`}> {date}</div>
+        <div
+            key={id}
+            className={`${s.itemTrenings} ${styleMark} ${styleDelete} basePositionElement baseFlex baseFontContent bTran`}
+        >
+            <div className={`${s.itemTrenings__date} baseFontContentBigBold`}>
+                {date} <br />
+                Status: {status}
+            </div>
             <div className={`${s.itemTrenings__name} baseFontContentBigBold`}>
                 {name.toUpperCase()}
             </div>
@@ -20,28 +42,31 @@ export const ItemListTrenings = (props) => {
                     innerValue={"DETAIL"}
                 />
             </div>
-            <div
-                className={`${s.itemTrenings__func} baseFlexGap`}
-                style={{ justifySelf: "flex-end" }}
-            >
+            <div className={`${s.itemTrenings__func} baseFlexGap`}>
                 <div
-                    className={s.itemTrenings__favorites}
-                    data-current="favorite"
-                    onClick={(e) => changeProp(id, e.target.getAttribute("data-current"))}
+                    onClick={() => addToDelete(id, forDelete)}
+                    className={`${s.itemTrenings__favorites} baseSizeImgSmall`}
                 >
-                    📕
+                    <img className={`baseImgCover`} src={list} alt="imgFunction" />
                 </div>
                 <div
-                    className={s.itemTrenings__favorites}
-                    data-current="favorite"
-                    onClick={(e) => changeProp(id, e.target.getAttribute("data-current"))}
+                    onClick={() => changeStatus(id, status)}
+                    className={`${s.itemTrenings__favorites} baseSizeImgSmall`}
                 >
-                    🧾
+                    <img className={`baseImgCover`} src={paint} alt="imgFunction" />
                 </div>
                 <div
-                    className={`${s.itemTrenings__cross} baseIcons__cross`}
+                    onClick={() => changeProp(id, favorite)}
+                    className={`${s.itemTrenings__favorites} baseSizeImgSmall`}
+                >
+                    <img className={`baseImgCover`} src={star} alt="imgFunction" />
+                </div>
+                <div
                     onClick={() => deleteItem(id)}
-                ></div>
+                    className={`${s.itemTrenings__favorites} baseSizeImgSmall`}
+                >
+                    <img className={`baseImgCover`} src={cross} alt="imgFunction" />
+                </div>
             </div>
         </div>
     );

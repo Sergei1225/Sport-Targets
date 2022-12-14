@@ -16,9 +16,6 @@ const sliceHeaderTrenings = createSlice({
         headerChangeProp: (state, action) => {
             state.sortProp = action.payload;
         },
-        deleteAllHead: (state, action) => {
-            action.payload = 200;
-        },
     },
 });
 
@@ -26,4 +23,4 @@ const { actions, reducer } = sliceHeaderTrenings;
 
 export default reducer;
 
-export const { headerChangeProp, deleteAllHead } = actions;
+export const { headerChangeProp } = actions;

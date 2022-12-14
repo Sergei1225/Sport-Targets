@@ -1,9 +1,6 @@
 import s from "./ItemList.module.scss";
 
-import paint from "../../../img/ItemListCreateTrening/icon/paint.svg";
-import cross from "../../../img/ItemListCreateTrening/icon/can.png";
-import list from "../../../img/ItemListCreateTrening/icon/list.png";
-import star from "../../../img/ItemListCreateTrening/icon/star.png";
+import { paint, cross, list, star} from "../../../img/srcIcons";
 
 export const ItemList = (props) => {
     let { 
