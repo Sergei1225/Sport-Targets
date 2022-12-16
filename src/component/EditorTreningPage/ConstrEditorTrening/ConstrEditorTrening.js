@@ -4,8 +4,8 @@ import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents
 import { TuningTrening } from "../TuningTrening/TuningTrening";
 import { SimpleTuning } from "../SimpleTuning/SimpleTuning";
 
-import { getSelectedItems, deleteSelectedItem, deleteAllSelectedItem } from "./sliceConstrTrening";
-import { addTunigedTrening } from "../ListTrening/sliceListCreateExersice";
+import { getSelectedItems } from "./sliceConstrEditorTrenings";
+//import { addTunigedTrening } from "../ListEditorTrening/sliceListEditorTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useMemo } from "react";
@@ -13,23 +13,16 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const ConstrTrening = () => {
-    const itemsForTuning = useSelector((state) => state.constrTrening.dataSelectedItems);
+export const ConstrEditorTrening = ({path}) => {
+    const itemsForTuning = useSelector((state) => state.constrEditorTrening.dataSelectedItems);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getSelectedItems());
+        dispatch(getSelectedItems(path));
     }, []);
 
-    const deleteSelectedItems = (id) => {
-        dispatch(deleteSelectedItem(id));
-    };
-
-    const deleteAllTunnings = () => {
-        dispatch(deleteAllSelectedItem());
-    };
 
     const saveTren = (newItem) => {
         const base = itemsForTuning.find((item) => item.id === newItem.id);
@@ -40,8 +33,7 @@ export const ConstrTrening = () => {
         };
 
         console.log(fullNewItem);
-        dispatch(addTunigedTrening(fullNewItem));
-        dispatch(deleteSelectedItem(fullNewItem.id));
+        //dispatch(addTunigedTrening(fullNewItem));
     };
 
     const tuningTrenings = (data) => {
@@ -52,7 +44,6 @@ export const ConstrTrening = () => {
                 item.typeOfExercise === "base" ? (
                     <TuningTrening
                         key={id}
-                        deleteItem={deleteSelectedItems}
                         title={name}
                         id={id}
                         saveItem={saveTren}
@@ -62,7 +53,6 @@ export const ConstrTrening = () => {
                 ) : (
                     <SimpleTuning
                         key={id}
-                        deleteItem={deleteSelectedItems}
                         saveItem={saveTren}
                         title={name}
                         id={id}
@@ -104,7 +94,7 @@ export const ConstrTrening = () => {
                 <TransitionGroup>{tuningItems}</TransitionGroup>
             </div>
             <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>
-                <CustomButton funk={deleteAllTunnings} innerValue={"Clear tuning"} />
+                <CustomButton innerValue={"Clear tuning"} />
             </div>
         </div>
     );

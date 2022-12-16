@@ -17,19 +17,19 @@ const prepareItem = (itemData, order) => ({
 });
 
 export const getAlllistTrenings = createAsyncThunk(
-    "listCreateTrening/getAlllistTrenings",
+    "listCreateExersice/getAlllistTrenings",
     async () => {
         return await simpleReqest("listExersises");
     }
 );
 
 export const addTunigedTrening = createAsyncThunk(
-    "listCreateTrening/addTunigedTrening",
+    "listCreateExersice/addTunigedTrening",
     async (action, { getState }) => {
         // let arrSort = [];
         // for (let item in data) arrSort.push(data[item]);
         let order;
-        const orderList = getState().listCreateTrening.entities;
+        const orderList = getState().listCreateExersice.entities;
         const lastOrder = Object.entries(orderList);
 
         if (lastOrder.length === 0) order = 0;
@@ -42,7 +42,7 @@ export const addTunigedTrening = createAsyncThunk(
 );
 
 export const addForEditor = createAsyncThunk(
-    "listCreateTrening/addForEditor",
+    "listCreateExersice/addForEditor",
     async (action) => {
         console.log(action);
         await simpleReqest("selectedExercises", "POST", action);
@@ -52,7 +52,7 @@ export const addForEditor = createAsyncThunk(
 );
 
 export const deleteOneTrening = createAsyncThunk(
-    "listCreateTrening/deleteOneTrening",
+    "listCreateExersice/deleteOneTrening",
     async (action) => {
         await simpleReqest(`listExersises/${action}`, "DELETE");
         return action;
@@ -60,9 +60,9 @@ export const deleteOneTrening = createAsyncThunk(
 );
 
 export const deleteSomeTrening = createAsyncThunk(
-    "listCreateTrening/deleteSomeTrening",
+    "listCreateExersice/deleteSomeTrening",
     async (_, { getState }) => {
-        const ids = getState().listCreateTrening.listForDelete;
+        const ids = getState().listCreateExersice.listForDelete;
         if (!ids || ids.length === 0) return;
         await Promise.all(ids.map((id) => simpleReqest(`listExersises/${id}`, "DELETE")));
         return ids;
@@ -70,9 +70,9 @@ export const deleteSomeTrening = createAsyncThunk(
 );
 
 export const deleteAllTrening = createAsyncThunk(
-    "listCreateTrening/deleteAllTrening",
+    "listCreateExersice/deleteAllTrening",
     async (_, { getState }) => {
-        const ids = getState().listCreateTrening.ids;
+        const ids = getState().listCreateExersice.ids;
         console.log(ids);
         if (!ids || ids.length === 0) return;
         await Promise.all(ids.map((id) => simpleReqest(`listExersises/${id}`, "DELETE")));
@@ -84,30 +84,23 @@ const listAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.order - a.order,
 });
 
-const listSliceCreateTrening = createSlice({
-    name: "listCreateTrening",
+const sliceListCreateExersice = createSlice({
+    name: "listCreateExersice",
     initialState: listAdapter.getInitialState({
         loadingStatus: "idle",
         listForDelete: [],
         editElementId: "82era3273nsdnHkskiew",
     }),
     reducers: {
-        treningsGetAll: listAdapter.setAll,
-        addTrening: listAdapter.addOne,
-        deleteTren: (state, { payload }) => {
-            listAdapter.removeOne(state, payload);
-        },
-        deleteListTren: (state) => listAdapter.removeMany(state, [...state.listForDelete]),
-        priorityTren: (state, { payload }) => // вот эта рабочая
+        priorityTren: (state, { payload }) =>
             listAdapter.upsertOne(state, { id: payload.id, priority: !payload.priority }),
-        addToDelete: (state, { payload }) => { // и эта остальные нет
+        addToDelete: (state, { payload }) => { 
             const { id, forDelete } = payload;
             listAdapter.upsertOne(state, { id, forDelete: !forDelete });
             !forDelete
                 ? state.listForDelete.push(id)
                 : (state.listForDelete = state.listForDelete.filter((item) => item !== id));
-        },
-        deleteAllTren: listAdapter.removeAll,
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(getAlllistTrenings.fulfilled, (state, { payload }) => {
@@ -159,11 +152,11 @@ const listSliceCreateTrening = createSlice({
     },
 });
 
-const { actions, reducer } = listSliceCreateTrening;
+const { actions, reducer } = sliceListCreateExersice;
 
 export default reducer;
 
-export const selectorsAdapter = listAdapter.getSelectors((state) => state.listCreateTrening);
+export const selectorsAdapter = listAdapter.getSelectors((state) => state.listCreateExersice);
 
 export const {
     treningsGetAll,

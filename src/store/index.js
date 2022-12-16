@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import navBar from "../component/NavBar/sliceNavBar";
-import listCreateTrening from "../component/CreateTreningPage/ListTrening/listSliceCreateTrening";
+import listCreateExersice from "../component/CreateTreningPage/ListTrening/sliceListCreateExersice";
 import selectExercise from "../component/ChooseExercisePage/SelectExercise/sliceSelectExercise";
 import dataBase from "../component/App/sliceDataBase";
 import listExercise from "../component/ChooseExercisePage/ListExercise/sliceListExercise";
@@ -11,6 +11,10 @@ import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearch
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
 import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
 
+/// univer
+import listEditorTrening from "../component/EditorTreningPage/ListEditorTrening/sliceListEditorTrening";
+import constrEditorTrening from "../component/EditorTreningPage/ConstrEditorTrening/sliceConstrEditorTrenings";
+
 const stringMiddleware = () => (next) => (action) => {
     return typeof action === "string" ? next({ type: action }) : next(action);
 };
@@ -19,7 +23,7 @@ const store = configureStore({
     reducer: {
         dataBase,
         navBar,
-        listCreateTrening,
+        listCreateExersice,
         selectExercise,
         listExercise,
         constrTrening,
@@ -27,6 +31,8 @@ const store = configureStore({
         headerTrenings,
         searchTrenings,
         filterTrens,
+        listEditorTrening,
+        constrEditorTrening,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),

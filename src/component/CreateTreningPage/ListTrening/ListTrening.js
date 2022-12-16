@@ -14,7 +14,7 @@ import {
     deleteAllTrening,
     addForEditor,
     filtredItems
-} from "./listSliceCreateTrening";
+} from "./sliceListCreateExersice";
 
 import { setOneTrening } from "../ConstrTrening/sliceConstrTrening";
 
@@ -30,8 +30,8 @@ export const ListTrening = ({ data }) => {
     const dispatch = useDispatch();
 
     const allItemsList = useSelector(selectorsAdapter.selectAll);
-    const forDeleteSelector = useSelector((state) => state.listCreateTrening.listForDelete);
-    const idEdited = useSelector((state) => state.listCreateTrening.editElementId);
+    const forDeleteSelector = useSelector((state) => state.listCreateExersice.listForDelete);
+    const idEdited = useSelector((state) => state.listCreateExersice.editElementId);
     // const itemId = useSelector(state => selectorsAdapter.selectById(state, idEdited));
     // const totalItems = useSelector(selectorsAdapter.selectTotal)
 

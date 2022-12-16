@@ -130,8 +130,7 @@ const sortingList = (sort, data, param = "up") => {
 };
 
 const filtredList = (data, filter) => {
-    if (filter === "all") return data;
-    else if (filter === "favorite") {
+    if (filter === "favorite") {
         return data.filter((i) => i.favorite);
     } else {
         return data.filter((i) => i.status === filter);
@@ -155,7 +154,7 @@ export const filtredItems = createSelector(
 
         if (sort) arrSort = sortingList(sort, arrSort);
 
-        arrSort = filtredList(arrSort, filter);
+        if (filter !== 'all') arrSort = filtredList(arrSort, filter);
 
         if (search) arrSort = arrSort.filter((item) => item[paramSearch].indexOf(search) > -1);
 

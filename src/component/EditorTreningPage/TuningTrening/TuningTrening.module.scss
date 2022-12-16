@@ -1,0 +1,12 @@
+.tuning{
+    &__items{
+        margin-top: 10px; 
+        padding-top: 0;
+    }
+    &__img{
+        flex: 1 0 200px;
+        &_inner{
+            height: 90%;
+        }
+    }
+}

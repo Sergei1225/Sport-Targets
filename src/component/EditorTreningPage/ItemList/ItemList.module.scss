@@ -1,0 +1,28 @@
+.itemList {
+    flex-wrap: nowrap;
+    gap: 5px;
+    transition: all 0.5s linear;
+    &__img {
+        flex: 0 0 210px;
+        padding: 5px;
+    }
+    &__text {
+        flex: 1 0 250px;
+        padding-top: 0px;
+    }
+    &__content {
+        flex: 1 0 330px;
+        flex-wrap: nowrap;
+    }
+    &__func {
+        flex: 1 0 10%;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    &__prioroty {
+        background-color: green;
+    }
+    &__forDelete {
+        background-color: red;
+    }
+}
