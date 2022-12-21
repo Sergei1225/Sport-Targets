@@ -1,7 +1,13 @@
 import s from "./App.scss";
 
 import { Layout } from "../Layout/Layout";
-import { CreateTreningPage, ChooseExercisePage, TreningsPage, EditorTreningPage } from "../../pages/pages.js";
+import {
+    CreateTreningPage,
+    ChooseExercisePage,
+    TreningsPage,
+    EditorTreningPage,
+    TargetPage,
+} from "../../pages/pages.js";
 
 import { setDataTrening } from "./sliceDataBase";
 
@@ -12,19 +18,21 @@ import { useDispatch } from "react-redux";
 const NotFound = () => <h1>Not Found</h1>;
 
 function App() {
-
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(setDataTrening())
-    }, [])
+        dispatch(setDataTrening());
+    }, []);
 
     return (
         <div className={s.main}>
             <Routes>
                 <Route path={"/"} element={<Layout />}>
-                    <Route index element={<EditorTreningPage />} />
+                    <Route index element={<TreningsPage />} />
+                    <Route path="/editorTrening" element={<EditorTreningPage />} />
+                    <Route path="/createTarget" element={<TargetPage />} />
                     <Route path="/chooseExercise" element={<ChooseExercisePage />} />
+                    <Route path="/chooseEditor" element={<ChooseExercisePage />} />
                     <Route path="/two" element={<CreateTreningPage />} />
                     <Route path="/three" element={<ChooseExercisePage />} />
                     <Route path="*" element={<NotFound />} />
@@ -35,7 +43,6 @@ function App() {
 }
 
 export default App;
-
 
 const SliderEx = () => {
     const [current, setCurrent] = useState(0);
@@ -89,9 +96,7 @@ const SliderEx = () => {
                             <div className={`slideItem__inner ${styleActive}`}>
                                 {item.inner.split("").map((item, i) => {
                                     return (
-                                        <div
-                                            className={`slideItem__inner_item ${styleActive}`}
-                                        >
+                                        <div className={`slideItem__inner_item ${styleActive}`}>
                                             {item}
                                         </div>
                                     );

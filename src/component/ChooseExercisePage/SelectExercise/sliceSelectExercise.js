@@ -5,10 +5,12 @@ import { dataChoose } from "../dataForChoose";
 import { randomId } from "../../../service/RandomId";
 import { RequestBase } from "../../../service/RequestBase";
 
+const { simpleReqest } = RequestBase();
+
 export const saveExercise = createAsyncThunk("selectExercise/saveExercise", async (action) => {
-    const { simpleReqest } = RequestBase();
-    const changeObj = action.map((item) => ({ ...item, id: randomId() }));
-    await Promise.all(changeObj.map(item => simpleReqest("selectedExercises", "POST", item)))
+    const {data, path} = action;
+    const changeObj = data.map((item) => ({ ...item, id: randomId() }));
+    await Promise.all(changeObj.map(item => simpleReqest(path, "POST", item)))
 });
 
 const initialState = {

@@ -3,10 +3,27 @@ import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit"
 //import { randomId } from "../../../service/RandomId";
 import { RequestBase } from "../../../service/RequestBase";
 
+const { simpleReqest } = RequestBase();
+
 export const getSelectedItems = createAsyncThunk("constrTrenings/getSelectedItems", async (action) => {
-    const { simpleReqest } = RequestBase();
     return await simpleReqest(action);
 });
+
+export const deleteSelectedItem = createAsyncThunk(
+    "constrEditorTrening/delSelectedItem",
+    async (action) => {
+        await simpleReqest(`${action.path}/${action.id}`, "DELETE")
+        return action.id;
+    }
+);
+
+export const deleteAllSelectedItem = createAsyncThunk(
+    "constrEditorTrening/deleteAllSelectedItem",
+    async (action, { getState }) => {
+        const ids = getState().constrEditorTrening.dataSelectedItemsIds;
+        await Promise.all(ids.map(id => simpleReqest(`${action}/${id}`, "DELETE")))
+    }
+);
 
 const initialState = {
     loadingStatusSelected: "loading",
@@ -43,6 +60,19 @@ const sliceConstrEditorTrening = createSlice({
         });
         builder.addCase(getSelectedItems.rejected, (state, action) => {
             console.log("произошла ошибка");
+        });
+        builder.addCase(deleteSelectedItem.fulfilled, (state, {payload}) => {
+            console.log('удаление')
+            state.dataSelectedItems = state.dataSelectedItems.filter(item => item.id !== payload);
+            state.dataSelectedItemsIds = state.dataSelectedItemsIds.filter(item => item !== payload);
+        });
+        builder.addCase(deleteSelectedItem.rejected, (state, {payload}) => {
+            console.log('ошибка удаление')
+        });
+        builder.addCase(deleteAllSelectedItem.fulfilled, (state, {payload}) => {
+            console.log('удаление всех')
+            state.dataSelectedItems = [];
+            state.dataSelectedItemsIds = [];
         });
     },
 });

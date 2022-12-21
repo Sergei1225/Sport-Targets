@@ -12,13 +12,14 @@ import {
     listItems,
     dataDetail,
     deleteAllSelectItems,
-    saveExercise
+    saveExercise,
 } from "./sliceSelectExercise";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-export const SelectExercise = () => {
+export const SelectExercise = (props) => {
+    const { paramSave } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -69,9 +70,11 @@ export const SelectExercise = () => {
     };
 
     const saveExersice = () => {
-        if(!selectedItemsList || selectedItemsList.length === 0) return;
-        dispatch(saveExercise(selectedItemsList));
-        navigate('/')
+        const pathSave = paramSave === "creator" ? "selectedExercises" : "exersiceForTuning";
+
+        if (!selectedItemsList || selectedItemsList.length === 0) return;
+        dispatch(saveExercise({ data: selectedItemsList, path: pathSave }));
+        navigate("/");
     };
 
     return (

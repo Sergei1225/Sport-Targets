@@ -1,0 +1,81 @@
+
+.CircularProgressbar {
+    width: 100%;
+    vertical-align: middle;
+}
+.CircularInner {
+    position: relative;
+    padding: 10px;
+    width: 300px;
+    display: inline-block;
+}
+
+.CircularInnerText {
+    font-size: 34px;
+    line-height: 38px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+.CircularInnerText__index{
+    margin-top: 20px;
+    min-height: 100px;
+    text-align: center;
+    &_text{
+        color: grey;
+        font-size: 20px;
+        line-height: 26px;
+        
+    }
+    &_result{
+        margin-top: 10px;
+        font-size: 25px;
+        line-height: 29px;
+        font-weight: 700;
+    }
+    &_resultEnd{
+        @extend .CircularInnerText__index_result;
+        span{
+            color: red;
+        }
+    }
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+    stroke: #041118;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease 0s;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+    stroke: #d6d6d6;
+    stroke-linecap: round;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+    fill: black;
+    font-size: 20px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+}
+
+.CircularProgressbar .CircularProgressbar-background {
+    fill: #d6d6d6;
+}
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {
+    fill: #000000;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {
+    fill: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {
+    stroke: #fff;
+}
+
+.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {
+    stroke: transparent;
+}

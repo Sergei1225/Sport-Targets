@@ -36,7 +36,7 @@ export const AddedItems = (props) => {
             <div className={`$ ${""} baseFlexGapNoJC`}>
                 <CustomButton
                     funk={() => saveExersice()}
-                    innerValue={"Add trening"}
+                    innerValue={"Save trening"}
                 />
                 <CustomButton
                     funk={() => deleteAll()}

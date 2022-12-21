@@ -4,25 +4,29 @@ import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents
 import { TuningTrening } from "../TuningTrening/TuningTrening";
 import { SimpleTuning } from "../SimpleTuning/SimpleTuning";
 
-import { getSelectedItems } from "./sliceConstrEditorTrenings";
-//import { addTunigedTrening } from "../ListEditorTrening/sliceListEditorTrening";
+import { getSelectedItems, deleteSelectedItem, deleteAllSelectedItem } from "./sliceConstrEditorTrenings";
+import { addTunigedTrening } from "../ListEditorTrening/sliceListEditorTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export const ConstrEditorTrening = ({path}) => {
+export const ConstrEditorTrening = (props) => {
+    const {pathConstr, pathList, pathLinkChoose} = props;
+
     const itemsForTuning = useSelector((state) => state.constrEditorTrening.dataSelectedItems);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getSelectedItems(path));
+        dispatch(getSelectedItems(pathConstr));
     }, []);
 
+    const deleteSelectedItems = (id) => {
+        dispatch(deleteSelectedItem({id, path: pathConstr}));
+    };
 
     const saveTren = (newItem) => {
         const base = itemsForTuning.find((item) => item.id === newItem.id);
@@ -33,7 +37,12 @@ export const ConstrEditorTrening = ({path}) => {
         };
 
         console.log(fullNewItem);
-        //dispatch(addTunigedTrening(fullNewItem));
+        dispatch(addTunigedTrening({data:fullNewItem, path: pathList}));
+        dispatch(deleteSelectedItem({id:fullNewItem.id, path: pathConstr}));
+    };
+
+    const deleteAllTunnings = () => {
+        dispatch(deleteAllSelectedItem(pathConstr));
     };
 
     const tuningTrenings = (data) => {
@@ -46,18 +55,20 @@ export const ConstrEditorTrening = ({path}) => {
                         key={id}
                         title={name}
                         id={id}
-                        saveItem={saveTren}
                         imgSrc={img}
                         order={order}
+                        saveItem={saveTren}
+                        deleteItem={deleteSelectedItems}
                     />
                 ) : (
                     <SimpleTuning
                         key={id}
-                        saveItem={saveTren}
                         title={name}
                         id={id}
                         imgSrc={img}
                         order={order}
+                        saveItem={saveTren}
+                        deleteItem={deleteSelectedItems}
                     />
                 );
             return (
@@ -68,9 +79,8 @@ export const ConstrEditorTrening = ({path}) => {
         });
     };
 
-    const tuningItems = useMemo(() => {
-        return tuningTrenings(itemsForTuning);
-    }, [itemsForTuning]);
+    const tuningItems = tuningTrenings(itemsForTuning);
+
 
     return (
         <div className={`${s.constrTren}  ${"basePositionBlock"}`}>
@@ -82,7 +92,7 @@ export const ConstrEditorTrening = ({path}) => {
             </div>
             <div className={`${"basePositionBlock"}`}>
                 <CustomButton
-                    funk={() => navigate("/chooseExercise")}
+                    funk={() => navigate(pathLinkChoose)}
                     innerValue={"Choose exercise"}
                 />
             </div>
@@ -94,7 +104,7 @@ export const ConstrEditorTrening = ({path}) => {
                 <TransitionGroup>{tuningItems}</TransitionGroup>
             </div>
             <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>
-                <CustomButton innerValue={"Clear tuning"} />
+                <CustomButton funk={deleteAllTunnings} innerValue={"Clear tuning"} />
             </div>
         </div>
     );

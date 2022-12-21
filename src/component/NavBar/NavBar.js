@@ -10,9 +10,11 @@ export const NavBar = () => {
 
     const dataLink = useMemo(() => {
         return [
-            { to: "/", inner: "First page", id: "yhGHSjshfg5&75s688GGH7dsf" },
-            { to: "/two", inner: "Second page", id: "kldso8*895s688GGH7dsf" },
-            { to: "/three", inner: "Third page", id: "02223Sjshfg5&7Kldfl7dsf" },
+            { to: "/editorTrening", inner: "One", id: "yhGHSjshfg5&75s688GGH7dsf" },
+            { to: "/createTarget", inner: "Two", id: "kldso89895s688GGH7dsf" },
+            { to: "/chooseExercise", inner: "Three", id: "02223Sjshfg5&7Kldfl7dsf" },
+            { to: "/chooseEditor", inner: "Four ", id: "Kl23324fg5&7Kldfl7dsf" },
+            { to: "/five", inner: "Five ", id: "930324fg5&79mfdj3S" },
         ];
     }, []);
 

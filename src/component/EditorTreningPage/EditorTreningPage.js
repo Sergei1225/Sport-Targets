@@ -1,26 +1,49 @@
 import { ConstrEditorTrening } from "./ConstrEditorTrening/ConstrEditorTrening";
 // import { BaseHeader } from "../BaseHeader/BaseHeader";
-import {  ListEditorTrening } from "./ListEditorTrening/ListEditorTrening";
+import { ListEditorTrening } from "./ListEditorTrening/ListEditorTrening";
 
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const EditorTreningPage = () => {
+    const { param } = useParams();
 
-  const location = useLocation();
+    //const paramInUsePramse = "sdns112d673823nm8m3j3j2832gfGGHha";
+    //const paramInUsePramse = "dds1212sd4373823nm8m3j3j2832gfGGHha";
+    const paramInUsePramse = param;
+    //const paramInUsePramse = "";
 
-  let urlList;
-  let urlContrItem;
+    let urlTreening;
+    let urlList;
+    let urlContrItem;
+    let linkChoose;
+    
 
-  if(location.pathname === '/') {
-    urlList = "treningEditor";
-    urlContrItem = "exersiceForTuning";
-  } 
+    if (paramInUsePramse) {
+        urlTreening = "treningEditor";
+        urlList = "listMyExersises";
+        urlContrItem = "exersiceForTuning";
+        linkChoose="/chooseEditor"
+    } else {
+        urlTreening = "";
+        urlList = "listExersises";
+        urlContrItem = "selectedExercises";
+        linkChoose = "/chooseExercise"
+    }
 
-  return (
-    <>
-      {/* {/* <BaseHeader/> */}
-      <ConstrEditorTrening path={urlContrItem}/> 
-      <ListEditorTrening path={urlList}/>
-    </>
-  )
-}
+    return (
+        <>
+            {/* {/* <BaseHeader/> */}
+            <ConstrEditorTrening 
+                pathConstr={urlContrItem} 
+                pathList={urlList} 
+                pathLinkChoose={linkChoose}
+            />
+            <ListEditorTrening
+                pathList={urlList}
+                pathTrening={urlTreening}
+                pathConstr={urlContrItem} 
+                currentItemId={paramInUsePramse}
+            />
+        </>
+    );
+};
