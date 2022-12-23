@@ -2,7 +2,6 @@ import s from "./App.scss";
 
 import { Layout } from "../Layout/Layout";
 import {
-    CreateTreningPage,
     ChooseExercisePage,
     TreningsPage,
     EditorTreningPage,
@@ -31,9 +30,9 @@ function App() {
                     <Route index element={<TreningsPage />} />
                     <Route path="/editorTrening" element={<EditorTreningPage />} />
                     <Route path="/createTarget" element={<TargetPage />} />
+                    <Route path="/chooseExerciseTargetWeigth" element={<ChooseExercisePage />} />
                     <Route path="/chooseExercise" element={<ChooseExercisePage />} />
                     <Route path="/chooseEditor" element={<ChooseExercisePage />} />
-                    <Route path="/two" element={<CreateTreningPage />} />
                     <Route path="/three" element={<ChooseExercisePage />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>

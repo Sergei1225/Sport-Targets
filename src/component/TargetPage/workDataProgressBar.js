@@ -17,6 +17,7 @@ const targetWeigth = {
 };
 
 export const workDataProgressBar = () => {
+
     const weightRemainder = (target, result) => {
         const rem = target - result;
 

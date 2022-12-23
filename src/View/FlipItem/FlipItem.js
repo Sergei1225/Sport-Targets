@@ -5,6 +5,8 @@ import cross from "../../img/ItemListCreateTrening/icon/can.png";
 export const FlipItem = (props) => {
     let { name, baseImg, descr, addfunc, list, id, deleteItem, workingParts, coup, hoverBack } = props;
     // list для кнопки добавления
+    // coup для повора карточки
+    // hoverBack при наведении изменения бекграунда
 
 
     if (!name) name = "Name";

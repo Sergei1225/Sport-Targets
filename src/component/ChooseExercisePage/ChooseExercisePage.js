@@ -19,14 +19,22 @@ export const ChooseExercisePage = () => {
     const location = useLocation();
     let paramSaveExersice;
 
-    if(location.pathname === "/chooseEditor"){
-        paramSaveExersice = "editor";
-    } else if (location.pathname === "/chooseExercise"){
-        paramSaveExersice = "creator";
+    switch(location.pathname){
+        case "/chooseEditor": 
+            paramSaveExersice = "editor";
+            break;
+        case "/chooseExercise": 
+            paramSaveExersice = "creator";
+            break;
+        case "/chooseExerciseTargetWeigth": 
+            paramSaveExersice = "targetWeigth";
+            break;
+        default:
+            paramSaveExersice = "";
     }
+
     console.log(paramSaveExersice);
 
-    
     return (
         <div>
             <h1>ChooseExercisePage</h1>
@@ -37,6 +45,7 @@ export const ChooseExercisePage = () => {
             />
             <ListExercise
                 dataList={dataChoose}
+                paramSave={paramSaveExersice}
             />
         </div>
     );
@@ -49,3 +58,13 @@ const obj = {
     descr: "description of a standard workout",
     workingParts: ["legs", "arms"],
 };
+
+
+    // if(location.pathname === "/chooseEditor"){
+    //     paramSaveExersice = "editor";
+    // } else if (location.pathname === "/chooseExercise"){
+    //     paramSaveExersice = "creator";
+    // } else if (location.pathname === "/chooseExerciseTarget"){
+    //     paramSaveExersice = "target";
+    // }
+    // console.log(location.pathname);

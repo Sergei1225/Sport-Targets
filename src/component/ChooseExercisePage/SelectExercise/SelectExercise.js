@@ -1,6 +1,7 @@
 import { SelectWithButtons } from "../SelectWithButtons/SelectWithButtons";
 import { ChoiseValue } from "../ChoiseValue/ChoiseValue";
 import { AddedItems } from "../AddedItems/AddedItems";
+import { SingleSelect } from "../../../serviceComponents/SingleSelect/SingleSelect";
 
 import {
     selectedItems,
@@ -13,6 +14,8 @@ import {
     dataDetail,
     deleteAllSelectItems,
     saveExercise,
+    saveExerciseTarget,
+    addSelectedItemOnlyOne
 } from "./sliceSelectExercise";
 
 import { useNavigate } from "react-router-dom";
@@ -38,9 +41,14 @@ export const SelectExercise = (props) => {
     // для отслеживания массива с выбранными элементами
     // const show = useSelector((state) => state.selectChooseExercise.selectedItems);
     // console.log(show);
-
+    // addSelectedItemOnlyOne
     const getValue = (value) => {
-        if (value) dispatch(addSelectedItem(value));
+        if(paramSave === "creator" || paramSave === "editor"){
+            if (value) dispatch(addSelectedItem(value));
+        } else if (paramSave === "targetWeigth"){
+            console.log(value);
+            if (value) dispatch(addSelectedItemOnlyOne(value));
+        }
     };
 
     const getSomeValues = (value) => {
@@ -70,16 +78,41 @@ export const SelectExercise = (props) => {
     };
 
     const saveExersice = () => {
-        const pathSave = paramSave === "creator" ? "selectedExercises" : "exersiceForTuning";
+        let pathSave;
+        let funcSave;
 
-        if (!selectedItemsList || selectedItemsList.length === 0) return;
-        dispatch(saveExercise({ data: selectedItemsList, path: pathSave }));
-        navigate("/");
+        switch (paramSave) {
+            case "creator":
+                pathSave = "selectedExercises";
+                funcSave = "simpleSave";
+                break;
+            case "editor":
+                pathSave = "exersiceForTuning";
+                funcSave = "simpleSave";
+                break;
+            case "targetWeigth":
+                pathSave = "targetWeigth";
+                funcSave = "target";
+                break;
+            default:
+                pathSave = "";
+        }
+
+        if (funcSave === "simpleSave") {
+            if (!selectedItemsList || selectedItemsList.length === 0 || !pathSave) return;
+            dispatch(saveExercise({ data: selectedItemsList, path: pathSave }));
+            navigate("/");
+        } else if (funcSave === "target") {
+            console.log("target");
+            dispatch(saveExerciseTarget({ data: selectedItemsList, path: pathSave }));
+            navigate("/createTarget");
+        }
     };
 
     return (
         <div className={`${"basePositionBlock "}`}>
             <SelectWithButtons
+                paramSelect={paramSave}
                 getValue={getValue}
                 multi={multi}
                 dataSelect={listItemsSelect}
@@ -94,6 +127,7 @@ export const SelectExercise = (props) => {
                 dataDetail={dataDetailItems}
             />
             <AddedItems
+                paramItem={paramSave}
                 deleteAll={deleteAll}
                 listItems={selectedItemsList}
                 deleteSelectedItem={deleteSelectedItem}

@@ -1,6 +1,5 @@
 import s from "./TargetTuning.module.scss";
 
-import { TuningRange } from "../TuningRange/TuningRange";
 import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents";
 
 import { useState } from "react";
@@ -17,8 +16,9 @@ const dataItem = {
     typeOfExercise: "base",
 };
 
-export const TargetTuning = () => {
-    const { name, descr, img, workingParts } = dataItem;
+export const TargetTuning = (props) => {
+
+    const { name, descr, img, workingParts } = props;
 
     const [params, setParams] = useState(["weight"]);
 
@@ -43,7 +43,7 @@ export const TargetTuning = () => {
                         <CustomTitle title={name} />
                         <div className={`${""} basePositionElement`}>{descr}</div>
                         <div className={`${""} basePositionElement`}>
-                            workingParts : {workingParts.join(", ")}{" "}
+                            workingParts : {workingParts.join(" | ")}{" "}
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,6 @@ export const TargetTuning = () => {
                     />
                 </div>
             </div>
-            <TuningRange />
         </>
     );
 };

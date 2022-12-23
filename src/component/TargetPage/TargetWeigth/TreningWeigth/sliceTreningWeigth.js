@@ -1,22 +1,21 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RequestBase } from "../../service/RequestBase";
+import { createSlice, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
+import { RequestBase } from "../../../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
 
-export const setDataTrening = createAsyncThunk("dataBase/setDataTrening", async () => {
-    const dataRequsts = ["dataBase", "dataAerobic", "targetWeigth"];
-    return Promise.all(dataRequsts.map((item) => simpleReqest(item)));
+export const setDataTrening = createAsyncThunk("treningWeigth/setDataTrening", async () => {
+    return Promise.all(
+        ["dataBase", "dataAerobic", "targetWeigth"].map((item) => simpleReqest(item))
+    );
 });
 
 const initialState = {
-    dataBase: null,
-    dataAerobic: null,
-    targetWeigth: null,
+    weiggthRange: null,
     statusLoading: "loading",
 };
 
-const sliceDataBase = createSlice({
-    name: "dataBase",
+const sliceTreningWeigth = createSlice({
+    name: "treningWeigth",
     initialState: initialState,
     reducers: {
         setDataBase: (state, { payload }) => {
@@ -31,7 +30,7 @@ const sliceDataBase = createSlice({
             //console.log(action);
         });
         builder.addCase(setDataTrening.fulfilled, (state, { payload }) => {
-            const [base, aerobic, targetWeigth ] = payload;
+            const [base, aerobic, targetWeigth] = payload;
             state.dataBase = base;
             state.dataAerobic = aerobic;
             state.targetWeigth = targetWeigth;
@@ -44,8 +43,17 @@ const sliceDataBase = createSlice({
     },
 });
 
-const { reducer, actions } = sliceDataBase;
+const { reducer, actions } = sliceTreningWeigth;
 
 export default reducer;
 
 export const { setDataBase, setDataAerobic } = actions;
+
+export const treningWeigth = createSelector(
+    (state) => state.dataBase.targetWeigth,
+    (targetWeigth) => {
+        if(!targetWeigth) return null;
+
+        return targetWeigth;
+    }
+);

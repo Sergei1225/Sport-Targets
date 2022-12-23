@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { useState } from "react";
 
 export const SelectWithButtons = (props) => {
-    const { multi, getValue, dataSelect, changeMulti, getSomeValues } = props;
+    const { multi, getValue, dataSelect, changeMulti, getSomeValues, paramSelect } = props;
     const [someItems, setSomeItems] = useState(null);
 
     const createDataSelect = (data) => {
@@ -30,18 +30,22 @@ export const SelectWithButtons = (props) => {
                 dataOption={dataSelectItems}
                 noOption={"exercises not found"}
             />
-            <div className={`${"baseFlexGapNoJC"} `}>
-                <CustomButton
-                    active={!multi}
-                    funk={() => changeMulti(false)}
-                    innerValue={"One option"}
-                />
-                <CustomButton
-                    active={multi}
-                    funk={() => changeMulti(true)}
-                    innerValue={"Some option"}
-                />
-            </div>
+            {/* если это создание или редактирование тренировки то кнопчки будут */}
+            {paramSelect === "creator" || paramSelect === "editor" ? ( 
+                <div className={`${"baseFlexGapNoJC"} `}>
+                    <CustomButton
+                        active={!multi}
+                        funk={() => changeMulti(false)}
+                        innerValue={"One option"}
+                    />
+                    <CustomButton
+                        active={multi}
+                        funk={() => changeMulti(true)}
+                        innerValue={"Some option"}
+                    />
+                </div>
+            ) : null}
+
             {multi ? (
                 <CustomButton
                     //active={multi}

@@ -31,7 +31,7 @@ export const ProgresBar = (props) => {
         srcImg,
     } = props;
 
-    console.log("рендер прогрессбара");
+    //console.log("рендер прогрессбара");
     // minmax
     if (!min) min = 0;
     if (!max) max = 100;

@@ -10,10 +10,12 @@ import headerTrenings from "../component/TreningsPage/HeaderTrening/sliceHeaderT
 import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearchTrenings";
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
 import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
-
+import treningWeigth from "../component/TargetPage/TargetWeigth/TreningWeigth/sliceTreningWeigth";
+import targetWeigthRanges from "../component/TargetPage/TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
 /// univer
 import listEditorTrening from "../component/EditorTreningPage/ListEditorTrening/sliceListEditorTrening";
 import constrEditorTrening from "../component/EditorTreningPage/ConstrEditorTrening/sliceConstrEditorTrenings";
+
 
 const stringMiddleware = () => (next) => (action) => {
     return typeof action === "string" ? next({ type: action }) : next(action);
@@ -33,6 +35,8 @@ const store = configureStore({
         filterTrens,
         listEditorTrening,
         constrEditorTrening,
+        treningWeigth,
+        targetWeigthRanges
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),

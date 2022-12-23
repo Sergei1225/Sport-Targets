@@ -1,6 +1,6 @@
 import { FlipItem } from "../../../View/FlipItem/FlipItem";
 
-import { listItems, addSelectedItem } from "../SelectExercise/sliceSelectExercise";
+import { listItems, addSelectedItem, addSelectedItemOnlyOne } from "../SelectExercise/sliceSelectExercise";
 import { listMainItems, listAllItems } from "./sliceListExercise";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -8,14 +8,23 @@ import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 export const ListExercise = (props) => {
-    const { dataList } = props;
+    const { dataList, paramSave } = props;
 
     const listChoose = useSelector(listMainItems);
     const dispatch = useDispatch();
 
-    const addItem = (id) => {
-        dispatch(addSelectedItem(id));
+    const addItem = (value) => {
+        if(paramSave === "creator" || paramSave === "editor"){
+            if (value) dispatch(addSelectedItem(value));
+        } else if (paramSave === "targetWeigth"){
+            console.log(value);
+            if (value) dispatch(addSelectedItemOnlyOne(value));
+        }
     };
+
+    // const addItem = (id) => {
+    //     dispatch(addSelectedItem(id));
+    // };
 
     //console.log('рендер листа')
 

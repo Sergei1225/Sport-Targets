@@ -1,4 +1,33 @@
 {
+    "targetWeigth": {
+        "selectedExercise": {
+            "id": "e5pjq4uY9_1Z6w22SE-j24Jfs3Y-3E",
+            "name": "Pull-ups",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["back", "biceps"],
+            "typeOfExercise": "base"
+        },
+        "weight": {
+            "start": 0,
+            "end": 0
+        },
+        "someTrenings": 0,
+        "timeToTarget": {
+            "now": 0,
+            "end": 0
+        },
+        "targetAchievement": [
+            {
+                "nameTren": "",
+                "data": "",
+                "result": 0,
+                "id": ""
+            }
+        ]
+    },
     "treningEditor": {
         "id": "dds1212sd4373823nm8m3j3j2832gfGGHha",
         "name": "second trening",
@@ -348,6 +377,21 @@
             "typeOfExercise": "base",
             "repeats": [20],
             "weight": []
+        },
+        {
+            "forDelete": false,
+            "priority": false,
+            "order": 4,
+            "id": "66uSA3487-Jh17Dg7T_st21Mx0q-49",
+            "name": "Squats",
+            "img": [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
+            ],
+            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+            "workingParts": ["legs"],
+            "typeOfExercise": "base",
+            "repeats": [20, 20, 20, 20],
+            "weight": []
         }
     ],
     "listExersises": [
@@ -394,21 +438,6 @@
             "workingParts": ["trapezoid"],
             "typeOfExercise": "base",
             "repeats": [],
-            "weight": []
-        },
-        {
-            "forDelete": false,
-            "priority": false,
-            "order": 4,
-            "id": "66uSA3487-Jh17Dg7T_st21Mx0q-49",
-            "name": "Squats",
-            "img": [
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-            ],
-            "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-            "workingParts": ["legs"],
-            "typeOfExercise": "base",
-            "repeats": [20, 20, 20, 20],
             "weight": []
         }
     ],

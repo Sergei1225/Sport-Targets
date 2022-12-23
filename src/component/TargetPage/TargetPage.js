@@ -1,15 +1,12 @@
-import { TargetItem } from "./TargetItem/TargetItem";
-import { TargetTuning } from "./TargetTuning/TargetTuning";
+
+import { TargetWeigth } from "./TargetWeigth/TargetWeigth";
 
 export const TargetPage = () => {
   return (
     <div>
-        {/* <h1>Target</h1>
-        <TargetItem/>
-        <TargetItem/>
-        <TargetItem/> */}
-        <TargetTuning/>
-
+        <h1>Target</h1>
+        <TargetWeigth/>
+        
     </div>
   )
 }

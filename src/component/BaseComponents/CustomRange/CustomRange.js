@@ -2,19 +2,23 @@ import { CustomButton } from "../CustomComponents";
 
 import { useState, useEffect } from "react";
 
-export const CustomRange = ({
-    getValue,
-    title = "Title",
-    metering = "",
-    btn = "Add",
-    max = 500,
-    min = 0,
-    innerBtn = "Fix result",
-}) => {
-    const [valueRange, setValueRange] = useState(20);
+export const CustomRange = (props) => {
+    let { getValue, title, metering, btn, max, innerBtn, startState, currentValue, min } = props;
+
+    if (!title) title = "Title";
+    if (!metering) metering = "";
+    if (!btn) btn = "Add";
+    if (!max) max = 500;
+    if (!innerBtn) innerBtn = "Fix result";
+    if (!startState) startState = 20;
+    if (!min) min = 0;
+
+    const [valueRange, setValueRange] = useState(startState);
+
+    console.log(startState);
 
     useEffect(() => {
-        if (min && min !== valueRange) {
+        if (min !== 0 && min !== startState) {
             setValueRange(min);
         }
     }, [min]);
