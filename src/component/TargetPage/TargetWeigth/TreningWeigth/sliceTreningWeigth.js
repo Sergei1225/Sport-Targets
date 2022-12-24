@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, createSelector} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 import { RequestBase } from "../../../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
@@ -12,17 +12,20 @@ export const setDataTrening = createAsyncThunk("treningWeigth/setDataTrening", a
 const initialState = {
     weiggthRange: null,
     statusLoading: "loading",
+    paramTrening: ["weight", "time"],
+    dataParams: ["weight", "time", "trenings"],
 };
 
 const sliceTreningWeigth = createSlice({
     name: "treningWeigth",
     initialState: initialState,
     reducers: {
-        setDataBase: (state, { payload }) => {
-            state.dataBase = payload;
-        },
-        setDataAerobic: (state, { payload }) => {
-            state.dataAerobic = payload;
+        changeParamTrening: (state, { payload }) => {
+            const param = state.paramTrening;
+
+            if (param.some((item) => item === payload)) {
+                state.paramTrening = param.filter((item) => item !== payload);
+            } else state.paramTrening = [...param, payload];
         },
     },
     extraReducers: (builder) => {
@@ -47,12 +50,12 @@ const { reducer, actions } = sliceTreningWeigth;
 
 export default reducer;
 
-export const { setDataBase, setDataAerobic } = actions;
+export const { changeParamTrening } = actions;
 
 export const treningWeigth = createSelector(
     (state) => state.dataBase.targetWeigth,
     (targetWeigth) => {
-        if(!targetWeigth) return null;
+        if (!targetWeigth) return null;
 
         return targetWeigth;
     }

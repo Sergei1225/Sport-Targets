@@ -1,30 +1,31 @@
 import { WeightRange } from "../WeightRange/WeightRange";
 import { SimpleRange } from "../SimpleRange/SimpleRange";
+import { TimeRange } from "../TimeRange/TimeRange";
 
 import { dataRanges } from "../dataRanges";
+import { workDataProgressBar } from "../../workDataProgressBar";
 
 import { rangesData } from "./sliceTargetWeightRanges";
 
 import { useSelector } from "react-redux";
 
 export const TargetWeightRanges = () => {
-    // const data = useSelector(rangesData);
+    const data = useSelector(rangesData);
 
-    const createRages = (data) => {
-        if (!data || data.length === 0) return null;
-        return data.map((item) => {
-            return <SimpleRange key={item.id} {...item} />;
-        });
-    };
+    const { daysRemainderNow, daysRemainderStart } = workDataProgressBar();
 
-    // console.log(data?.weight);
+    const paramValues = useSelector((state) => state.treningWeigth.paramTrening);
+    const weightParam = data?.weight ? data?.weight : { start: 0, end: 0 };
+    const timeParam = data?.time ? data.time : 0;
+    const treningsParam = data?.trenings ? data?.trenings : 0;
 
-    //const ranges = createRages(dataRanges);
+    const timeRemaider = daysRemainderNow(timeParam);
+    const result = data?.resultWeigth ? data.resultWeigth.map(item => item.result) : 0;
 
     return (
         <div>
-            <WeightRange start={100} end={200} />
-            
+            <TimeRange dataTime={timeParam} />
+            <WeightRange start={weightParam.start} end={weightParam.end} result={result} />
         </div>
     );
 };

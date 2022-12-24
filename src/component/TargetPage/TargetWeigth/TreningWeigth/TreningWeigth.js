@@ -1,22 +1,32 @@
-import { useSelector } from "react-redux"
 import { TargetTuning } from "../../TargetTuning/TargetTuning";
 
-import {treningWeigth} from "./sliceTreningWeigth";
+import { treningWeigth, changeParamTrening } from "./sliceTreningWeigth";
+
+import { useSelector, useDispatch } from "react-redux";
 
 export const TreningWeigth = () => {
+    const dispatch = useDispatch();
 
     const data = useSelector(treningWeigth);
+    const paramValues = useSelector((state) => state.treningWeigth.paramTrening);
+    const dataParams = useSelector((state) => state.treningWeigth.dataParams);
 
 
+    const changeParams = (value) => {
+        dispatch(changeParamTrening(value));
+    };
 
-    if(!data) return null;
+    if (!data) return null;
 
-  return (
-    <div>
-        <TargetTuning   
-            key={data.selectedExercise.id}
-            {...data.selectedExercise}
-        />
-    </div>
-  )
-}
+    return (
+        <div>
+            <TargetTuning
+                dataParams={dataParams}
+                paramValues={paramValues}
+                changeParams={changeParams}
+                key={data.selectedExercise.id}
+                {...data.selectedExercise}
+            />
+        </div>
+    );
+};

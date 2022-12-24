@@ -1,4 +1,4 @@
-import s from './WeightRange.module.scss';
+import s from "./WeightRange.module.scss";
 
 import { CustomTitle, CustomRange } from "../../../BaseComponents/CustomComponents";
 
@@ -7,39 +7,35 @@ import { TargetProgress } from "../../TargetProgress/TargetProgress";
 
 import { useState, useEffect } from "react";
 
-const CustomWeightRange = (props) => {
-
-    let { startState, min } = props;
+export const WeightRange = ({ start, end, result }) => {
+    const [valueStart, setValueStart] = useState(0);
+    const [valueEnd, setValueEnd] = useState(0);
+    const [resultWeigth, setResultWeigth] = useState(0);
 
     useEffect(() => {
-        if (!min && min > startState) {
-            startState = min;
-        } 
-    }, [min]);
-
-    return (
-        <CustomRange
-            min={min}
-            startState={startState}
-            {...props}
-        />
-    )
-}
-
-
-export const WeightRange = ({start, end}) => {
-
-    const [valueStart, setValueStart] = useState(start ? start : 0);
-    const [valueEnd, setValueEnd] = useState(end ? end : 0);
-
-    //console.log(valueStart)
+        setValueStart(start);
+        setValueEnd(end);
+        if(Array.isArray(result)){
+            setResultWeigth(Math.max(...result));
+        }
+    }, [start, end, result]);
+    
 
     const { weightRemainder, weightValue } = workDataProgressBar();
 
-    const result = 0;
-    // возвращает объект { remainder: rem, paramAchieved: "achieved" }
     const remainder = weightRemainder(+valueEnd, +result);
+
     const value = weightValue(+valueEnd, +result);
+
+    const changeRange = valueStart !== 0 && valueStart > valueEnd ? valueStart : valueEnd;
+
+    console.log(resultWeigth);
+
+    const changeValue = (value) => {
+        setValueStart(value)
+        setValueEnd(value)
+        setResultWeigth(0)
+    }
 
     return (
         <div className={`${s.targetRange} basePositionBlock baseFlex`}>
@@ -50,35 +46,28 @@ export const WeightRange = ({start, end}) => {
                         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloribus officiis neque tempora a quasi iste dignissimos aspernatur illum."
                     }
                 />
-                <CustomRange 
-                    startState={valueStart} 
-                    getValue={setValueStart} 
-                    title={"Start weight"} 
+                <CustomRange
+                    startState={valueStart}
+                    getValue={changeValue}
+                    title={"Start weight"}
+                    metering={"kg"}
                 />
                 <CustomRange
-                    startState={valueEnd}
+                    startState={changeRange}
                     min={valueStart}
-                    max={+valueStart + 500}
+                    max={+valueStart + 1000}
                     getValue={setValueEnd}
                     currentValue={valueStart}
                     title={"Certain weight"}
+                    metering={"kg"}
                 />
-                {/* <CustomWeightRange
-                    startState={valueEnd}
-                    min={valueStart}
-                    max={+valueStart + 500}
-                    getValue={setValueEnd}
-                    currentValue={valueStart}
-                    title={"Certain weight"}
-                
-                /> */}
             </div>
             <div className={`${s.targetRange__bar}`}>
                 <TargetProgress
                     value={value}
                     remainder={remainder}
                     endTarget={valueEnd}
-                    result={result}
+                    result={resultWeigth}
                     param={"kg"}
                 />
             </div>

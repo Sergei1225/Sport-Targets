@@ -53,7 +53,11 @@ export const rangesData = createSelector(
     (state) => state.dataBase.targetWeigth,
     (targetWeigth) => {
         if(!targetWeigth) return null;
-        
-        return targetWeigth;
+
+        console.log(targetWeigth);
+
+        const { weight, someTrenings: trenings, timeToTarget: time, targetAchievement: resultWeigth } = targetWeigth;
+
+        return { weight, trenings, time, resultWeigth };
     }
 );

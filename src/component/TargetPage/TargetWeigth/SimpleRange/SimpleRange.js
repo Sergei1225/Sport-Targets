@@ -5,12 +5,12 @@ import { TargetProgress } from "../../TargetProgress/TargetProgress";
 
 import { workDataProgressBar } from "../../workDataProgressBar";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const SimpleRange = (props) => {
-    const { id, title, subtile, paramRange, targetProgress } = props;
+    const { id, title, subtile, paramRange, targetProgress, startState } = props;
 
-    const [valueEnd, setValueEnd] = useState(0);
+    const [valueEnd, setValueEnd] = useState(startState ? startState : 0);
 
     const { weightRemainder, weightValue } = workDataProgressBar();
 
@@ -23,7 +23,13 @@ export const SimpleRange = (props) => {
         <div className={`${s.simpleRange} basePositionBlock baseFlex`}>
             <div className={`${s.simpleRange__info}`}>
                 <CustomTitle title={title} subtile={subtile} />
-                <CustomRange getValue={setValueEnd} max={365} min={0} {...paramRange} />
+                <CustomRange
+                    getValue={setValueEnd}
+                    max={365}
+                    min={0}
+                    {...paramRange}
+                    startState={startState}
+                />
             </div>
             <div className={`${s.simpleRange__bar}`}>
                 <TargetProgress

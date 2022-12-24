@@ -14,6 +14,7 @@ export const dataRanges = [
         targetProgress: {
             param: " trenings",
         },
+        type: "trenings"
     },
     {
         id: "Kksjsds783932ghHGSH78393",
@@ -30,5 +31,6 @@ export const dataRanges = [
         targetProgress: {
             param: " days",
         },
+        type: "time"
     },
 ];

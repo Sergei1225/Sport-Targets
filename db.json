@@ -11,20 +11,21 @@
             "typeOfExercise": "base"
         },
         "weight": {
-            "start": 0,
-            "end": 0
+            "start": 50,
+            "end": 120
         },
-        "someTrenings": 0,
+        "someTrenings": 20,
         "timeToTarget": {
-            "now": 0,
-            "end": 0
+            "start": 1670883010844,
+            "end": 1678659010844
         },
+        "nowTime": 1671883010844,
         "targetAchievement": [
             {
-                "nameTren": "",
-                "data": "",
-                "result": 0,
-                "id": ""
+                "nameTren": "First tset",
+                "data": "03.11.2012",
+                "result": 65,
+                "id": "fd7j3jj7hsdjskskdgJksdHHsg"
             }
         ]
     },
