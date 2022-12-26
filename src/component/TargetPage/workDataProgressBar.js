@@ -30,57 +30,73 @@ const targetWeigth = {
 };
 
 export const workDataProgressBar = () => {
-
-    const transformationInMilisec = (days) => {
-        // 8640000 = 24 * 60 * 60 * 1000 получаю дни
+    // перевод из дней в милисекунды 
+    const convertDayInMilisec = (someDays) => {
         const valueNow = Date.now();
-        const daysMili = +days * 86400000;
-        const end = +valueNow + +daysMili;
-        return { start: valueNow, end: end };
-    };
+        const days = someDays * 86400000;
+        return valueNow + days;
+    }
+    // сейчас в милисек
+    const nowMilisec = () => Date.now();
 
-    const transformationInDay = (milisec) => {
-        // 8640000 = 24 * 60 * 60 * 1000 получаю дни
-        return Math.floor(+milisec / 86400000);
-    };
-    const daysRemainderStart = (end, start) => {
+    // 1 действие для получения дней получение количества дней и перевод из милисекунд в дни
+    const remainderStart = (end, start) => {
         if(!end || !start) return 0;
         return (+end - +start) / 86400000;
     };
-
-    const daysRemainderNow = (milisecEnd) => {
-        if(!milisecEnd) return 0;
+    // 2 сколько осталось дней осталось
+    const remainderNow = (endMilisec) => {
+        if(!endMilisec ) return 0;
         const valueNow = Date.now();
-        const difference = +milisecEnd - +valueNow;
+        const difference = endMilisec - valueNow;
         return Math.floor(difference / 86400000);
     };
+    // 3 сколько дней прошло
+    const resultValueAbsolute = (endDay, result) => {
+        if(!endDay || !result) return 0;
+        return endDay - result;
+    }
 
-    const getPercentValue = (target, result) => {
-        if (+!target && +!result) return 0;
-        if (target === 0) target = 1;
+    // 4 сколько дней прошло в процентах
+    const resultValuePercent = (endDay, result) => {
+        if(!endDay || !result) return 0;
+        return (((endDay - result) / endDay) * 100).toFixed(2);
+    }
 
-        return ((result / target) * 100).toFixed(2);
+    // сколько нужно достичь кг
+    const weightTargetAbsolute = (targetWeigth, startWeigth, result) => {
+        if(!startWeigth || !targetWeigth ) return 0;
+        return targetWeigth - startWeigth;
+    };
+    /// сколько осталось в кг
+    const weightRemainder = (targetWeigth, startWeigth, result) => {
+        if(!startWeigth ||  !targetWeigth ) return 0;
+        return (targetWeigth - startWeigth) - result;
+    };
+    /// выполнение в %
+    const weightValue = (targetWeigth, startWeigth, result) => {
+        if (!targetWeigth || !targetWeigth || result === 0) return 0;
+        if (targetWeigth === 0) targetWeigth = 1;
+
+        return ((result / (targetWeigth - startWeigth)) * 100).toFixed(2);
     };
 
-    const weightRemainder = (target, result) => {
-        if(!target || !result) return 0;
-        return target - result;
-
-    };
-    const weightValue = (target, result) => {
-        if (+!target && +!result) return 0;
-        if (target === 0) target = 1;
-
-        return ((result / target) * 100).toFixed(2);
-    };
+    // получение результата с учётом стартового веса
+    const getResultWeigth = (result, startWeigth) => {
+        if(result.length === 0 || !startWeigth) return 0;
+        return result - startWeigth;
+    }
 
     return {
         weightRemainder,
         weightValue,
-        transformationInMilisec,
-        daysRemainderStart,
-        daysRemainderNow,
-        transformationInDay,
-        getPercentValue
+        remainderStart,
+        remainderNow,
+        weightTargetAbsolute,
+        getResultWeigth,
+        resultValueAbsolute,
+        resultValuePercent,
+        convertDayInMilisec,
+        nowMilisec
     };
 };

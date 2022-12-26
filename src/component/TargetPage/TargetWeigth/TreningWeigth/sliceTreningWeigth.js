@@ -10,7 +10,7 @@ export const setDataTrening = createAsyncThunk("treningWeigth/setDataTrening", a
 });
 
 const initialState = {
-    weiggthRange: null,
+    weighthRange: null,
     statusLoading: "loading",
     paramTrening: ["weight", "time"],
     dataParams: ["weight", "time", "trenings"],
