@@ -2,46 +2,58 @@ import s from "./WeightRange.module.scss";
 
 import { CustomTitle, CustomRange, CustomButton } from "../../../BaseComponents/CustomComponents";
 
-import { workDataProgressBar } from "../../workDataProgressBar";
 import { TargetProgress } from "../../TargetProgress/TargetProgress";
 
 import { useState, useEffect } from "react";
 
-export const WeightRange = ({ start, end, result, saveResult }) => {
+export const WeightRange = ({ result, saveResult, target, startWeigth }) => {
     const [valueStart, setValueStart] = useState(0);
     const [valueEnd, setValueEnd] = useState(0);
     const [resultWeigth, setResultWeigth] = useState(0);
     const [nextStep, setNext] = useState(false);
 
-    const { weightRemainder, weightValue, weightTargetAbsolute, getResultWeigth } =
-        workDataProgressBar();
-
     useEffect(() => {
-        setValueStart(start);
-        setValueEnd(end);
-        setResultWeigth(getResultWeigth(result, +start));
-    }, [start, end, result]);
+        setValueStart(startWeigth);
+        setValueEnd(target);
+        setResultWeigth(+result);
+    }, [startWeigth, target, result]);
 
-    // сколько нужно достичь кг
-    const weightTarget = weightTargetAbsolute(+valueEnd, +valueStart);
-    // остаток
-    const remainder = weightRemainder(+valueEnd, +valueStart, +resultWeigth);
-    // выполнение в процентах
-    const value = weightValue(+valueEnd, +valueStart, +resultWeigth);
+    const getTargetWeigth = () => {
+        if (!valueEnd || !valueStart) return 0;
+        return +valueEnd - +valueStart;
+    };
+    const getWeigthResult = () => {
+        if (!resultWeigth || !valueStart) return 0;
+        return +resultWeigth - +valueStart;
+    };
+    const getRemainder = () => {
+        if (!targetWeigth || !resultWeigth || !valueStart) return targetWeigth;
+        return targetWeigth - (+resultWeigth - +valueStart);
+    };
+    const getValuePercent = () => {
+        if (!weigthResult || !targetWeigth) return 0;
+        return ((weigthResult / targetWeigth) * 100).toFixed(2);
+    };
+    
+    const targetWeigth = getTargetWeigth();
+    const weigthResult = getWeigthResult();
+    const remainder = getRemainder();
+    const valuePercent = getValuePercent();
+
 
     const changeRange = valueStart !== 0 && valueStart > valueEnd ? valueStart : valueEnd;
 
     const changeValue = (value) => {
         setValueStart(value);
-        setValueEnd(value);
+        setValueEnd(0);
         setResultWeigth(0);
         setNext(true);
     };
 
     const saveResultWeigth = (valueEnd) => {
-        saveResult({end: +valueEnd, start: +valueStart})
-        setValueEnd(+valueEnd)
-    }
+        saveResult({ end: +valueStart, start: +valueEnd });
+        setValueEnd(+valueEnd);
+    };
 
     return (
         <div className={`${s.targetRange} basePositionBlock baseFlex`}>
@@ -82,12 +94,15 @@ export const WeightRange = ({ start, end, result, saveResult }) => {
             </div>
             <div className={`${s.targetRange__bar}`}>
                 <TargetProgress
-                    value={value}
+                    value={valuePercent}
                     remainder={remainder}
-                    endTarget={weightTarget}
-                    result={resultWeigth}
+                    endTarget={targetWeigth}
+                    result={weigthResult}
                     param={"kg"}
                 />
+                <div className={`${""} basePositionElement `}>
+                    START WEIGTH: {valueStart}kg END WEIGTH: {valueEnd}kg
+                </div>
             </div>
         </div>
     );

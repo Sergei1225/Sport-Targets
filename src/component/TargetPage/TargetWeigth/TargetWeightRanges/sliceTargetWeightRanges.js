@@ -5,7 +5,7 @@ import { workDataProgressBar } from "../../workDataProgressBar";
 
 const { simpleReqest } = RequestBase();
 
-const { convertDayInMilisec, nowMilisec } = workDataProgressBar();
+const { convertDayInMilisec, nowMilisec, remainderStart, remainderNow } = workDataProgressBar();
 
 export const setDataTrening = createAsyncThunk("targetWeigthRanges/setDataTrening", async () => {
     return Promise.all(
@@ -80,6 +80,8 @@ export const rangesData = createSelector(
     (targetWeigth) => {
         if (!targetWeigth) return null;
 
+        console.log(targetWeigth);
+
         const {
             weight,
             someTrenings: trenings,
@@ -88,5 +90,40 @@ export const rangesData = createSelector(
         } = targetWeigth;
 
         return { weight, trenings, time, resultTrenings };
+    }
+);
+
+export const rangesTransformData = createSelector(
+    (state) => state.dataBase.targetWeigth,
+    (targetWeigth) => {
+
+        if (!targetWeigth) return null;
+
+        const {
+            weight,
+            someTrenings,
+            timeToTarget,
+            targetAchievement,
+        } = targetWeigth;
+
+        const time = {
+            target: remainderStart(+timeToTarget.end, +timeToTarget.start),
+            remainder: remainderNow(+timeToTarget.end)
+        }
+
+        const trenings = {
+            target: +someTrenings,
+            remainder: +someTrenings - targetAchievement.length,
+            result: +targetAchievement.length
+        }
+        const mostResult = +Math.max(targetAchievement.map((i) => i.result));
+
+        const weigthData = {
+            target: +weight.end,
+            result: +mostResult,
+            startWeigth: +weight.start
+        }
+
+        return { weigthData, trenings, time };
     }
 );

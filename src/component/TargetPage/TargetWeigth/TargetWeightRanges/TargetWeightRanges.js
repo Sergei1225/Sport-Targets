@@ -1,36 +1,46 @@
 import { WeightRange } from "../WeightRange/WeightRange";
 import { SimpleRange } from "../SimpleRange/SimpleRange";
-import { TimeRange } from "../TimeRange/TimeRange";
+import { WrapperRange } from "../TimeRange/WrapperRange";
 
 import { dataRanges } from "../dataRanges";
 
-import { rangesData, saveTargetWeigth, saveTargetTime, saveTargetTrenings } from "./sliceTargetWeightRanges";
+import {
+    rangesData,
+    saveTargetWeigth,
+    saveTargetTime,
+    saveTargetTrenings,
+    rangesTransformData,
+} from "./sliceTargetWeightRanges";
 
 import { useSelector, useDispatch } from "react-redux";
 import { CustomButton } from "../../../BaseComponents/CustomComponents";
+import { TargetShow } from "../../TargetShow/TargetShow";
 
 export const TargetWeightRanges = () => {
-    const data = useSelector(rangesData);
-
     const dispatch = useDispatch();
 
     const paramValues = useSelector((state) => state.treningWeigth.paramTrening);
+    const transformData = useSelector(rangesTransformData);
     const dataY = useSelector((state) => state.targetWeigthRanges);
 
     console.log(dataY);
 
-    /// данные для прогрессбара с днями
-    const timeParam = data?.time ? data.time : 0;
+    let timeTransform;
+    let treningsTransform;
+    let weigthTransform;
 
-    /// данные для прогрессбара с весом
-    const resultWeigth = data?.resultTrenings
-        ? Math.max(data.resultTrenings.map((item) => item.result))
-        : 0;
-    const weightParam = data?.weight ? data?.weight : { start: 0, end: 0 };
-
-    /// данные для прогрессбара с тренировками
-    const valueTrenings = data?.trenings ? data.trenings : 0;
-    const resultTrenings = data?.resultTrenings.length ? data?.resultTrenings.length : 0;
+    if (transformData) {
+        /// трансформированная дата времени
+        timeTransform = transformData?.time ? transformData.time : 0;
+        /// трансформированная дата тренировок
+        treningsTransform = transformData?.trenings ? transformData.trenings : 0;
+        /// трансформированная дата тренировок
+        weigthTransform = transformData?.weigthData ? transformData.weigthData : 0;
+    } else {
+        timeTransform = { target: 0, remainder: 0 };
+        treningsTransform = { target: 0, remainder: 0, result: 0 };
+        weigthTransform = { target: 0, result: 0, startWeigth: 0 };
+    }
 
     const saveTargetWeigthValue = (value) => {
         dispatch(saveTargetWeigth(value));
@@ -41,12 +51,12 @@ export const TargetWeightRanges = () => {
     };
 
     const saveTargetTreningsValue = (value) => {
-        console.log(value);
         dispatch(saveTargetTrenings(value));
     };
 
     return (
         <div>
+            <TargetShow/>
             <div className={`basePositionBlock baseFlex`}>
                 <CustomButton
                     //funk={deleteAllTunnings}
@@ -55,27 +65,27 @@ export const TargetWeightRanges = () => {
             </div>
             <WeightRange
                 saveResult={saveTargetWeigthValue}
-                start={weightParam.start}
-                end={weightParam.end}
-                result={resultWeigth}
+                target={weigthTransform.target}
+                startWeigth={weigthTransform.startWeigth}
+                result={weigthTransform.result}
             />
             {paramValues.some((i) => i === "time") ? (
-                <TimeRange
+                <WrapperRange
                     saveResult={saveTargetTimeValue}
-                    start={timeParam.start}
-                    end={timeParam.end}
+                    remainder={timeTransform.remainder}
+                    target={timeTransform.target}
                     paramTime={"milisec"}
                     paramProgress={" days"}
                     dataRange={dataRanges[1]}
                 />
             ) : null}
             {paramValues.some((i) => i === "trenings") ? (
-                <TimeRange
+                <WrapperRange
                     saveResult={saveTargetTreningsValue}
-                    start={0}
-                    end={valueTrenings}
-                    paramTime={"days"}
-                    result={resultTrenings}
+                    remainder={treningsTransform.remainder}
+                    target={treningsTransform.target}
+                    paramTime={"trenings"}
+                    result={treningsTransform.result}
                     paramProgress={" trenings"}
                     dataRange={dataRanges[1]}
                 />

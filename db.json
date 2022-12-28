@@ -1,15 +1,14 @@
 {
   "targetWeigth": {
     "selectedExercise": {
-      "id": "e5pjq4uY9_1Z6w22SE-j24Jfs3Y-3E",
-      "name": "Pull-ups",
+      "id": "g79x19c5V-8618481G-F9403a9N-uq",
+      "name": "French press",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "back",
-        "biceps"
+        "triceps"
       ],
       "typeOfExercise": "base"
     },

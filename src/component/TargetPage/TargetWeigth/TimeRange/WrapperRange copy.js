@@ -7,7 +7,7 @@ import { workDataProgressBar } from "../../workDataProgressBar";
 
 import { useState, useEffect } from "react";
 
-export const TimeRange = (props) => {
+export const WrapperRange = (props) => {
     const { remainderNow, remainderStart, resultValueAbsolute, resultValuePercent } =
         workDataProgressBar();
 
