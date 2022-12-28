@@ -4,7 +4,7 @@ import { dataChoiseBase } from "../../CreateTreningPage/ConstrTrening/dataChoise
 import { useMemo } from "react";
 
 export const ChoiseValue = (props) => {
-    const { changeDetailfunck, detail, changeBasefunck, base, dataDetail } = props;
+    const { changeDetailfunck, detail, changeBasefunck, base, dataDetail, paramSelect } = props;
 
     const createChoiseDatail = (data, funcChange, param) => {
         if(!data || data.length === 0) return null
@@ -34,8 +34,9 @@ export const ChoiseValue = (props) => {
     }, [dataDetail, detail]);
 
     const choiseBase = useMemo(() => {
+        if(paramSelect === "targetWeigth") return null;
         return createChoiseDatail(dataChoiseBase, changeBasefunck, base);
-    }, [base]);
+    }, [base, paramSelect]);
 
     return (
         <div className={`${" "} basePositionBlock `}>

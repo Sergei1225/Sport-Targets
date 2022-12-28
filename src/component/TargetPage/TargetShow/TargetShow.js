@@ -1,7 +1,6 @@
 import s from "./TargetShow.module.scss";
 
 import { FilledTargetProgress } from "../FilledTargetProgress/FilledTargetProgress";
-import { TargetProgress } from "../TargetProgress/TargetProgress";
 
 import { rangesTransformData } from "../TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
 
@@ -52,14 +51,14 @@ export const TargetShow = () => {
     const valuePercent = getValuePercent();
 
     return (
-        <div className={"basePositionBlock baseFlex"}>
+        <div className={`${s.targetShow} basePositionBlock baseFlexGapWrapSpaceAround`}>
             <div className={s.targetShow__item}>
-                <TargetProgress
-                    value={valuePercent}
-                    remainder={remainderA}
-                    endTarget={targetWeigth}
-                    result={weigthResult}
-                    param={"kg"}
+                <FilledTargetProgress
+                        //nameSvg={nameSvg}
+                        target={targetWeigth}
+                        remainder={remainderA}
+                        result={weigthResult}
+                        param={"kg"}
                 />
             </div>
             <div className={s.targetShow__item}>
@@ -77,6 +76,7 @@ export const TargetShow = () => {
                     target={timeTransform.target}
                     remainder={timeTransform.remainder}
                     paramProgress={" days"}
+                    nameSvg={"days"}
                 />
             </div>
         </div>

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 export const WrapperRange = (props) => {
 
-    const { paramTime, result, paramProgress, dataRange, saveResult, target, remainder, max } = props;
+    const { paramTime, result, paramProgress, dataRange, saveResult, target, remainder, max, nameSvg } = props;
 
     const { id, title, subtile, paramRange, startState } = dataRange;
     
@@ -40,13 +40,16 @@ export const WrapperRange = (props) => {
                 />
             </div>
             <div className={`${s.timeRange__bar}`}>
-                <FilledTargetProgress
-                    paramTime={paramTime}
-                    target={valueTarget}
-                    remainder={valueRemainder}
-                    result={result}
-                    paramProgress={paramProgress}
-                />
+                <div className={`${s.timeRange__bar_inner}`}>
+                    <FilledTargetProgress
+                        nameSvg={nameSvg}
+                        paramTime={paramTime}
+                        target={valueTarget}
+                        remainder={valueRemainder}
+                        result={result}
+                        paramProgress={paramProgress}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -2,11 +2,11 @@ import s from "./WeightRange.module.scss";
 
 import { CustomTitle, CustomRange, CustomButton } from "../../../BaseComponents/CustomComponents";
 
-import { TargetProgress } from "../../TargetProgress/TargetProgress";
+import { FilledTargetProgress } from "../../FilledTargetProgress/FilledTargetProgress";
 
 import { useState, useEffect } from "react";
 
-export const WeightRange = ({ result, saveResult, target, startWeigth }) => {
+export const WeightRange = ({ result, saveResult, target, startWeigth, nameSvg }) => {
     const [valueStart, setValueStart] = useState(0);
     const [valueEnd, setValueEnd] = useState(0);
     const [resultWeigth, setResultWeigth] = useState(0);
@@ -34,7 +34,7 @@ export const WeightRange = ({ result, saveResult, target, startWeigth }) => {
         if (!weigthResult || !targetWeigth) return 0;
         return ((weigthResult / targetWeigth) * 100).toFixed(2);
     };
-    
+
     const targetWeigth = getTargetWeigth();
     const weigthResult = getWeigthResult();
     const remainder = getRemainder();
@@ -92,14 +92,16 @@ export const WeightRange = ({ result, saveResult, target, startWeigth }) => {
                     </div>
                 ) : null}
             </div>
-            <div className={`${s.targetRange__bar}`}>
-                <TargetProgress
-                    value={valuePercent}
-                    remainder={remainder}
-                    endTarget={targetWeigth}
-                    result={weigthResult}
-                    param={"kg"}
-                />
+            <div className={`${s.targetRange__bar} baseFlexColumnCenter`}>
+                <div className={`${s.targetRange__progress} baseFlexColumnCenter`}>
+                    <FilledTargetProgress
+                        nameSvg={nameSvg}
+                        target={targetWeigth}
+                        remainder={remainder}
+                        result={weigthResult}
+                        param={"kg"}
+                    />
+                </div>
                 <div className={`${""} basePositionElement `}>
                     START WEIGTH: {valueStart}kg END WEIGTH: {valueEnd}kg
                 </div>

@@ -1,7 +1,9 @@
-import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
+import { TargetProgress } from "../TargetProgress/TargetProgress";
+
+import { workDataProgressBar } from "../workDataProgressBar";
 
 export const FilledTargetProgress = (props) => {
-    const { paramProgress, remainder, target, nameSvg, param } = props;
+    const { paramProgress, remainder, target, nameSvg } = props;
 
     //  результат
     const getResult = () => {
@@ -18,21 +20,13 @@ export const FilledTargetProgress = (props) => {
     const resultPercent = getResultPercent();
 
     return (
-        <>
-            <ProgresBar
+            <TargetProgress
                 nameSvg={nameSvg}
                 value={resultPercent}
                 remainder={remainder}
+                endTarget={target}
+                result={resultAbsolute}
                 param={paramProgress}
             />
-            <div style={{ color: "grey" }} className={`${""} basePositionElement`}>
-                {""} {resultAbsolute}
-                {paramProgress}{param} from {target}{param}
-                {paramProgress}
-            </div>
-            <div className={`${""} basePositionElement baseFontContentBold`}>
-                COMPLITED {resultPercent}%
-            </div>
-        </>
     );
 };

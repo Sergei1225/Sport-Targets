@@ -5,10 +5,15 @@
         align-self: center;
     }
     &__bar{
+        flex: 1 0 300px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        flex: 1 1 380px;
+        &_inner{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 280px;
+        }
     }
 }

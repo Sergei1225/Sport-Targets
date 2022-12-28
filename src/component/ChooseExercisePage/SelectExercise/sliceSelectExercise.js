@@ -27,6 +27,7 @@ const initialState = {
     multi: false,
     base: "basic",
     detail: "all",
+    pagePath: "current"
 };
 
 const sliceSelectExercise = createSlice({
@@ -72,6 +73,7 @@ const sliceSelectExercise = createSlice({
         builder.addCase(saveExerciseTarget.fulfilled, (state, action) => {
             console.log("отправка завершена target");
             state.selectedItems = [];
+            state.pagePath = "createTarget";
         });
         builder.addCase(saveExerciseTarget.rejected, (state, action) => {});
     },

@@ -2,6 +2,8 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "./ProgresBar.scss";
 import { useState, useEffect } from "react";
 
+import { GetSvg } from "../GetSvg/GetSvg";
+
 import gant from "../../img/png/gant.png";
 
 const ProgressProvider = ({ valueStart, valueEnd, children }) => {
@@ -28,7 +30,7 @@ export const ProgresBar = (props) => {
         max, 
         param, 
         remainder, 
-        srcImg,
+        nameSvg,
     } = props;
 
     //console.log("рендер прогрессбара");
@@ -41,20 +43,16 @@ export const ProgresBar = (props) => {
     if (!param) param = "kg";
     if (!remainder) remainder = 0;
     
-    if (!srcImg) srcImg = gant;
+    if (!nameSvg) nameSvg = "gantel";
 
     const mark = value > 100 ? 'above' : 'left';
 
     return (
-            <div style={{ width: "280px", height: "280px" }} className="CircularInner">
+            <div style={{ width: "100%", height: "270px" }} className="CircularInner">
                 <ProgressProvider valueStart={min} valueEnd={value}>
                     {(value) => (
                         <CircularProgressbarWithChildren value={value}>
-                            <img
-                                style={{ width: 120, marginTop: -35 }}
-                                src={gant}
-                                alt="imgProgressBar"
-                            />
+                            <GetSvg nameSvg={nameSvg}/>
                             <div style={{ fontSize: 32, marginTop: -5 }}>
                                 {mark} <strong>{`${remainder}${param}`}</strong>
                             </div>

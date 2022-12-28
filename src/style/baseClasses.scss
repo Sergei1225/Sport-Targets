@@ -53,6 +53,12 @@
     flex-wrap: wrap;
 }
 
+.baseFlexGapWrapSpaceAround {
+    @extend .baseFlex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .baseFlexCenter {
     display: flex;
     justify-content: center;
@@ -88,3 +94,7 @@
     grid-auto-rows: minmax(250px, auto);
     gap: 20px;
 }
+
+// .logo * {
+//     fill: red;
+// }

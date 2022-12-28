@@ -1,13 +1,14 @@
 import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
 
+/// можно удалять 
+export const TargetProgressA = (props) => {
+    const { value, remainder, endTarget, result, param, srcImg, paramAchieved, nameSvg } = props;
 
-export const TargetProgress = (props) => {
-    const { value, remainder, endTarget, result, param, srcImg, paramAchieved } = props;
 
 
     return (
         <>
-            <ProgresBar srcImg={srcImg} value={value} remainder={remainder} param={param}/>
+            <ProgresBar nameSvg={nameSvg} srcImg={srcImg} value={value} remainder={remainder} param={param}/>
             <div style={{ color: "grey" }} className={`${""} basePositionElement`}>
                 {paramAchieved} {result}
                 {param} from {endTarget}

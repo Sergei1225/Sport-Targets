@@ -1,7 +1,6 @@
 import { SelectWithButtons } from "../SelectWithButtons/SelectWithButtons";
 import { ChoiseValue } from "../ChoiseValue/ChoiseValue";
 import { AddedItems } from "../AddedItems/AddedItems";
-import { SingleSelect } from "../../../serviceComponents/SingleSelect/SingleSelect";
 
 import {
     selectedItems,
@@ -34,14 +33,13 @@ export const SelectExercise = (props) => {
     const multi = useSelector((state) => state.selectExercise.multi);
     const base = useSelector((state) => state.selectExercise.base);
     const detail = useSelector((state) => state.selectExercise.detail);
+    const pageNavigate = useSelector((state) => state.selectExercise.pagePath);
     const dataDetailItems = useSelector(dataDetail);
-    //console.log(dataDetailItems);
 
-    //console.log(listItems)
-    // для отслеживания массива с выбранными элементами
-    // const show = useSelector((state) => state.selectChooseExercise.selectedItems);
-    // console.log(show);
-    // addSelectedItemOnlyOne
+    if(pageNavigate === "createTarget"){
+       setTimeout(() => navigate("/createTarget"), 2000) ;
+    }
+
     const getValue = (value) => {
         if(paramSave === "creator" || paramSave === "editor"){
             if (value) dispatch(addSelectedItem(value));
@@ -105,9 +103,12 @@ export const SelectExercise = (props) => {
         } else if (funcSave === "target") {
             console.log("target");
             dispatch(saveExerciseTarget({ data: selectedItemsList, path: pathSave }));
-            navigate("/createTarget");
         }
     };
+
+    /// с помощью paramSelect я отображаю или не отбражают нужные элементы для выбора
+    /// SelectWithButtons paramSelect контролирует наличие кнопок для выбора нескольких упражнений
+    /// ChoiseValue paramSelect контролирует выбор базовый выбор в упражнениях
 
     return (
         <div className={`${"basePositionBlock "}`}>
@@ -125,6 +126,7 @@ export const SelectExercise = (props) => {
                 changeBasefunck={changeBasefunck}
                 base={base}
                 dataDetail={dataDetailItems}
+                paramSelect={paramSave}
             />
             <AddedItems
                 paramItem={paramSave}

@@ -5,10 +5,9 @@
         align-self: center;
     }
     &__bar{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         flex: 1 1 380px;
+    }
+    &__progress{
+        width: 275px;
     }
 }

@@ -1,5 +1,4 @@
 import { WeightRange } from "../WeightRange/WeightRange";
-import { SimpleRange } from "../SimpleRange/SimpleRange";
 import { WrapperRange } from "../TimeRange/WrapperRange";
 
 import { dataRanges } from "../dataRanges";
@@ -77,6 +76,7 @@ export const TargetWeightRanges = () => {
                     paramTime={"milisec"}
                     paramProgress={" days"}
                     dataRange={dataRanges[1]}
+                    nameSvg={'days'}
                 />
             ) : null}
             {paramValues.some((i) => i === "trenings") ? (
