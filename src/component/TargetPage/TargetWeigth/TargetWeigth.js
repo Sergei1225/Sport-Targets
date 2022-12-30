@@ -1,5 +1,5 @@
 
-import { TargetWeightRanges } from "./TargetWeightRanges/TargetWeightRanges";
+import { TargetWeightRangesNew } from "./TargetWeightRanges/TargetWeightRangesNew";
 import { TreningWeigth } from "./TreningWeigth/TreningWeigth";
 
 export const TargetWeigth = () => {
@@ -7,7 +7,7 @@ export const TargetWeigth = () => {
     return (
         <div>
             <TreningWeigth/>
-            <TargetWeightRanges/>
+            <TargetWeightRangesNew/>
         </div>
     );
 };

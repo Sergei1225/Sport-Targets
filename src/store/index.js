@@ -1,17 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+
+// база данных с тренировками
+import dataBase from "../component/App/sliceDataBase";
+
 import navBar from "../component/NavBar/sliceNavBar";
 import listCreateExersice from "../component/CreateTreningPage/ListTrening/sliceListCreateExersice";
 import selectExercise from "../component/ChooseExercisePage/SelectExercise/sliceSelectExercise";
-import dataBase from "../component/App/sliceDataBase";
 import listExercise from "../component/ChooseExercisePage/ListExercise/sliceListExercise";
 import constrTrening from "../component/CreateTreningPage/ConstrTrening/sliceConstrTrening";
+// страница отбражения тренировок
 import headerTrenings from "../component/TreningsPage/HeaderTrening/sliceHeaderTrenings";
 import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearchTrenings";
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
 import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
+// страница с целью
 import treningWeigth from "../component/TargetPage/TargetWeigth/TreningWeigth/sliceTreningWeigth";
 import targetWeigthRanges from "../component/TargetPage/TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
+import showTargetWeigth from "../component/TargetPage/TargetShow/sliceTargetShow";
 /// univer
 import listEditorTrening from "../component/EditorTreningPage/ListEditorTrening/sliceListEditorTrening";
 import constrEditorTrening from "../component/EditorTreningPage/ConstrEditorTrening/sliceConstrEditorTrenings";
@@ -36,11 +42,12 @@ const store = configureStore({
         listEditorTrening,
         constrEditorTrening,
         treningWeigth,
-        targetWeigthRanges
+        targetWeigthRanges,
+        showTargetWeigth
     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),
-    devTools: process.env.NODE_ENV !== "production",
+    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),
+    // devTools: process.env.NODE_ENV !== "production",
 });
 
 export default store;

@@ -1,84 +1,45 @@
 import s from "./TargetShow.module.scss";
 
-import { FilledTargetProgress } from "../FilledTargetProgress/FilledTargetProgress";
+import { TargetProgress } from "../TargetProgress/TargetProgress";
 
-import { rangesTransformData } from "../TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
+import { getDataTargetWeigth } from "./sliceTargetShow";
 
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 export const TargetShow = () => {
-    const transformData = useSelector(rangesTransformData);
+    const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
+    const dispatch = useDispatch();
 
-    let timeTransform;
-    let treningsTransform;
-    let weigthTransform;
+    useEffect(() => {
+        dispatch(getDataTargetWeigth());
+    }, []);
 
-    if (transformData) {
-        /// трансформированная дата времени
-        timeTransform = transformData?.time ? transformData.time : 0;
-        /// трансформированная дата тренировок
-        treningsTransform = transformData?.trenings ? transformData.trenings : 0;
-        /// трансформированная дата тренировок
-        weigthTransform = transformData?.weigthData ? transformData.weigthData : 0;
-    } else {
-        timeTransform = { target: 0, remainder: 0 };
-        treningsTransform = { target: 0, remainder: 0, result: 0 };
-        weigthTransform = { target: 0, result: 0, startWeigth: 0 };
-    }
+    if (!dataWeigth) return <h3>Loading...</h3>;
 
-    const getTargetWeigth = () => {
-        if (!weigthTransform.target || !weigthTransform.startWeigth) return 0;
-        return +weigthTransform.target - +weigthTransform.startWeigth;
-    };
-    const getWeigthResult = () => {
-        if (!weigthTransform.result || !weigthTransform.startWeigth) return 0;
-        return +weigthTransform.result - +weigthTransform.startWeigth;
-    };
-    const getRemainder = () => {
-        if (!targetWeigth || !weigthTransform.result || !weigthTransform.startWeigth){
-            return targetWeigth;
-        }
-        return targetWeigth - (+weigthTransform.result - +weigthTransform.startWeigth);
-    };
-    const getValuePercent = () => {
-        if (!weigthResult || !targetWeigth) return 0;
-        return ((weigthResult / targetWeigth) * 100).toFixed(2);
+    const createItemsWeigth = (data) => {
+        if (!data) return null;
+        return data.map((item) => {
+            return (
+                <div key={item.id} className={s.targetShow__item}>
+                    <TargetProgress
+                        remainder={item.remainder}
+                        target={item.target}
+                        valueAbsolute={item.valueAbsolute}
+                        valuePercent={item.valuePercent}
+                        paramProgress={item.paramProgress}
+                        nameSvg={item.paramProgress}
+                    />
+                </div>
+            );
+        });
     };
 
-    const targetWeigth = getTargetWeigth();
-    const weigthResult = getWeigthResult();
-    const remainderA = getRemainder();
-    const valuePercent = getValuePercent();
+    const itemsWeigth = createItemsWeigth(dataWeigth);
 
     return (
         <div className={`${s.targetShow} basePositionBlock baseFlexGapWrapSpaceAround`}>
-            <div className={s.targetShow__item}>
-                <FilledTargetProgress
-                        //nameSvg={nameSvg}
-                        target={targetWeigth}
-                        remainder={remainderA}
-                        result={weigthResult}
-                        param={"kg"}
-                />
-            </div>
-            <div className={s.targetShow__item}>
-                <FilledTargetProgress
-                    remainder={treningsTransform.remainder}
-                    target={treningsTransform.target}
-                    paramTime={"trenings"}
-                    result={treningsTransform.result}
-                    paramProgress={" trenings"}
-                />
-            </div>
-            <div className={s.targetShow__item}>
-                <FilledTargetProgress
-                    paramTime={"milisec"}
-                    target={timeTransform.target}
-                    remainder={timeTransform.remainder}
-                    paramProgress={" days"}
-                    nameSvg={"days"}
-                />
-            </div>
+            {itemsWeigth}
         </div>
     );
 };

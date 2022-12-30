@@ -33,11 +33,15 @@ export const workDataProgressBar = () => {
     // перевод из дней в милисекунды 
     const convertDayInMilisec = (someDays) => {
         const valueNow = Date.now();
-        const days = someDays * 86400000;
+        const days = +someDays * 86400000;
+        if(!someDays) return valueNow;
         return valueNow + days;
     }
-    // сейчас в милисек
-    const nowMilisec = () => Date.now();
+    // из милисекунд в дату строку
+    const getDateFromMilisec = (milisec) => {
+        const objDate = new Date(+milisec);
+        return `${objDate.getMonth() + 1}.${objDate.getDate()}.${objDate.getFullYear()}`;
+    }
 
     // 1 действие для получения дней получение количества дней и перевод из милисекунд в дни
     const remainderStart = (end, start) => {
@@ -97,6 +101,6 @@ export const workDataProgressBar = () => {
         resultValueAbsolute,
         resultValuePercent,
         convertDayInMilisec,
-        nowMilisec
+        getDateFromMilisec
     };
 };

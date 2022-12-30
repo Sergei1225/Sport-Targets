@@ -1,21 +1,25 @@
 import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
 
-/// можно удалять 
-export const TargetProgressA = (props) => {
-    const { value, remainder, endTarget, result, param, srcImg, paramAchieved, nameSvg } = props;
-
-
+export const TargetProgress = (props) => {
+    const { paramProgress, remainder, target, nameSvg, param, valueAbsolute, valuePercent } = props;
 
     return (
         <>
-            <ProgresBar nameSvg={nameSvg} srcImg={srcImg} value={value} remainder={remainder} param={param}/>
+            <ProgresBar
+                nameSvg={nameSvg}
+                value={valuePercent}
+                remainder={remainder}
+                param={paramProgress}
+            />
             <div style={{ color: "grey" }} className={`${""} basePositionElement`}>
-                {paramAchieved} {result}
-                {param} from {endTarget}
+                {""} {valueAbsolute}
+                {paramProgress}
+                {param} from {target}
                 {param}
+                {paramProgress}
             </div>
             <div className={`${""} basePositionElement baseFontContentBold`}>
-                COMPLITED {value}%
+                COMPLITED {valuePercent}%
             </div>
         </>
     );

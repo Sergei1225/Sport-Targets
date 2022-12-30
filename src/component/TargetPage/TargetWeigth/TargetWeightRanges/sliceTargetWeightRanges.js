@@ -2,10 +2,16 @@ import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit"
 import { RequestBase } from "../../../../service/RequestBase";
 
 import { workDataProgressBar } from "../../workDataProgressBar";
+import { randomId } from "../../../../service/RandomId";
 
 const { simpleReqest } = RequestBase();
 
-const { convertDayInMilisec, nowMilisec, remainderStart, remainderNow } = workDataProgressBar();
+const { convertDayInMilisec, getDateFromMilisec, remainderStart, remainderNow } =
+    workDataProgressBar();
+
+export const getDataTarget = createAsyncThunk("targetWeigthRanges/getDataTarget", async () => {
+    return simpleReqest("newTargetWeigth");
+});
 
 export const setDataTrening = createAsyncThunk("targetWeigthRanges/setDataTrening", async () => {
     return Promise.all(
@@ -24,6 +30,12 @@ const initialState = {
         end: 0,
     },
     someTrenings: 0,
+    weigthTarget: null,
+    selectedExercise: null,
+    someTreningsNew: null,
+    timeToTargetNew: null,
+    weight: null,
+    targetAchievement: null,
 };
 
 const sliceTargetWeigth = createSlice({
@@ -37,17 +49,27 @@ const sliceTargetWeigth = createSlice({
             state.dataAerobic = payload;
         },
         saveTargetWeigth: (state, { payload }) => {
-            state.targetWeigth = { start: payload.start, end: payload.end };
+            state.weight = { ...payload };
         },
         saveTargetTime: (state, { payload }) => {
-            const convert = {
-                start: nowMilisec(),
-                end: convertDayInMilisec(+payload),
+            const milisecTarget = convertDayInMilisec(+payload.target);
+            const nowMilisec = convertDayInMilisec();
+            const item = {
+                start: nowMilisec,
+                end: milisecTarget,
+                days: +payload.target,
+                date: {
+                    start: getDateFromMilisec(nowMilisec),
+                    end: getDateFromMilisec(+milisecTarget),
+                },
+                parametrs: {
+                    ...payload,
+                },
             };
-            state.timeToTarget = { ...convert };
+            state.timeToTargetNew = item;
         },
         saveTargetTrenings: (state, { payload }) => {
-            state.someTrenings = +payload;
+            state.someTreningsNew = { ...payload };
         },
     },
     extraReducers: (builder) => {
@@ -62,6 +84,19 @@ const sliceTargetWeigth = createSlice({
             state.statusLoading = "content";
         });
         builder.addCase(setDataTrening.rejected, (state, action) => {
+            console.log(action.error.message);
+            state.statusLoading = "error";
+        });
+        builder.addCase(getDataTarget.fulfilled, (state, { payload }) => {
+            state.selectedExercise = payload.selectedExercise;
+            state.someTreningsNew = payload.someTrenings;
+            state.timeToTargetNew = payload.timeToTarget;
+            state.weight = payload.weight;
+            state.targetAchievement = payload.targetAchievement;
+
+            state.statusLoading = "content";
+        });
+        builder.addCase(getDataTarget.rejected, (state, action) => {
             console.log(action.error.message);
             state.statusLoading = "error";
         });
@@ -96,33 +131,27 @@ export const rangesData = createSelector(
 export const rangesTransformData = createSelector(
     (state) => state.dataBase.targetWeigth,
     (targetWeigth) => {
-
         if (!targetWeigth) return null;
 
-        const {
-            weight,
-            someTrenings,
-            timeToTarget,
-            targetAchievement,
-        } = targetWeigth;
+        const { weight, someTrenings, timeToTarget, targetAchievement } = targetWeigth;
 
         const time = {
             target: remainderStart(+timeToTarget.end, +timeToTarget.start),
-            remainder: remainderNow(+timeToTarget.end)
-        }
+            remainder: remainderNow(+timeToTarget.end),
+        };
 
         const trenings = {
             target: +someTrenings,
             remainder: +someTrenings - targetAchievement.length,
-            result: +targetAchievement.length
-        }
+            result: +targetAchievement.length,
+        };
         const mostResult = +Math.max(targetAchievement.map((i) => i.result));
 
         const weigthData = {
             target: +weight.end,
             result: +mostResult,
-            startWeigth: +weight.start
-        }
+            startWeigth: +weight.start,
+        };
 
         return { weigthData, trenings, time };
     }
