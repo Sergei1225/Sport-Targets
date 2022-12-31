@@ -1,20 +1,22 @@
 import s from "./NavBar.module.scss";
 
+import { getSvg } from "../../serviceComponents/GetSvg/GetSvg";
+
 import { CustomLink } from "../BaseComponents/CustomLink/CustomLink";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMemo } from "react";
 
 export const NavBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const param = useParams();
 
     const dataLink = useMemo(() => {
         return [
-            { to: "/editorTrening", inner: "One", id: "yhGHSjshfg5&75s688GGH7dsf" },
-            { to: "/createTarget", inner: "Two", id: "kldso89895s688GGH7dsf" },
-            { to: "/chooseExercise", inner: "Three", id: "02223Sjshfg5&7Kldfl7dsf" },
-            { to: "/chooseEditor", inner: "Four ", id: "Kl23324fg5&7Kldfl7dsf" },
-            { to: "/five", inner: "Five ", id: "930324fg5&79mfdj3S" },
+            { to: "/", inner: "Trenings", id: "23GHSjshfg5&75s688GGH7dsf" },
+            { to: "/editorTrening", inner: "Create trening", id: "yhGHSjshfg5&75s688GGH7dsf" },
+            { to: "/chooseExercise", inner: "Choose exersice", id: "02223Sjshfg5&7Kldfl7dsf" },
+            { to: "/createTarget", inner: "Target", id: "kldso89895s688GGH7dsf" },
         ];
     }, []);
 
@@ -32,18 +34,25 @@ export const NavBar = () => {
         return createLinks(dataLink);
     }, [dataLink]);
 
-    //console.log("рендер NavBar");
-    ///console.log(location);
+    const backButton = () => {
+        console.log(location.pathname);
+        if(location.pathname === "/") return false;
+        else if(location.pathname === "/test") return false;
+        else if(Object.keys(param).length !== 0) return false;
+        else return true
+    }
+
+    console.log(backButton())
     return (
         <header className={`${s.navBar} `}>
             <div className="container">
                 <div className={`${s.navBar__wrapper} `}>
-                    {(location.pathname !== "/" && location.pathname !== "/test") ? (
+                    { backButton() ? (
                         <div
                             onClick={() => navigate(-1)}
                             className={`${s.navBar__back} ${"baseFlexCenter"}`}
                         >
-                            Previous page
+                           {getSvg('backBtn')}
                         </div>
                     ) : (
                         <div className={`${s.navBar__back}  ${"baseFlexCenter"} `}></div>

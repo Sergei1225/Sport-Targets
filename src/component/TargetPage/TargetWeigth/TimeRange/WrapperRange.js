@@ -1,30 +1,33 @@
-import s from "./TimeRange.module.scss";
+import s from "./WrapperRange.module.scss";
 
 import { CustomTitle, CustomRange } from "../../../BaseComponents/CustomComponents";
-import { FilledTargetProgress } from "../../FilledTargetProgress/FilledTargetProgress";
+import { TargetProgress } from "../../TargetProgress/TargetProgress";
 
 import { useState, useEffect } from "react";
 
 export const WrapperRange = (props) => {
-
-    const { paramTime, result, paramProgress, dataRange, saveResult, target, remainder, max, nameSvg } = props;
+    let { dataRange, saveResult, max, data } = props;
 
     const { id, title, subtile, paramRange, startState } = dataRange;
-    
-    useEffect(() => {
-        if(target){
-            setValueEnd(target);
-            setValueNow(remainder);
-        }
-    }, [target, remainder]);
 
-    const [valueTarget, setValueEnd] = useState(0);
-    const [valueRemainder, setValueNow] = useState(0);
+    if (!max) max = 500;
+
+    useEffect(() => {
+        if (data) setData(data);
+    }, [data]);
+
+    const [dataItem, setData] = useState(0);
 
     const changeValue = (value) => {
-        setValueEnd(+value);
-        setValueNow(0);
-        saveResult(+value)
+        const newValue = {
+            paramProgress: dataItem.paramProgress,
+            remainder: +value,
+            target: +value,
+            valueAbsolute: 0,
+            valuePercent: 0,
+        }
+        setData(newValue);
+        saveResult(newValue);
     };
 
     return (
@@ -33,21 +36,21 @@ export const WrapperRange = (props) => {
                 <CustomTitle title={title} subtile={subtile} />
                 <CustomRange
                     getValue={changeValue}
-                    max={365}
+                    max={max}
                     min={0}
                     {...paramRange}
                     startState={startState}
                 />
             </div>
             <div className={`${s.timeRange__bar}`}>
-                <div className={`${s.timeRange__bar_inner}`}>
-                    <FilledTargetProgress
-                        nameSvg={nameSvg}
-                        paramTime={paramTime}
-                        target={valueTarget}
-                        remainder={valueRemainder}
-                        result={result}
-                        paramProgress={paramProgress}
+                <div className={`${s.timeRange__bar_inner} baseFlexColumnCenter`}>
+                    <TargetProgress
+                        remainder={dataItem.remainder}
+                        target={dataItem.target}
+                        valueAbsolute={dataItem.valueAbsolute}
+                        valuePercent={dataItem.valuePercent}
+                        paramProgress={dataItem.paramProgress}
+                        nameSvg={dataItem.paramProgress}
                     />
                 </div>
             </div>

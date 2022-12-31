@@ -1,6 +1,6 @@
 import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
 
-export const FilledTargetProgress = (props) => {
+export const FilledTargetProgressAA = (props) => {
     const { paramProgress, remainder, target, nameSvg, param } = props;
 
     //  результат

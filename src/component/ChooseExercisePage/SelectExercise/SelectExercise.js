@@ -17,7 +17,7 @@ import {
     addSelectedItemOnlyOne
 } from "./sliceSelectExercise";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 export const SelectExercise = (props) => {
@@ -75,6 +75,8 @@ export const SelectExercise = (props) => {
         dispatch(deleteAllSelectItems());
     };
 
+    console.log(paramSave);
+
     const saveExersice = () => {
         let pathSave;
         let funcSave;
@@ -99,7 +101,7 @@ export const SelectExercise = (props) => {
         if (funcSave === "simpleSave") {
             if (!selectedItemsList || selectedItemsList.length === 0 || !pathSave) return;
             dispatch(saveExercise({ data: selectedItemsList, path: pathSave }));
-            navigate("/");
+            navigate(-1, {replace: true});
         } else if (funcSave === "target") {
             console.log("target");
             dispatch(saveExerciseTarget({ data: selectedItemsList, path: pathSave }));

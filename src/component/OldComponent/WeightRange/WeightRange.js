@@ -6,7 +6,7 @@ import { FilledTargetProgress } from "../../FilledTargetProgress/FilledTargetPro
 
 import { useState, useEffect } from "react";
 
-export const WeightRange = ({ result, saveResult, target, startWeigth, nameSvg }) => {
+export const WeightRangeA = ({ result, saveResult, target, startWeigth, nameSvg }) => {
     const [valueStart, setValueStart] = useState(0);
     const [valueEnd, setValueEnd] = useState(0);
     const [resultWeigth, setResultWeigth] = useState(0);

@@ -1,11 +1,9 @@
 import s from "./HeaderTrenings.module.scss";
-import { srcImages } from "../../../img/srcImages";
 
 import { headerChangeProp } from "./sliceHeaderTrenings";
 import { deleteSomeTrening } from "../ListTrenings/sliceListTrenings";
 
 import { CustomSelect, CustomButton } from "../../BaseComponents/CustomComponents";
-import { BaseHeader } from "../../BaseHeader/BaseHeader";
 import { useDispatch, useSelector } from "react-redux";
 
 export const HeaderTrenings = () => {
@@ -26,7 +24,6 @@ export const HeaderTrenings = () => {
 
     return (
         <div className={`${s.headerTrening} `}>
-            <BaseHeader text={"MY TRENINGS"} srcImg={srcImages.redGym} />
             <div className={`${""} basePositionBlock`}>
                 <div className={`${s.headerTrening__sort} baseFlexGapSB`}>
                     <CustomSelect

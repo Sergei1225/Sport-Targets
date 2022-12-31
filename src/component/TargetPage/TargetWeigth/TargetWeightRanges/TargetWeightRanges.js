@@ -1,93 +1,73 @@
-import { WeightRange } from "../WeightRange/WeightRange";
 import { WrapperRange } from "../TimeRange/WrapperRange";
+import { TargetShow } from "../../TargetShow/TargetShow";
 
 import { dataRanges } from "../dataRanges";
 
 import {
-    rangesData,
     saveTargetWeigth,
     saveTargetTime,
     saveTargetTrenings,
-    rangesTransformData,
+    getDataTarget,
+    saveTargetWeigthEnd,
 } from "./sliceTargetWeightRanges";
 
 import { useSelector, useDispatch } from "react-redux";
 import { CustomButton } from "../../../BaseComponents/CustomComponents";
-import { TargetShow } from "../../TargetShow/TargetShow";
+import { useEffect } from "react";
 
 export const TargetWeightRanges = () => {
     const dispatch = useDispatch();
 
     const paramValues = useSelector((state) => state.treningWeigth.paramTrening);
-    const transformData = useSelector(rangesTransformData);
-    const dataY = useSelector((state) => state.targetWeigthRanges);
+    const trenings = useSelector((state) => state.targetWeigthRanges.someTrenings);
+    const time = useSelector((state) => state.targetWeigthRanges.timeToTarget);
+    const weigth = useSelector((state) => state.targetWeigthRanges.weight);
 
-    console.log(dataY);
+    useEffect(() => {
+        dispatch(getDataTarget());
+    }, []);
 
-    let timeTransform;
-    let treningsTransform;
-    let weigthTransform;
+    if (!trenings || !time || !weigth) return <h3>Loading...</h3>;
 
-    if (transformData) {
-        /// трансформированная дата времени
-        timeTransform = transformData?.time ? transformData.time : 0;
-        /// трансформированная дата тренировок
-        treningsTransform = transformData?.trenings ? transformData.trenings : 0;
-        /// трансформированная дата тренировок
-        weigthTransform = transformData?.weigthData ? transformData.weigthData : 0;
-    } else {
-        timeTransform = { target: 0, remainder: 0 };
-        treningsTransform = { target: 0, remainder: 0, result: 0 };
-        weigthTransform = { target: 0, result: 0, startWeigth: 0 };
-    }
+    const { parametrs: treningsData } = trenings;
+    const { parametrs: timeData } = time;
+    const { parametrs: weigthData } = weigth;
 
-    const saveTargetWeigthValue = (value) => {
+    const saveWeigth = (value) => {
         dispatch(saveTargetWeigth(value));
     };
 
-    const saveTargetTimeValue = (value) => {
+    const saveTime = (value) => {
         dispatch(saveTargetTime(value));
     };
 
-    const saveTargetTreningsValue = (value) => {
+    const saveTrenings = (value) => {
         dispatch(saveTargetTrenings(value));
+    };
+
+    const saveTarget = () => {
+        dispatch(
+            saveTargetWeigthEnd({
+                someTrenings: trenings,
+                timeToTarget: time,
+                weight: weigth,
+            })
+        );
     };
 
     return (
         <div>
-            <TargetShow/>
-            <div className={`basePositionBlock baseFlex`}>
-                <CustomButton
-                    //funk={deleteAllTunnings}
-                    innerValue={"Save target"}
-                />
-            </div>
-            <WeightRange
-                saveResult={saveTargetWeigthValue}
-                target={weigthTransform.target}
-                startWeigth={weigthTransform.startWeigth}
-                result={weigthTransform.result}
-            />
+            {/* <TargetShow /> */}
+            <CustomButton innerValue={"Save target"} funk={saveTarget} />
+            <WrapperRange saveResult={saveWeigth} data={weigthData} dataRange={dataRanges[2]} />
             {paramValues.some((i) => i === "time") ? (
-                <WrapperRange
-                    saveResult={saveTargetTimeValue}
-                    remainder={timeTransform.remainder}
-                    target={timeTransform.target}
-                    paramTime={"milisec"}
-                    paramProgress={" days"}
-                    dataRange={dataRanges[1]}
-                    nameSvg={'days'}
-                />
+                <WrapperRange saveResult={saveTime} data={timeData} dataRange={dataRanges[1]} />
             ) : null}
             {paramValues.some((i) => i === "trenings") ? (
                 <WrapperRange
-                    saveResult={saveTargetTreningsValue}
-                    remainder={treningsTransform.remainder}
-                    target={treningsTransform.target}
-                    paramTime={"trenings"}
-                    result={treningsTransform.result}
-                    paramProgress={" trenings"}
-                    dataRange={dataRanges[1]}
+                    saveResult={saveTrenings}
+                    data={treningsData}
+                    dataRange={dataRanges[0]}
                 />
             ) : null}
         </div>

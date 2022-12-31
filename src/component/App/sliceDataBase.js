@@ -4,14 +4,14 @@ import { RequestBase } from "../../service/RequestBase";
 const { simpleReqest } = RequestBase();
 
 export const setDataTrening = createAsyncThunk("dataBase/setDataTrening", async () => {
-    const dataRequsts = ["dataBase", "dataAerobic", "targetWeigth"];
+    const dataRequsts = ["dataBase", "dataAerobic", "listTrenings"];
     return Promise.all(dataRequsts.map((item) => simpleReqest(item)));
 });
 
 const initialState = {
     dataBase: null,
     dataAerobic: null,
-    targetWeigth: null,
+    trenings: null,
     statusLoading: "loading",
 };
 
@@ -31,10 +31,10 @@ const sliceDataBase = createSlice({
             //console.log(action);
         });
         builder.addCase(setDataTrening.fulfilled, (state, { payload }) => {
-            const [base, aerobic, targetWeigth ] = payload;
+            const [base, aerobic, trenings ] = payload;
             state.dataBase = base;
             state.dataAerobic = aerobic;
-            state.targetWeigth = targetWeigth;
+            state.trenings = trenings;
             state.statusLoading = "content";
         });
         builder.addCase(setDataTrening.rejected, (state, action) => {

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
-import { RequestBase } from "../../../../service/RequestBase";
+import { RequestBase } from "../../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
 
@@ -53,10 +53,9 @@ export default reducer;
 export const { changeParamTrening } = actions;
 
 export const treningWeigth = createSelector(
-    (state) => state.dataBase.targetWeigth,
+    (state) => state.targetWeigthRanges.selectedExercise,
     (targetWeigth) => {
         if (!targetWeigth) return null;
-
         return targetWeigth;
     }
 );

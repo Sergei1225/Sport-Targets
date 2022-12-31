@@ -1,6 +1,6 @@
-import { TargetProgress } from "../TargetProgress/TargetProgress";
+import { TargetProgress } from "../TargetPage/TargetProgress/TargetProgress";
 
-import { workDataProgressBar } from "../workDataProgressBar";
+import { workDataProgressBar } from "../TargetPage/workDataProgressBar";
 
 export const FilledTargetProgress = (props) => {
     const { paramProgress, remainder, target, nameSvg } = props;

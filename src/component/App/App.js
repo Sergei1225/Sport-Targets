@@ -29,6 +29,7 @@ function App() {
                 <Route path={"/"} element={<Layout />}>
                     <Route index element={<TreningsPage />} />
                     <Route path="/editorTrening" element={<EditorTreningPage />} />
+                    <Route path="/editorTrening/:param" element={<EditorTreningPage />} />
                     <Route path="/createTarget" element={<TargetPage />} />
                     <Route path="/chooseExerciseTargetWeigth" element={<ChooseExercisePage />} />
                     <Route path="/chooseExercise" element={<ChooseExercisePage />} />

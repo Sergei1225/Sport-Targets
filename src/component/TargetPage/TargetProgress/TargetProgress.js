@@ -1,7 +1,7 @@
 import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
 
 export const TargetProgress = (props) => {
-    const { paramProgress, remainder, target, nameSvg, param, valueAbsolute, valuePercent } = props;
+    const { paramProgress, remainder, target, nameSvg, valueAbsolute, valuePercent } = props;
 
     return (
         <>
@@ -12,11 +12,8 @@ export const TargetProgress = (props) => {
                 param={paramProgress}
             />
             <div style={{ color: "grey" }} className={`${""} basePositionElement`}>
-                {""} {valueAbsolute}
-                {paramProgress}
-                {param} from {target}
-                {param}
-                {paramProgress}
+                {valueAbsolute}
+                {` ${paramProgress}`} from {target} {paramProgress}
             </div>
             <div className={`${""} basePositionElement baseFontContentBold`}>
                 COMPLITED {valuePercent}%

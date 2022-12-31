@@ -15,7 +15,7 @@ import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearch
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
 import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
 // страница с целью
-import treningWeigth from "../component/TargetPage/TargetWeigth/TreningWeigth/sliceTreningWeigth";
+import treningWeigth from "../component/TargetPage/TreningTarget/sliceTreningTarget";
 import targetWeigthRanges from "../component/TargetPage/TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
 import showTargetWeigth from "../component/TargetPage/TargetShow/sliceTargetShow";
 /// univer
