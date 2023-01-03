@@ -560,7 +560,7 @@
       "forDelete": false,
       "order": 2,
       "favorite": false,
-      "status": "future",
+      "status": "past",
       "listExersises": [
         {
           "forDelete": false,

@@ -1,0 +1,77 @@
+
+.bTitleBig {
+    font-size: var(--titleBigFontSize);
+    line-height: var(--titleBigLineHeigth);
+}
+
+@media (min-width: 968px){
+    .bTitleBig {
+        font-size: 50px;
+        line-height: 54px;
+    }
+}
+
+.bTitleMiddle {
+    font-size: var(--titleMiddleFontSize);
+    line-height: var(--titleMiddleLineHeigth);
+}
+
+@media (min-width: 968px){
+    .bTitleMiddle {
+        font-size: 40px;
+        line-height: 44px;
+    }
+}
+
+.bContent {
+    font-size: var(--fontSizeContent);
+    line-height: var(--lineHeigthContent);
+}
+
+@media (min-width: 968px){
+    .bContent {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+.bContentBig {
+    font-size: var(--fontSizeContentBig);
+    line-height: var(--lineHeigthContentBig);
+}
+@media (min-width: 968px){
+    .bContentBig {
+        font-size: 26px;
+        line-height: 30px;
+    }
+}
+
+
+
+.bContentSmall {
+    font-size: var(--fontSizeContentSmall);
+    line-height: var(--lineHeigthContentSmall);
+}
+
+.bBold{
+    font-weight: 700;
+}
+
+.bTextShadow{
+    text-shadow: 3px -4px 0px rgba(51,39,67,0.18);
+}
+
+.bLetterSapcing {
+    letter-spacing: 2px;
+}
+
+.bColorContent{
+    color: var(--colorContent)
+}
+.bColorTitle{
+    color: var(--colorContent)
+}
+
+.bColorSubtitle{
+    color: var(--colorSubtitle)
+}

@@ -1,6 +1,6 @@
 import s from "./NavBar.module.scss";
 
-import { getSvg } from "../../serviceComponents/GetSvg/GetSvg";
+import { GetSvg } from "../../serviceComponents/GetSvg/GetSvg";
 
 import { CustomLink } from "../BaseComponents/CustomLink/CustomLink";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -36,23 +36,23 @@ export const NavBar = () => {
 
     const backButton = () => {
         console.log(location.pathname);
-        if(location.pathname === "/") return false;
-        else if(location.pathname === "/test") return false;
-        else if(Object.keys(param).length !== 0) return false;
-        else return true
-    }
+        if (location.pathname === "/") return false;
+        else if (location.pathname === "/test") return false;
+        else if (Object.keys(param).length !== 0) return false;
+        else return true;
+    };
 
-    console.log(backButton())
+    console.log(backButton());
     return (
         <header className={`${s.navBar} `}>
             <div className="container">
                 <div className={`${s.navBar__wrapper} `}>
-                    { backButton() ? (
+                    {backButton() ? (
                         <div
                             onClick={() => navigate(-1)}
                             className={`${s.navBar__back} ${"baseFlexCenter"}`}
                         >
-                           {getSvg('backBtn')}
+                            <GetSvg nameSvg={"backBtn"} />
                         </div>
                     ) : (
                         <div className={`${s.navBar__back}  ${"baseFlexCenter"} `}></div>

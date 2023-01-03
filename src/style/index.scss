@@ -1,8 +1,8 @@
 @import-normalize;
 /* сбросил стили */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
-@import './baseClasses.scss';
-@import './Transition.scss';
+@import "./baseClasses.scss";
+@import "./Transition.scss";
 
 body {
     box-sizing: border-box;
@@ -13,26 +13,47 @@ body {
         text-decoration-thickness: none;
         display: inline-block;
     }
-  
-    
-    --basicPaddingComp: 50px;
-    --baseMarginComp: 40px;
-    --baseMarginElem: 25px;
-    --see: black;
     font-family: "Roboto Condensed", sans-serif;
-    --baseFontSizeContent: 18px;
-    --baseLineHeigthContent: 22px;
 
-    // для перехода от белого в чёрный
-    --backgroungToggle: white;
-    --colorToggle: black;
+    // ширина контейнера
+    --conteinerMaxWidth: 968px;
 
-    // из черного в белый
-    --backgroungToggleReverse: black;
-    --colorToggleReverse: white;
+    // базовый паддинг
+    --paddingBlock: 25px 15px 15px 15px;
+    --paddingElement: 15px;
+    --paddingElementSmall: 10px;
+
+    // базовые шрифты и высота контента
+    --fontSizeContent: calc(14px + (20 - 14) * ((100vw - 320px) / (968 - 320)));
+    --lineHeigthContent: calc(18px + (24 - 18) * ((100vw - 320px) / (968 - 320)));
+
+    --fontSizeContentBig: calc(20px + (26 - 20) * ((100vw - 320px) / (968 - 320)));
+    --lineHeigthContentBig: calc(24px + (30 - 24) * ((100vw - 320px) / (968 - 320)));
+    
+    --fontSizeContentSmall: calc(10px + (16 - 10) * ((100vw - 320px) / (968 - 320)));
+    --lineHeigthContentSmall: calc(14px + (20 - 14) * ((100vw - 320px) / (968 - 320)));
+
+    // базовые шрифты и высота заголовков
+    --titleBigFontSize: calc(30px + (50 - 30) * ((100vw - 320px) / (968 - 320)));
+    --titleBigLineHeigth: calc(34px + (54 - 34) * ((100vw - 320px) / (968 - 320)));
+    --titleMiddleFontSize: calc(24px + (40 - 24) * ((100vw - 320px) / (968 - 320)));
+    --titleMiddleLineHeigth: calc(28px + (44 - 28) * ((100vw - 320px) / (968 - 320)));
+
+    // базовый цвет шрифта контента
+    --colorContent: black;
+    // базовый цвет шрифта контента
+    --colorTitle: black;
+    // базовый цвет сабтайтла
+    --colorSubtitle: grey;
+
+    // базовый цвет бекграунта
+    --colorBackround: white;
+
+    /// базовый бордер радиус
+    --borderRadius: 20px;
 }
 
-.container{
-    max-width: 968px;
+.container {
+    max-width: var(--conteinerMaxWidth);
     margin: 0 auto;
 }

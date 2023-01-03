@@ -1,7 +1,7 @@
 import "./ProgresBar.scss";
 
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
-import { getSvg } from "../GetSvg/GetSvg";
+import { GetSvg } from "../GetSvg/GetSvg";
 
 import { useState, useEffect } from "react";
 
@@ -51,7 +51,7 @@ export const ProgresBar = (props) => {
                 <ProgressProvider valueStart={min} valueEnd={value}>
                     {(value) => (
                         <CircularProgressbarWithChildren value={value}>
-                            {getSvg(nameSvg)}
+                            <GetSvg nameSvg={nameSvg}/>
                             <div style={{ fontSize: 32, marginTop: -5 }}>
                                 {mark} <strong>{`${remainder} ${param}`}</strong>
                             </div>

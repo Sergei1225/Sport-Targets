@@ -4,5 +4,6 @@ import { CustomTitle } from "./CustomTitle/CustomTitle";
 import { CustomButton } from "./CustomButton/CustomButton";
 import { CustomSelect } from "./CustomSelect/CustomSelect";
 import { CustomRange } from "./CustomRange/CustomRange";
+import { CustomTitleBase } from "./CustomTitle/CustomTitle";
 
-export {CustomLink, CustomCheck, CustomTitle, CustomButton, CustomSelect, CustomRange}
+export {CustomLink, CustomCheck, CustomTitle, CustomButton, CustomSelect, CustomRange, CustomTitleBase}

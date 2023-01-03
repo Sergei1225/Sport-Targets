@@ -10,10 +10,10 @@ export const TreningsPage = () => {
     return (
         <section className={""}>
             <BaseHeader text={"MY TRENINGS"} srcImg={srcImages.redGym} />
-            <TargetShow/>
-            <HeaderTrenings />
+            {/* <TargetShow/> */}
+            {/* <HeaderTrenings />
             <SearchTrenings />
-            <FiltersTren />
+            <FiltersTren /> */}
             <ListTrenings />
         </section>
     );

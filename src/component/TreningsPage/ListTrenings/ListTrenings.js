@@ -1,6 +1,7 @@
 import s from "./ListTrenings.module.scss";
 
 import { ItemListTrenings } from "./ItemListTrenings/ItemListTrenings";
+import { CustomTitleBase } from "../../BaseComponents/CustomComponents";
 
 import {
     filtredItems,
@@ -10,7 +11,7 @@ import {
     addToDelete,
     getMyTreningItems,
     favoriteTrening,
-    statusTrenings
+    statusTrenings,
 } from "./sliceListTrenings";
 import { selectorsAdapter } from "./sliceListTrenings";
 
@@ -19,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import { dataTreningsItems } from "./dataTreningsItems";
+import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 
 export const ListTrenings = () => {
     const dispatch = useDispatch();
@@ -32,7 +34,7 @@ export const ListTrenings = () => {
     const itemsList = useSelector(filtredItems);
     const loadingStatus = useSelector((state) => state.listTrenings.loadingStatus);
     const visibleView = useSelector((state) => state.listTrenings.visibleView);
-    console.log(itemsList)
+    console.log(itemsList);
 
     const changeMark = (id, favorite) => {
         dispatch(favoriteTrening({ id, favorite }));
@@ -47,7 +49,7 @@ export const ListTrenings = () => {
     };
 
     const addToDeleteList = (id, forDelete) => {
-        dispatch(addToDelete( id, forDelete ));
+        dispatch(addToDelete(id, forDelete));
     };
 
     const createItems = (data) => {
@@ -72,9 +74,21 @@ export const ListTrenings = () => {
     console.log("рендер листайтема");
 
     return (
-        <div className={`${s.listTrenings} basePositionBlock `}>
-            <div className={`${s.listTrenings__title} baseFontTitleSmall`}>List trenings</div>
-            <TransitionGroup>{itemsTrening}</TransitionGroup>
+        <div className={`${s.listTrenings} bBlock `}>
+            <div className={`${s.listTrenings__wrapper} bWrapperStyle bElement`}>
+                <div className={`${s.listTrenings__title} bElement`}>
+                    <CustomTitleBase
+                        title={"List trenings"}
+                        subtile={
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione earum necessitatibus sit alias quis hic eos, id eum expedita maxime dolorum nihil fugit consequatur recusandae est quos cum aliquid pariatur! "
+                        }
+                    >
+                        <GetSvg nameSvg={"list"}/>
+                    </CustomTitleBase>
+                    
+                </div>
+                <TransitionGroup>{itemsTrening}</TransitionGroup>
+            </div>
         </div>
     );
 };

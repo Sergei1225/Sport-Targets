@@ -2,16 +2,17 @@
 .itemTrenings {
     &__date, &__name{
         align-self: center;
+        flex: 0 0 170px;
     }
     &__exercise{
         // max-width: 300px;
-        flex: 0 0 280px;
+        flex: 1 0 100px;
     }
     &__name{
-        flex: 0 0 120px;
+        flex: 0 0 100px;
     }
     &__func{
-        flex: 1 1 300px;
+        flex: 1 1 250px;
     }
 
 }
