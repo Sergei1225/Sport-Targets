@@ -36,11 +36,26 @@
     display: flex;
     justify-content: space-between;
 }
+.bFlexJC{
+    display: flex;
+    justify-content: space-around;
+}
+.bFlexCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .bFlexJCWrap{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+.bFlexColumnCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .bFlexIconBig{

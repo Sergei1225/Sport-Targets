@@ -1,16 +1,40 @@
 .navBar{
-    min-height: 40px;
-    background-color: black;
+    background-color: rgb(24, 24, 24);
+    &__containerBack{
+        position: relative;
+    }
     &__wrapper {
-        display: flex;
+        padding: 10px;
     }
     &__back{
-        cursor: pointer;
-        min-width: 120px;
-        color:  white;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s linear;
+        position: absolute;
+        left: 0px;
+        top: 50px;
+        &_active{
+            opacity: 1;
+            pointer-events: all;
+            cursor: pointer;
+        }
     }
     &__links{
         flex: 1 0 auto;
         margin-top: 0;
+    }
+    &__item{
+        &_active{
+            * {
+                fill: red;
+            }
+        }
+    }
+    &__text{
+        opacity: 0;
+        color: white;
+        &_active{
+            opacity: 1;
+        }
     }
 }

@@ -5,36 +5,29 @@ import { CustomTitleBase } from "../../BaseComponents/CustomComponents";
 
 import {
     filtredItems,
-    setTrenings,
     deleteOneTrening,
-    statusTrening,
     addToDelete,
     getMyTreningItems,
     favoriteTrening,
     statusTrenings,
 } from "./sliceListTrenings";
-import { selectorsAdapter } from "./sliceListTrenings";
+
+import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-
-import { dataTreningsItems } from "./dataTreningsItems";
-import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 
 export const ListTrenings = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getMyTreningItems());
-        //dispatch(setTrenings(dataTreningsItems));
     }, []);
 
-    const allItemsList = useSelector(selectorsAdapter.selectAll);
     const itemsList = useSelector(filtredItems);
     const loadingStatus = useSelector((state) => state.listTrenings.loadingStatus);
     const visibleView = useSelector((state) => state.listTrenings.visibleView);
-    console.log(itemsList);
 
     const changeMark = (id, favorite) => {
         dispatch(favoriteTrening({ id, favorite }));
@@ -71,7 +64,7 @@ export const ListTrenings = () => {
 
     const itemsTrening = createItems(itemsList, visibleView);
 
-    console.log("рендер листайтема");
+    //console.log("рендер листайтема");
 
     return (
         <div className={`${s.listTrenings} bBlock `}>
@@ -79,13 +72,10 @@ export const ListTrenings = () => {
                 <div className={`${s.listTrenings__title} bElement`}>
                     <CustomTitleBase
                         title={"List trenings"}
-                        subtile={
-                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione earum necessitatibus sit alias quis hic eos, id eum expedita maxime dolorum nihil fugit consequatur recusandae est quos cum aliquid pariatur! "
-                        }
+                        subtile={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
                     >
-                        <GetSvg nameSvg={"list"}/>
+                        <GetSvg nameSvg={"list"} />
                     </CustomTitleBase>
-                    
                 </div>
                 <TransitionGroup>{itemsTrening}</TransitionGroup>
             </div>

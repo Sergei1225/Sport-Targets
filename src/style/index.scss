@@ -23,22 +23,6 @@ body {
     --paddingElement: 15px;
     --paddingElementSmall: 10px;
 
-    // базовые шрифты и высота контента
-    --fontSizeContent: calc(14px + (20 - 14) * ((100vw - 320px) / (968 - 320)));
-    --lineHeigthContent: calc(18px + (24 - 18) * ((100vw - 320px) / (968 - 320)));
-
-    --fontSizeContentBig: calc(20px + (26 - 20) * ((100vw - 320px) / (968 - 320)));
-    --lineHeigthContentBig: calc(24px + (30 - 24) * ((100vw - 320px) / (968 - 320)));
-    
-    --fontSizeContentSmall: calc(10px + (16 - 10) * ((100vw - 320px) / (968 - 320)));
-    --lineHeigthContentSmall: calc(14px + (20 - 14) * ((100vw - 320px) / (968 - 320)));
-
-    // базовые шрифты и высота заголовков
-    --titleBigFontSize: calc(30px + (50 - 30) * ((100vw - 320px) / (968 - 320)));
-    --titleBigLineHeigth: calc(34px + (54 - 34) * ((100vw - 320px) / (968 - 320)));
-    --titleMiddleFontSize: calc(24px + (40 - 24) * ((100vw - 320px) / (968 - 320)));
-    --titleMiddleLineHeigth: calc(28px + (44 - 28) * ((100vw - 320px) / (968 - 320)));
-
     // базовый цвет шрифта контента
     --colorContent: black;
     // базовый цвет шрифта контента
@@ -56,4 +40,5 @@ body {
 .container {
     max-width: var(--conteinerMaxWidth);
     margin: 0 auto;
+    
 }

@@ -6,7 +6,7 @@ export const CustomLink = ({ children, to, baseStyle, ...props }) => {
     
     if(!baseStyle) baseStyle = s.customLink;
 
-    const styleLink = match ? s.customLink__activeLink : baseStyle;
+    const styleLink = match ? s.customLink__activeLink : "";
 
-    return <Link className={styleLink} to={to}>{children}</Link>;
+    return <Link className={`${baseStyle} ${styleLink}`} to={to}>{children}</Link>;
 };

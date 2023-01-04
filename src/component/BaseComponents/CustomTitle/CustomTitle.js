@@ -20,7 +20,7 @@ export const CustomTitleBase = memo(({ title, subtile, children }) => {
         <>
             <div className="bFlex bAlignItems">
                 <div className="bFlexIconBig ">{children}</div>
-                <div className={`${"bTitleMiddle bBold bTextShadow bLetterSapcing bColorTitle"}`}>
+                <div className={`${"bTitleMiddle bBold bLetterSapcing bColorTitle"}`}>
                     {innerTitle}
                 </div>
             </div>

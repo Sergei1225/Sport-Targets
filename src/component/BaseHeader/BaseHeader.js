@@ -10,10 +10,12 @@ export const BaseHeader = memo((props) => {
     if (!text) text = "create new trening";
 
     return (
-        <div className={s.baseHeader}>
-            <div className={`${s.baseHeader__title} ${"baseFontTitle"}`}>{text.toUpperCase()}</div>
-            <div className={s.baseHeader__img}>
-                <img src={srcImg} alt="headerImage" />
+        <div className={`${s.baseHeader} bBlock`}>
+            <div className={`${s.baseHeader__title} ${"bElement bTitleBig bTextShadow "}`}>
+                {text.toUpperCase()}
+            </div>
+            <div className={`${s.baseHeader__img} `}>
+                <img className="bImgCover bBorderRadius" src={srcImg} alt="headerImage" />
             </div>
         </div>
     );
