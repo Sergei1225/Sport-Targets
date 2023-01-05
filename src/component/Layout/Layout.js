@@ -11,7 +11,6 @@ export const Layout = () => {
             <div className="container footerDown">
                 <Outlet />
             </div>
-            <NavBar/>
         </>
     );
 };

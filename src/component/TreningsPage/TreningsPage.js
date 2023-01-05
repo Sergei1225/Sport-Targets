@@ -9,12 +9,12 @@ import { srcImages } from "../../img/srcImages";
 export const TreningsPage = () => {
     return (
         <section className={""}>
-            <BaseHeader text={"MY TRENINGS"} srcImg={srcImages.redGym} />
+            {/* <BaseHeader text={"MY TRENINGS"} srcImg={srcImages.redGym} /> */}
             {/* <TargetShow/> */}
             {/* <HeaderTrenings />
             <SearchTrenings />
             <FiltersTren /> */}
-            <ListTrenings />
+            {/* <ListTrenings /> */}
         </section>
     );
 };

@@ -1,39 +1,98 @@
-.navBar{
+.navBar {
     background-color: rgb(24, 24, 24);
-    &__containerBack{
+    &__containerBack {
         position: relative;
+        max-width: var(--conteinerMaxWidth);
+        margin: 0 auto;
     }
     &__wrapper {
         padding: 10px;
+        @media (max-width: 968px) {
+            visibility: hidden;
+        }
     }
-    &__back{
+    &__burgerMenu_active, &__burgerMenu{
+        top: 20px;
+        right: 15px;
+        z-index: 101;
+    }
+    &__burgerMenu_active{
+        position: fixed;
+    }
+    &__burgerMenu{
+        position: absolute;
+        @media (min-width: 969px){
+            visibility: hidden;
+        }
+    }
+    &__overlay {
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background-color: rgba(61, 60, 60, 0.5);
+    }
+    &__overlay_active {
+        transform: translate(-100%);
+    }
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+    &__list_active {
+        color: red;
+        padding: 80px 20px 30px 20px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgb(24, 24, 24);
+        min-height: 100vh;
+        z-index: 100;
+        transition: all 0.5s linear;
+    }
+    &__list {
+        transform: translate(100%);
+        opacity: 0;
+        pointer-events: none;
+    }
+    &__itemList {
+        padding: 15px 0;
+    }
+    &__back {
         opacity: 0;
         pointer-events: none;
         transition: all 0.5s linear;
         position: absolute;
         left: 0px;
         top: 50px;
-        &_active{
+        &_active {
             opacity: 1;
             pointer-events: all;
             cursor: pointer;
         }
     }
-    &__links{
+    &__links {
         flex: 1 0 auto;
         margin-top: 0;
     }
-    &__item{
-        &_active{
+    &__item {
+        &_active {
             * {
                 fill: red;
             }
         }
     }
-    &__text{
+    &__menuText {
+        color: white;
+    }
+    &__text {
         opacity: 0;
         color: white;
-        &_active{
+        &_active {
             opacity: 1;
         }
     }

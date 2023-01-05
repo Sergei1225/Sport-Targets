@@ -1,17 +1,15 @@
 import s from "./Burger.module.scss";
 
-export const Burger = () => {
+export const Burger = ({changeValue, active}) => {
+
     return (
         <div className={`${s.burger}`}>
-            <div className={`${s.burger__wrapper} bFlexCenter `}>
-                <div className={`${s.burger__inner} ${s.burger__inner_activeA}`}></div>
-            </div>
-            <div className={`${s.burger__line}  `}>
-              <div>11111111111111111111111111111</div>
-              <div>122222222222222</div>
-              <div>1</div>
-              <div>1</div>
+            <div className={`${s.burger__wrapper} `}>
+                <div className={`${s.burger__one} ${active && s.burger__one_active}`}></div>
+                <div className={`${s.burger__two} ${active && s.burger__two_active}`}></div>
+                <div className={`${s.burger__three} ${active && s.burger__three_active}`}></div>
             </div>
         </div>
     );
 };
+
