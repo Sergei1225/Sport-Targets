@@ -34,8 +34,8 @@ export const NavBar = () => {
         });
     };
 
-    const links = createLinks(dataLinks);
-    const linksMenu = createLinks(dataLinks);
+    const links = !activeBurger ? createLinks(dataLinks) : null;
+    const linksMenu = activeBurger ? createLinks(dataLinks) : null;
 
     const backButton = () => {
         console.log(location.pathname);

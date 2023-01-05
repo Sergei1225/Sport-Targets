@@ -1,5 +1,6 @@
 .navBar {
     background-color: rgb(24, 24, 24);
+    min-height: 110px;
     &__containerBack {
         position: relative;
         max-width: var(--conteinerMaxWidth);

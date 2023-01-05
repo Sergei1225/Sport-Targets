@@ -12,8 +12,6 @@ import {
     statusTrenings,
 } from "./sliceListTrenings";
 
-import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
-
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -73,8 +71,8 @@ export const ListTrenings = () => {
                     <CustomTitleBase
                         title={"List trenings"}
                         subtile={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        nameSvg={"list"}
                     >
-                        <GetSvg nameSvg={"list"} />
                     </CustomTitleBase>
                 </div>
                 <TransitionGroup>{itemsTrening}</TransitionGroup>

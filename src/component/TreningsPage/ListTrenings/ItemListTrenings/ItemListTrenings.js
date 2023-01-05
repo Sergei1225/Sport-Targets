@@ -70,7 +70,7 @@ export const ItemListTrenings = (props) => {
     return (
         <div key={id} className={`${s.itemTrenings} bElement`}>
             <div
-                className={`${s.itemTrenings__wrapper} ${styleMark} ${styleDelete} bFlex bElement bWrapperStyleElem bBoxShadowMini bTransition`}
+                className={`${s.itemTrenings__wrapper} ${styleMark} ${styleDelete} bFlex bWrapperStyleElem`}
             >
                 <div className={`${s.itemTrenings__date} bContentBig bBold `}>
                     {date} <br />

@@ -1,6 +1,8 @@
 import s from "./SearchTrenings.module.scss";
 
 import { createChecks } from "../../../service/createChecks";
+import { CustomTitleBase } from "../../BaseComponents/CustomComponents";
+import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 
 import { changeSearchValue, searchParam } from "./sliceSearchTrenings";
 
@@ -20,20 +22,24 @@ export const SearchTrenings = () => {
     const checksItems = createChecks(dataCheck, changeParam, param)
 
     return (
-        <div className={`${s.searchTrenings}`}>
-            <div className={`${s.searchTrenings__title} basePositionElement baseFontTitleSmall`}>Search</div>
-            <div className={`${s.searchTrenings__wrapper} basePositionBlock baseFlex`} >
-                <div className={`${s.searchTrenings__search}`}>
-                    <input
-                        className={`${""} basePositionElement baseFontContentBold`}
-                        onChange={(e) => dispatch(changeSearchValue(e.target.value))}
-                        value={searchValue}
-                        type="text"
-                        placeholder="Enter data"
-                    />
+        <div className={`${s.searchTrenings} bBlock`}>
+            <div className={`${s.searchTrenings__wrapper} bWrapperStyle`}>
+                <div className={`${s.searchTrenings__title} bElement`}>
+                    <CustomTitleBase title={"Search"} nameSvg={"bottle"} styleSvg={s.searchTrenings__icon}/>
                 </div>
-                <div className={`${s.searchTrenings__check}`}>
-                    {checksItems}
+                <div className={`${s.searchTrenings__wrapper} basePositionBlock baseFlex`} >
+                    <div className={`${s.searchTrenings__search}`}>
+                        <input
+                            className={`${""} basePositionElement baseFontContentBold`}
+                            onChange={(e) => dispatch(changeSearchValue(e.target.value))}
+                            value={searchValue}
+                            type="text"
+                            placeholder="Enter data"
+                        />
+                    </div>
+                    <div className={`${s.searchTrenings__check}`}>
+                        {checksItems}
+                    </div>
                 </div>
             </div>
         </div>

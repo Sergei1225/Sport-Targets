@@ -1,0 +1,44 @@
+.bWrapperStyle {
+    border-radius: var(--borderRadius);
+    @extend .bBoxShadow;
+    @extend .bElement;
+}
+
+.bWrapperStyleElem {
+    border-radius: var(--borderRadius);
+    border: 2px solid rgb(107, 99, 99);
+    @extend .bBoxShadow;
+    @extend .bElement;
+    @extend .bBoxShadowMini;
+    @extend .bTransition;
+}
+
+.bBtn {
+    cursor: pointer;
+    background-color: var(--colorBackroundAlt);
+    color: var(--colorContentAlt);
+    border: 2px solid var(--colorBackroundAlt);
+    padding: 10px 15px;
+    min-width: 80px;
+    transition: all 0.2s linear;
+    font-weight: 700;
+    @extend .bContent;
+    @extend .bBorderRadius;
+    @extend .bBoxShadowMini;
+    @extend .bHoverTransformY;
+    @extend .bHoverRed;
+}
+.bBtnActive{
+    background-color: var(--colorBackround);
+    color: var(--colorContent);
+}
+.bHoverTransformY{
+    &:hover{
+        transform: translateY(-3px);
+    }
+}
+.bHoverRed{
+    &:hover{
+        color: red;
+    }
+}

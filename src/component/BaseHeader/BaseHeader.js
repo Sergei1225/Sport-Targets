@@ -11,11 +11,13 @@ export const BaseHeader = memo((props) => {
 
     return (
         <div className={`${s.baseHeader} bBlock`}>
-            <div className={`${s.baseHeader__title} ${"bElement bTitleBig bTextShadow "}`}>
-                {text.toUpperCase()}
-            </div>
-            <div className={`${s.baseHeader__img} `}>
-                <img className="bImgCover bBorderRadius" src={srcImg} alt="headerImage" />
+            <div className={`${s.baseHeader__wrapper} bBoxShadow bBorderRadius`}>
+                <div className={`${s.baseHeader__title} ${"bElement bTitleBig bTextShadow "}`}>
+                    {text.toUpperCase()}
+                </div>
+                <div className={`${s.baseHeader__img} `}>
+                    <img className="bImgCover bBorderRadius" src={srcImg} alt="headerImage" />
+                </div>
             </div>
         </div>
     );

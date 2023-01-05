@@ -19,3 +19,23 @@ export const CustomButton = memo((props) => {
         </button>
     );
 });
+
+export const CBtnStyled = memo((props) => {
+    let { styleBtn, active, funk, disabledParam, innerValue, addStyle} = props;
+
+    if (!styleBtn) styleBtn = "bBtn";
+
+    if (addStyle) styleBtn += ` ${addStyle}`;
+
+    if (active) styleBtn += " bBtnActive";
+
+    return (
+        <button
+            disabled={disabledParam}
+            onClick={() => funk && funk()}
+            className={`${styleBtn} ${active}`}
+        >
+            {innerValue}
+        </button>
+    );
+});

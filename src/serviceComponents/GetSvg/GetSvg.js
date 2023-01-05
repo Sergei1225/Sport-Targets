@@ -12,7 +12,9 @@ import { ReactComponent as GantelSquare } from "../../img/svg/gantelSquare.svg";
 import { ReactComponent as Locker } from "../../img/svg/locker.svg"; 
 import { ReactComponent as Dumbbell } from "../../img/svg/dumbbell.svg"; 
 
-export const GetSvg = ({nameSvg}) => {
+export const GetSvg = ({nameSvg, styleSvg}) => {
+
+    console.log(styleSvg)
 
     switch(nameSvg){
         case "days":
@@ -23,8 +25,8 @@ export const GetSvg = ({nameSvg}) => {
             return <GantelGood className="gantelSvg" width={'120px'} height={"120px"}/>
         case "list":
             return <List className="listSvg" width={'100%'} height={"100%"}/>
-        case "bootle":
-            return <Bottle className="bottle" width={'100%'} height={"100%"}/>
+        case "bottle":
+            return <Bottle className={`bottle ${styleSvg}`} width={'100%'} height={"100%"}/>
         case "run":
             return <Run className="run" width={'100%'} height={"100%"}/>
         case "timer":

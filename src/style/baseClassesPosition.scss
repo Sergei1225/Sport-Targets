@@ -10,62 +10,51 @@
     margin-top: 10px;
 }
 
-.bWrapperStyle {
-    border-radius: var(--borderRadius);
-    @extend .bBoxShadow;
-}
-
-.bWrapperStyleElem {
-    border-radius: var(--borderRadius);
-    border: 2px solid rgb(107, 99, 99);
-    @extend .bBoxShadow;
-}
-
-.bFlex{
+.bFlex {
     display: flex;
     gap: 10px;
 }
 
-.bFlexWrap{
+.bFlexWrap {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.bFlexJC{
+.bFlexJC {
     display: flex;
     justify-content: space-between;
 }
-.bFlexJC{
+.bFlexJC {
     display: flex;
     justify-content: space-around;
 }
-.bFlexCenter{
+.bFlexCenter {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.bFlexJCWrap{
+.bFlexJCWrap {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.bFlexColumnCenter{
+.bFlexColumnCenter {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
 
-.bFlexIconBig{
+.bFlexIconBig {
     flex: 0 0 60px;
 }
-.bFlexIconSmall{
+.bFlexIconSmall {
     flex: 0 0 30px;
 }
 
-.bAlignItems{
+.bAlignItems {
     align-items: center;
 }
 
@@ -111,4 +100,3 @@
 .bInlineBlock {
     display: inline-block;
 }
-
