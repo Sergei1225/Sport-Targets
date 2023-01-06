@@ -3,6 +3,7 @@ import s from "./TargetShow.module.scss";
 import { TargetProgress } from "../TargetProgress/TargetProgress";
 
 import { getDataTargetWeigth } from "./sliceTargetShow";
+import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -14,6 +15,13 @@ export const TargetShow = () => {
     useEffect(() => {
         dispatch(getDataTargetWeigth());
     }, []);
+
+    useEffect(() => {
+        const noo = document.querySelector("body");
+        const yoo = window.getComputedStyle(noo).getPropertyValue("width");
+        console.log(yoo);
+    }, []);
+
 
     if (!dataWeigth) return <h3>Loading...</h3>;
 
@@ -38,8 +46,14 @@ export const TargetShow = () => {
     const itemsWeigth = createItemsWeigth(dataWeigth);
 
     return (
-        <div className={`${s.targetShow} bBlock bFlex bFlexWrap bFlexJCSA`}>
-            {itemsWeigth}
-        </div>
+        <>
+            {/* <div className={`${s.targetShow} bBlock bFlex bFlexWrap bFlexJCSA`}>
+                {itemsWeigth}
+            </div> */}
+            <SliderCarusel>
+                {itemsWeigth}
+            </SliderCarusel>
+        </>
+        
     );
 };
