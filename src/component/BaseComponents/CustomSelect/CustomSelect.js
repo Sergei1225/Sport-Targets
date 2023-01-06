@@ -4,7 +4,7 @@ import { randomId } from "../../../service/RandomId";
 export const CustomSelect = memo((props) => {
     let { styleItem, dataOption, changeProp, valueSelect } = props;
 
-    if (!styleItem) styleItem = "baseBtn baseBorderRadius ";
+    if (!styleItem) styleItem = "bSelect";
 
     //console.log('дефолтный селект')
 
@@ -13,7 +13,7 @@ export const CustomSelect = memo((props) => {
             onChange={(e) => {
                 changeProp(e.target.value);
             }}
-            className={`${styleItem} basePositionElement`}
+            className={`${styleItem}`}
             value={valueSelect}
         >
             {dataOption.map((item) => {

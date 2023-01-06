@@ -25,7 +25,13 @@ const dataFilters = [
 
 const initialState = {
     filterValue: 'all',
-    dataFilters: dataFilters
+    dataFilters: dataFilters,
+    sortProp: "",
+    dataOption: [
+        { value: "date", inner: "Date" },
+        { value: "name", inner: "Name" },
+        { value: "", inner: "Sorting" },
+    ]
 };
 
 const sliceFilterTren = createSlice({
@@ -35,6 +41,9 @@ const sliceFilterTren = createSlice({
         changeFilterTren: (state, {payload}) => {
             state.filterValue = payload;
         },
+        changeSort: (state, {payload}) => {
+            state.sortProp = payload;
+        },
     }
 });
 
@@ -42,4 +51,4 @@ const { reducer, actions } = sliceFilterTren;
 
 export default reducer;
 
-export const { changeFilterTren } = actions;
+export const { changeFilterTren, changeSort } = actions;

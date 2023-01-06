@@ -1,3 +1,5 @@
+@import './baseFlex.scss';
+
 .bBlock {
     padding: var(--paddingBlock);
 }
@@ -5,86 +7,11 @@
 .bElement {
     padding: var(--paddingElement);
 }
-.bElementMt {
-    padding: var(--paddingElement);
-    margin-top: 10px;
+.bElementSmall {
+    padding: var(--paddingElementSmall);
 }
 
-.bFlex {
-    display: flex;
-    gap: 10px;
-}
-
-.bFlexWrap {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.bFlexJC {
-    display: flex;
-    justify-content: space-between;
-}
-.bFlexJC {
-    display: flex;
-    justify-content: space-around;
-}
-.bFlexCenter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bFlexJCWrap {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.bFlexColumnCenter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.bFlexIconBig {
-    flex: 0 0 60px;
-}
-.bFlexIconSmall {
-    flex: 0 0 30px;
-}
-
-.bAlignItems {
-    align-items: center;
-}
-
-.bSizeIconBig {
-    width: 60px;
-    height: 60px;
-}
-
-.bSizeIconSmall {
-    width: 30px;
-    height: 30px;
-}
-
-.bImgCover {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.bBorderRadius {
-    border-radius: var(--borderRadius);
-}
-
-.bBoxShadow {
-    box-shadow: 5px 15px 15px 3px black, inset 5px 5px 10px 2px rgb(141, 136, 136);
-}
-.bBoxShadowMini {
-    box-shadow: 5px 15px 15px 3px rgb(90, 88, 88);
-}
-
+// единичные правила
 .bMarginTop {
     margin-top: 10px;
 }
@@ -100,3 +27,41 @@
 .bInlineBlock {
     display: inline-block;
 }
+
+// размеры 
+.bSizeIconVeryBig {
+    width: 120px;
+    height: 120px;
+}
+.bSizeIconBig {
+    width: 60px;
+    height: 60px;
+}
+
+.bSizeIconSmall {
+    width: 30px;
+    height: 30px;
+}
+
+.bImgCover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+// стилистика
+.bBorderRadius {
+    border-radius: var(--borderRadius);
+}
+
+.bBoxShadow {
+    box-shadow: 5px 15px 15px 3px black, inset 5px 5px 10px 2px rgb(141, 136, 136);
+}
+.bBoxShadowMini {
+    box-shadow: 5px 15px 15px 3px rgb(90, 88, 88);
+}
+
+.bBorderSolid {
+    border: 2px solid black;
+}
+
+

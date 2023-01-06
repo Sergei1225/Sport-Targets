@@ -395,7 +395,7 @@
       "forDelete": false,
       "order": 0,
       "favorite": false,
-      "status": "past",
+      "status": "future",
       "listExersises": [
         {
           "forDelete": false,

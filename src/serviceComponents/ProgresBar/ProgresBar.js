@@ -47,7 +47,7 @@ export const ProgresBar = (props) => {
     const mark = value > 100 ? 'above' : 'left';
 
     return (
-            <div style={{ width: "100%", height: "270px" }} className="CircularInner">
+            <div style={{ width: "100%", height: "100%" }} className="CircularInner">
                 <ProgressProvider valueStart={min} valueEnd={value}>
                     {(value) => (
                         <CircularProgressbarWithChildren value={value}>

@@ -1,0 +1,45 @@
+// флексы
+
+/// единичные правила
+.bFlexWrap{
+    flex-wrap: wrap;
+}
+.bFlexJCSA {
+    justify-content: space-around;
+}
+.bFlexJCSB {
+    justify-content: space-between;
+}
+.bAlignItems {
+    align-items: center;
+}
+
+//// множественные
+
+.bFlex {
+    display: flex;
+    gap: 10px;
+}
+
+.bFlexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bFlexColumnCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+// размеры
+
+.bFlexIconBig {
+    flex: 0 0 60px;
+}
+.bFlexIconSmall {
+    flex: 0 0 30px;
+}

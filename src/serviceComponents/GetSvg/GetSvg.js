@@ -14,7 +14,7 @@ import { ReactComponent as Dumbbell } from "../../img/svg/dumbbell.svg";
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
-    console.log(styleSvg)
+    // console.log(styleSvg)
 
     switch(nameSvg){
         case "days":

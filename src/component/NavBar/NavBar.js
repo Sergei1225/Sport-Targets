@@ -56,7 +56,7 @@ export const NavBar = () => {
                         <GetSvg nameSvg={"backBtn"} />
                     </div>
                 </div>
-                <div className={`${s.navBar__wrapper} ${"bElement"} ${"bFlexJC"} bContent`}>{links}</div>
+                <div className={`${s.navBar__wrapper} ${"bElement"} ${"bFlex bFlexJCSA"} bContent`}>{links}</div>
                 <div
                     className={`${!activeBurger && s.navBar__burgerMenu} ${
                         activeBurger && s.navBar__burgerMenu_active

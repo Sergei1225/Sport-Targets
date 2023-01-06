@@ -139,7 +139,7 @@ const filtredList = (data, filter) => {
 
 export const filtredItems = createSelector(
     (state) => state.listTrenings.entities,
-    (state) => state.headerTrenings.sortProp,
+    (state) => state.filterTrens.sortProp,
     (state) => state.filterTrens.filterValue,
     (state) => state.searchTrenings.searchValue,
     (state) => state.searchTrenings.param,

@@ -10,7 +10,6 @@ import selectExercise from "../component/ChooseExercisePage/SelectExercise/slice
 import listExercise from "../component/ChooseExercisePage/ListExercise/sliceListExercise";
 import constrTrening from "../component/CreateTreningPage/ConstrTrening/sliceConstrTrening";
 // страница отбражения тренировок
-import headerTrenings from "../component/TreningsPage/HeaderTrening/sliceHeaderTrenings";
 import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearchTrenings";
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
 import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenings";
@@ -36,7 +35,6 @@ const store = configureStore({
         listExercise,
         constrTrening,
         listTrenings,
-        headerTrenings,
         searchTrenings,
         filterTrens,
         listEditorTrening,

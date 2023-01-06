@@ -24,9 +24,10 @@ const sliceShowTargetWeigth = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getDataTargetWeigth.fulfilled, (state, { payload }) => {
             state.weigthTarget = [
+                { ...payload.weight.parametrs, id: randomId() },
                 { ...payload.someTrenings.parametrs, id: randomId() },
                 { ...payload.timeToTarget.parametrs, id: randomId() },
-                { ...payload.weight.parametrs, id: randomId() },
+                
             ];
             state.statusLoading = "content";
         });

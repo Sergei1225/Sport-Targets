@@ -55,7 +55,7 @@ export const ItemListTrenings = (props) => {
                 </div>
             );
         });
-        return <div className={`${s.itemTrenings__func} bFlex bFlexJC `}>{items}</div>;
+        return <div className={`${s.itemTrenings__func} bFlex bFlexJCSA `}>{items}</div>;
     };
 
     const dataItemsFunction = [
@@ -70,7 +70,7 @@ export const ItemListTrenings = (props) => {
     return (
         <div key={id} className={`${s.itemTrenings} bElement`}>
             <div
-                className={`${s.itemTrenings__wrapper} ${styleMark} ${styleDelete} bFlex bWrapperStyleElem`}
+                className={`${s.itemTrenings__wrapper} ${styleMark} ${styleDelete} bFlex bElement bWrapperStyleElem`}
             >
                 <div className={`${s.itemTrenings__date} bContentBig bBold `}>
                     {date} <br />

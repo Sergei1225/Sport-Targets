@@ -21,6 +21,16 @@
         line-height: 44px;
     }
 }
+.bTitleSmall {
+    font-size: calc(24px + (30 - 24) * ((100vw - 320px) / (968 - 320)));
+    line-height: calc(28px + (34 - 28) * ((100vw - 320px) / (968 - 320)));
+}
+@media (min-width: 968px) {
+    .bTitleSmall {
+        font-size: 30px;
+        line-height: 34px;
+    }
+}
 
 .bContent {
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (968 - 320)));

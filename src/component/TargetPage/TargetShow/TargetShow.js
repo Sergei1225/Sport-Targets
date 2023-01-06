@@ -21,7 +21,7 @@ export const TargetShow = () => {
         if (!data) return null;
         return data.map((item) => {
             return (
-                <div key={item.id} className={s.targetShow__item}>
+                <div key={item.id} className={`${s.targetShow__item} bElementSmall `}>
                     <TargetProgress
                         remainder={item.remainder}
                         target={item.target}
@@ -38,7 +38,7 @@ export const TargetShow = () => {
     const itemsWeigth = createItemsWeigth(dataWeigth);
 
     return (
-        <div className={`${s.targetShow} basePositionBlock baseFlexGapWrapSpaceAround`}>
+        <div className={`${s.targetShow} bBlock bFlex bFlexWrap bFlexJCSA`}>
             {itemsWeigth}
         </div>
     );

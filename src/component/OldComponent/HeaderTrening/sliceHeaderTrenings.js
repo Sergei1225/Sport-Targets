@@ -13,8 +13,8 @@ const sliceHeaderTrenings = createSlice({
     name: "headerTrenings",
     initialState,
     reducers: {
-        headerChangeProp: (state, action) => {
-            state.sortProp = action.payload;
+        headerChangeProp: (state, {payload}) => {
+            state.sortProp = payload;
         },
     },
 });

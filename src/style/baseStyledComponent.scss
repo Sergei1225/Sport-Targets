@@ -1,25 +1,33 @@
 .bWrapperStyle {
     border-radius: var(--borderRadius);
     @extend .bBoxShadow;
-    @extend .bElement;
 }
 
 .bWrapperStyleElem {
     border-radius: var(--borderRadius);
     border: 2px solid rgb(107, 99, 99);
     @extend .bBoxShadow;
-    @extend .bElement;
     @extend .bBoxShadowMini;
     @extend .bTransition;
 }
-
-.bBtn {
-    cursor: pointer;
+.bInput{
+    padding: 10px 15px;
+    min-width: 60px;
     background-color: var(--colorBackroundAlt);
     color: var(--colorContentAlt);
     border: 2px solid var(--colorBackroundAlt);
+    cursor: pointer;
+    @extend .bContent;
+    @extend .bBorderRadius;
+    @extend .bBoxShadowMini;
+}
+.bCheck{
     padding: 10px 15px;
     min-width: 80px;
+    background-color: var(--colorBackroundAlt);
+    color: var(--colorContentAlt);
+    border: 2px solid var(--colorBackroundAlt);
+    cursor: pointer;
     transition: all 0.2s linear;
     font-weight: 700;
     @extend .bContent;
@@ -27,6 +35,41 @@
     @extend .bBoxShadowMini;
     @extend .bHoverTransformY;
     @extend .bHoverRed;
+    * {
+        margin-left: 15px;
+    }
+}
+.bCheckActive{
+    background-color: var(--colorBackround);
+    color: var(--colorContent);
+}
+
+.bBtn {
+    padding: 10px 15px;
+    min-width: 80px;
+    background-color: var(--colorBackroundAlt);
+    color: var(--colorContentAlt);
+    border: 2px solid var(--colorBackroundAlt);
+    cursor: pointer;
+    transition: all 0.2s linear;
+    font-weight: 700;
+    @extend .bContent;
+    @extend .bBorderRadius;
+    @extend .bBoxShadowMini;
+    @extend .bHoverTransformY;
+    @extend .bHoverRed;
+}
+.bSelect{
+    padding: 10px 15px;
+    min-width: 80px;
+    background-color: var(--colorBackroundAlt);
+    color: var(--colorContentAlt);
+    border: 2px solid var(--colorBackroundAlt);
+    cursor: pointer;
+    font-weight: 700;
+    @extend .bContent;
+    @extend .bBorderRadius;
+    @extend .bBoxShadowMini;
 }
 .bBtnActive{
     background-color: var(--colorBackround);
