@@ -1,6 +1,6 @@
 import s from "./ConstrTrening.module.scss";
 
-import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents";
+import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
 import { TuningTrening } from "../TuningTrening/TuningTrening";
 import { SimpleTuning } from "../SimpleTuning/SimpleTuning";
 
@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const ConstrEditorTrening = (props) => {
-    const {pathConstr, pathList, pathLinkChoose} = props;
+    const { pathConstr, pathList, pathLinkChoose } = props;
 
     const itemsForTuning = useSelector((state) => state.constrEditorTrening.dataSelectedItems);
 
@@ -25,7 +25,7 @@ export const ConstrEditorTrening = (props) => {
     }, []);
 
     const deleteSelectedItems = (id) => {
-        dispatch(deleteSelectedItem({id, path: pathConstr}));
+        dispatch(deleteSelectedItem({ id, path: pathConstr }));
     };
 
     const saveTren = (newItem) => {
@@ -37,8 +37,8 @@ export const ConstrEditorTrening = (props) => {
         };
 
         console.log(fullNewItem);
-        dispatch(addTunigedTrening({data:fullNewItem, path: pathList}));
-        dispatch(deleteSelectedItem({id:fullNewItem.id, path: pathConstr}));
+        dispatch(addTunigedTrening({ data: fullNewItem, path: pathList }));
+        dispatch(deleteSelectedItem({ id: fullNewItem.id, path: pathConstr }));
     };
 
     const deleteAllTunnings = () => {
@@ -81,30 +81,30 @@ export const ConstrEditorTrening = (props) => {
 
     const tuningItems = tuningTrenings(itemsForTuning);
 
-
     return (
-        <div className={`${s.constrTren}  ${"basePositionBlock"}`}>
-            <div className={`${s.constrTren__header} ${"basePositionBlock"}`}>
-                <CustomTitle
+        <div className={`${s.constrTren}  ${"bBlock"}`}>
+            <div className={`${s.constrTren__header} ${" bElement"}`}>
+                <CustomTitleBase
                     title={"Choose and customize exercises"}
                     subtile={"You can quickly select the desired exercises and customize"}
+                    nameSvg={"bottle"}
+                    styleSvg={""}
                 />
+                <div className={`${s.constrTren__link} ${"bElement"}`}>
+                    <CBtnStyled funk={() => navigate(pathLinkChoose)} innerValue={"Choose exercise"} />
+                </div>
             </div>
-            <div className={`${"basePositionBlock"}`}>
-                <CustomButton
-                    funk={() => navigate(pathLinkChoose)}
-                    innerValue={"Choose exercise"}
-                />
-            </div>
-            <div className={`${s.constrTren}  ${"basePositionBlock"}`}>
-                <CustomTitle
+            <div className={`${s.constrTren__list}  ${"bElement"}`}>
+                <CustomTitleBase
                     title={"Tuning"}
                     subtile={"You can quickly select the desired exercises and customize"}
+                    nameSvg={"run"}
+                    styleSvg={""}
                 />
                 <TransitionGroup>{tuningItems}</TransitionGroup>
-            </div>
-            <div className={` ${"basePositionBlock baseFlexGapNoJC"}`}>
-                <CustomButton funk={deleteAllTunnings} innerValue={"Clear tuning"} />
+                <div className={`${s.constrTren__btns} ${"bElement "}`}>
+                    <CBtnStyled funk={deleteAllTunnings} innerValue={"Clear tuning"} />
+                </div>
             </div>
         </div>
     );

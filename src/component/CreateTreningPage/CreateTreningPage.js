@@ -7,6 +7,7 @@ export const CreateTreningPage = () => {
 
   return (
     <>
+      <BaseHeader text={"MY TRENINGS"} srcImg={""} />
       <BaseHeader/>
       <ConstrTrening/>
       <ListTrening/>

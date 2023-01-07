@@ -660,6 +660,18 @@
         20
       ],
       "weight": []
+    },
+    {
+      "id": "2l99t42Sk_1E06kg75-B0mK2gIv-l5",
+      "name": "Walking",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "legs"
+      ],
+      "typeOfExercise": "aerobic"
     }
   ],
   "listExersises": [

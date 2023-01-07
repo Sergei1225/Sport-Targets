@@ -26,12 +26,15 @@ export const CustomTitleBase = memo(({ title, subtile, nameSvg, styleSvg }) => {
                 <div className="bFlexIconBig ">
                     <GetSvg nameSvg={nameSvg} styleSvg={styleSvg}/>
                 </div>
-                <div className={`${"bTitleMiddle bBold bLetterSapcing bColorTitle"}`}>
-                    {innerTitle}
+                <div>
+                    <div className={`${"bTitleMiddle bBold bLetterSapcing bColorTitle"}`}>
+                        {innerTitle}
+                    </div>
+                    <div className={`${"bContent bColorSubtitle "}`}>{innerSubtile}</div>
                 </div>
             </div>
             
-            <div className={`${"bContent bColorSubtitle bMarginTop"}`}>{innerSubtile}</div>
+            
         </>
     );
 });

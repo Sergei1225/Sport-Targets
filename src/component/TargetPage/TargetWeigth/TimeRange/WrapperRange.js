@@ -51,6 +51,7 @@ export const WrapperRange = (props) => {
                         valuePercent={dataItem.valuePercent}
                         paramProgress={dataItem.paramProgress}
                         nameSvg={dataItem.paramProgress}
+                        styleSvg={" bSizeIconVeryBigFlex"}
                     />
                 </div>
             </div>

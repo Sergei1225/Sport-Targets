@@ -7,7 +7,8 @@ export const dataRanges = [
         paramRange: {
             min: 0,
             max: 90,
-            title: "Setting the number of trenings",
+            title: "Trenings",
+            subtile: "Setting the number of trenings",
             metering: "trenings",
             innerBtn: "Save result",
         },
@@ -24,7 +25,8 @@ export const dataRanges = [
         paramRange: {
             min: 0,
             max: 365,
-            title: "Setting the number of days",
+            title: "Days",
+            subtile: "Setting the number of days",
             metering: "days",
             innerBtn: "Save result",
         },
@@ -41,7 +43,8 @@ export const dataRanges = [
         paramRange: {
             min: 0,
             max: 500,
-            title: "Setting the target weigth",
+            title: "Weigth",
+            subtile: "Setting the target weigth",
             metering: "kg",
             innerBtn: "Save result",
         },

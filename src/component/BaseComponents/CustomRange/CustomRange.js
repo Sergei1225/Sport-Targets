@@ -1,11 +1,12 @@
-import { CustomButton } from "../CustomComponents";
+import { CBtnStyled, CustomTitleBase } from "../CustomComponents";
 
 import { useState, useEffect } from "react";
 
 export const CustomRange = (props) => {
-    let { getValue, title, metering, btn, max, innerBtn, startState, min } = props;
+    let { getValue, title, subtile, metering, btn, max, innerBtn, startState, min } = props;
 
     if (!title) title = "Title";
+    if (!subtile) subtile = "";
     if (!metering) metering = "";
     if (!btn) btn = "Add";
     if (!max) max = 500;
@@ -16,26 +17,36 @@ export const CustomRange = (props) => {
     const [valueRange, setValueRange] = useState(startState);
 
     useEffect(() => {
-        setValueRange(startState)
+        setValueRange(startState);
     }, [startState]);
 
     return (
-        <>
-            <div className={`${"basePositionElement "} baseFontContentBold`}>{title}</div>
-            <div className={`${"basePositionBlock baseFlexGapNoJC"}`}>
-                <input
-                    style={{ width: "250px" }}
-                    onChange={(e) => setValueRange(e.target.value)}
-                    type="range"
-                    min={min}
-                    max={max}
-                    value={valueRange}
-                />
-                <div className={`${"basePositionElement "}`}>
-                    {valueRange} {metering}
+            <div className={`${"bElement "} `}>
+                <div className={`${"bElement bPaddingLeft0"} bContentBig bBold`}>
+                    <CustomTitleBase
+                        title={title}
+                        subtile={subtile}
+                        nameSvg={"run"}
+                        styleSvg={""}
+                    />
+                </div>
+                <div className={`${"bElement bBorderSolid bBorderRadius bFlex"}`}>
+                    <input
+                        className="bFlexSizeAllWidth150"
+                        onChange={(e) => setValueRange(e.target.value)}
+                        type="range"
+                        min={min}
+                        max={max}
+                        value={valueRange}
+                    />
+
+                    <div className={`${"bContentBig bBold "}`}>
+                        {valueRange} {metering}
+                    </div>
+                </div>
+                <div className={`${"bElement bPaddingLeft0"}`}>
+                    <CBtnStyled funk={() => getValue(valueRange)} innerValue={innerBtn} />
                 </div>
             </div>
-            <CustomButton funk={() => getValue(valueRange)} innerValue={innerBtn} />
-        </>
     );
 };

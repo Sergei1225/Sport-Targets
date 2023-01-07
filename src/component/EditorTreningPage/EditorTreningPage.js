@@ -1,5 +1,5 @@
 import { ConstrEditorTrening } from "./ConstrEditorTrening/ConstrEditorTrening";
-// import { BaseHeader } from "../BaseHeader/BaseHeader";
+import { BaseHeader } from "../BaseHeader/BaseHeader";
 import { ListEditorTrening } from "./ListEditorTrening/ListEditorTrening";
 
 import { useParams } from "react-router-dom";
@@ -32,18 +32,18 @@ export const EditorTreningPage = () => {
 
     return (
         <>
-            {/* {/* <BaseHeader/> */}
+            {/* <BaseHeader text={"MY TRENINGS"} srcImg={""} /> */}
             <ConstrEditorTrening 
                 pathConstr={urlContrItem} 
                 pathList={urlList} 
                 pathLinkChoose={linkChoose}
             />
-            <ListEditorTrening
+            {/* <ListEditorTrening
                 pathList={urlList}
                 pathTrening={urlTreening}
                 pathConstr={urlContrItem} 
                 currentItemId={paramInUsePramse}
-            />
+            /> */}
         </>
     );
 };

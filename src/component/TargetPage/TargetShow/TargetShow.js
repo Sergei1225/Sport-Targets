@@ -6,9 +6,11 @@ import { getDataTargetWeigth } from "./sliceTargetShow";
 import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const TargetShow = () => {
+    const [activeLine, setActiveLine] = useState(false);
+
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
     const dispatch = useDispatch();
 
@@ -16,12 +18,22 @@ export const TargetShow = () => {
         dispatch(getDataTargetWeigth());
     }, []);
 
-    useEffect(() => {
-        const noo = document.querySelector("body");
-        const yoo = window.getComputedStyle(noo).getPropertyValue("width");
-        console.log(yoo);
-    }, []);
+    const changeSize = () => {
+        const widthWrapper = document.querySelector(`.${s.targetShow}`);
+        const currenWidth = window.getComputedStyle(widthWrapper).getPropertyValue("width");
+        if (currenWidth.slice(0, -2) <= 789) {
+            setActiveLine(true);
+        } else if (currenWidth.slice(0, -2) > 789) {
+            setActiveLine(false);
+        }
+    };
 
+    useEffect(() => {
+        window.addEventListener("resize", changeSize);
+        return function () {
+            window.removeEventListener("resize", changeSize);
+        };
+    }, []);
 
     if (!dataWeigth) return <h3>Loading...</h3>;
 
@@ -29,7 +41,7 @@ export const TargetShow = () => {
         if (!data) return null;
         return data.map((item) => {
             return (
-                <div key={item.id} className={`${s.targetShow__item} bElementSmall `}>
+                <div key={item.id} className={`${s.targetShow__item} `}>
                     <TargetProgress
                         remainder={item.remainder}
                         target={item.target}
@@ -37,6 +49,7 @@ export const TargetShow = () => {
                         valuePercent={item.valuePercent}
                         paramProgress={item.paramProgress}
                         nameSvg={item.paramProgress}
+                        styleSvg={" bSizeIconVeryBigFlex"}
                     />
                 </div>
             );
@@ -46,14 +59,12 @@ export const TargetShow = () => {
     const itemsWeigth = createItemsWeigth(dataWeigth);
 
     return (
-        <>
-            {/* <div className={`${s.targetShow} bBlock bFlex bFlexWrap bFlexJCSA`}>
-                {itemsWeigth}
-            </div> */}
-            <SliderCarusel>
-                {itemsWeigth}
-            </SliderCarusel>
-        </>
-        
+        <div className={`${s.targetShow}`}>
+            {activeLine ? (
+                <SliderCarusel sizeSlider={s.targetShow__slider}>{itemsWeigth}</SliderCarusel>
+            ) : (
+                <div className={`${s.targetShow__wrapper} bBlock bFlex bFlexJCSB`}>{itemsWeigth}</div>
+            )}
+        </div>
     );
 };

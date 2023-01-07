@@ -1,12 +1,14 @@
 import s from "./TuningTrening.module.scss";
 import cross from "../../../img/ItemListCreateTrening/icon/can.png";
 
-import { useState } from "react";
 import { randomId } from "../../../service/RandomId";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import { CustomButton } from "../../BaseComponents/CustomComponents";
 import { ViewAddWeights } from "../../../View/ViewAddWeights/ViewAddWeights";
 import { ViewAddRepeats } from "../../../View/ViewAddRepeats/ViewAddRepeats";
+
+import { useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export const TuningTrening = (props) => {
     const { title, id, saveItem, imgSrc, deleteItem, order } = props;

@@ -1,33 +1,15 @@
 import s from "./SliderCarusel.module.scss";
 
 import { randomId } from "../../service/RandomId";
+import { GetSvg } from "../GetSvg/GetSvg";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 
-export const SliderCarusel = ({ children }) => {
+export const SliderCarusel = ({ children, sizeSlider }) => {
     const initialState = children ? children.length - 1 : 0;
     const [slide, setSlide] = useState(0);
-    const [activeLine, setActiveLine] = useState(false);
-
-    const changeSize = () => {
-        const widthWrapper = document.querySelector(`.${s.sliderCarusel__wrapper}`);
-        const currenWidth = window.getComputedStyle(widthWrapper).getPropertyValue("width");
-        if(currenWidth.slice(0, -2) <= 769){
-            setActiveLine(true)
-        } else if (currenWidth.slice(0, -2) > 769){
-            setActiveLine(false)
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('resize', changeSize)
-        return function () {
-            window.removeEventListener('resize', changeSize) 
-        }
-    }, [])
 
     const changeSlide = (param) => {
-        if(!activeLine) return;
         if (slide === 0) {
             param === "+" ? setSlide((slide) => slide + 1) : setSlide(initialState);
         } else if (slide === initialState) {
@@ -48,25 +30,64 @@ export const SliderCarusel = ({ children }) => {
         });
     };
 
-    const items = createItems(children);
+    const createIdsNavigate = (data) => {
+        const arrItems = [];
+        for (let i = 0; i < data.length; i++) {
+            arrItems.push(randomId());
+        }
+        return arrItems;
+    };
+
+    const idsNavigate = useMemo(() => createIdsNavigate(children), [children]);
+
+    const creteNavigateItems = (data, current) => {
+        const arrItems = [];
+        for (let i = 0; i < data.length; i++) {
+            if (current === i) {
+                arrItems.push(
+                    <div
+                        key={idsNavigate[i]}
+                        onClick={() => setSlide(i)}
+                        className={`${s.sliderCarusel__index} ${s.sliderCarusel__index_active}`}
+                    ></div>
+                );
+            } else {
+                arrItems.push(
+                    <div key={idsNavigate[i]} onClick={() => setSlide(i)} className={`${s.sliderCarusel__index}`}></div>
+                );
+            }
+        }
+        return arrItems;
+    };
+
+    const items = useMemo(() => createItems(children), [children]);
+    const itemsNavigate = useMemo(() => creteNavigateItems(children, +slide), [children, slide]);
 
     return (
-        <>
-            <div className={`${s.sliderCarusel} bBlock `}>
-                <div className={`${s.sliderCarusel__wrapper}`}>
-                    <div
-                        style={{ transform: `translateX(-${100 * slide}%)` }}
-                        className={`${s.sliderCarusel__line} ${activeLine && s.sliderCarusel__line_active}`}
-                    >
-                        {/* <div className={`${s.sliderCarusel__item} ${s.sliderCarusel__item_red}`}>1</div>
-                        <div className={`${s.sliderCarusel__item} ${s.sliderCarusel__item_green}`}>2</div>
-                        <div className={`${s.sliderCarusel__item} ${s.sliderCarusel__item_blue}`}>3</div> */}
-                        {items}
-                    </div>
+        <div className={`${s.sliderCarusel} bBlock ${sizeSlider}`}>
+            <div className={`${s.sliderCarusel__wrapper}`}>
+                <div
+                    style={{ transform: `translateX(-${100 * slide}%)` }}
+                    className={`${s.sliderCarusel__line} ${s.sliderCarusel__line_active}`}
+                >
+                    {items}
+                </div>
+                <div
+                    onClick={() => changeSlide("+")}
+                    className={`${s.sliderCarusel__arrow} ${s.sliderCarusel__arrow_rigth} ${s.sliderCarusel__arrow_active} bSizeIconSmall`}
+                >
+                    <GetSvg nameSvg={"arrow"} />
+                </div>
+                <div
+                    onClick={() => changeSlide("-")}
+                    className={`${s.sliderCarusel__arrow} ${s.sliderCarusel__arrow_left} ${s.sliderCarusel__arrow_active} bSizeIconSmall `}
+                >
+                    <GetSvg nameSvg={"arrow"} />
                 </div>
             </div>
-            <button onClick={() => changeSlide("+")}>вперед</button>
-            <button onClick={() => changeSlide("-")}>назад</button>
-        </>
+            <div className={`${s.sliderCarusel__navigate}  ${s.sliderCarusel__navigate_active} bElement`}>
+                {itemsNavigate}
+            </div>
+        </div>
     );
 };

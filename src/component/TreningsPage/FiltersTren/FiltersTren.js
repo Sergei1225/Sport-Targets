@@ -45,7 +45,7 @@ export const FiltersTren = () => {
 
     console.log("фильтры");
     return (
-        <div className={`${s.filters} bBlock`}>           
+        <div className={`${s.filters}`}>           
             <div className={`${""} bElement bFlex bFlexJCSB bFlexWrap`}>
                 <CustomSelect
                     changeProp={changeProp}

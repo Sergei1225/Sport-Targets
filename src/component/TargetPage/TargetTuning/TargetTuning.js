@@ -1,6 +1,6 @@
 import s from "./TargetTuning.module.scss";
 
-import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents";
+import { CustomTitle, CustomButton, CustomRange } from "../../BaseComponents/CustomComponents";
 
 export const TargetTuning = (props) => {
     const { name, descr, img, workingParts, changeParams, paramValues, dataParams } = props;

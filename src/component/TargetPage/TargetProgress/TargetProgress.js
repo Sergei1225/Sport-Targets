@@ -1,7 +1,7 @@
 import { ProgresBar } from "../../../serviceComponents/ProgresBar/ProgresBar";
 
 export const TargetProgress = (props) => {
-    const { paramProgress, remainder, target, nameSvg, valueAbsolute, valuePercent } = props;
+    const { paramProgress, remainder, target, nameSvg, valueAbsolute, valuePercent, styleSvg } = props;
 
     return (
         <>  
@@ -11,6 +11,7 @@ export const TargetProgress = (props) => {
                     value={valuePercent}
                     remainder={remainder}
                     param={paramProgress}
+                    styleSvg={styleSvg}
                 />
             </div>
             

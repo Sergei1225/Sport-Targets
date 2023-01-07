@@ -1,33 +1,67 @@
-.gantelSvg * {
-    fill: grey;
+.gantelSvg {
+    *{
+        fill: grey;
+    }
+    width: 100%;
+    height: 100%;
 }
 .daysSvg {
+    * {
+        stroke: rgb(119, 113, 113);
+    }
+    width: 100%;
+    height: 100%;
 }
 .treningsSvg {
-    fill: rgb(87, 81, 81);
+    *{
+        fill: grey;
+    }
+    width: 100%;
+    height: 100%;
 }
 .backBtn {
     fill: white;
     animation: show 0.3s linear;
+    width: 100%;
+    height: 100%;
 }
 .listSvg {
     fill: white;
+    width: 100%;
+    height: 100%;
 }
 .bottle {
-    fill: black;
+    fill: rgb(117, 108, 108);
+    width: 100%;
+    height: 100%;
 }
 .run {
-    fill: white;
+    fill: rgb(153, 135, 135);
+    width: 100%;
+    height: 100%;
 }
 .timer {
     fill: white;
+    width: 100%;
+    height: 100%;
 }
 .gantelSquare {
     fill: white;
+    width: 100%;
+    height: 100%;
 }
 .locker {
     fill: white;
+    width: 100%;
+    height: 100%;
 }
 .dumbbell {
     fill: white;
+    width: 100%;
+    height: 100%;
+}
+.arrow{
+    fill: rgb(87, 81, 81);
+    width: 100%;
+    height: 100%;
 }
