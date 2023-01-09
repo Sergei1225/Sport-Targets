@@ -12,6 +12,8 @@ import { ReactComponent as GantelSquare } from "../../img/svg/gantelSquare.svg";
 import { ReactComponent as Locker } from "../../img/svg/locker.svg"; 
 import { ReactComponent as Dumbbell } from "../../img/svg/dumbbell.svg"; 
 import { ReactComponent as Arrow } from "../../img/svg/arrow.svg"; 
+import { ReactComponent as Bucket } from "../../img/svg/bucket.svg"; 
+import { ReactComponent as Warning } from "../../img/svg/warning.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -40,8 +42,12 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
             return <Locker className={`dumbbell ${styleSvg}`}/>
         case "arrow":
             return <Arrow className={`arrow ${styleSvg}`} />
+        case "bucket":
+            return <Bucket className={`bucket ${styleSvg}`} />
         case "trenings":
             return <Trenings className={`treningsSvg ${styleSvg}`} />
+        case "warning":
+            return <Warning className={`warning ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }

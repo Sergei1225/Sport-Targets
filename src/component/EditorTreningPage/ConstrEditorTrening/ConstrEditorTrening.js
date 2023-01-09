@@ -82,8 +82,8 @@ export const ConstrEditorTrening = (props) => {
     const tuningItems = tuningTrenings(itemsForTuning);
 
     return (
-        <div className={`${s.constrTren}  ${"bBlock"}`}>
-            <div className={`${s.constrTren__header} ${" bElement"}`}>
+        <div className={`${s.constrTren}  ${" bBlock"}`}>
+            <div className={`${s.constrTren__header} ${" bWrapperStyle bElement"}`}>
                 <CustomTitleBase
                     title={"Choose and customize exercises"}
                     subtile={"You can quickly select the desired exercises and customize"}
@@ -94,7 +94,7 @@ export const ConstrEditorTrening = (props) => {
                     <CBtnStyled funk={() => navigate(pathLinkChoose)} innerValue={"Choose exercise"} />
                 </div>
             </div>
-            <div className={`${s.constrTren__list}  ${"bElement"}`}>
+            <div className={`${s.constrTren__list}  ${" bWrapperStyle bElement"}`}>
                 <CustomTitleBase
                     title={"Tuning"}
                     subtile={"You can quickly select the desired exercises and customize"}
@@ -106,6 +106,6 @@ export const ConstrEditorTrening = (props) => {
                     <CBtnStyled funk={deleteAllTunnings} innerValue={"Clear tuning"} />
                 </div>
             </div>
-        </div>
+        </div> 
     );
 };

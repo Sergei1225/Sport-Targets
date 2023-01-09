@@ -1,0 +1,10 @@
+.viewAddWeigth{
+    &__range{
+        flex: 1 0 200px;
+        max-width: 360px; 
+    }
+    &__inner{
+        background-color: black;
+        color: white;
+    }
+}

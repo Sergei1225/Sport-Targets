@@ -1,36 +1,45 @@
-import s from './ViewAddRepeats.module.scss';
+import s from "./ViewAddRepeats.module.scss";
 
 import { ComponentSwitch } from "../../serviceComponents/ComponentSwitch/ComponentSwitch";
 import { ViewAddTrening } from "../ViewAddTrening/ViewAddTrening";
+import { CustomRange } from "../../component/BaseComponents/CustomComponents";
+import { GetSvg } from "../../serviceComponents/GetSvg/GetSvg";
 
 export const ViewAddRepeats = (props) => {
-    const { title, valueHandler, imgSrc, valueError, arrValues, itemsValue } = props;
+    const { title, valueHandler, imgSrc, valueError, arrValues, itemsValue, nameSvg, subtile } = props;
     return (
-        <div className={`${""}`}>
-            <div className={` ${s.viewAddRepeats__header} baseFlex`}>
-                <div className={` ${s.viewAddRepeats__title} `}>
-                    <div className={` ${"baseFontTitleSmall"} basePositionElementNoMT`}>
-                        {title}
+        <div className={`${s.viewAddRepeats}`}>
+            <div className={`${s.viewAddRepeats__wrapper}`}>
+                <div className={` ${s.viewAddRepeats__header} bElement bFlex `}>
+                    <div className={` ${s.viewAddRepeats__range} `}>
+                        <CustomRange
+                            subtile={subtile}
+                            nameSvg={nameSvg}
+                            title={title}
+                            getValue={valueHandler}
+                            styleRange={s.viewAddRepeats__range_inner}
+                        />
                     </div>
-                    <ViewAddTrening getValue={valueHandler} />
-                </div>
-                <div className={` ${s.viewAddRepeats__img} `}>
-                    <div className={`${s.viewAddRepeats__img_inner} basePositionElementNoMT`}>
-                        <img className={`baseImgCover`} src={imgSrc} alt="imgList" />
+                    <div className={` ${s.viewAddRepeats__img} `}>
+                        <img className={`bImgCover bBorderDifferent bBoxShadowMini`} src={imgSrc} alt="imgList" />
                     </div>
                 </div>
+                <div className="bFlex bAlignItems">
+                    {valueError ? (
+                        <div className="bSizeIconBig bAnimationShow bElement">
+                            <GetSvg nameSvg={"warning"} />
+                        </div>
+                    ) : null}
+                    <ComponentSwitch
+                        logicValue={valueError}
+                        styleDiv={""}
+                        styleActive={"bError bElement "}
+                        innerValueTrue={valueError ? valueError.toUpperCase() : valueError}
+                        innerValueFalse={""}
+                    />
+                </div>
+                {arrValues ? arrValues : null}
             </div>
-            <ComponentSwitch
-                logicValue={valueError}
-                styleDiv={""}
-                styleActive={"basePositionElement baseError"}
-                innerValueTrue={valueError}
-                innerValueFalse={""}
-            />
-            <div className={` ${"basePositionBlock baseFontContentBold"}`}>
-                Approaches: {itemsValue.length}
-            </div>
-            {arrValues ? arrValues : null}
         </div>
     );
 };

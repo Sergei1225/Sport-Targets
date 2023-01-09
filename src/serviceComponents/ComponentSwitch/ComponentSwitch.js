@@ -21,6 +21,7 @@ export const ComponentSwitch = memo((props) => {
         innerValueFalse,
         time,
         styleTransition,
+        funcClick
     } = props;
 
     if (!mode) mode = "out-in";
@@ -31,7 +32,7 @@ export const ComponentSwitch = memo((props) => {
     return (
         <SwitchTransition mode={mode}>
             <CSSTransition key={!!logicValue} timeout={time} classNames={styleTransition}>
-                <div className={!logicValue ? styleDiv : styleActive}>
+                <div onClick={() => funcClick && funcClick()} className={!logicValue ? styleDiv : styleActive}>
                     {logicValue ? innerValueTrue : innerValueFalse}
                 </div>
             </CSSTransition>

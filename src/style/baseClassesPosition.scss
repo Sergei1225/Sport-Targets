@@ -56,6 +56,9 @@
 .bBorderRadius {
     border-radius: var(--borderRadius);
 }
+.bBorderDifferent {
+    border-radius: 40px 20px 60px 15px;
+}
 
 .bBoxShadow {
     box-shadow: 5px 15px 15px 3px black, inset 5px 5px 10px 2px rgb(141, 136, 136);
@@ -74,6 +77,15 @@
 
 .bPaddingLeft0{
     padding-left: 0;
+}
+.bPaddingLeft10{
+    padding-left: 10px;
+}
+.bPaddingBottm0{
+    padding-bottom: 0;
+}
+.bPaddingTop0{
+    padding-top: 0;
 }
 
 

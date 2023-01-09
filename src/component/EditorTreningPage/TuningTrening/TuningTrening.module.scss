@@ -1,12 +1,22 @@
 .tuning{
-    &__items{
-        margin-top: 10px; 
-        padding-top: 0;
+    &__item{
+        background-color: black;
+        padding: 10px 10px;
+        color: white;
+        border-radius: 50%;
     }
     &__img{
         flex: 1 0 200px;
         &_inner{
             height: 90%;
+        }
+    }
+    &__weigth{
+        max-height: 0px;
+        overflow: hidden;
+        transition: all 0.5s linear;
+        &_active{
+            max-height: 500px;
         }
     }
 }

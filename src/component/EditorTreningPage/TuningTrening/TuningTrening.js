@@ -3,9 +3,11 @@ import cross from "../../../img/ItemListCreateTrening/icon/can.png";
 
 import { randomId } from "../../../service/RandomId";
 
-import { CustomButton } from "../../BaseComponents/CustomComponents";
+import { CustomButton, CustomRange, CBtnStyled } from "../../BaseComponents/CustomComponents";
 import { ViewAddWeights } from "../../../View/ViewAddWeights/ViewAddWeights";
 import { ViewAddRepeats } from "../../../View/ViewAddRepeats/ViewAddRepeats";
+import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
+import { ComponentSwitch } from "../../../serviceComponents/ComponentSwitch/ComponentSwitch";
 
 import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -13,7 +15,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 export const TuningTrening = (props) => {
     const { title, id, saveItem, imgSrc, deleteItem, order } = props;
     const [itemsValue, setItemsValue] = useState([]);
-    const [itemsWeight, setItemsWeight] = useState(null);
+    const [itemsWeight, setItemsWeight] = useState([]);
+    const [addWeight, setAddWeight] = useState(false);
     const [valueErrorRepeat, setValueErrorRepeat] = useState(null);
     const [valueErrorWeigth, setValueErrorWeigth] = useState(null);
 
@@ -66,22 +69,14 @@ export const TuningTrening = (props) => {
         const items = data.map(({ value, id }) => {
             return (
                 <CSSTransition key={id} timeout={500} classNames="baseTransition">
-                    <div
-                        onClick={() => deleteFunc && deleteFunc(id)}
-                        key={id}
-                        className={`${"basePositionElement"}`}
-                    >
+                    <div onClick={() => deleteFunc && deleteFunc(id)} key={id} className={`${s.tuning__item}`}>
                         {value}
                     </div>
                 </CSSTransition>
             );
         });
         return (
-            <TransitionGroup
-                className={`${s.tuning__items} ${"basePositionBlock baseFlexGapNoJC"}`}
-            >
-                {items}
-            </TransitionGroup>
+            <TransitionGroup className={`${s.tuning__items} ${"bElement bFlex bPaddingTop0"}`}>{items}</TransitionGroup>
         );
     };
 
@@ -97,43 +92,64 @@ export const TuningTrening = (props) => {
     //console.log(itemsView);
 
     return (
-        <div className={`${s.tuning} ${"basePositionBlock"}`}>
-            <div className={`${s.itemList__editor} baseFlexGapSB`}>
-                {
-                    order ? 
-                    <div className={`${s.itemList__editor} basePositionElementNoMT baseFontContentBold`}>
-                        EDITING ITEM                              
+        <div className={`${s.tuning} ${" bBlock"}`}>
+            <div className={`${s.tuning} ${" bElement bWrapperStyleElem"}`}>
+                <div className={`${s.tuning__header} bFlex bFlexJCSB `}>
+                    {order ? (
+                        <div className={`${s.tuning__editor} bElement bContentBig bBold`}>EDITING ITEM</div>
+                    ) : null}
+                    <div className="bElement bSizeIconSmall " onClick={() => deleteItem(id)}>
+                        <GetSvg nameSvg={"bucket"} />
                     </div>
-                    :
-                    null
-                }
-                <div onClick={() => deleteItem(id)}>
-                    <img src={cross} alt="cross" />
+                </div>
+
+                <ViewAddRepeats
+                    title={title}
+                    valueHandler={settingAddItemValue}
+                    imgSrc={imgSrc[0]}
+                    valueError={valueErrorRepeat}
+                    arrValues={itemsView}
+                    itemsValue={itemsValue}
+                    subtile={"Lorem ipsum dolor sit amet "}
+                    nameSvg={"gantelSquare"}
+                />
+                <div className="bElement bPaddingTop0">
+                    <ComponentSwitch
+                        logicValue={addWeight}
+                        styleDiv={"bBtn bInlineBlock "}
+                        styleActive={"bBtn bInlineBlock"}
+                        innerValueTrue={"Delete weights"}
+                        innerValueFalse={"Add weights"}
+                        funcClick={() => setAddWeight((addWeight) => !addWeight)}
+                    />
+                </div>
+
+                {/* <div className={`bPaddingLeft10 ${!itemsWeight ? "baseActiveVisible" : "baseHiddenVisible "}`}>
+                    <CustomButton funk={() => setAddWeight(true)} innerValue={"Add weights"} />
+                </div> */}
+                <div className={`${s.tuning__weigth} ${addWeight && s.tuning__weigth_active}`}>
+                    <ViewAddRepeats
+                        title={"Weights"}
+                        valueHandler={settingAddItemWeigth}
+                        imgSrc={
+                            "https://ligasporta.com.ua/upload/medialibrary/025/025f73ec6ead4743d1bbf24dbde34eba.png"
+                        }
+                        valueError={valueErrorWeigth}
+                        arrValues={itemsViewWeigth}
+                        itemsValue={itemsWeight}
+                        nameSvg={"locker"}
+                        subtile={"Lorem ipsum dolor sit amet "}
+                    />
+                </div>
+                <div className="bElement bPaddingTop0">
+                    <CBtnStyled funk={() => saveItem(savingItem())} innerValue={"Save exersice"} />
+                    {/* <CustomButton
+                        //active={}
+                        funk={() => saveItem(savingItem())}
+                        innerValue={"Save exersice"}
+                    /> */}
                 </div>
             </div>
-            <ViewAddRepeats
-                title={title}
-                valueHandler={settingAddItemValue}
-                imgSrc={[imgSrc]}
-                valueError={valueErrorRepeat}
-                arrValues={itemsView}
-                itemsValue={itemsValue}
-            />
-            <div className={` ${!itemsWeight ? "baseActiveVisible" : "baseHiddenVisible "}`}>
-                <CustomButton funk={() => setItemsWeight([])} innerValue={"Add weights"} />
-            </div>
-            <ViewAddWeights
-                itemsValue={itemsWeight}
-                arrValues={itemsViewWeigth}
-                funkChangeState={setItemsWeight}
-                valueError={valueErrorWeigth}
-                valueHandler={settingAddItemWeigth}
-            />
-            <CustomButton
-                //active={}
-                funk={() => saveItem(savingItem())}
-                innerValue={"Save exersice"}
-            />
         </div>
     );
 };

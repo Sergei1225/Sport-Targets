@@ -10,6 +10,13 @@
     @extend .bBoxShadowMini;
     @extend .bTransition;
 }
+.bError{
+    padding: 15px 15px;
+    color: red;
+    display: inline-block;
+    @extend .bContentBig;
+    @extend .bBold;
+}
 .bInput{
     padding: 10px 15px;
     min-width: 60px;
@@ -84,4 +91,7 @@
     &:hover{
         color: red;
     }
+}
+.bAnimationShow{
+    animation: 0.5s show linear;
 }
