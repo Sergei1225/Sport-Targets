@@ -18,7 +18,6 @@ export const ViewAddTrening = memo(
                 <div className={`${"basePositionElement "}`}>
                     {valueRange} {metering}
                 </div>
-
                 <button
                     onClick={() => getValue && getValue(+valueRange)}
                     className={`${"basePositionElement baseBtn"}`}

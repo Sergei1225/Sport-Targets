@@ -6,7 +6,7 @@ import { CustomRange } from "../../component/BaseComponents/CustomComponents";
 import { GetSvg } from "../../serviceComponents/GetSvg/GetSvg";
 
 export const ViewAddRepeats = (props) => {
-    const { title, valueHandler, imgSrc, valueError, arrValues, itemsValue, nameSvg, subtile } = props;
+    const { title, valueHandler, imgSrc, valueError, arrValues, nameSvg, subtile } = props;
     return (
         <div className={`${s.viewAddRepeats}`}>
             <div className={`${s.viewAddRepeats__wrapper}`}>
@@ -19,6 +19,7 @@ export const ViewAddRepeats = (props) => {
                             getValue={valueHandler}
                             styleRange={s.viewAddRepeats__range_inner}
                         />
+                        {arrValues ? arrValues : null}
                     </div>
                     <div className={` ${s.viewAddRepeats__img} `}>
                         <img className={`bImgCover bBorderDifferent bBoxShadowMini`} src={imgSrc} alt="imgList" />
@@ -38,7 +39,6 @@ export const ViewAddRepeats = (props) => {
                         innerValueFalse={""}
                     />
                 </div>
-                {arrValues ? arrValues : null}
             </div>
         </div>
     );

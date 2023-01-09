@@ -1,10 +1,8 @@
 import s from "./TuningTrening.module.scss";
-import cross from "../../../img/ItemListCreateTrening/icon/can.png";
 
 import { randomId } from "../../../service/RandomId";
 
-import { CustomButton, CustomRange, CBtnStyled } from "../../BaseComponents/CustomComponents";
-import { ViewAddWeights } from "../../../View/ViewAddWeights/ViewAddWeights";
+import { CBtnStyled } from "../../BaseComponents/CustomComponents";
 import { ViewAddRepeats } from "../../../View/ViewAddRepeats/ViewAddRepeats";
 import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 import { ComponentSwitch } from "../../../serviceComponents/ComponentSwitch/ComponentSwitch";
@@ -63,21 +61,24 @@ export const TuningTrening = (props) => {
     const deleteItemWeights = (idItem) => {
         setItemsWeight((itemsValue) => itemsValue.filter(({ id }) => id !== idItem));
     };
+    const controlWeigth = () => {
+        setAddWeight((addWeight) => !addWeight);
+        if (addWeight) setItemsWeight([]);
+    };
+    console.log(itemsWeight);
 
     const createItems = (data, deleteFunc) => {
         if (!data || data.length === 0) return null;
         const items = data.map(({ value, id }) => {
             return (
                 <CSSTransition key={id} timeout={500} classNames="baseTransition">
-                    <div onClick={() => deleteFunc && deleteFunc(id)} key={id} className={`${s.tuning__item}`}>
+                    <div onClick={() => deleteFunc && deleteFunc(id)} key={id} className={`${s.tuning__item} `}>
                         {value}
                     </div>
                 </CSSTransition>
             );
         });
-        return (
-            <TransitionGroup className={`${s.tuning__items} ${"bElement bFlex bPaddingTop0"}`}>{items}</TransitionGroup>
-        );
+        return <TransitionGroup className={`${s.tuning__items} ${" bFlex bFlexWrap"}`}>{items}</TransitionGroup>;
     };
 
     const savingItem = () => ({
@@ -93,23 +94,21 @@ export const TuningTrening = (props) => {
 
     return (
         <div className={`${s.tuning} ${" bBlock"}`}>
-            <div className={`${s.tuning} ${" bElement bWrapperStyleElem"}`}>
-                <div className={`${s.tuning__header} bFlex bFlexJCSB `}>
+            <div className={`${s.tuning} ${" bElement bWrapperStyle"}`}>
+                <div className={`${s.tuning__header}  `}>
                     {order ? (
                         <div className={`${s.tuning__editor} bElement bContentBig bBold`}>EDITING ITEM</div>
                     ) : null}
-                    <div className="bElement bSizeIconSmall " onClick={() => deleteItem(id)}>
+                    <div className={`${s.tuning__delete} bElement bSizeIconSmall`} onClick={() => deleteItem(id)}>
                         <GetSvg nameSvg={"bucket"} />
                     </div>
                 </div>
-
                 <ViewAddRepeats
                     title={title}
                     valueHandler={settingAddItemValue}
                     imgSrc={imgSrc[0]}
                     valueError={valueErrorRepeat}
                     arrValues={itemsView}
-                    itemsValue={itemsValue}
                     subtile={"Lorem ipsum dolor sit amet "}
                     nameSvg={"gantelSquare"}
                 />
@@ -117,16 +116,12 @@ export const TuningTrening = (props) => {
                     <ComponentSwitch
                         logicValue={addWeight}
                         styleDiv={"bBtn bInlineBlock "}
-                        styleActive={"bBtn bInlineBlock"}
+                        styleActive={"bBtn bBtnActive bInlineBlock"}
                         innerValueTrue={"Delete weights"}
                         innerValueFalse={"Add weights"}
-                        funcClick={() => setAddWeight((addWeight) => !addWeight)}
+                        funcClick={controlWeigth}
                     />
                 </div>
-
-                {/* <div className={`bPaddingLeft10 ${!itemsWeight ? "baseActiveVisible" : "baseHiddenVisible "}`}>
-                    <CustomButton funk={() => setAddWeight(true)} innerValue={"Add weights"} />
-                </div> */}
                 <div className={`${s.tuning__weigth} ${addWeight && s.tuning__weigth_active}`}>
                     <ViewAddRepeats
                         title={"Weights"}
@@ -143,11 +138,6 @@ export const TuningTrening = (props) => {
                 </div>
                 <div className="bElement bPaddingTop0">
                     <CBtnStyled funk={() => saveItem(savingItem())} innerValue={"Save exersice"} />
-                    {/* <CustomButton
-                        //active={}
-                        funk={() => saveItem(savingItem())}
-                        innerValue={"Save exersice"}
-                    /> */}
                 </div>
             </div>
         </div>

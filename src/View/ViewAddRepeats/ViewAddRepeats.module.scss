@@ -1,13 +1,17 @@
 .viewAddRepeats {
     &__wrapper{
-        max-width: 700px;
+        max-width: 750px;
+        
+    }
+    &__repeats{
+        padding: 10px;
     }
     &__header{
         justify-content: space-between;
     }
     &__img{
-        flex: 1 0 150px;
-        max-width: 230px;
+        height: 250px;
+        width: 250px;
     }
     &__range{
         flex: 1 0 200px;

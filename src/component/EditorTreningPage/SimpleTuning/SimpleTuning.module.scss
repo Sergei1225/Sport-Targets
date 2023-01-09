@@ -1,8 +1,15 @@
 .simpleTuning{
-    &__img{
-        flex: 1 0 200px;
-        &_inner{
-            height: 90%;
-        }
+    position: relative;
+    // &__img{
+    //     flex: 1 0 200px;
+    //     &_inner{
+    //         height: 90%;
+    //     }
+    // }
+    &__delete{
+        position: absolute;
+        top: 35px;
+        right: 25px;
+        cursor: pointer;
     }
 }
