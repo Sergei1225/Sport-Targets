@@ -1,28 +1,39 @@
 .itemList {
-    flex-wrap: nowrap;
-    gap: 5px;
     transition: all 0.5s linear;
+    &__wrapper{
+        background-color: rgb(44, 44, 44);
+        color: white;
+    }
+    &__path{
+        border-radius: 10px;
+        border: 2px solid white;
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0px;
+        }
+    }
+    &__icon{
+        cursor: pointer;
+    }
+    &__text{
+        flex: 1 1 200px;
+    }
+    &__func{
+        border-radius: 10px;
+        border: 2px solid white;
+    }
     &__img {
-        flex: 0 0 210px;
-        padding: 5px;
+        flex: 0 0 110px;
+        
+        img {
+            border: 2px solid white;
+            height: 180px;
+            width: 180px;
+        }
+        
     }
     &__text {
-        flex: 1 0 250px;
-        padding-top: 0px;
+
     }
-    &__content {
-        flex: 1 0 330px;
-        flex-wrap: nowrap;
-    }
-    &__func {
-        flex: 1 0 10%;
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-    &__prioroty {
-        background-color: green;
-    }
-    &__forDelete {
-        background-color: red;
-    }
+
 }

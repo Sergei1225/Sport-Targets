@@ -32,18 +32,18 @@ export const EditorTreningPage = () => {
 
     return (
         <>
-            {/* <BaseHeader text={"MY TRENINGS"} srcImg={""} /> */}
+            <BaseHeader text={"MY TRENINGS"} srcImg={""} /> */}
             <ConstrEditorTrening 
                 pathConstr={urlContrItem} 
                 pathList={urlList} 
                 pathLinkChoose={linkChoose}
             />
-            {/* <ListEditorTrening
+            <ListEditorTrening
                 pathList={urlList}
                 pathTrening={urlTreening}
                 pathConstr={urlContrItem} 
                 currentItemId={paramInUsePramse}
-            /> */}
+            />
         </>
     );
 };

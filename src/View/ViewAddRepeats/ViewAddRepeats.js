@@ -1,8 +1,8 @@
 import s from "./ViewAddRepeats.module.scss";
 
 import { ComponentSwitch } from "../../serviceComponents/ComponentSwitch/ComponentSwitch";
-import { ViewAddTrening } from "../ViewAddTrening/ViewAddTrening";
 import { CustomRange } from "../../component/BaseComponents/CustomComponents";
+
 import { GetSvg } from "../../serviceComponents/GetSvg/GetSvg";
 
 export const ViewAddRepeats = (props) => {

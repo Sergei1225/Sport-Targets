@@ -65,7 +65,6 @@ export const TuningTrening = (props) => {
         setAddWeight((addWeight) => !addWeight);
         if (addWeight) setItemsWeight([]);
     };
-    console.log(itemsWeight);
 
     const createItems = (data, deleteFunc) => {
         if (!data || data.length === 0) return null;
@@ -94,7 +93,7 @@ export const TuningTrening = (props) => {
 
     return (
         <div className={`${s.tuning} ${" bBlock"}`}>
-            <div className={`${s.tuning} ${" bElement bWrapperStyle"}`}>
+            <div className={`${s.tuning} ${"bElement bWrapperStyle"}`}>
                 <div className={`${s.tuning__header}  `}>
                     {order ? (
                         <div className={`${s.tuning__editor} bElement bContentBig bBold`}>EDITING ITEM</div>

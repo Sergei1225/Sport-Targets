@@ -7,6 +7,9 @@
 .bFlexJCSA {
     justify-content: space-around;
 }
+.bFlexJCSC {
+    justify-content: center;
+}
 .bFlexJCSB {
     justify-content: space-between;
 }
@@ -25,6 +28,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.bFlexColumn{
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
 }
 
 .bFlexColumnCenter {

@@ -1,7 +1,7 @@
-import s from "./ListTrening.module.scss";
+import s from "./ListEditorTrening.module.scss";
 
 import { ItemList } from "../ItemList/ItemList";
-import { CustomButton } from "../../BaseComponents/CustomComponents";
+import { CBtnStyled } from "../../BaseComponents/CustomComponents";
 
 import { setOneTrening } from "../ConstrEditorTrening/sliceConstrEditorTrenings";
 import {
@@ -12,7 +12,7 @@ import {
     deleteAllTrening,
     deleteSomeTrening,
     addForEditor,
-    addToDelete
+    addToDelete,
 } from "./sliceListEditorTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -46,7 +46,7 @@ export const ListEditorTrening = (props) => {
     };
     const addEditor = (id) => {
         const item = allItemsList.find((item) => item.id === id);
-        dispatch(addForEditor({data:item, pathList:pathList, pathConstr: pathConstr }));
+        dispatch(addForEditor({ data: item, pathList: pathList, pathConstr: pathConstr }));
         dispatch(setOneTrening(item));
     };
 
@@ -60,31 +60,34 @@ export const ListEditorTrening = (props) => {
 
             return (
                 <CSSTransition key={id} timeout={600} classNames="baseTransition">
-                    <ItemList 
-                        editor={addEditor} 
-                        deleteOneTren={deleteOneTren} 
+                    <ItemList
+                        editor={addEditor}
+                        deleteOneTren={deleteOneTren}
                         addForDelete={addForDelete}
-                        key={id} 
-                        {...item} 
+                        key={id}
+                        {...item}
                     />
                 </CSSTransition>
             );
         });
     };
 
-    const loadingView = allItemsList.length === 0 ? <h1>Loading...</h1> : null;
+    const loadingView = allItemsList.length === 0 ? <h3>Loading...</h3> : null;
 
     const contentItems = allItemsList.length > 0 ? createContentItems(allItemsList) : null;
 
     return (
-        <>
-            <div className="basePositionBlock baseFlexGapNoJC">
-                <CustomButton innerValue={"Delete list exercises"} funk={deleteSomeTren} />
-                <CustomButton innerValue={"Delete all"} funk={deleteTrenAll} />
+        <div className={`${s.listEditorTrening} bBlock`}>
+            <div className={`${s.listEditorTrening__wrapper} bElement `}>
+                <div className={`${s.listEditorTrening__btns} bElement bWrapperStyle bFlex`}>
+                    <CBtnStyled funk={deleteSomeTren} innerValue={"Delete list exercises"} />
+                    <CBtnStyled funk={deleteTrenAll} innerValue={"Delete all"} />
+                </div>
+                <div className={`${s.listEditorTrening__list} bElement bWrapperStyle`}>
+                    {loadingView}
+                    <TransitionGroup className={`${"bElement"} `}>{contentItems}</TransitionGroup>
+                </div>
             </div>
-
-            {loadingView}
-            <TransitionGroup className={`${"basePositionBlock"} `}>{contentItems}</TransitionGroup>
-        </>
+        </div>
     );
 };

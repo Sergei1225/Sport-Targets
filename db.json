@@ -621,23 +621,16 @@
   ],
   "selectedExercises": [
     {
-      "forDelete": false,
-      "priority": false,
-      "order": 4,
-      "id": "6O6OBsL63-516699fS-5WxO4168_73",
-      "name": "French press",
+      "id": "1P94lOd68_kyO78131_I17hB0c5_Sz",
+      "name": "Run",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "triceps"
+        "legs"
       ],
-      "typeOfExercise": "base",
-      "repeats": [
-        20
-      ],
-      "weight": []
+      "typeOfExercise": "aerobic"
     },
     {
       "forDelete": false,
@@ -657,21 +650,103 @@
         20,
         20,
         20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
         20
       ],
-      "weight": []
+      "weight": [
+        166,
+        166,
+        166,
+        166,
+        166,
+        166,
+        500,
+        500,
+        500,
+        500
+      ]
     },
     {
-      "id": "A2ioP0252-E5A9k4hi-Q39Mn2Us_20",
-      "name": "Run",
+      "forDelete": false,
+      "priority": false,
+      "order": 4,
+      "id": "6O6OBsL63-516699fS-5WxO4168_73",
+      "name": "French press",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "legs"
+        "triceps"
       ],
-      "typeOfExercise": "aerobic"
+      "typeOfExercise": "base",
+      "repeats": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "weight": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "forDelete": false,
+      "priority": false,
+      "order": 3,
+      "id": "7G26eIhv4-Cq662F7F_RBM509E8_l0",
+      "name": "Shrugs",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "trapezoid"
+      ],
+      "typeOfExercise": "base",
+      "repeats": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "weight": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20
+      ]
     }
   ],
   "listExersises": [
@@ -700,23 +775,6 @@
       "forDelete": false,
       "priority": false,
       "order": 3,
-      "id": "7G26eIhv4-Cq662F7F_RBM509E8_l0",
-      "name": "Shrugs",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "trapezoid"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 3,
       "id": "C25hw93sQ_3j662vTC-f5575Kq8-74",
       "name": "Bench press",
       "img": [
@@ -729,22 +787,6 @@
       "typeOfExercise": "base",
       "repeats": [],
       "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 0,
-      "id": "2l99t42Sk_1E06kg75-B0mK2gIv-l5",
-      "name": "Walking",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReC3AiWlSwzFPyOike3f7poj_YiEJCzLFKGg&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic",
-      "fullTime": 142
     }
   ],
   "dataBase": [

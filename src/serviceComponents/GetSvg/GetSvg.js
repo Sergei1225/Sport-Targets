@@ -14,6 +14,11 @@ import { ReactComponent as Dumbbell } from "../../img/svg/dumbbell.svg";
 import { ReactComponent as Arrow } from "../../img/svg/arrow.svg"; 
 import { ReactComponent as Bucket } from "../../img/svg/bucket.svg"; 
 import { ReactComponent as Warning } from "../../img/svg/warning.svg"; 
+import { ReactComponent as DeleteCross } from "../../img/svg/deleteCross.svg"; 
+import { ReactComponent as EditorIcon } from "../../img/svg/editor.svg"; 
+import { ReactComponent as FavoriteIcon } from "../../img/svg/favorite.svg"; 
+import { ReactComponent as WeightCircle } from "../../img/svg/weightCircle.svg"; 
+import { ReactComponent as PencilIcon } from "../../img/svg/pencil.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -48,6 +53,16 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
             return <Trenings className={`treningsSvg ${styleSvg}`} />
         case "warning":
             return <Warning className={`warning ${styleSvg}`} />
+        case "deleteCross":
+            return <DeleteCross className={`deleteCross ${styleSvg}`} />
+        case "editorIcon":
+            return <EditorIcon className={`editorIcon ${styleSvg}`} />
+        case "favoriteIcon":
+            return <FavoriteIcon className={`favoriteIcon ${styleSvg}`} />
+        case "weightCircle":
+            return <WeightCircle className={`weightCircle ${styleSvg}`} />
+        case "pencilIcon":
+            return <PencilIcon className={`pencilIcon ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }
