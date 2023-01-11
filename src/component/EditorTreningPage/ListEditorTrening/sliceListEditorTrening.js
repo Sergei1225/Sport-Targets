@@ -1,9 +1,4 @@
-import {
-    createEntityAdapter,
-    createSelector,
-    createSlice,
-    createAsyncThunk,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { RequestBase } from "../../../service/RequestBase";
 
@@ -16,41 +11,38 @@ const prepareItem = (itemData, order) => ({
     ...itemData,
 });
 
-export const treningsCompare = createAsyncThunk(
-    "listEditorTrening/treningsCompare",
-    async (action) => {
-        const { pathList, pathTrening, currentItemId } = action;
-        const dataRequests = [pathTrening, pathList, `listTrenings/${currentItemId}`];
-        const [dataTening, dataList, currentTren] = await Promise.all(dataRequests.map((item) => simpleReqest(item)));
+export const treningsCompare = createAsyncThunk("listEditorTrening/treningsCompare", async (action) => {
+    const { pathList, pathTrening, currentItemId } = action;
+    const dataRequests = [pathTrening, pathList, `listTrenings/${currentItemId}`];
+    const [dataTening, dataList, currentTren] = await Promise.all(dataRequests.map((item) => simpleReqest(item)));
 
-        if (dataTening.id === currentItemId) {
-            return dataList;
-        } else {
-            const { listExersises } = currentTren;
-            console.log('не совпадает')
-            simpleReqest(pathTrening, "PUT", currentTren);
-            await Promise.all(dataList.map((item) => simpleReqest(`${pathList}/${item.id}`, "DELETE")));
-            await Promise.all(listExersises.map((item) => simpleReqest(`${pathList}`, "POST", item)));
-        
-            return listExersises;
-        }
-    }
-);
+    if (dataTening.id === currentItemId) {
+        return dataList;
+    } else {
+        const { listExersises } = currentTren;
+        console.log("не совпадает");
+        simpleReqest(pathTrening, "PUT", currentTren);
+        await Promise.all(dataList.map((item) => simpleReqest(`${pathList}/${item.id}`, "DELETE")));
+        await Promise.all(listExersises.map((item) => simpleReqest(`${pathList}`, "POST", item)));
 
-export const getListTrenings = createAsyncThunk(
-    "listEditorTrening/getListTrenings",
-    async (action) => {
-        return await simpleReqest(action);
+        return listExersises;
     }
-);
+});
 
-export const deleteOneTrening = createAsyncThunk(
-    "listEditorTrening/deleteOneTrening",
-    async (action) => {
-        await simpleReqest(`${action.path}/${action.id}`, "DELETE");
-        return action.id;
-    }
-);
+export const changePriorityExersice = createAsyncThunk("listEditorTrening/changePriorityExersice", async (action) => {
+    await simpleReqest(`${action.path}/${action.id}`, "PATCH", { priority: !action.priority });
+    return { id: action.id, priority: action.priority };
+});
+
+export const getListTrenings = createAsyncThunk("listEditorTrening/getListTrenings", async (action) => {
+    return await simpleReqest(action);
+});
+
+export const deleteOneTrening = createAsyncThunk("listEditorTrening/deleteOneTrening", async (action) => {
+    await simpleReqest(`${action.path}/${action.id}`, "DELETE");
+    return action.id;
+});
+
 export const deleteSomeTrening = createAsyncThunk(
     "listEditorTrening/deleteSomeTrening",
     async (action, { getState }) => {
@@ -61,16 +53,13 @@ export const deleteSomeTrening = createAsyncThunk(
     }
 );
 
-export const deleteAllTrening = createAsyncThunk(
-    "listEditorTrening/deleteAllTrening",
-    async (action, { getState }) => {
-        const ids = getState().listEditorTrening.ids;
-        console.log(ids);
-        if (!ids || ids.length === 0) return;
-        await Promise.all(ids.map((id) => simpleReqest(`${action}/${id}`, "DELETE")));
-        return ids;
-    }
-);
+export const deleteAllTrening = createAsyncThunk("listEditorTrening/deleteAllTrening", async (action, { getState }) => {
+    const ids = getState().listEditorTrening.ids;
+    console.log(ids);
+    if (!ids || ids.length === 0) return;
+    await Promise.all(ids.map((id) => simpleReqest(`${action}/${id}`, "DELETE")));
+    return ids;
+});
 
 export const addTunigedTrening = createAsyncThunk(
     "listEditorTrening/addTunigedTrening",
@@ -84,16 +73,13 @@ export const addTunigedTrening = createAsyncThunk(
     }
 );
 
-export const addForEditor = createAsyncThunk(
-    "listEditorTrening/addForEditor",
-    async (action) => {
-        const {data, pathList, pathConstr } = action;
-        console.log(action);
-        await simpleReqest(pathConstr, "POST", data);
-        await simpleReqest(`${pathList}/${data.id}`, "DELETE");
-        return data.id;
-    }
-);
+export const addForEditor = createAsyncThunk("listEditorTrening/addForEditor", async (action) => {
+    const { data, pathList, pathConstr } = action;
+    console.log(action);
+    await simpleReqest(pathConstr, "POST", data);
+    await simpleReqest(`${pathList}/${data.id}`, "DELETE");
+    return data.id;
+});
 
 const listAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.order - a.order,
@@ -108,8 +94,6 @@ const sliceListEditorTrening = createSlice({
         compareValue: true,
     }),
     reducers: {
-        priorityTren: (state, { payload }) =>
-            listAdapter.upsertOne(state, { id: payload.id, priority: !payload.priority }),
         addToDelete: (state, { payload }) => {
             const { id, forDelete } = payload;
             listAdapter.upsertOne(state, { id, forDelete: !forDelete });
@@ -134,6 +118,14 @@ const sliceListEditorTrening = createSlice({
         });
         builder.addCase(getListTrenings.rejected, (state, action) => {
             console.log("произошла ошибка");
+        });
+        builder.addCase(changePriorityExersice.fulfilled, (state, { payload }) => {
+            console.log(payload);
+            listAdapter.upsertOne(state, { id: payload.id, priority: !payload.priority });
+            console.log("изменение приоритетности");
+        });
+        builder.addCase(changePriorityExersice.rejected, (state, action) => {
+            console.log("произошла ошибка изменение приоритетности");
         });
         builder.addCase(deleteOneTrening.fulfilled, (state, { payload }) => {
             listAdapter.removeOne(state, payload);
@@ -183,12 +175,4 @@ export default reducer;
 
 export const selectorsAdapter = listAdapter.getSelectors((state) => state.listEditorTrening);
 
-export const {
-    treningsGetAll,
-    addTrening,
-    deleteTren,
-    priorityTren,
-    deleteListTren,
-    deleteAllTren,
-    addToDelete,
-} = actions;
+export const { treningsGetAll, addTrening, deleteTren, deleteListTren, deleteAllTren, addToDelete } = actions;

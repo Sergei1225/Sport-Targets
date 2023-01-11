@@ -7,7 +7,9 @@ import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 import { useState } from "react";
 
 export const SimpleTuning = (props) => {
-    const { title, id, deleteItem, imgSrc, saveItem, order } = props;
+    const { title, id, deleteItem, imgSrc, saveItem, order, fullTime } = props;
+
+    
 
     const [valueError, setValueError] = useState(null);
 
@@ -40,9 +42,9 @@ export const SimpleTuning = (props) => {
                     valueHandler={getValue}
                     imgSrc={imgSrc[0]}
                     valueError={valueError}
-                    //arrValues={itemsView}
                     subtile={"Lorem ipsum dolor sit amet "}
                     nameSvg={"run"}
+                    startState={fullTime}
                 />
             </div>
         </div>

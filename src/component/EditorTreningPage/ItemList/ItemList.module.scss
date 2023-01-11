@@ -1,39 +1,54 @@
 .itemList {
     transition: all 0.5s linear;
-    &__wrapper{
+    &__wrapper {
         background-color: rgb(44, 44, 44);
         color: white;
     }
-    &__path{
+    &__priority{
+        background-color: rgb(31, 14, 129);
+    }
+    &__path {
         border-radius: 10px;
         border: 2px solid white;
         margin-bottom: 10px;
-        &:last-child{
+        &:last-child {
             margin-bottom: 0px;
         }
     }
-    &__icon{
-        cursor: pointer;
+    &__svgFunc{
+        fill: white;
+        &:hover {
+            * {
+                transition: all 0.5s linear;
+                fill: rgb(182, 42, 42);
+            }
+        }
     }
-    &__text{
+    &__svgStyle {
+        fill: white;
+        transition: all 0.5s linear;
+    }
+    &__icon {
+        cursor: pointer;
+        &:hover {
+            * {
+                fill: rgb(182, 42, 42);
+            }
+        }
+    }
+    &__text {
         flex: 1 1 200px;
     }
-    &__func{
+    &__func {
         border-radius: 10px;
         border: 2px solid white;
     }
     &__img {
         flex: 0 0 110px;
-        
         img {
             border: 2px solid white;
             height: 180px;
             width: 180px;
         }
-        
     }
-    &__text {
-
-    }
-
 }

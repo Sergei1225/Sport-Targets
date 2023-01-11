@@ -48,11 +48,14 @@ export const ConstrEditorTrening = (props) => {
     const tuningTrenings = (data) => {
         if (data.length === 0) return null;
         return data.map((item) => {
+            console.log(item);
             const { id, name, img, order } = item;
             const itemTurning =
                 item.typeOfExercise === "base" ? (
                     <TuningTrening
                         key={id}
+                        repeats={item.repeats}
+                        weights={item.repeats}
                         title={name}
                         id={id}
                         imgSrc={img}
@@ -67,6 +70,7 @@ export const ConstrEditorTrening = (props) => {
                         id={id}
                         imgSrc={img}
                         order={order}
+                        fullTime={item.fullTime}
                         saveItem={saveTren}
                         deleteItem={deleteSelectedItems}
                     />
@@ -98,7 +102,7 @@ export const ConstrEditorTrening = (props) => {
                 <CustomTitleBase
                     title={"Tuning"}
                     subtile={"You can quickly select the desired exercises and customize"}
-                    nameSvg={"run"}
+                    nameSvg={"bagIcon"}
                     styleSvg={""}
                 />
                 <TransitionGroup>{tuningItems}</TransitionGroup>

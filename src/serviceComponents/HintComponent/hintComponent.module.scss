@@ -1,0 +1,41 @@
+.hint {
+    cursor: pointer;
+    position: relative;
+    &:hover {
+        .hint__content {
+            opacity: 1;
+        }
+    }
+    &__content {
+        position: absolute;
+        top: -12px;
+        left: -87px;
+        min-width: 130px;
+        transition: all 0.5s linear;
+        font-size: 20px;
+        line-height: 24px;
+        opacity: 0;
+    }
+    &__text {
+        padding: 3px 5px;
+        background-color: rgb(44, 44, 44);
+        color: white(44, 44, 44);
+        border-radius: 10px;
+        border: 2px solid white;
+        position: absolute;
+        top: -35px;
+        right: 0;
+        pointer-events: none;
+        z-index: 5;      
+    }
+    &__triangle {
+        position: absolute;
+        top: -3px;
+        right: 7px;
+        border: 10px solid transparent;
+        border-top: 10px solid white;
+        width: 0px;
+        height: 0px;
+        z-index: 6;
+    }
+}

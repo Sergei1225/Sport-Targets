@@ -1,6 +1,8 @@
 import s from "./ItemList.module.scss";
 
-import { paint, cross, list, star } from "../../../img/srcIcons";
+import { dataIconsFunction } from "./dataFunctions";
+
+import { HintComponent } from "../../../serviceComponents/HintComponent/HintComponent";
 import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 
 export const ItemList = (props) => {
@@ -27,18 +29,11 @@ export const ItemList = (props) => {
     if (!weight || weight.length < 1) weight = ["No data"];
 
     if (forDelete) styleWrapper += ` ${s.itemList__forDelete}`;
-    if (priority) styleWrapper += ` ${s.itemList__prioroty}`;
+    if (priority) styleWrapper += ` ${s.itemList__priority}`;
     if (!fullTime) fullTime = 1000;
 
     const repeatsItems = repeats.join(" / ");
     const weightItems = weight.join(" / ");
-
-    const dataIconsFunction = [
-        { nameFunct: "addForDelete", nameSvg: "list", id: "HDJjksjjw34i2jwsdlslkdssd9jh" },
-        { nameFunct: "delete", nameSvg: "deleteCross", id: "34jNjksdjkHJ45934nsaJJkskdaz" },
-        { nameFunct: "priority", nameSvg: "favoriteIcon", id: "Aksdjnj4343idjsduujHNJDJKsds" },
-        { nameFunct: "editor", nameSvg: "editorIcon", id: "939483ijnsamjska832hj3nm3wmv" },
-    ];
 
     const functionsComponent = (nameFunct) => {
         switch (nameFunct) {
@@ -65,9 +60,13 @@ export const ItemList = (props) => {
                 <div
                     key={item.id}
                     onClick={() => functionsComponent(item.nameFunct)}
-                    className={`${s.itemList__icon} bSizeIconSmall`}
+                    className={`${s.itemList__icon} `}
                 >
-                    <GetSvg nameSvg={item.nameSvg} />
+                    <HintComponent inner={item.hint}>
+                        <div className={`${s.itemList__icon} bSizeIconSmall`}>
+                            <GetSvg nameSvg={item.nameSvg} styleSvg={s.itemList__svgFunc} />
+                        </div>
+                    </HintComponent>
                 </div>
             );
         });
@@ -85,7 +84,6 @@ export const ItemList = (props) => {
                     </div>
                     {functionIcons}
                 </div>
-
                 <div className={`${s.itemList__text} bElement`}>
                     <div className={`${s.itemList__title} ${s.itemList__path} bElement bContentBig bBold bFlex`}>
                         <div className="bSizeIconSmall">
@@ -98,18 +96,18 @@ export const ItemList = (props) => {
                             <div className={`${s.itemList__path} bElement  bContent `}>
                                 <div className="bFlex">
                                     <div className="bSizeIconSmall">
-                                        <GetSvg nameSvg={"pencilIcon"} />
+                                        <GetSvg nameSvg={"pencilIcon"} styleSvg={s.itemList__svgStyle} />
                                     </div>
-                                    <span className={`bBold bContentBig`}>Repeats: </span>
+                                    <div className={`bBold bContentBig`}>Repeats: </div>
                                 </div>
                                 <div className="bMarginTop">{repeatsItems}</div>
                             </div>
                             <div className={`${s.itemList__path}  bElement bContent`}>
                                 <div className="bFlex">
                                     <div className="bSizeIconSmall">
-                                        <GetSvg nameSvg={"locker"} />
+                                        <GetSvg nameSvg={"locker"} styleSvg={s.itemList__svgStyle} />
                                     </div>
-                                    <span className={`bBold bContentBig`}>Weight: </span>
+                                    <div className={`bBold bContentBig`}>Weight: </div>
                                 </div>
                                 <div className="bMarginTop">{weightItems}</div>
                             </div>
@@ -117,9 +115,9 @@ export const ItemList = (props) => {
                     ) : (
                         <div className={`${s.itemList__path} bElement bContent bFlex bAlignItems`}>
                             <div className="bSizeIconSmall">
-                                <GetSvg nameSvg={"timer"} />
+                                <GetSvg nameSvg={"timer"} styleSvg={s.itemList__svgStyle} />
                             </div>
-                            <span className={`bBold bContentBig`}>Time: </span>
+                            <div className={`bBold bContentBig`}>Time: </div>
                             {fullTime}min
                         </div>
                     )}

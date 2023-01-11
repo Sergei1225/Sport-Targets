@@ -11,10 +11,16 @@ import { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export const TuningTrening = (props) => {
-    const { title, id, saveItem, imgSrc, deleteItem, order } = props;
-    const [itemsValue, setItemsValue] = useState([]);
-    const [itemsWeight, setItemsWeight] = useState([]);
-    const [addWeight, setAddWeight] = useState(false);
+    const { title, id, saveItem, imgSrc, deleteItem, order, repeats, weights } = props;
+
+    const dataRepeats = repeats ? repeats.map((item) => ({ value: item, id: randomId() })) : [];
+    const dataWeights = weights ? weights.map((item) => ({ value: item, id: randomId() })) : [];
+    const initialAddWeigth = weights ? true : false;
+
+    const [itemsValue, setItemsValue] = useState(dataRepeats);
+    const [itemsWeight, setItemsWeight] = useState(dataWeights);
+    const [addWeight, setAddWeight] = useState(initialAddWeigth);
+
     const [valueErrorRepeat, setValueErrorRepeat] = useState(null);
     const [valueErrorWeigth, setValueErrorWeigth] = useState(null);
 
@@ -86,6 +92,11 @@ export const TuningTrening = (props) => {
         weight: itemsWeight ? itemsWeight.map((item) => item.value) : [],
     });
 
+    const clearItem = () => {
+        setItemsValue([])
+        setItemsWeight([])
+    }
+
     const itemsView = createItems(itemsValue, deleteItemRepeat);
     const itemsViewWeigth = createItems(itemsWeight, deleteItemWeights);
 
@@ -110,8 +121,9 @@ export const TuningTrening = (props) => {
                     arrValues={itemsView}
                     subtile={"Lorem ipsum dolor sit amet "}
                     nameSvg={"gantelSquare"}
+                    startState={itemsValue.length !== 0 ? itemsValue[itemsValue.length - 1].value : 40}
                 />
-                <div className="bElement bPaddingTop0">
+                <div className="bElement">
                     <ComponentSwitch
                         logicValue={addWeight}
                         styleDiv={"bBtn bInlineBlock "}
@@ -133,10 +145,12 @@ export const TuningTrening = (props) => {
                         itemsValue={itemsWeight}
                         nameSvg={"locker"}
                         subtile={"Lorem ipsum dolor sit amet "}
+                        startState={itemsWeight.length !== 0 ? itemsWeight[itemsWeight.length - 1].value : 40}
                     />
                 </div>
-                <div className="bElement bPaddingTop0">
+                <div className="bElement bFlex">
                     <CBtnStyled funk={() => saveItem(savingItem())} innerValue={"Save exersice"} />
+                    <CBtnStyled funk={clearItem} innerValue={"Clear tuning"} />
                 </div>
             </div>
         </div>

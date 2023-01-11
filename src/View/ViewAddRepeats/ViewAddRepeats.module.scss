@@ -1,22 +1,59 @@
 .viewAddRepeats {
-    &__wrapper{
-        max-width: 750px;
-        
+    &__wrapper {
+        //max-width: 750px;
+        background-color: rgb(92, 86, 86);
+        border-radius: 20px;
+        padding-left: 50px;
+        position: relative;
+        &::after,
+        &::before {
+            position: absolute;
+            content: "";
+            border-radius: 10px;
+        }
+        &::after {
+            left: 15px;
+            top: 5%;
+            width: 20px;
+            height: 90%;
+            background-color: rgb(34, 33, 33);
+        }
+        &::before {
+            left: 22.5px;
+            top: 10%;
+            width: 0px;
+            height: 80%;
+            background-color: rgb(202, 194, 194);
+            border: dotted 2px white;
+            z-index: 2;
+        }
     }
-    &__repeats{
+    &__iconTitle{
+        fill: white;
+    }
+    &__items{
+        padding-top: 0;
+    }
+    &__repeats {
         padding: 10px;
     }
-    &__header{
+    &__header {
         justify-content: space-between;
+        padding-bottom: 0;
     }
-    &__img{
-        height: 250px;
+    &__img {
+        flex: 0 0 250px;
+        height: 180px;
         width: 250px;
+        img{
+            border: double 2px white;
+        }
+        
     }
-    &__range{
+    &__range {
         flex: 1 0 200px;
         max-width: 360px;
-        &_inner{
+        &_inner {
             background-color: black;
             color: white;
         }

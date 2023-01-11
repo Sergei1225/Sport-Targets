@@ -642,37 +642,6 @@
         131,
         207
       ]
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 4,
-      "id": "66uSA3487-Jh17Dg7T_st21Mx0q-49",
-      "name": "Squats",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0fjnfrQkERfIhszcOo2zK-Sqg5K4vP47_kA&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [
-        23,
-        99,
-        155,
-        257,
-        411,
-        500
-      ],
-      "weight": [
-        347,
-        245,
-        304,
-        408,
-        114,
-        270
-      ]
     }
   ],
   "listExersises": [

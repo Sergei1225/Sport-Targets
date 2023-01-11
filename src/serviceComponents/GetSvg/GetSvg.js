@@ -19,6 +19,7 @@ import { ReactComponent as EditorIcon } from "../../img/svg/editor.svg";
 import { ReactComponent as FavoriteIcon } from "../../img/svg/favorite.svg"; 
 import { ReactComponent as WeightCircle } from "../../img/svg/weightCircle.svg"; 
 import { ReactComponent as PencilIcon } from "../../img/svg/pencil.svg"; 
+import { ReactComponent as BagIcon } from "../../img/svg/bag.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -63,6 +64,8 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
             return <WeightCircle className={`weightCircle ${styleSvg}`} />
         case "pencilIcon":
             return <PencilIcon className={`pencilIcon ${styleSvg}`} />
+        case "bagIcon":
+            return <BagIcon className={`bagIcon ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }

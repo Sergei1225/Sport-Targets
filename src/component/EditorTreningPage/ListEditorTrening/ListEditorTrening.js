@@ -13,6 +13,7 @@ import {
     deleteSomeTrening,
     addForEditor,
     addToDelete,
+    changePriorityExersice
 } from "./sliceListEditorTrening";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -33,6 +34,10 @@ export const ListEditorTrening = (props) => {
             dispatch(getListTrenings(pathList));
         }
     }, []);
+
+    const changePriority = (id, priority) => {
+        dispatch(changePriorityExersice({ id, path: pathList, priority: priority }));
+    }
 
     const deleteOneTren = (id) => {
         dispatch(deleteOneTrening({ id, path: pathList }));
@@ -64,6 +69,7 @@ export const ListEditorTrening = (props) => {
                         editor={addEditor}
                         deleteOneTren={deleteOneTren}
                         addForDelete={addForDelete}
+                        priorityTren={changePriority}
                         key={id}
                         {...item}
                     />
@@ -78,7 +84,7 @@ export const ListEditorTrening = (props) => {
 
     return (
         <div className={`${s.listEditorTrening} bBlock`}>
-            <div className={`${s.listEditorTrening__wrapper} bElement `}>
+            <div className={`${s.listEditorTrening__wrapper}  `}>
                 <div className={`${s.listEditorTrening__btns} bElement bWrapperStyle bFlex`}>
                     <CBtnStyled funk={deleteSomeTren} innerValue={"Delete list exercises"} />
                     <CBtnStyled funk={deleteTrenAll} innerValue={"Delete all"} />
