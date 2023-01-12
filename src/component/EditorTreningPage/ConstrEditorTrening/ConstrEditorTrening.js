@@ -48,7 +48,6 @@ export const ConstrEditorTrening = (props) => {
     const tuningTrenings = (data) => {
         if (data.length === 0) return null;
         return data.map((item) => {
-            console.log(item);
             const { id, name, img, order } = item;
             const itemTurning =
                 item.typeOfExercise === "base" ? (
