@@ -1,5 +1,7 @@
+import s from "./addedItems.module.scss";
+
 import { FlipItem } from "../../../View/FlipItem/FlipItem";
-import { CustomButton } from "../../BaseComponents/CustomComponents";
+import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
 import { TargetItem } from "../../TargetPage/TargetItem/TargetItem";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -10,8 +12,7 @@ export const AddedItems = (props) => {
 
     const createAdedItems = (data) => {
         if (!data) return null;
-        //paramSelect === "creator" || paramSelect === "editor"
-        if(paramItem === 'creator' || paramItem === "editor"){
+        if (paramItem === "creator" || paramItem === "editor") {
             return data.map((item) => {
                 return (
                     <CSSTransition key={item.id} timeout={600} classNames="baseTransition">
@@ -28,7 +29,7 @@ export const AddedItems = (props) => {
                     </CSSTransition>
                 );
             });
-        } else if(paramItem === "targetWeigth") {
+        } else if (paramItem === "targetWeigth") {
             return data.map((item) => {
                 return (
                     <CSSTransition key={item.id} timeout={600} classNames="baseTransition">
@@ -44,23 +45,28 @@ export const AddedItems = (props) => {
                     </CSSTransition>
                 );
             });
-        }   
-        
+        }
     };
 
     const adedItems = createAdedItems(listItems, deleteSelectedItem);
+
     return (
-        <div className={`${"basePositionElement "}`}>
-            <TransitionGroup className={`${"baseFlexGapWrap"}`}>{adedItems}</TransitionGroup>
-            <div className={`$ ${""} baseFlexGapNoJC`}>
-                <CustomButton
-                    funk={() => saveExersice()}
-                    innerValue={"Save trening"}
-                />
-                <CustomButton
-                    funk={() => deleteAll()}
-                    innerValue={"Clear all"}
-                />
+        <div className={`${"bBlock"}`}>
+            <div className="bElement bWrapperStyle">
+                <div className="bElement">
+                    <CustomTitleBase
+                        title={"Selected exercises"}
+                        subtile={"selected exercises to add to the list trening"}
+                        nameSvg={"gantelSquare"}
+                        styleSvg={""}
+                    />
+                </div>
+                <TransitionGroup className={`${" bFlex bFlexWrap bFlexJCSA bPaddingTop20"}`}>{adedItems}</TransitionGroup>
+                <div className={`${s.addedItems__line} `}></div>
+                <div className={`$ ${""} bElement bFlex`}>
+                    <CBtnStyled funk={saveExersice} innerValue={"Save trening"} />
+                    <CBtnStyled funk={deleteAll} innerValue={"Clear all"} />
+                </div>
             </div>
         </div>
     );

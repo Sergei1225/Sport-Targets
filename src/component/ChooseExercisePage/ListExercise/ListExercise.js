@@ -55,6 +55,11 @@ export const ListExercise = (props) => {
     }, [listChoose]);
 
     return (
-        <TransitionGroup className="baseFlexGapWrap basePaddingBottom">{itemsList}</TransitionGroup>
+        <div className={`${"bBlock"}`}>
+            <div className="bElement bWrapperStyle ">
+                <TransitionGroup className="bFlex bFlexWrap bFlexJCSA ">{itemsList}</TransitionGroup>
+            </div>
+        </div>
+        
     );
 };

@@ -54,7 +54,7 @@ export const SingleSelect = memo((props) => {
         multiOption,
         loading,
         placeholder,
-        wrapper,
+        styleWrapper,
         sizeSelect,
         getValueSelect,
         noOption,
@@ -62,7 +62,7 @@ export const SingleSelect = memo((props) => {
     } = props;
 
     if (!dataOption) dataOption = options;
-    if (!sizeSelect) sizeSelect = "300px";
+    if (!sizeSelect) sizeSelect = "100%";
 
     const [currentValue, setCurentValue] = useState([]);
     //console.log("рендер селекта");
@@ -72,10 +72,8 @@ export const SingleSelect = memo((props) => {
         setCurentValue(initialState);
     }, [initialState]);
 
-
-
     const getValue = (value, objOption, multiOption) => {
-        if(!currentValue) return;
+        if (!currentValue) return;
         if (multiOption) {
             return objOption.filter((item) => currentValue.indexOf(item.value) >= 0);
         } else if (value) {
@@ -102,21 +100,19 @@ export const SingleSelect = memo((props) => {
     const valueSelect = getValue(currentValue, dataOption, multiOption);
 
     return (
-        <div style={wrapper}>
-            <div style={{ width: sizeSelect }}>
-                <Select
-                    options={dataOption}
-                    onChange={changeValue}
-                    value={valueSelect}
-                    isMulti={multiOption}
-                    noOptionsMessage={() => noOption}
-                    placeholder={placeholder}
-                    isLoading={loading}
-                    classNamePrefix={"customSelect"}
-                    isClearable
-                    //menuIsOpen={false}
-                />
-            </div>
+        <div style={{ width: sizeSelect }} className={`${styleWrapper}`}>
+            <Select
+                options={dataOption}
+                onChange={changeValue}
+                value={valueSelect}
+                isMulti={multiOption}
+                noOptionsMessage={() => noOption}
+                placeholder={placeholder}
+                isLoading={loading}
+                classNamePrefix={"customSelect"}
+                isClearable
+                //menuIsOpen={false}
+            />
         </div>
     );
 });

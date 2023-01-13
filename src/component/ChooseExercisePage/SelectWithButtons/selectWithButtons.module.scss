@@ -1,0 +1,15 @@
+.withButtons{
+    &__btns{
+        max-height: 0px;
+        overflow: hidden;
+        pointer-events: none;
+        transition: all 0.8s linear;
+        padding: 0 ;
+        &_active{
+            max-height: 100px;
+            box-shadow: none;
+            padding: 0 15px 25px 15px;
+            pointer-events: all;
+        }
+    }
+}

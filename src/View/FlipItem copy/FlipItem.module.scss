@@ -1,62 +1,59 @@
 .flipItem {
     position: relative;
-    &__size{
-        position: relative;
-        width: 280px;
-        height: 330px;
-        border-radius: 20px;
-    }
+    width: 280px;
+    height: 360px;
+    border-radius: 20px;
     &__wrapper {
         height: 330px;
         position: relative;
         perspective: 1000px;
-        border-radius: 20px;
+        padding: 5px;
     }
     &__img {
         height: 80%;
-        border-radius: 20px;
     }
     &__delete {
         position: absolute;
-        top: -18px;
-        right: -21px;
+        top: -23px;
+        right: -26px;
         &_color {
-            fill: rgb(219, 50, 50);
+            fill: rgb(41, 41, 41);
         }
     }
     &__front {
         position: relative;
         img {
             height: 100%;
-            border-radius: 15px 15px 0 0;
         }
     }
     &__name {
+        padding: 20px 10px;
         text-align: center;
-        padding: 10px;
     }
     &__front,
     &__back {
+        width: 95%;
+        height: 95%;
         position: absolute;
         top: 0;
         left: 0;
         transition: all 0.5s linear;
         backface-visibility: hidden;
         border: solid 4px black;
+        padding: 5px;
         border-radius: 20px;
     }
     &__front {
         //transform: rotateY(180deg);
-        width: calc(100% - 8px);
-        height: calc(100% - 8px);
+        padding-bottom: 20px;
     }
     &__back {
-        width: calc(100% - 38px);
-        height: calc(100% - 38px);
+        padding: 10px 10px 15px 10px;
         transform: rotateY(180deg);
         justify-content: flex-start;
         &_desckr {
             flex: 1 0 auto;
+            padding: 10px 10px 0 10px;
             border: 2px solid black;
             border-radius: 20px;
         }
@@ -72,6 +69,7 @@
             .flipItem__front {
                 background-color: rgb(143, 140, 140);
             }
+
             transition: all 0.5s linear;
             transform: translate(0, -10px);
         }

@@ -1,5 +1,7 @@
+import s from "./selectWithButtons.module.scss";
+
 import { SingleSelect } from "../../../serviceComponents/SingleSelect/SingleSelect";
-import { CustomButton } from "../../BaseComponents/CustomComponents";
+import { CBtnStyled } from "../../BaseComponents/CustomComponents";
 
 import { useMemo } from "react";
 import { useState } from "react";
@@ -21,31 +23,32 @@ export const SelectWithButtons = (props) => {
     }, [dataSelect]);
 
     return (
-        <div className={`${"bBlock "}`}>
-            <div className={`${"bWrapperStyle "}`}>
-                <SingleSelect
-                    getValueSelect={multi ? setSomeItems : getValue}
-                    sizeSelect={"100%"}
-                    placeholder={"Choise exercise"}
-                    multiOption={multi}
-                    dataOption={dataSelectItems}
-                    noOption={"exercises not found"}
-                />
+        <div className={`${s.withButtons} ${"bBlock "}`}>
+            <div className={`${"bElement bWrapperStyle "}`}>
+                <div className={`${"bElement "} `}>
+                    <SingleSelect
+                        getValueSelect={multi ? setSomeItems : getValue}
+                        placeholder={"Choise exercise"}
+                        multiOption={multi}
+                        dataOption={dataSelectItems}
+                        noOption={"exercises not found"}
+                        styleWrapper={"bContentBig"}
+                    />
+                </div>
                 {/* если это создание или редактирование тренировки то кнопчки будут */}
                 {paramSelect === "creator" || paramSelect === "editor" ? (
-                    <div className={`${"baseFlexGapNoJC"} `}>
-                        <CustomButton active={!multi} funk={() => changeMulti(false)} innerValue={"One option"} />
-                        <CustomButton active={multi} funk={() => changeMulti(true)} innerValue={"Some option"} />
+                    <div className={`${"bElement bFlex bPaddingTop0"} `}>
+                        <CBtnStyled active={!multi} funk={() => changeMulti(false)} innerValue={"One option"} />
+                        <CBtnStyled active={multi} funk={() => changeMulti(true)} innerValue={"Some option"} />
                     </div>
                 ) : null}
-
-                {multi ? (
-                    <CustomButton
+                <div className={`${s.withButtons__btns} ${multi && s.withButtons__btns_active} ${" "} `}>
+                    <CBtnStyled
                         //active={multi}
                         funk={() => getSomeValues(someItems)}
                         innerValue={"Add some items"}
                     />
-                ) : null}
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,10 @@
+.choiseValue{
+    &__line{
+        background-color: rgb(138, 128, 128);
+        height: 6px;
+        width: 95%;
+        margin: 25px auto;
+        //transform: skew(45deg);
+        border-radius: 5px;
+    }
+}

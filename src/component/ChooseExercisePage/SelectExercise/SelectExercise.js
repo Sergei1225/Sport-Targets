@@ -113,7 +113,7 @@ export const SelectExercise = (props) => {
     /// ChoiseValue paramSelect контролирует выбор базовый выбор в упражнениях
 
     return (
-        <div className={`${"basePositionBlock "}`}>
+        <div className={`${" "}`}>
             <SelectWithButtons
                 paramSelect={paramSave}
                 getValue={getValue}
@@ -122,6 +122,13 @@ export const SelectExercise = (props) => {
                 changeMulti={changeMultiValue}
                 getSomeValues={getSomeValues}
             />
+            <AddedItems
+                paramItem={paramSave}
+                deleteAll={deleteAll}
+                listItems={selectedItemsList}
+                deleteSelectedItem={deleteSelectedItem}
+                saveExersice={saveExersice}
+            />
             <ChoiseValue
                 changeDetailfunck={changeDetailfunck}
                 detail={detail}
@@ -129,13 +136,6 @@ export const SelectExercise = (props) => {
                 base={base}
                 dataDetail={dataDetailItems}
                 paramSelect={paramSave}
-            />
-            <AddedItems
-                paramItem={paramSave}
-                deleteAll={deleteAll}
-                listItems={selectedItemsList}
-                deleteSelectedItem={deleteSelectedItem}
-                saveExersice={saveExersice}
             />
         </div>
     );

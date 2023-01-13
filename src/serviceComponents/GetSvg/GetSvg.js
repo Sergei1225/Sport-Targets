@@ -20,6 +20,7 @@ import { ReactComponent as FavoriteIcon } from "../../img/svg/favorite.svg";
 import { ReactComponent as WeightCircle } from "../../img/svg/weightCircle.svg"; 
 import { ReactComponent as PencilIcon } from "../../img/svg/pencil.svg"; 
 import { ReactComponent as BagIcon } from "../../img/svg/bag.svg"; 
+import { ReactComponent as CancelIcon } from "../../img/svg/cancelIcon.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -66,6 +67,8 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
             return <PencilIcon className={`pencilIcon ${styleSvg}`} />
         case "bagIcon":
             return <BagIcon className={`bagIcon ${styleSvg}`} />
+        case "cancelIcon":
+            return <CancelIcon className={`cancelIcon ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }
