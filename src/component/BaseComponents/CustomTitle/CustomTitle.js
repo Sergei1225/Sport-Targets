@@ -11,7 +11,7 @@ export const CustomTitle = memo(({ title, subtile }) => {
     );
 });
 
-export const CustomTitleBase = memo(({ title, subtile, nameSvg, styleSvg }) => {
+export const CustomTitleBase = memo(({ title, subtile, nameSvg, styleSvg, styleTitle, sizeIcon }) => {
     if (!title) title = "";
     if (!subtile) subtile = "";
     if (!nameSvg) nameSvg = "list";
@@ -23,11 +23,11 @@ export const CustomTitleBase = memo(({ title, subtile, nameSvg, styleSvg }) => {
     return (
         <>
             <div className="bFlex bAlignItems">
-                <div className="bFlexIconBig ">
+                <div className={`bFlexIconBig ${sizeIcon}`}>
                     <GetSvg nameSvg={nameSvg} styleSvg={styleSvg}/>
                 </div>
                 <div>
-                    <div className={`${"bTitleMiddle bBold bLetterSapcing bColorTitle"}`}>
+                    <div className={`${"bTitleMiddle bBold bLetterSapcing bColorTitle"} ${styleTitle}`}>
                         {innerTitle}
                     </div>
                     <div className={`${"bContent bColorSubtitle "}`}>{innerSubtile}</div>
@@ -38,3 +38,4 @@ export const CustomTitleBase = memo(({ title, subtile, nameSvg, styleSvg }) => {
         </>
     );
 });
+

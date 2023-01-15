@@ -1,0 +1,48 @@
+.targetItem {
+    &__wrapper {
+        gap: 30px;
+        //background-color: rgb(75, 67, 67);
+        //background-color: rgb(68, 62, 62);
+        background-color: rgb(87, 79, 79);
+        color: white;
+    }
+    &__title {
+        flex: 1 0 auto;
+    }
+    &__btns {
+        flex: 0 0 auto;
+    }
+    &__btn {
+        box-shadow: none;
+    }
+    &__image {
+        flex: 1 0 200px;
+        max-width: 300px;
+        height: 200px;
+        border: 3px solid black;
+        border-radius: 22px;
+    }
+    &__content {
+        flex: 1 1 400px;
+    }
+    &__scale {
+    }
+    &__index {
+        border-radius: 20px;
+        background-color: rgb(252, 252, 252);
+        overflow: hidden;
+        height: 15px;
+        border: solid 7px black;
+        flex: 1 0 150px;
+
+        &_active {
+            width: 40%;
+            height: 100%;
+            background-color: rgb(110, 110, 110);
+            transition: all 1.5s linear;
+            transform: skew(20deg);
+            border-left: 5px solid rgb(110, 110, 110);
+            border-right: 5px solid rgb(99, 22, 22);
+        }
+    }
+}

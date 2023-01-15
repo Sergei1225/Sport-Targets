@@ -1,0 +1,27 @@
+.timeRange{
+    justify-content: space-between;
+    &__info{
+        flex: 1 1 380px;
+        align-self: center;
+        //background-color: rgb(48, 43, 43);
+        //background-color: rgb(58, 53, 53);
+        background-color: rgba(26, 25, 25, 0.78);
+        color: white;
+        border-radius: 20px;
+    }
+    &__title{
+        color: white;
+    }
+    &__bar{
+        flex: 1 0 300px;
+        display: flex;
+        justify-content: center;
+        &_inner{
+            max-width: 280px;
+        }
+    }
+    &__styleRange{
+        background-color: black;
+        color: white;
+    }
+}

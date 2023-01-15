@@ -1,55 +1,74 @@
-import { CustomTitle, CustomButton } from "../../BaseComponents/CustomComponents";
+import s from "./targetItem.module.scss";
 
-import { useNavigate } from "react-router-dom";
+import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
+import { TargetShow } from "../TargetShow/TargetShow";
+
+import { Link } from "react-router-dom";
+
+const itemsData = [
+    { id: "JdsyhgHtyashss7378637GGhsd6whhs", percent: false, nameSvg: "timer", title: "Date of target: 12.03.2022" },
+    { id: "743hnsdhsd77haqwwszhdh7e473asa", percent: 34, nameSvg: "gantelSquare", title: "Weight" },
+    { id: "JdsyhgHtyashss7378637GGhsd6whhs", percent: 56, nameSvg: "days", title: "Days" },
+    { id: "JdsyhgHtyashss489398332uhHjdjs", percent: 75, nameSvg: "list", title: "Trenings" },
+];
 
 export const TargetItem = (props) => {
-    let { name, baseImg, descr, id, deleteItem, workingParts } = props;
-    const navigate = useNavigate();
+    let { title, baseImg, subtitle, nameSvg, styleSvg, linkTo } = props;
 
-    if (!name) name = "TITLE";
+    if (!title) title = "TITLE";
+    if (!nameSvg) nameSvg = "locker";
+    if (!linkTo) linkTo = "/chooseExerciseTargetWeigth";
     if (!baseImg) baseImg = "https://skyfitness.ua/wp-content/uploads/2021/06/sf1.jpg";
-    if (!descr)
-        descr =
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error magni dolor amet maiores harum, voluptatum culpa libero modi, distinctio necessitatibus ipsum nobis porro maxime exercitationem officia animi. Ipsum, quibusdam perspiciatis.";
+    if (!subtitle)
+        subtitle =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error magni dolor amet maiores harum, voluptatum culpa ";
 
-    if (!workingParts || workingParts.length === 0) workingParts = ["legs", "arms"];
-    if (workingParts.length > 3) workingParts = workingParts.slice(0, 3);
-    const workingLine = workingParts.join(" | ");
+    const createItems = (data) => {
+        return data.map((item) => {
+            return (
+                <div key={item.id} className="bElement bPaddingBottm0">
+                    <CustomTitleBase
+                        sizeIcon={"bFlexIconSmall"}
+                        styleTitle={"bTitleSmall"}
+                        title={item.title}
+                        nameSvg={item.nameSvg}
+                        styleSvg={styleSvg}
+                    />
+                    {item.percent ? (
+                        <div className={`${s.targetItem__scale}  bFlex bAlignItems bPaddingTop0`}>
+                            <div className={`${s.targetItem__index}  `}>
+                                <div
+                                    style={{ width: `${item.percent}%` }}
+                                    className={`${s.targetItem__index_active}  `}
+                                ></div>
+                            </div>
+                            <div className={`${s.targetItem__percent}  bContentBig bBold`}>{item.percent}%</div>
+                        </div>
+                    ) : null}
+                </div>
+            );
+        });
+    };
+
+    const itemsTarget = createItems(itemsData);
 
     return (
-        <div className={`${""} basePositionBlock `}>
-            <div className={`${""} baseFlex`}>
-                <div className={`${""} basePositionElementNoMT`}>
-                    <CustomTitle
-                        title={name}
-                        subtile={
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem dicta quam itaque autem impedit at voluptates magni assumenda molestiae beatae hic, veritatis illo ratione animi quisquam nulla eveniet, quibusdam error."
-                        }
-                    />
-                    <div className={`${""} basePositionElement`}>{workingLine}</div>
+        <div className={`${s.targetItem}  bBlock`}>
+            <div className={`${s.targetItem__wrapper} bElement bWrapperStyle bFlex `}>
+                <div className={`${s.targetItem__content} bFlexColumn `}>
+                    <div className={`${s.targetItem__title} bPaddingLeft10`}>
+                        <CustomTitleBase title={title} subtile={subtitle} nameSvg={nameSvg} styleSvg={styleSvg} />
+                    </div>
+                    <div className={`${s.targetItem__complited}  `}>
+                       {itemsTarget}
+                    </div>
+                    <div className={`${s.targetItem__btns} bElement bFlex`}>
+                        <Link className={``} to={linkTo}>
+                            <CBtnStyled innerValue={"Choose exercise"} addStyle={s.targetItem__btn} />
+                        </Link>
+                    </div>
                 </div>
-
-                <div style={{ maxWidth: "300px" }} className={`${""} `}>
-                    <img
-                        className={`${""} baseImgCover`}
-                        //src="https://cdn.forbes.ru/forbes-static/1082x722/new/2021/11/0Y5A6637-61a4d69e3e467-61a4d69e738d8.webp"
-                        src={baseImg}
-                        alt="imgTarget"
-                    />
-                </div>
-            </div>
-            <div className={`${""} baseFlex`}>
-                {name === "TITLE" ? (
-                    <CustomButton
-                        funk={() => navigate("/chooseExerciseTargetWeigth")}
-                        innerValue={"Choose exercise"}
-                    />
-                ) : (
-                    <CustomButton
-                        funk={() => deleteItem && deleteItem(id)}
-                        innerValue={"Delete item"}
-                    />
-                )}
+                <TargetShow stateSlider={true} />
             </div>
         </div>
     );

@@ -8,8 +8,8 @@ import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-export const TargetShow = () => {
-    const [activeLine, setActiveLine] = useState(false);
+export const TargetShow = ({ stateSlider }) => {
+    const [activeLine, setActiveLine] = useState(stateSlider);
 
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
     const dispatch = useDispatch();
@@ -29,10 +29,12 @@ export const TargetShow = () => {
     };
 
     useEffect(() => {
-        window.addEventListener("resize", changeSize);
-        return function () {
-            window.removeEventListener("resize", changeSize);
-        };
+        if (!stateSlider) {
+            window.addEventListener("resize", changeSize);
+            return function () {
+                window.removeEventListener("resize", changeSize);
+            };
+        }
     }, []);
 
     if (!dataWeigth) return <h3>Loading...</h3>;

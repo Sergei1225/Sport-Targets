@@ -18,17 +18,15 @@ export const TreningTarget = () => {
     if (!data) return null;
 
     return (
-        <div>
-            <TargetTuning
-                dataParams={dataParams}
-                paramValues={paramValues}
-                changeParams={changeParams}
-                key={data.id}
-                name={data.name}
-                descr={data.descr} 
-                img={data.img[0]} 
-                workingParts={data.workingParts.join(" | ")} 
-            />
-        </div>
+        <TargetTuning
+            dataParams={dataParams}
+            paramValues={paramValues}
+            changeParams={changeParams}
+            key={data.id}
+            name={data.name}
+            descr={data.descr}
+            img={data.img[0]}
+            workingParts={data.workingParts.join(" | ")}
+        />
     );
 };

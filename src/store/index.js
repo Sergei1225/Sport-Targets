@@ -17,6 +17,7 @@ import listTrenings from "../component/TreningsPage/ListTrenings/sliceListTrenin
 import treningWeigth from "../component/TargetPage/TreningTarget/sliceTreningTarget";
 import targetWeigthRanges from "../component/TargetPage/TargetWeigth/TargetWeightRanges/sliceTargetWeightRanges";
 import showTargetWeigth from "../component/TargetPage/TargetShow/sliceTargetShow";
+import targetPage from "../component/TargetPage/sliceTargetPage";
 /// univer
 import listEditorTrening from "../component/EditorTreningPage/ListEditorTrening/sliceListEditorTrening";
 import constrEditorTrening from "../component/EditorTreningPage/ConstrEditorTrening/sliceConstrEditorTrenings";

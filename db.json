@@ -439,7 +439,7 @@
       "forDelete": false,
       "order": 1,
       "favorite": false,
-      "status": "future",
+      "status": "past",
       "listExersises": [
         {
           "forDelete": false,

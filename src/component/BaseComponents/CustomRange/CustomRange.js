@@ -3,7 +3,21 @@ import { CBtnStyled, CustomTitleBase } from "../CustomComponents";
 import { useState, useEffect } from "react";
 
 export const CustomRange = (props) => {
-    let { getValue, title, subtile, metering, btn, max, innerBtn, startState, min, nameSvg, styleRange, styleSvg } = props;
+    let {
+        getValue,
+        title,
+        subtile,
+        metering,
+        btn,
+        max,
+        innerBtn,
+        startState,
+        min,
+        nameSvg,
+        styleRange,
+        styleSvg,
+        styleTitle,
+    } = props;
 
     if (!title) title = "";
     if (!subtile) subtile = "";
@@ -25,7 +39,15 @@ export const CustomRange = (props) => {
     return (
         <div className={`${" "} `}>
             <div className={`${" bPaddingLeft0 bPaddingBottm0"} bContentBig bBold`}>
-                {title ? <CustomTitleBase title={title} subtile={subtile} nameSvg={nameSvg} styleSvg={styleSvg} /> : null}
+                {title ? (
+                    <CustomTitleBase
+                        title={title}
+                        subtile={subtile}
+                        nameSvg={nameSvg}
+                        styleSvg={styleSvg}
+                        styleTitle={styleTitle}
+                    />
+                ) : null}
             </div>
             <div className={`${"bElement bBorderSolid bBorderRadius bFlex"} ${styleRange}`}>
                 <input
