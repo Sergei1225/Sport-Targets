@@ -2,20 +2,26 @@ import s from "./TargetShow.module.scss";
 
 import { TargetProgress } from "../TargetProgress/TargetProgress";
 
-import { getDataTargetWeigth } from "./sliceTargetShow";
+import { getDataTargetWeigth, setDataTargetShow } from "./sliceTargetShow";
 import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-export const TargetShow = ({ stateSlider }) => {
+export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
+    if(!loadingData) loadingData = "local";
+
     const [activeLine, setActiveLine] = useState(stateSlider);
 
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getDataTargetWeigth());
+        if(loadingData === "local"){
+            dispatch(getDataTargetWeigth());
+        } else if (loadingData === "global"){
+            if(stateData) dispatch(setDataTargetShow(stateData))
+        }
     }, []);
 
     const changeSize = () => {

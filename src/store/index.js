@@ -42,7 +42,8 @@ const store = configureStore({
         constrEditorTrening,
         treningWeigth,
         targetWeigthRanges,
-        showTargetWeigth
+        showTargetWeigth,
+        targetPage
     },
 
     // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stringMiddleware),

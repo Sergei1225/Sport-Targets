@@ -47,6 +47,7 @@
         &_active {
             opacity: 1;
             pointer-events: all;
+            cursor: pointer;
         }
     }
     &__line {

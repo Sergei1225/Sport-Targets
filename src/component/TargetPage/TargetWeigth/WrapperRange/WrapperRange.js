@@ -30,6 +30,7 @@ export const WrapperRange = (props) => {
         saveResult(newValue);
     };
 
+
     const subtileItem = subtile.slice(0, 100);
 
     return (
@@ -43,8 +44,8 @@ export const WrapperRange = (props) => {
                         <CustomRange styleRange={s.timeRange__styleRange} styleTitle={"bContentBig"} getValue={changeValue} max={max} min={0} {...paramRange} startState={startState} />
                     </div>
                 </div>
-                <div className={`${s.timeRange__bar} bElement`}>
-                    <div className={`${s.timeRange__bar_inner} bFlexColumnCenter bElement`}>
+                <div className={`${s.timeRange__bar} `}>
+                    <div className={`${s.timeRange__progress} bFlexColumnCenter `}>
                         <TargetProgress
                             remainder={dataItem.remainder}
                             target={dataItem.target}

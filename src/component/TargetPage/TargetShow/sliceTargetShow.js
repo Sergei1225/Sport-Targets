@@ -20,14 +20,22 @@ const initialState = {
 const sliceShowTargetWeigth = createSlice({
     name: "showTargetWeigth",
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        setDataTargetShow: (state, {payload}) => {
+            state.weigthTarget = [
+                { ...payload.weight.parametrs, id: randomId() },
+                { ...payload.someTrenings.parametrs, id: randomId() },
+                { ...payload.timeToTarget.parametrs, id: randomId() },
+            ];
+            state.statusLoading = "content";
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getDataTargetWeigth.fulfilled, (state, { payload }) => {
             state.weigthTarget = [
                 { ...payload.weight.parametrs, id: randomId() },
                 { ...payload.someTrenings.parametrs, id: randomId() },
                 { ...payload.timeToTarget.parametrs, id: randomId() },
-                
             ];
             state.statusLoading = "content";
         });
@@ -42,7 +50,7 @@ const { reducer, actions } = sliceShowTargetWeigth;
 
 export default reducer;
 
-export const {} = actions;
+export const {setDataTargetShow} = actions;
 
 export const rangesData = createSelector(
     (state) => state.dataBase.targetWeigth,

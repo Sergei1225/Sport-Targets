@@ -1,4 +1,4 @@
-export const dataRanges = [
+export const dataRangesWeigth = [
     {
         id: "3ndn28nhBGGHDS867392h2nsdskaja",
         title: "Trenings",
@@ -55,6 +55,7 @@ export const dataRanges = [
     },
 ];
 
+// заполненная цель для тестов
 const dataTragetWeigth = {
     "selectedExercise": {
         "id": "14TyL00dn-21307XMG_5g5d7G7G_Zp",
