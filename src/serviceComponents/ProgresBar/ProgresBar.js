@@ -53,7 +53,7 @@ export const ProgresBar = (props) => {
                     {(value) => (
                         <CircularProgressbarWithChildren value={value}>
                             <GetSvg nameSvg={nameSvg} styleSvg={styleSvg}/>
-                            <div style={{ fontSize: 32, marginTop: -5 }}>
+                            <div style={{ fontSize: 32, marginTop: 5 }}>
                                 {mark} <strong>{`${remainder} ${param}`}</strong>
                             </div>
                         </CircularProgressbarWithChildren>

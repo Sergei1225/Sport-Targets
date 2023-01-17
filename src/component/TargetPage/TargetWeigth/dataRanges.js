@@ -107,3 +107,49 @@ const dataTragetWeigth = {
         }
     ]
 }
+
+export const emptyTragetWeigth = {
+    "selectedExercise": {
+        "id": "",
+        "name": "",
+        "img": [],
+        "descr": "",
+        "workingParts": [],
+        "typeOfExercise": ""
+    },
+    "weight": {
+        "targetWeigth": 0,
+        "parametrs": {
+          "target": 0,
+          "remainder": 0,
+          "valueAbsolute": 0,
+          "valuePercent": 0,
+          "paramProgress": "kg"
+        }
+    },
+    "someTrenings": {
+      "trenings": 0,
+      "parametrs": {
+        "target": 0,
+        "remainder": 0,
+        "valueAbsolute": 0,
+        "valuePercent": 0,
+        "paramProgress": "trenings"
+      }
+    },
+    "timeToTarget": {
+        "start": 0,
+        "end": 0,
+        "days": 0,
+        "date": {"start": "", "end": ""},
+        "parametrs": {
+          "target": 0,
+          "remainder": 0,
+          "valueAbsolute": 0,
+          "valuePercent": 0,
+          "paramProgress": "days"
+        }
+    },
+    "targetAchievement": [
+    ]
+}

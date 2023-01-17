@@ -22,7 +22,7 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
         } else if (loadingData === "global"){
             if(stateData) dispatch(setDataTargetShow(stateData))
         }
-    }, []);
+    }, [stateData]);
 
     const changeSize = () => {
         const widthWrapper = document.querySelector(`.${s.targetShow}`);

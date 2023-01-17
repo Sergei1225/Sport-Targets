@@ -1,6 +1,6 @@
-import { TargetTuning } from "../TargetTuning/TargetTuning";
+import { TargetTuning } from "../../TargetPage/TargetTuning/TargetTuning";
 
-export const TreningTarget = (props) => {
+export const TreningTargetA = (props) => {
 
     const {selectedExercise, paramValues, dataParams, changeParams} = props;
 

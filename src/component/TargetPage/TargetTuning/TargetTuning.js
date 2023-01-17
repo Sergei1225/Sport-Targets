@@ -1,14 +1,28 @@
 import s from "./targetTuning.module.scss";
 
-import { CustomTitle, CustomButton, CustomTitleBase, CBtnStyled } from "../../BaseComponents/CustomComponents";
+import { randomId } from "../../../service/RandomId";
+import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
+
+import { CustomTitleBase, CBtnStyled } from "../../BaseComponents/CustomComponents";
 
 export const TargetTuning = (props) => {
-    let { title, descr, img, workingParts, changeParams, paramValues, dataParams } = props;
+    let { id, title, descr, img, workingParts, changeParams, paramValues, dataParams, deleteItem } = props;
 
-    const comparisonParams = dataParams.map((item) => paramValues.some((itemComp) => item === itemComp));
+    const createBtnsChoose = (data) => {
+        if (!data) return null;
+        return data.map((item) => {
+            return (
+                <CBtnStyled
+                    key={randomId()}
+                    funk={() => changeParams(item)}
+                    active={paramValues.some((itemComp) => item === itemComp)}
+                    innerValue={item.toUpperCase()}
+                />
+            );
+        });
+    };
 
-    const [_, secondParm, thirdParm] = dataParams;
-    const [first, second, third] = comparisonParams;
+    const itemsBtns = createBtnsChoose(dataParams);
 
     if (!title) title = "Selected exersice";
     if (descr && descr.length > 300) descr = descr.slice(0, 301) + "...";
@@ -30,16 +44,16 @@ export const TargetTuning = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className={`${""} bFlex bElement`}>
-                    <CBtnStyled active={first} innerValue={"Certain weight"} />
-                    <CBtnStyled
-                        active={second}
-                        funk={() => changeParams(secondParm)}
-                        innerValue={"Time to reach the target"}
-                    />
-                    <CBtnStyled active={third} funk={() => changeParams(thirdParm)} innerValue={"Number of trenings"} />
-                </div>
+                <div className={`${""} bFlex bElement`}>{itemsBtns}</div>
             </div>
+            {deleteItem ? (
+                <div
+                    onClick={() => deleteItem && deleteItem(id)}
+                    className={`${s.targetTuning__delete} bSizeIconSmall`}
+                >
+                    <GetSvg nameSvg={"cancelIcon"} styleSvg={s.targetTuning__delete_color} />
+                </div>
+            ) : null}
         </div>
     );
 };

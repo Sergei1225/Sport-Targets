@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { RequestBase } from "../../../../service/RequestBase";
+import { RequestBase } from "../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
 

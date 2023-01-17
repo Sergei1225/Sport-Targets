@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit";
 import { RequestBase } from "../../service/RequestBase";
 
+import { emptyTragetWeigth } from "./TargetWeigth/dataRanges";
+
 const { simpleReqest } = RequestBase();
 
 // перевод из дней в милисекунды 
@@ -17,17 +19,20 @@ const getDateFromMilisec = (milisec) => {
 }
 
 export const setDataTargets = createAsyncThunk("targetPage/setDataTrening", async () => {
-    return Promise.all(
-        ["newTargetWeigth"].map((item) => simpleReqest(item))
-    );
+    return await simpleReqest("newTargetWeigth")
+});
+
+export const deleteTargetWeigth = createAsyncThunk("targetPage/setDataTrening", async () => {
+    return await simpleReqest("newTargetWeigth", "PUT", emptyTragetWeigth)
 });
 
 export const saveTargetWeigthEnd = createAsyncThunk(
-    "targetWeigthRanges/saveTargetWeigthEnd",
+    "targetPage/saveTargetWeigthEnd",
     async (action, { getState }) => {
         const {someTrenings, timeToTarget, weight} = action;
 
-        const selectedExercise = getState().targetWeigthRanges.selectedExercise;
+        const selectedExercise = getState().targetPage.selectedExercise;
+
         const targetAchievement = [];
 
         const endObj = {selectedExercise, someTrenings, timeToTarget, weight, targetAchievement}
@@ -43,8 +48,8 @@ const initialState = {
     timeToTarget: null,
     weight: null,
     targetAchievement: null,
-    paramTrening: ["weight", "time", "trenings"],
-    dataParams: ["weight", "time", "trenings"],
+    paramTrening: [],
+    dataParams: [ "time", "trenings"],
     fullTargetState: null
 };
 
@@ -61,6 +66,7 @@ const sliceTargetPage = createSlice({
         },
         saveTargetWeigth: (state, { payload }) => {
             state.weight = {targetWeigth: payload.target, parametrs: {...payload}};
+            state.fullTargetState.weight = {targetWeigth: payload.target, parametrs: {...payload}};
         },
         saveTargetTime: (state, { payload }) => {
             const milisecTarget = convertDayInMilisec(+payload.target);
@@ -76,17 +82,21 @@ const sliceTargetPage = createSlice({
                 parametrs: payload,
             };
             state.timeToTarget = item;
+            state.fullTargetState.timeToTarget = item;
         },
         saveTargetTrenings: (state, { payload }) => {
             state.someTrenings = {trenings: payload.target, parametrs: {...payload}};
+            state.fullTargetState.someTrenings = {trenings: payload.target, parametrs: {...payload}};
         },
+        changeStatusPage: (state, { payload }) => {
+            state.statusLoading = payload;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(setDataTargets.pending, (state, action) => {
             //console.log(action);
         });
-        builder.addCase(setDataTargets.fulfilled, (state, { payload }) => {
-            const [targetWeigth] = payload;
+        builder.addCase(setDataTargets.fulfilled, (state, { payload: targetWeigth }) => {
 
             state.fullTargetState = targetWeigth;
 
@@ -96,11 +106,22 @@ const sliceTargetPage = createSlice({
             state.weight = targetWeigth.weight;
             state.targetAchievement = targetWeigth.targetAchievement;
 
-            state.statusLoading = "content";
+            if(!targetWeigth.selectedExercise.id){
+                state.statusLoading = "create";
+            } else {
+                state.statusLoading = "editor";
+            }
             console.log('данные для целей получены');
         });
         builder.addCase(setDataTargets.rejected, (state, action) => {
             console.log('ошибка при получении данных для целей ');
+        });
+        builder.addCase(saveTargetWeigthEnd.fulfilled, (state, { payload }) => {
+            console.log('цель сохранена')
+        });
+        builder.addCase(saveTargetWeigthEnd.rejected, (state, action) => {
+            console.log('ошибка сохранения цели')
+            state.statusLoading = "error";
         });
     },
 });
@@ -109,7 +130,7 @@ const { reducer, actions } = sliceTargetPage;
 
 export default reducer;
 
-export const { changeParamTrening, saveTargetWeigth, saveTargetTime, saveTargetTrenings } = actions;
+export const { changeParamTrening, saveTargetWeigth, saveTargetTime, saveTargetTrenings, changeStatusPage } = actions;
 
 export const treningWeigth = createSelector(
     (state) => state.targetPage.selectedExercise,

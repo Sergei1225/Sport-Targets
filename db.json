@@ -1,70 +1,66 @@
 {
   "newTargetWeigth": {
     "selectedExercise": {
-      "id": "14TyL00dn-21307XMG_5g5d7G7G_Zp",
-      "name": "Shrugs",
+      "id": "hgHGJudsj7^5^8dshhdsjds67hHGT",
+      "name": "Pull-ups",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "trapezoid"
+        "back",
+        "biceps"
       ],
       "typeOfExercise": "base"
     },
     "weight": {
-      "targetWeigth": 120,
+      "targetWeigth": 500,
       "parametrs": {
-        "target": 120,
-        "remainder": 55,
-        "valueAbsolute": 65,
-        "valuePercent": 54.17,
-        "paramProgress": "kg"
+        "paramProgress": "kg",
+        "remainder": 500,
+        "target": 500,
+        "valueAbsolute": 0,
+        "valuePercent": 0
       }
     },
     "someTrenings": {
-      "trenings": 20,
+      "trenings": 90,
       "parametrs": {
-        "target": 20,
-        "remainder": 19,
-        "valueAbsolute": 1,
-        "valuePercent": 5,
-        "paramProgress": "trenings"
+        "paramProgress": "trenings",
+        "remainder": 90,
+        "target": 90,
+        "valueAbsolute": 0,
+        "valuePercent": 0
       }
     },
     "timeToTarget": {
-      "start": 1670883010844,
-      "end": 1678659010844,
-      "days": 90,
+      "start": 1673977993809,
+      "end": 1705513993809,
+      "days": 365,
       "date": {
-        "start": "12.13.2023",
-        "end": "03.12.2023"
+        "start": "1.17.2023",
+        "end": "1.17.2024"
       },
       "parametrs": {
-        "target": 90,
-        "remainder": 72,
-        "valueAbsolute": 18,
-        "valuePercent": 20,
-        "paramProgress": "days"
+        "paramProgress": "days",
+        "remainder": 365,
+        "target": 365,
+        "valueAbsolute": 0,
+        "valuePercent": 0
       }
     },
-    "targetAchievement": [
-      {
-        "result": 65,
-        "id": "fd7j3jj7hsdjskskdgJksdHHsg"
-      }
-    ]
+    "targetAchievement": []
   },
   "targetWeigth": {
     "selectedExercise": {
-      "id": "14TyL00dn-21307XMG_5g5d7G7G_Zp",
-      "name": "Shrugs",
+      "id": "4994349^5^8dshhdsjds67hHGT",
+      "name": "Squats",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRE8DOjAAFsi-sZz5EsC0ThkDYh_TLWzlgmQ&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "trapezoid"
+        "legs"
       ],
       "typeOfExercise": "base"
     },

@@ -6,7 +6,19 @@ import { TargetShow } from "../TargetShow/TargetShow";
 import { Link } from "react-router-dom";
 
 export const TargetItem = (props) => {
-    let { title, subtitle, nameSvg, styleSvg, linkTo, dataItems, startDate, initialData } = props;
+    let {
+        title,
+        subtitle,
+        nameSvg,
+        styleSvg,
+        linkTo,
+        dataItems,
+        startDate,
+        initialData,
+        changeStatus,
+        status,
+        deleteTarget,
+    } = props;
 
     if (!title) title = "TITLE";
     if (!nameSvg) nameSvg = "locker";
@@ -24,17 +36,15 @@ export const TargetItem = (props) => {
                         nameSvg={data[item].nameSvg}
                         styleSvg={styleSvg}
                     />
-                    {data[item].percent ? (
-                        <div className={`${s.targetItem__scale}  bFlex bAlignItems bPaddingTop0`}>
-                            <div className={`${s.targetItem__index}  `}>
-                                <div
-                                    style={{ width: `${data[item].percent}%` }}
-                                    className={`${s.targetItem__index_active}  `}
-                                ></div>
-                            </div>
-                            <div className={`${s.targetItem__percent}  bContentBig bBold`}>{data[item].percent}%</div>
+                    <div className={`${s.targetItem__scale}  bFlex bAlignItems bPaddingTop0`}>
+                        <div className={`${s.targetItem__index}  `}>
+                            <div
+                                style={{ width: `${data[item].percent}%` }}
+                                className={`${s.targetItem__index_active}  `}
+                            ></div>
                         </div>
-                    ) : null}
+                        <div className={`${s.targetItem__percent}  bContentBig bBold`}>{data[item].percent}%</div>
+                    </div>
                 </div>
             );
         });
@@ -51,13 +61,33 @@ export const TargetItem = (props) => {
                     </div>
                     <div className={`${s.targetItem__date}  bBold bContentBig`}>Target setting date: {startDate}</div>
                     <div className={`${s.targetItem__complited}  `}>{itemsTarget}</div>
-                    <div className={`${s.targetItem__btns} bElement bFlex`}>
-                        <Link className={``} to={linkTo}>
-                            <CBtnStyled innerValue={"Choose exercise"} addStyle={s.targetItem__btn} />
-                        </Link>
+                    <div className={`${s.targetItem__btns} bElement bFlex bFlexWrap`}>
+                        {status === "create" ? (
+                            <Link className={``} to={linkTo}>
+                                <CBtnStyled innerValue={"Choose exercise"} addStyle={s.targetItem__btn} />
+                            </Link>
+                        ) : (
+                            <>
+                                <Link className={``} to={linkTo}>
+                                    <CBtnStyled innerValue={"Change exercise"} addStyle={s.targetItem__btn} />
+                                </Link>
+                                <CBtnStyled
+                                    innerValue={status === "editor" ? "End editor target" : "Editor target"}
+                                    addStyle={s.targetItem__btn}
+                                    funk={() =>
+                                        changeStatus && changeStatus(status === "editor" ? "content" : "editor")
+                                    }
+                                />
+                                <CBtnStyled
+                                    innerValue={"Delete target"}
+                                    addStyle={s.targetItem__btn}
+                                    funk={() => deleteTarget && deleteTarget()}
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
-                <TargetShow stateData={initialData} loadingData={'global'} stateSlider={true} />
+                <TargetShow stateData={initialData} loadingData={"global"} stateSlider={true} />
             </div>
         </div>
     );

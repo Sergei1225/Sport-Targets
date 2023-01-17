@@ -3,6 +3,7 @@ import s from "./addedItems.module.scss";
 import { FlipItem } from "../../../View/FlipItem/FlipItem";
 import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
 import { TargetItem } from "../../TargetPage/TargetItem/TargetItem";
+import { TargetTuning } from "../../TargetPage/TargetTuning/TargetTuning";
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useMemo } from "react";
@@ -33,14 +34,13 @@ export const AddedItems = (props) => {
             return data.map((item) => {
                 return (
                     <CSSTransition key={item.id} timeout={600} classNames="baseTransition">
-                        <TargetItem
-                            name={item.name}
-                            baseImg={item.img[0]}
-                            descr={item.descr}
-                            key={item.id}
-                            id={item.id}
+                        <TargetTuning
                             deleteItem={deleteSelectedItem}
-                            workingParts={item.workingParts}
+                            key={item.id}
+                            name={item.name}
+                            descr={item.descr}
+                            img={item.img[0]}
+                            workingParts={item.workingParts.join(" | ")}
                         />
                     </CSSTransition>
                 );

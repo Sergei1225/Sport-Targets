@@ -1,5 +1,6 @@
 .targetTuning{
     justify-content: space-between;
+    position: relative;
     &__info{
         flex: 1 1 380px;
         align-self: center;
@@ -15,5 +16,14 @@
         // width: 300px;
         height: 250px;
         flex: 0 0 300px;
+    }
+    &__delete {
+        position: absolute;
+        top: 30px;
+        right: 22px;
+        cursor: pointer;
+        &_color {
+            fill: rgb(219, 50, 50);
+        }
     }
 }

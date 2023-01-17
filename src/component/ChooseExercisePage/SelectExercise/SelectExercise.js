@@ -14,7 +14,8 @@ import {
     deleteAllSelectItems,
     saveExercise,
     saveExerciseTarget,
-    addSelectedItemOnlyOne
+    addSelectedItemOnlyOne,
+    changePagePath,
 } from "./sliceSelectExercise";
 
 import { useNavigate, Navigate } from "react-router-dom";
@@ -36,14 +37,18 @@ export const SelectExercise = (props) => {
     const pageNavigate = useSelector((state) => state.selectExercise.pagePath);
     const dataDetailItems = useSelector(dataDetail);
 
-    if(pageNavigate === "createTarget"){
-       setTimeout(() => navigate("/createTarget"), 2000) ;
+    // после отправки тренировки следует смена страницы
+    if (pageNavigate === "targetWeigth") {
+        setTimeout(() => {
+            dispatch(changePagePath());
+            navigate("/createTarget");
+        }, 2000);
     }
 
     const getValue = (value) => {
-        if(paramSave === "creator" || paramSave === "editor"){
+        if (paramSave === "creator" || paramSave === "editor") {
             if (value) dispatch(addSelectedItem(value));
-        } else if (paramSave === "targetWeigth"){
+        } else if (paramSave === "targetWeigth") {
             console.log(value);
             if (value) dispatch(addSelectedItemOnlyOne(value));
         }
@@ -91,7 +96,7 @@ export const SelectExercise = (props) => {
                 funcSave = "simpleSave";
                 break;
             case "targetWeigth":
-                pathSave = "targetWeigth";
+                pathSave = "newTargetWeigth";
                 funcSave = "target";
                 break;
             default:
@@ -99,9 +104,10 @@ export const SelectExercise = (props) => {
         }
 
         if (funcSave === "simpleSave") {
+            console.log("simpleSave");
             if (!selectedItemsList || selectedItemsList.length === 0 || !pathSave) return;
             dispatch(saveExercise({ data: selectedItemsList, path: pathSave }));
-            navigate(-1, {replace: true});
+            navigate(-1, { replace: true });
         } else if (funcSave === "target") {
             console.log("target");
             dispatch(saveExerciseTarget({ data: selectedItemsList, path: pathSave }));

@@ -15,7 +15,7 @@ export const saveExercise = createAsyncThunk("selectExercise/saveExercise", asyn
 
 export const saveExerciseTarget = createAsyncThunk("selectExercise/saveExerciseTarget", async (action) => {
     const {data, path} = action;
-    const changeObj = {selectedExercise: {...data[0], id: randomId() }}
+    const changeObj = {selectedExercise: {...data[0]}}
     console.log(changeObj);
     await simpleReqest(path, "PATCH", changeObj)
 });
@@ -62,6 +62,9 @@ const sliceSelectExercise = createSlice({
         deleteAllSelectItems: (state) => {
             state.selectedItems = [];
         },
+        changePagePath: (state) => {
+            state.pagePath = "current";
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(saveExercise.pending, (state, action) => {});
@@ -73,7 +76,7 @@ const sliceSelectExercise = createSlice({
         builder.addCase(saveExerciseTarget.fulfilled, (state, action) => {
             console.log("отправка завершена target");
             state.selectedItems = [];
-            state.pagePath = "createTarget";
+            state.pagePath = "targetWeigth";
         });
         builder.addCase(saveExerciseTarget.rejected, (state, action) => {});
     },
@@ -92,7 +95,8 @@ export const {
     changeBase,
     changeDetail,
     deleteAllSelectItems,
-    addSelectedItemOnlyOne
+    addSelectedItemOnlyOne,
+    changePagePath
 } = actions;
 
 export const listItems = createSelector(

@@ -2,7 +2,7 @@ import s from "./TargetPage.module.scss";
 
 import { TargetItem } from "./TargetItem/TargetItem";
 import { TargetWeightRanges } from "./TargetWeigth/TargetWeightRanges/TargetWeightRanges";
-import { TreningTarget } from "./TreningTarget/TreningTarget";
+import { TargetTuning } from "./TargetTuning/TargetTuning";
 
 import { randomId } from "../../service/RandomId";
 
@@ -12,6 +12,8 @@ import {
     saveTargetTime,
     saveTargetTrenings,
     saveTargetWeigthEnd,
+    changeStatusPage,
+    deleteTargetWeigth
 } from "./sliceTargetPage";
 import { changeParamTrening } from "./sliceTargetPage";
 
@@ -32,13 +34,13 @@ export const TargetPage = () => {
 
     const selectedExercise = useSelector((state) => state.targetPage.selectedExercise);
 
+    const statusPage = useSelector((state) => state.targetPage.statusLoading);
+
     useEffect(() => {
         dispatch(setDataTargets());
     }, []);
 
     if (!trenings || !days || !weigth) return <h3>Loading...</h3>;
-
-    console.log(days.date.start);
 
     const { parametrs: treningsData } = trenings;
     const { parametrs: timeData } = days;
@@ -84,6 +86,14 @@ export const TargetPage = () => {
         );
     };
 
+    const changeStatus = (value) => {
+        console.log(value);
+        dispatch(changeStatusPage(value))
+    }
+    const deleteTarget = () => {
+        dispatch(deleteTargetWeigth())
+    }
+
     return (
         <div className={`${s.targetPage}`}>
             <TargetItem
@@ -93,23 +103,34 @@ export const TargetPage = () => {
                 dataItems={dataTargetItem}
                 startDate={days.date.start}
                 initialData={fullTargetState}
+                changeStatus={changeStatus}
+                deleteTarget={deleteTarget}
+                status={statusPage}
             />
-            <TreningTarget
-                dataParams={dataParams}
-                paramValues={paramValues}
-                selectedExercise={selectedExercise}
-                changeParams={changeParams}
-            />
-            <TargetWeightRanges
-                saveTarget={saveTarget}
-                saveWeigth={saveWeigth}
-                saveTime={saveTime}
-                saveTrenings={saveTrenings}
-                trenings={treningsData}
-                days={timeData}
-                weigth={weigthData}
-                paramValues={paramValues}
-            />
+            {statusPage === "editor" ? (
+                <>
+                    <TargetTuning
+                        paramValues={paramValues}
+                        dataParams={dataParams}
+                        changeParams={changeParams}
+                        key={selectedExercise.id}
+                        name={selectedExercise.name}
+                        descr={selectedExercise.descr}
+                        img={selectedExercise.img[0]}
+                        workingParts={selectedExercise.workingParts.join(" | ")}
+                    />
+                    <TargetWeightRanges
+                        saveTarget={saveTarget}
+                        saveWeigth={saveWeigth}
+                        saveTime={saveTime}
+                        saveTrenings={saveTrenings}
+                        trenings={treningsData}
+                        days={timeData}
+                        weigth={weigthData}
+                        paramValues={paramValues}
+                    />
+                </>
+            ) : null}
         </div>
     );
 };

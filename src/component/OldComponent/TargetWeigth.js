@@ -1,8 +1,8 @@
 
-import { TargetWeightRanges } from "./TargetWeightRanges/TargetWeightRanges";
+import { TargetWeightRanges } from "../TargetPage/TargetWeigth/TargetWeightRanges/TargetWeightRanges";
 import { TreningTarget } from "../TreningTarget/TreningTarget";
 
-export const TargetWeigth = () => {
+export const TargetWeigthA = () => {
 
     return (
         <div>
