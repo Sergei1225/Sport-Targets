@@ -19,6 +19,7 @@ const NotFound = () => <h1>Not Found</h1>;
 function App() {
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(setDataTrening());
     }, []);

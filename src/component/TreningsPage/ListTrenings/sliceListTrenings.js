@@ -1,14 +1,30 @@
-import {
-    createSlice,
-    createAsyncThunk,
-    createSelector,
-    createEntityAdapter,
-} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 
 import { simpleSortArrObj } from "../../../service/simpleSortArrObj";
 import { RequestBase } from "../../../service/RequestBase";
 
 const { simpleReqest } = RequestBase();
+
+const compareResult = (arrResult, trening) => {
+    if(arrResult.some(item => item.id === trening.id)){
+        return arrResult.filter(item => item.id !== trening.id)
+    } else {
+        return [...arrResult, trening]
+    }
+}
+
+const changeTargetWeigth = (target, result) => {
+    return {
+        targetWeigth: target,
+        parametrs: {
+            paramProgress: "kg",
+            remainder: target - result,
+            target: target,
+            valueAbsolute: result,
+            valuePercent: ((target - result) / target).toFixed(2) ,
+        },
+    };
+};
 
 export const getMyTreningItems = createAsyncThunk("listTrenings/getMyTreningItems", async () => {
     return await simpleReqest("listTrenings");
@@ -18,29 +34,43 @@ export const favoriteTrening = createAsyncThunk("listTrenings/favoriteTrening", 
     await simpleReqest(`listTrenings/${action.id}`, "PATCH", { favorite: !action.favorite });
     return action;
 });
-export const statusTrenings = createAsyncThunk("listTrenings/statusTrenings", async (action) => {
+export const statusTreningsA = createAsyncThunk("listTrenings/statusTrenings", async (action, { getState }) => {
     const statusValue = action.status === "future" ? "past" : "future";
+    const treningsResult = getState().showTargetWeigth.targetAchievement;
+    //console.log(treningsResult.some(item => item.id === action.id));
+    console.log(treningsResult);
+
+    await simpleReqest(`listTrenings/${action.id}`, "PATCH", { status: statusValue });
+    return { id: action.id, status: statusValue };
+});
+export const statusTrenings = createAsyncThunk("listTrenings/statusTrenings", async (action, { getState }) => {
+    const statusValue = action.status === "future" ? "past" : "future";
+
+    const treningsResult = getState().showTargetWeigth.targetAchievement;
+    const selectedExercise = getState().showTargetWeigth.selectedExercise.name;
+    const treningsObj = getState().listTrenings.entities[action.id].listExersises;
+    console.log(treningsObj.some(item => item.name === selectedExercise))
+    console.log(treningsObj)
+    console.log(selectedExercise)
+    
+    //console.log(treningsResult.some(item => item.id === action.id));
+    console.log(treningsResult);
+
     await simpleReqest(`listTrenings/${action.id}`, "PATCH", { status: statusValue });
     return { id: action.id, status: statusValue };
 });
 
-export const deleteOneTrening = createAsyncThunk(
-    "listTrenings/deleteOneTrening",
-    async (action) => {
-        await simpleReqest(`listTrenings/${action}`, "DELETE");
-        return action;
-    }
-);
+export const deleteOneTrening = createAsyncThunk("listTrenings/deleteOneTrening", async (action) => {
+    await simpleReqest(`listTrenings/${action}`, "DELETE");
+    return action;
+});
 
-export const deleteSomeTrening = createAsyncThunk(
-    "listTrenings/deleteSomeTrening",
-    async (_, { getState }) => {
-        const ids = getState().listTrenings.listForDelete;
-        if (!ids || ids.length === 0) return;
-        await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
-        return ids;
-    }
-);
+export const deleteSomeTrening = createAsyncThunk("listTrenings/deleteSomeTrening", async (_, { getState }) => {
+    const ids = getState().listTrenings.listForDelete;
+    if (!ids || ids.length === 0) return;
+    await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
+    return ids;
+});
 
 const listAdapter = createEntityAdapter();
 
@@ -110,27 +140,24 @@ export default reducer;
 
 export const selectorsAdapter = listAdapter.getSelectors((state) => state.listTrenings);
 
-const sortingList = (sort, data, param = "up") => {
-    if (!sort || !data || data.length === 0) return;
-    if (sort === "date") {
+const sortingList = (value, data) => {
+    if (!value) return data;
+
+    if (value === "date") {
+        return simpleSortArrObj({ data });
+    } else if (value === "name") {
         return simpleSortArrObj({
-            data: data,
-            value: sort,
-            typeValue: "number",
-            param: "down",
-        });
-    } else if (sort === "name") {
-        return simpleSortArrObj({
-            data: data,
-            value: sort,
+            data,
+            value,
             typeValue: "string",
-            param: param,
+            param: "up",
         });
     }
 };
 
 const filtredList = (data, filter) => {
-    if (filter === "favorite") {
+    if (filter === "all") return data;
+    else if (filter === "favorite") {
         return data.filter((i) => i.favorite);
     } else {
         return data.filter((i) => i.status === filter);
@@ -146,19 +173,20 @@ export const filtredItems = createSelector(
 
     (data, sort, filter, search, paramSearch) => {
         if (!data || data.length === 0) {
-            console.log(data);
             return null;
+        } else {
+            let arrItems = [];
+
+            for (let item in data) arrItems.push(data[item]);
+
+            arrItems = sortingList(sort, arrItems);
+
+            arrItems = filtredList(arrItems, filter);
+
+            if (search) arrItems = arrItems.filter((item) => item[paramSearch].indexOf(search) > -1);
+
+            return arrItems;
         }
-        let arrSort = [];
-        for (let item in data) arrSort.push(data[item]);
-
-        if (sort) arrSort = sortingList(sort, arrSort);
-
-        if (filter !== 'all') arrSort = filtredList(arrSort, filter);
-
-        if (search) arrSort = arrSort.filter((item) => item[paramSearch].indexOf(search) > -1);
-
-        return arrSort;
     }
 );
 

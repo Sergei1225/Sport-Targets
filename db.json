@@ -1,15 +1,14 @@
 {
   "newTargetWeigth": {
     "selectedExercise": {
-      "id": "hgHGJudsj7^5^8dshhdsjds67hHGT",
-      "name": "Pull-ups",
+      "id": "4334s8dshhsdJDKsldsdsde44",
+      "name": "Shrugs",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1sgYBKg_5rAJJcK7VtnsQqcVFjIXan3BiHA&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThSfVMp65XvyxJXG1mx6nmTJqFtyabjVh_CQ&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "back",
-        "biceps"
+        "trapezoid"
       ],
       "typeOfExercise": "base"
     },
@@ -43,13 +42,18 @@
       },
       "parametrs": {
         "paramProgress": "days",
-        "remainder": 365,
+        "remainder": 359,
         "target": 365,
-        "valueAbsolute": 0,
-        "valuePercent": 0
+        "valueAbsolute": 6,
+        "valuePercent": 1.64
       }
     },
-    "targetAchievement": []
+    "targetAchievement": [
+      {
+        "result": 65,
+        "id": "fd7j3jj7hsdjskskdgJksdHHsg"
+      }
+    ]
   },
   "targetWeigth": {
     "selectedExercise": {
@@ -391,7 +395,7 @@
       "forDelete": false,
       "order": 0,
       "favorite": false,
-      "status": "future",
+      "status": "past",
       "listExersises": [
         {
           "forDelete": false,

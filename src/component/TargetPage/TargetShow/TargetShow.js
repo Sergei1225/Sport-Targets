@@ -9,20 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
 export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
-    if(!loadingData) loadingData = "local";
+    if (!loadingData) loadingData = "local";
 
     const [activeLine, setActiveLine] = useState(stateSlider);
 
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        if(loadingData === "local"){
-            dispatch(getDataTargetWeigth());
-        } else if (loadingData === "global"){
-            if(stateData) dispatch(setDataTargetShow(stateData))
-        }
-    }, [stateData]);
 
     const changeSize = () => {
         const widthWrapper = document.querySelector(`.${s.targetShow}`);
@@ -33,6 +25,14 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
             setActiveLine(false);
         }
     };
+
+    useEffect(() => {
+        if (loadingData === "local") {
+            dispatch(getDataTargetWeigth());
+        } else if (loadingData === "global") {
+            if (stateData) dispatch(setDataTargetShow(stateData));
+        }
+    }, [stateData]);
 
     useEffect(() => {
         if (!stateSlider) {

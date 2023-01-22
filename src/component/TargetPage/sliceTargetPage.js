@@ -105,6 +105,7 @@ const sliceTargetPage = createSlice({
             state.timeToTarget = targetWeigth.timeToTarget;
             state.weight = targetWeigth.weight;
             state.targetAchievement = targetWeigth.targetAchievement;
+            console.log( targetWeigth.targetAchievement)
 
             if(!targetWeigth.selectedExercise.id){
                 state.statusLoading = "create";
