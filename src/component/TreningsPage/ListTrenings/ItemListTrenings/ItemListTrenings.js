@@ -1,9 +1,7 @@
 import s from "./ItemListTrenings.module.scss";
 
-import { GetSvg } from "../../../../serviceComponents/GetSvg/GetSvg";
-
 import { ComponentSwitch } from "../../../../serviceComponents/ComponentSwitch/ComponentSwitch";
-import { HintComponent } from "../../../../serviceComponents/HintComponent/HintComponent";
+import { IconList } from "../../../../serviceComponents/IconList/IconList";
 
 import { useNavigate } from "react-router-dom";
 
@@ -51,35 +49,16 @@ export const ItemListTrenings = (props) => {
         }
     };
 
-    const createFunctionItems = (data) => {
-        if (!data) return null;
-        const items = data.map((item) => {
-            return (
-                <div
-                    key={item.id}
-                    onClick={() => functionsItems(item.action)}
-                    className={`${s.itemTrenings__item} bSizeIconSmall`}
-                >
-                    <HintComponent inner={item.hint} styleContent={s.itemTrenings__hint}>
-                        <GetSvg nameSvg={item.nameSvg} />
-                    </HintComponent>
-                </div>
-            );
-        });
-        return <div className={`${s.itemTrenings__func} bFlex bFlexJCSA `}>{items}</div>;
-    };
     const svgPast = status === "past" ? "pastIcon" : "checkMark";
+    const statusItem = status === "past" ? s.itemTrenings__past : "";
 
     const dataItemsFunction = [
-        { id: "HDMysjd793297hGFhsd76w", action: "favotiteValue", nameSvg: "starIcon", hint: "Add to favorite" },
-        { id: "9393jjJjfdk33hUJSKaske", action: "statusValue", nameSvg: svgPast, hint: "Change status" },
-        { id: "jHshdns^%6hsanashsat4h", action: "editor", nameSvg: "editorIcon", hint: "Add to editor" },
-        { id: "4334Jjsdmsdnn4383984h4", action: "deleteList", nameSvg: "deleteList", hint: "Delete list item" },
-        { id: "Kdlswek94495h323nwejew", action: "delete", nameSvg: "deleteCross", hint: "Delete item" },
+        { id: "HDMysjd793297hGFhsd76w", nameFunct: "favotiteValue", nameSvg: "starIcon", hint: "Add to favorite" },
+        { id: "9393jjJjfdk33hUJSKaske", nameFunct: "statusValue", nameSvg: svgPast, hint: "Change status" },
+        { id: "jHshdns^%6hsanashsat4h", nameFunct: "editor", nameSvg: "editorIcon", hint: "Add to editor" },
+        { id: "4334Jjsdmsdnn4383984h4", nameFunct: "deleteList", nameSvg: "deleteList", hint: "Delete list item" },
+        { id: "Kdlswek94495h323nwejew", nameFunct: "delete", nameSvg: "deleteCross", hint: "Delete item" },
     ];
-
-    const itemsList = createFunctionItems(dataItemsFunction);
-    const statusItem = status === "past" ? s.itemTrenings__past : "";
 
     return (
         <div key={id} className={`${s.itemTrenings}  bElement`}>
@@ -99,7 +78,14 @@ export const ItemListTrenings = (props) => {
                 </div>
                 <div className={`${s.itemTrenings__name} bContentBig bBold`}>{name.toUpperCase()}</div>
                 <div className={`${s.itemTrenings__exercise} bContent`}>{lineExercise}</div>
-                {itemsList}
+                <div className={`${s.itemTrenings__func}  `}>
+                    <IconList
+                        styleHint={s.itemTrenings__hint}
+                        funcComp={functionsItems}
+                        data={dataItemsFunction}
+                        styleWrapper={" bFlex bFlexJCSA"}
+                    />
+                </div>
             </div>
         </div>
     );

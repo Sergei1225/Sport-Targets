@@ -1,0 +1,12 @@
+.iconList{
+    &__icon {
+        cursor: pointer;
+        &:hover {
+            color: red;
+        }
+    }
+    &__hint{
+        min-width: 120px;
+        color: white;
+    }
+}
