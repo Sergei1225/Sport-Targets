@@ -7,11 +7,15 @@
         border-radius: 50%;
         cursor: pointer;
     }
+    &__header{
+        min-height: 50px
+    }
     &__delete{
         position: absolute;
         top: 15px;
         right: 15px;
         cursor: pointer;
+        z-index: 10;
     }
     &__img{
         flex: 1 0 200px;

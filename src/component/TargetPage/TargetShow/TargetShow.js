@@ -14,14 +14,15 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
     const [activeLine, setActiveLine] = useState(stateSlider);
 
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
+    const updateItems = useSelector((state) => state.listTrenings.upDateItem);
     const dispatch = useDispatch();
 
     const changeSize = () => {
         const widthWrapper = document.querySelector(`.${s.targetShow}`);
         const currenWidth = window.getComputedStyle(widthWrapper).getPropertyValue("width");
-        if (currenWidth.slice(0, -2) <= 789) {
+        if (currenWidth.slice(0, -2) <= 870) {
             setActiveLine(true);
-        } else if (currenWidth.slice(0, -2) > 789) {
+        } else if (currenWidth.slice(0, -2) > 870) {
             setActiveLine(false);
         }
     };
@@ -32,7 +33,7 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
         } else if (loadingData === "global") {
             if (stateData) dispatch(setDataTargetShow(stateData));
         }
-    }, [stateData]);
+    }, [stateData, updateItems]);
 
     useEffect(() => {
         if (!stateSlider) {

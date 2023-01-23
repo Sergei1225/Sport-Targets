@@ -45,8 +45,7 @@ export const getDataTargetWeigthA = createAsyncThunk("showTargetWeigth/getDataTa
 const initialState = {
     statusLoading: "loading",
     weigthTarget: null,
-    targetAchievement: [],
-    selectedExercise: null
+    fullTarget: []
 };
 
 const sliceShowTargetWeigth = createSlice({
@@ -69,8 +68,7 @@ const sliceShowTargetWeigth = createSlice({
                 { ...payload.someTrenings.parametrs, id: randomId() },
                 { ...payload.timeToTarget.parametrs, id: randomId() },
             ];
-            state.targetAchievement = payload.targetAchievement;
-            state.selectedExercise = payload.selectedExercise;
+            state.fullTarget = payload;
             state.statusLoading = "content";
             console.log("таргер шоу получены данные");
         });

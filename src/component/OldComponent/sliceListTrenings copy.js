@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, createSelector, createEntityAdapter } from "@reduxjs/toolkit";
-import { dataTreningsItems } from "./dataTreningsItems";
+import { dataTreningsItems } from "../TreningsPage/ListTrenings/dataTreningsItems";
 
 export const dataTrenFetching = createAsyncThunk("base/traningsFetching", async () => {});
 

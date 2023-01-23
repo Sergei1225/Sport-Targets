@@ -1,8 +1,11 @@
 import s from "./ItemListTrenings.module.scss";
 
-import { paint, cross, list, star } from "../../../../img/srcIcons";
+import { GetSvg } from "../../../../serviceComponents/GetSvg/GetSvg";
 
 import { ComponentSwitch } from "../../../../serviceComponents/ComponentSwitch/ComponentSwitch";
+import { HintComponent } from "../../../../serviceComponents/HintComponent/HintComponent";
+
+import { useNavigate } from "react-router-dom";
 
 export const ItemListTrenings = (props) => {
     const {
@@ -19,6 +22,8 @@ export const ItemListTrenings = (props) => {
         addToDelete,
     } = props;
 
+    const navigate = useNavigate();
+
     const lineExercise = listExersises.map((item) => item.name).join(", ");
     const styleMark = favorite ? "baseMark" : "";
     const styleDelete = forDelete ? "baseForDelete" : "";
@@ -33,6 +38,10 @@ export const ItemListTrenings = (props) => {
                 break;
             case "statusValue":
                 changeStatus(id, status);
+                break;
+            case "editor":
+                //navigate("/session-timed-out");
+                console.log("editor link");
                 break;
             case "favotiteValue":
                 changeProp(id, favorite);
@@ -51,26 +60,31 @@ export const ItemListTrenings = (props) => {
                     onClick={() => functionsItems(item.action)}
                     className={`${s.itemTrenings__item} bSizeIconSmall`}
                 >
-                    <img className={`bImgCover`} src={item.srcImg} alt="imgFunction" />
+                    <HintComponent inner={item.hint} styleContent={s.itemTrenings__hint}>
+                        <GetSvg nameSvg={item.nameSvg} />
+                    </HintComponent>
                 </div>
             );
         });
         return <div className={`${s.itemTrenings__func} bFlex bFlexJCSA `}>{items}</div>;
     };
+    const svgPast = status === "past" ? "pastIcon" : "checkMark";
 
     const dataItemsFunction = [
-        { id: "HDMysjd793297hGFhsd76w4b327uHhjdsu", action: "favotiteValue", srcImg: star },
-        { id: "9393jjJjfdk33hUJSKaskekesj544jKdse", action: "statusValue", srcImg: paint },
-        { id: "4334Jjsdmsdnn4383984h4ndsmsdj3434r", action: "deleteList", srcImg: list },
-        { id: "Kdlswek94495h323nwejewkJSskkaskesd", action: "delete", srcImg: cross },
+        { id: "HDMysjd793297hGFhsd76w", action: "favotiteValue", nameSvg: "starIcon", hint: "Add to favorite" },
+        { id: "9393jjJjfdk33hUJSKaske", action: "statusValue", nameSvg: svgPast, hint: "Change status" },
+        { id: "jHshdns^%6hsanashsat4h", action: "editor", nameSvg: "editorIcon", hint: "Add to editor" },
+        { id: "4334Jjsdmsdnn4383984h4", action: "deleteList", nameSvg: "deleteList", hint: "Delete list item" },
+        { id: "Kdlswek94495h323nwejew", action: "delete", nameSvg: "deleteCross", hint: "Delete item" },
     ];
 
     const itemsList = createFunctionItems(dataItemsFunction);
+    const statusItem = status === "past" ? s.itemTrenings__past : "";
 
     return (
-        <div key={id} className={`${s.itemTrenings} bElement`}>
+        <div key={id} className={`${s.itemTrenings}  bElement`}>
             <div
-                className={`${s.itemTrenings__wrapper} ${styleMark} ${styleDelete} bFlex bElement bWrapperStyleElem`}
+                className={`${s.itemTrenings__wrapper} ${statusItem} ${styleMark} ${styleDelete} bFlex bElement bWrapperStyleElem`}
             >
                 <div className={`${s.itemTrenings__date} bContentBig bBold `}>
                     {date} <br />
@@ -83,12 +97,8 @@ export const ItemListTrenings = (props) => {
                         innerValueFalse={"PAST"}
                     />
                 </div>
-                <div className={`${s.itemTrenings__name} bContentBig bBold`}>
-                    {name.toUpperCase()}
-                </div>
-                <div className={`${s.itemTrenings__exercise} bContent`}>
-                    {lineExercise}
-                </div>
+                <div className={`${s.itemTrenings__name} bContentBig bBold`}>{name.toUpperCase()}</div>
+                <div className={`${s.itemTrenings__exercise} bContent`}>{lineExercise}</div>
                 {itemsList}
             </div>
         </div>

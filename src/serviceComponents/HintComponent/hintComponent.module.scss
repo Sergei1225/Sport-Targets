@@ -18,10 +18,10 @@
     }
     &__text {
         padding: 3px 5px;
-        background-color: rgb(44, 44, 44);
+        background-color: grey;
         color: white(44, 44, 44);
         border-radius: 10px;
-        border: 2px solid white;
+        border: 2px solid grey;
         position: absolute;
         top: -35px;
         right: 0;
@@ -33,7 +33,7 @@
         top: -3px;
         right: 7px;
         border: 10px solid transparent;
-        border-top: 10px solid white;
+        border-top: 10px solid grey;
         width: 0px;
         height: 0px;
         z-index: 6;

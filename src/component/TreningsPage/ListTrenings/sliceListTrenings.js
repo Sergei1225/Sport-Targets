@@ -2,17 +2,19 @@ import { createSlice, createAsyncThunk, createSelector, createEntityAdapter } fr
 
 import { simpleSortArrObj } from "../../../service/simpleSortArrObj";
 import { RequestBase } from "../../../service/RequestBase";
+import { randomId } from "../../../service/RandomId";
 
 const { simpleReqest } = RequestBase();
 
-const compareResult = (arrResult, trening) => {
-    if(arrResult.some(item => item.id === trening.id)){
-        return arrResult.filter(item => item.id !== trening.id)
+/// для изменения массива с результатами
+const compareResult = (arrResult, trenExer) => {
+    if (arrResult.some((item) => item.id === trenExer.id)) {
+        return arrResult.filter((item) => item.id !== trenExer.id);
     } else {
-        return [...arrResult, trening]
+        return [...arrResult, { id: trenExer.id, result: Math.max(...trenExer.weight) }];
     }
-}
-
+};
+/// для отправки на сервер изменения веса отягощения
 const changeTargetWeigth = (target, result) => {
     return {
         targetWeigth: target,
@@ -21,7 +23,19 @@ const changeTargetWeigth = (target, result) => {
             remainder: target - result,
             target: target,
             valueAbsolute: result,
-            valuePercent: ((target - result) / target).toFixed(2) ,
+            valuePercent: +((result / target) * 100).toFixed(2),
+        },
+    };
+};
+const changeSomeTrenings = (target, result) => {
+    return {
+        trenings: target,
+        parametrs: {
+            paramProgress: "trenings",
+            remainder: target - result,
+            target: target,
+            valueAbsolute: result,
+            valuePercent: +((result / target) * 100).toFixed(2),
         },
     };
 };
@@ -45,16 +59,29 @@ export const statusTreningsA = createAsyncThunk("listTrenings/statusTrenings", a
 });
 export const statusTrenings = createAsyncThunk("listTrenings/statusTrenings", async (action, { getState }) => {
     const statusValue = action.status === "future" ? "past" : "future";
+    /// в массив я добавляю цель для будущего тк  будет много целей
+    const targets = [getState().showTargetWeigth.fullTarget];
+    const trenObj = getState().listTrenings.entities[action.id].listExersises;
 
-    const treningsResult = getState().showTargetWeigth.targetAchievement;
-    const selectedExercise = getState().showTargetWeigth.selectedExercise.name;
-    const treningsObj = getState().listTrenings.entities[action.id].listExersises;
-    console.log(treningsObj.some(item => item.name === selectedExercise))
-    console.log(treningsObj)
-    console.log(selectedExercise)
-    
-    //console.log(treningsResult.some(item => item.id === action.id));
-    console.log(treningsResult);
+    // если среди таргетов есть упражнение которое есть в тренировке которой я меняю статус то получаю этот таргет
+    const [target] = targets.filter((tar) => trenObj.some((exersice) => exersice.name === tar.selectedExercise.name));
+
+    if (target) {
+        // получаю массив с результатами и объектом для изменения
+        const { targetAchievement: resultArr, weight, someTrenings } = target;
+        /// получаю то упражнение и результат
+        const [treningResult] = trenObj.filter((i) => i.name === target.selectedExercise.name);
+        /// создание нового результата
+        const newResult = compareResult(resultArr, treningResult);
+        const upDateWeigth = changeTargetWeigth(weight.targetWeigth, Math.max(...newResult.map((i) => i.result)));
+        const upDateSometrenings = changeSomeTrenings(+someTrenings.trenings, newResult.length);
+        // // отправка на сервер нового результата
+        await simpleReqest(`newTargetWeigth`, "PATCH", {
+            weight: upDateWeigth,
+            targetAchievement: newResult,
+            someTrenings: upDateSometrenings,
+        });
+    }
 
     await simpleReqest(`listTrenings/${action.id}`, "PATCH", { status: statusValue });
     return { id: action.id, status: statusValue };
@@ -79,6 +106,7 @@ const sliceListTrenings = createSlice({
     initialState: listAdapter.getInitialState({
         loadingStatus: "loading",
         listForDelete: [],
+        upDateItem: "",
     }),
     reducers: {
         addToDelete: {
@@ -109,6 +137,8 @@ const sliceListTrenings = createSlice({
         });
         builder.addCase(statusTrenings.fulfilled, (state, { payload }) => {
             listAdapter.upsertOne(state, { id: payload.id, status: payload.status });
+            if (payload.id === state.upDateItem) state.upDateItem = randomId();
+            else state.upDateItem = payload.id;
             console.log("Изменение статуса тренировки");
         });
         builder.addCase(statusTrenings.rejected, (state, action) => {

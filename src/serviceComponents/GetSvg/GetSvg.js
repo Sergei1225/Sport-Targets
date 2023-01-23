@@ -21,6 +21,10 @@ import { ReactComponent as WeightCircle } from "../../img/svg/weightCircle.svg";
 import { ReactComponent as PencilIcon } from "../../img/svg/pencil.svg"; 
 import { ReactComponent as BagIcon } from "../../img/svg/bag.svg"; 
 import { ReactComponent as CancelIcon } from "../../img/svg/cancelIcon.svg"; 
+import { ReactComponent as DeleteList } from "../../img/svg/deleteList.svg"; 
+import { ReactComponent as PastIcon } from "../../img/svg/pastIcon.svg"; 
+import { ReactComponent as CheckMark } from "../../img/svg/checkMark.svg"; 
+import { ReactComponent as StarIcon } from "../../img/svg/starIcon.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -34,41 +38,49 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
         case "gantel":
             return <GantelGood className={`gantelSvg ${styleSvg}`} />
         case "list":
-            return <List className={`listSvg ${styleSvg}`} />
+            return <List className={`baseSvg ${styleSvg}`} />
         case "bottle":
-            return <Bottle className={`bottle ${styleSvg}`} />
+            return <Bottle className={`baseSvg ${styleSvg}`} />
         case "run":
-            return <Run className={`run ${styleSvg}`} />
+            return <Run className={`baseSvg ${styleSvg}`} />
         case "timer":
-            return <Timer className={`timer ${styleSvg}`} />
+            return <Timer className={`baseSvg ${styleSvg}`} />
         case "gantelSquare":
-            return <GantelSquare className={`gantelSquare ${styleSvg}`} />
+            return <GantelSquare className={`baseSvg ${styleSvg}`} />
         case "locker":
-            return <Dumbbell className={`locker ${styleSvg}`}/>
+            return <Dumbbell className={`baseSvg ${styleSvg}`}/>
         case "dumbbell":
-            return <Locker className={`dumbbell ${styleSvg}`}/>
+            return <Locker className={`baseSvg ${styleSvg}`}/>
         case "arrow":
-            return <Arrow className={`arrow ${styleSvg}`} />
+            return <Arrow className={`baseSvg ${styleSvg}`} />
         case "bucket":
-            return <Bucket className={`bucket ${styleSvg}`} />
+            return <Bucket className={`baseSvg ${styleSvg}`} />
         case "trenings":
             return <Trenings className={`treningsSvg ${styleSvg}`} />
         case "warning":
             return <Warning className={`warning ${styleSvg}`} />
         case "deleteCross":
-            return <DeleteCross className={`deleteCross ${styleSvg}`} />
+            return <DeleteCross className={`baseSvg ${styleSvg}`} />
         case "editorIcon":
-            return <EditorIcon className={`editorIcon ${styleSvg}`} />
+            return <EditorIcon className={`baseSvg ${styleSvg}`} />
         case "favoriteIcon":
-            return <FavoriteIcon className={`favoriteIcon ${styleSvg}`} />
+            return <FavoriteIcon className={`baseSvg ${styleSvg}`} />
         case "weightCircle":
-            return <WeightCircle className={`weightCircle ${styleSvg}`} />
+            return <WeightCircle className={`baseSvg ${styleSvg}`} />
         case "pencilIcon":
-            return <PencilIcon className={`pencilIcon ${styleSvg}`} />
+            return <PencilIcon className={`baseSvg ${styleSvg}`} />
         case "bagIcon":
-            return <BagIcon className={`bagIcon ${styleSvg}`} />
+            return <BagIcon className={`baseSvg ${styleSvg}`} />
         case "cancelIcon":
-            return <CancelIcon className={`cancelIcon ${styleSvg}`} />
+            return <CancelIcon className={`baseSvg ${styleSvg}`} />
+        case "deleteList":
+            return <DeleteList className={`baseSvg ${styleSvg}`} />
+        case "pastIcon":
+            return <PastIcon className={`baseSvg ${styleSvg}`} />
+        case "checkMark":
+            return <CheckMark className={`baseSvg ${styleSvg}`} />
+        case "starIcon":
+            return <StarIcon className={` starIcon ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }

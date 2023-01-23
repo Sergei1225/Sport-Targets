@@ -70,7 +70,7 @@ export const ItemList = (props) => {
                 </div>
             );
         });
-        return <div className={`bElement bFlex bFlexJCSA bFlexWrap bPaddingTop0`}>{items}</div>;
+        return <div className={`bElement bFlex bPaddingTop0`}>{items}</div>;
     };
 
     const functionIcons = createFunctionIcons(dataIconsFunction);
