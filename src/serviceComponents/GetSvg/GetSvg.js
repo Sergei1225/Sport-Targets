@@ -25,6 +25,7 @@ import { ReactComponent as DeleteList } from "../../img/svg/deleteList.svg";
 import { ReactComponent as PastIcon } from "../../img/svg/pastIcon.svg"; 
 import { ReactComponent as CheckMark } from "../../img/svg/checkMark.svg"; 
 import { ReactComponent as StarIcon } from "../../img/svg/starIcon.svg"; 
+import { ReactComponent as ErrorIcon } from "../../img/svg/errorIcon.svg"; 
 
 export const GetSvg = ({nameSvg, styleSvg}) => {
 
@@ -81,6 +82,8 @@ export const GetSvg = ({nameSvg, styleSvg}) => {
             return <CheckMark className={`baseSvg ${styleSvg}`} />
         case "starIcon":
             return <StarIcon className={` starIcon ${styleSvg}`} />
+        case "errorIcon":
+            return <ErrorIcon className={` baseSvg ${styleSvg}`} />
         default :
             return <GantelGood className={`gantelSvg ${styleSvg}`} />;
     }

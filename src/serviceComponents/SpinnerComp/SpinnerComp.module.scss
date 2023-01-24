@@ -1,0 +1,19 @@
+.spinnerComp{
+    animation: show 0.5s linear;
+    &__wrapper{
+        position: relative;
+    }
+    &__text{
+        position: absolute;
+        bottom: 15%;
+    }
+    &__small{
+        min-height: 200px;
+        width: 100%;
+    }
+    &__middle{
+        min-height: 350px;
+        width: 100%;
+    }
+
+}

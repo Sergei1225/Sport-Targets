@@ -43,10 +43,10 @@
       },
       "parametrs": {
         "paramProgress": "days",
-        "remainder": 358,
+        "remainder": 357,
         "target": 365,
-        "valueAbsolute": 7,
-        "valuePercent": 1.92
+        "valueAbsolute": 8,
+        "valuePercent": 2.19
       }
     },
     "targetAchievement": [
@@ -55,12 +55,12 @@
         "id": "fd7j3jj7hsdjskskdgJksdHHsg"
       },
       {
-        "id": "VbgFh12323267K1k-Ztlz6T60-5k4C30zm-y8",
-        "result": 91
-      },
-      {
         "id": "shJjsjewiuwe3478hGGSJsjsashy7u32uh",
         "result": 200
+      },
+      {
+        "id": "VbgFh12323267K1k-Ztlz6T60-5k4C30zm-y8",
+        "result": 91
       }
     ]
   },
@@ -403,7 +403,7 @@
       "date": "12.02.2022",
       "forDelete": false,
       "order": 0,
-      "favorite": false,
+      "favorite": true,
       "status": "future",
       "listExersises": [
         {
@@ -447,7 +447,7 @@
       "date": "12.19.2022",
       "forDelete": false,
       "order": 1,
-      "favorite": false,
+      "favorite": true,
       "status": "past",
       "listExersises": [
         {

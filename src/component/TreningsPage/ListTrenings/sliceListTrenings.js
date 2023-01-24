@@ -48,15 +48,7 @@ export const favoriteTrening = createAsyncThunk("listTrenings/favoriteTrening", 
     await simpleReqest(`listTrenings/${action.id}`, "PATCH", { favorite: !action.favorite });
     return action;
 });
-export const statusTreningsA = createAsyncThunk("listTrenings/statusTrenings", async (action, { getState }) => {
-    const statusValue = action.status === "future" ? "past" : "future";
-    const treningsResult = getState().showTargetWeigth.targetAchievement;
-    //console.log(treningsResult.some(item => item.id === action.id));
-    console.log(treningsResult);
 
-    await simpleReqest(`listTrenings/${action.id}`, "PATCH", { status: statusValue });
-    return { id: action.id, status: statusValue };
-});
 export const statusTrenings = createAsyncThunk("listTrenings/statusTrenings", async (action, { getState }) => {
     const statusValue = action.status === "future" ? "past" : "future";
     /// в массив я добавляю цель для будущего тк  будет много целей
@@ -105,6 +97,7 @@ const sliceListTrenings = createSlice({
     name: "listTrenings",
     initialState: listAdapter.getInitialState({
         loadingStatus: "loading",
+        errorStatus: "",
         listForDelete: [],
         upDateItem: "",
     }),
@@ -123,16 +116,21 @@ const sliceListTrenings = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getMyTreningItems.fulfilled, (state, { payload }) => {
             listAdapter.setAll(state, payload);
+            state.loadingStatus = "contentTransition";
             console.log("данные получены тренировок");
         });
-        builder.addCase(getMyTreningItems.rejected, (state, action) => {
+        builder.addCase(getMyTreningItems.rejected, (state, {error}) => {
             console.log("произошла ошибка getMyTreningItems");
+            state.loadingStatus = "error";
+            state.errorStatus = {name: error.name, message: error.message}
         });
         builder.addCase(favoriteTrening.fulfilled, (state, { payload }) => {
             listAdapter.upsertOne(state, { id: payload.id, favorite: !payload.favorite });
             console.log("Изменение приоритетности тренировки");
         });
-        builder.addCase(favoriteTrening.rejected, (state, action) => {
+        builder.addCase(favoriteTrening.rejected, (state, {error}) => {
+            state.loadingStatus = "error";
+            state.errorStatus = {name: error.name, message: error.message}
             console.log("ошибка изменения приоритетности тренировки");
         });
         builder.addCase(statusTrenings.fulfilled, (state, { payload }) => {
@@ -141,14 +139,18 @@ const sliceListTrenings = createSlice({
             else state.upDateItem = payload.id;
             console.log("Изменение статуса тренировки");
         });
-        builder.addCase(statusTrenings.rejected, (state, action) => {
+        builder.addCase(statusTrenings.rejected, (state, {error}) => {
+            state.loadingStatus = "error";
+            state.errorStatus = {name: error.name, message: error.message}
             console.log("ошибка изменения статуса тренировки");
         });
         builder.addCase(deleteOneTrening.fulfilled, (state, { payload }) => {
             listAdapter.removeOne(state, payload);
             console.log("удалено одна тренировка ");
         });
-        builder.addCase(deleteOneTrening.rejected, (state, action) => {
+        builder.addCase(deleteOneTrening.rejected, (state, {error}) => {
+            state.loadingStatus = "error";
+            state.errorStatus = {name: error.name, message: error.message}
             console.log("произошла ошибка удаления тренировки");
         });
         builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
@@ -158,7 +160,9 @@ const sliceListTrenings = createSlice({
             state.listForDelete = [];
             console.log("удалено много тренировок");
         });
-        builder.addCase(deleteSomeTrening.rejected, (state, action) => {
+        builder.addCase(deleteSomeTrening.rejected, (state, {error}) => {
+            state.loadingStatus = "error";
+            state.errorStatus = {name: error.name, message: error.message}
             console.log("произошла ошибка много удалений тренировок");
         });
     },

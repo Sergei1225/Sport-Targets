@@ -1,0 +1,40 @@
+.itemTrenings {
+    &__date,
+    &__name {
+        align-self: center;
+        flex: 0 0 170px;
+    }
+    &__forDelete {
+        border: 2px solid rgb(156, 36, 36);
+        color: rgb(156, 36, 36) !important;
+    }
+    &__favorite{
+        max-width: 0;
+        overflow: hidden;
+        transition: all 0.5s linear;
+        &_active{
+            max-width: 200px;
+            overflow: visible;
+        }
+    }
+    &__hint {
+        min-width: 135px;
+        color: white;
+    }
+    &__item {
+        cursor: pointer;
+    }
+    &__exercise {
+        flex: 1 0 100px;
+    }
+    &__name {
+        flex: 0 0 100px;
+    }
+    &__func {
+        flex: 1 1 250px;
+    }
+    &__past {
+        background-color: black;
+        color: white;
+    }
+}

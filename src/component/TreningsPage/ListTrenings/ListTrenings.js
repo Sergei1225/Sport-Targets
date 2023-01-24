@@ -2,6 +2,9 @@ import s from "./ListTrenings.module.scss";
 
 import { ItemListTrenings } from "./ItemListTrenings/ItemListTrenings";
 import { CustomTitleBase } from "../../BaseComponents/CustomComponents";
+import { SpinnerComp } from "../../../serviceComponents/SpinnerComp/SpinnerComp";
+import { ErrorMassage } from "../../../serviceComponents/ErrorMassage/ErrorMassage";
+import { ContentLoading } from "../../../serviceComponents/ContentLoading/ContentLoading";
 
 import {
     filtredItems,
@@ -25,6 +28,7 @@ export const ListTrenings = () => {
 
     const itemsList = useSelector(filtredItems);
     const loadingStatus = useSelector((state) => state.listTrenings.loadingStatus);
+    const errorStatus = useSelector((state) => state.listTrenings.errorStatus);
     const visibleView = useSelector((state) => state.listTrenings.visibleView);
 
     const changeMark = (id, favorite) => {
@@ -61,6 +65,7 @@ export const ListTrenings = () => {
     };
 
     const itemsTrening = createItems(itemsList, visibleView);
+    console.log(loadingStatus)
 
     //console.log("рендер листайтема");
 
@@ -70,12 +75,18 @@ export const ListTrenings = () => {
                 <div className={`${s.listTrenings__title} bElement`}>
                     <CustomTitleBase
                         title={"List trenings"}
-                        subtile={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+                        subtile={
+                            "You can find in search, delete trening or trenings, add to favorite and add to edit trenings"
+                        }
                         nameSvg={"list"}
-                    >
-                    </CustomTitleBase>
+                    ></CustomTitleBase>
                 </div>
-                <TransitionGroup>{itemsTrening}</TransitionGroup>
+                <ContentLoading
+                    loadingStatus={loadingStatus}
+                    itemsTrening={itemsTrening}
+                    errorStatus={errorStatus}
+                    textLoading={"Loading list items..."}
+                />
             </div>
         </div>
     );

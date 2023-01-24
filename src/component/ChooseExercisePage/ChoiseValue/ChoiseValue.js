@@ -1,7 +1,6 @@
 import s from "./ChoiseValue.module.scss";
 
-import { CustomCheck } from "../../BaseComponents/CustomComponents";
-import { dataChoiseBase } from "../../CreateTreningPage/ConstrTrening/dataChoise";
+import { dataChoiseBase } from "./dataChoise";
 import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
 
 import { useMemo } from "react";

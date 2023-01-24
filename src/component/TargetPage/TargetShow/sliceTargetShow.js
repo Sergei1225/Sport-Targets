@@ -18,7 +18,7 @@ const changeTime = (left, target) => {
 const compareDates = (end, remainder) => {
     const timeNow = Date.now();
     const left = Math.floor((end - timeNow) / 86400000);
-
+    // если количество дней равно то перезапись даты не нужна
     return remainder === left ? 0 : left;
 };
 
@@ -44,6 +44,7 @@ export const getDataTargetWeigthA = createAsyncThunk("showTargetWeigth/getDataTa
 
 const initialState = {
     statusLoading: "loading",
+    errorStatus: '',
     weigthTarget: null,
     fullTarget: []
 };
@@ -72,9 +73,9 @@ const sliceShowTargetWeigth = createSlice({
             state.statusLoading = "content";
             console.log("таргер шоу получены данные");
         });
-        builder.addCase(getDataTargetWeigth.rejected, (state, action) => {
-            console.log(action.error.message);
+        builder.addCase(getDataTargetWeigth.rejected, (state, {error}) => {
             state.statusLoading = "error";
+            state.errorStatus = {name: error.name, message: error.message}
         });
     },
 });

@@ -5,10 +5,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import dataBase from "../component/App/sliceDataBase";
 
 import navBar from "../component/NavBar/sliceNavBar";
-import listCreateExersice from "../component/CreateTreningPage/ListTrening/sliceListCreateExersice";
 import selectExercise from "../component/ChooseExercisePage/SelectExercise/sliceSelectExercise";
 import listExercise from "../component/ChooseExercisePage/ListExercise/sliceListExercise";
-import constrTrening from "../component/CreateTreningPage/ConstrTrening/sliceConstrTrening";
+
 // страница отбражения тренировок
 import searchTrenings from "../component/TreningsPage/SearchTrenings/sliceSearchTrenings";
 import filterTrens from "../component/TreningsPage/FiltersTren/sliceFilterTren";
@@ -29,10 +28,8 @@ const store = configureStore({
     reducer: {
         dataBase,
         navBar,
-        listCreateExersice,
         selectExercise,
         listExercise,
-        constrTrening,
         listTrenings,
         searchTrenings,
         filterTrens,

@@ -1,11 +1,16 @@
-import img from './error.gif';
+import { GetSvg } from "../GetSvg/GetSvg";
 
-const ErrorMassage = () => {
-    return(
-        <img 
-        style= {{display: 'block', width: '250px', height: "250px", objectFit:"contain", margin:'0 auto'}}
-        src={img} alt="error" />
-    )
-}
-
-export default ErrorMassage;
+export const ErrorMassage = ({ textError = "Text error" }) => {
+    return (
+        <div className="bElement" style={{ animation: "show 1s linear"}}>
+            <div className="bFlexColumnCenter">
+                <div style={{ width: "250px", height: "250px" }}>
+                    <GetSvg nameSvg={"errorIcon"} />
+                </div>
+                <div className="bElement baseFontTitleSmall bBold" style={{ textAlign: "center" }}>
+                    {textError}
+                </div>
+            </div>
+        </div>
+    );
+};

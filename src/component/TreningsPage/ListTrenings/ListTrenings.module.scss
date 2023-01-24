@@ -1,5 +1,17 @@
 
 .listTrenings {
-
+    &__loadingItems{
+        width: 100%;
+        min-height: 500px;
+        //background-color: #3c3c3d;
+    }
+    &__small{
+        min-height: 200px;
+        width: 100%;
+    }
+    &__middle{
+        min-height: 350px;
+        width: 100%;
+    }
 
 }

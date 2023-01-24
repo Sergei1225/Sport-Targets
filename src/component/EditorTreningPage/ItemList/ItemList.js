@@ -2,8 +2,8 @@ import s from "./ItemList.module.scss";
 
 import { dataIconsFunction } from "./dataFunctions";
 
-import { HintComponent } from "../../../serviceComponents/HintComponent/HintComponent";
 import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
+import { IconList } from "../../../serviceComponents/IconList/IconList";
 
 export const ItemList = (props) => {
     let {
@@ -54,27 +54,6 @@ export const ItemList = (props) => {
         }
     };
 
-    const createFunctionIcons = (data) => {
-        const items = data.map((item) => {
-            return (
-                <div
-                    key={item.id}
-                    onClick={() => functionsComponent(item.nameFunct)}
-                    className={`${s.itemList__icon} `}
-                >
-                    <HintComponent inner={item.hint}>
-                        <div className={`${s.itemList__icon} bSizeIconSmall`}>
-                            <GetSvg nameSvg={item.nameSvg} styleSvg={s.itemList__svgFunc} />
-                        </div>
-                    </HintComponent>
-                </div>
-            );
-        });
-        return <div className={`bElement bFlex bPaddingTop0`}>{items}</div>;
-    };
-
-    const functionIcons = createFunctionIcons(dataIconsFunction);
-
     return (
         <div draggable={false} key={id} className={`${s.itemList} bElement `}>
             <div className={`${s.itemList__wrapper} ${styleWrapper} bFlex bWrapperStyleElem`}>
@@ -82,7 +61,12 @@ export const ItemList = (props) => {
                     <div className={`${s.itemList__img} bElement`}>
                         <img className={` bImgCover bBorderRadius `} src={[img]} alt="imgList" />
                     </div>
-                    {functionIcons}
+                    <IconList
+                        styleSvg={s.itemList__svgFunc}
+                        funcComp={functionsComponent}
+                        data={dataIconsFunction}
+                        styleWrapper={` bElement bFlex bPaddingTop0`}
+                    />
                 </div>
                 <div className={`${s.itemList__text} bElement`}>
                     <div className={`${s.itemList__title} ${s.itemList__path} bElement bContentBig bBold bFlex`}>

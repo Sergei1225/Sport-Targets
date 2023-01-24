@@ -4,6 +4,7 @@ import { TargetProgress } from "../TargetProgress/TargetProgress";
 
 import { getDataTargetWeigth, setDataTargetShow } from "./sliceTargetShow";
 import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel";
+import { ContentLoading } from "../../../serviceComponents/ContentLoading/ContentLoading";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -14,8 +15,12 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
     const [activeLine, setActiveLine] = useState(stateSlider);
 
     const dataWeigth = useSelector((state) => state.showTargetWeigth.weigthTarget);
+    const statusLoading = useSelector((state) => state.showTargetWeigth.statusLoading);
+    const errorStatus = useSelector((state) => state.showTargetWeigth.errorStatus);
     const updateItems = useSelector((state) => state.listTrenings.upDateItem);
     const dispatch = useDispatch();
+
+    console.log(statusLoading);
 
     const changeSize = () => {
         const widthWrapper = document.querySelector(`.${s.targetShow}`);
@@ -44,11 +49,11 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
         }
     }, []);
 
-    if (!dataWeigth) return <h3>Loading...</h3>;
+    // if (!dataWeigth) return <h3>Loading...</h3>;
 
-    const createItemsWeigth = (data) => {
+    const createItemsWeigth = (data, activeLine) => {
         if (!data) return null;
-        return data.map((item) => {
+        const items = data.map((item) => {
             return (
                 <div key={item.id} className={`${s.targetShow__item} `}>
                     <TargetProgress
@@ -63,17 +68,79 @@ export const TargetShow = ({ stateSlider, loadingData, stateData }) => {
                 </div>
             );
         });
+
+        if (activeLine) return <SliderCarusel sizeSlider={s.targetShow__slider}>{items}</SliderCarusel>;
+        else {
+            return <div className={`${s.targetShow__wrapper} bBlock bFlex bFlexJCSB`}>{items}</div>;
+        }
     };
 
-    const itemsWeigth = createItemsWeigth(dataWeigth);
+    const itemsWeigth = createItemsWeigth(dataWeigth, activeLine);
 
     return (
         <div className={`${s.targetShow}`}>
-            {activeLine ? (
-                <SliderCarusel sizeSlider={s.targetShow__slider}>{itemsWeigth}</SliderCarusel>
+            {statusLoading === "loading" ? (
+                <div className={`${s.targetShow__wrapper} bBlock bFlex bFlexJCSB`}>
+                  <ContentLoading
+                    loadingStatus={"loading"}
+                    itemsTrening={itemsWeigth}
+                    errorStatus={errorStatus}
+                    textLoading={"Loading targets..."}
+                />
+                <ContentLoading
+                    loadingStatus={"loading"}
+                    itemsTrening={itemsWeigth}
+                    errorStatus={errorStatus}
+                    textLoading={"Loading targets..."}
+                />
+                <ContentLoading
+                    loadingStatus={"loading"}
+                    itemsTrening={itemsWeigth}
+                    errorStatus={errorStatus}
+                    textLoading={"Loading targets..."}
+                />  
+                </div>
             ) : (
-                <div className={`${s.targetShow__wrapper} bBlock bFlex bFlexJCSB`}>{itemsWeigth}</div>
+                <ContentLoading
+                    loadingStatus={statusLoading}
+                    itemsTrening={itemsWeigth}
+                    errorStatus={errorStatus}
+                    textLoading={"Loading targets..."}
+                />
             )}
+            <div className={`${s.targetShow__wrapper} bBlock bFlex bFlexJCSB`}>
+                <div className={`${s.targetShow__loading}`}>
+                    <ContentLoading
+                        loadingStatus={"loading"}
+                        itemsTrening={itemsWeigth}
+                        errorStatus={errorStatus}
+                        textLoading={"Loading targets..."}
+                    />
+                </div>
+                <div className={`${s.targetShow__loading}`}>
+                    <ContentLoading
+                        loadingStatus={"loading"}
+                        itemsTrening={itemsWeigth}
+                        errorStatus={errorStatus}
+                        textLoading={"Loading targets..."}
+                    />
+                </div>
+                <div className={`${s.targetShow__loading}`}>
+                    <ContentLoading
+                        loadingStatus={"loading"}
+                        itemsTrening={itemsWeigth}
+                        errorStatus={errorStatus}
+                        textLoading={"Loading targets..."}
+                    />
+                </div>
+
+            </div>
+            {/* <ContentLoading
+                loadingStatus={statusLoading}
+                itemsTrening={itemsWeigth}
+                errorStatus={errorStatus}
+                textLoading={"Loading targets..."}
+            />  */}
         </div>
     );
 };
