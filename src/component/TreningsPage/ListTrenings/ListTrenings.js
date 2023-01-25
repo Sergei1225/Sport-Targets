@@ -1,10 +1,5 @@
-import s from "./ListTrenings.module.scss";
-
-import { ItemListTrenings } from "./ItemListTrenings/ItemListTrenings";
-import { CustomTitleBase } from "../../BaseComponents/CustomComponents";
-import { SpinnerComp } from "../../../serviceComponents/SpinnerComp/SpinnerComp";
-import { ErrorMassage } from "../../../serviceComponents/ErrorMassage/ErrorMassage";
-import { ContentLoading } from "../../../serviceComponents/ContentLoading/ContentLoading";
+import { ItemListTrenings } from "../ItemListTrenings/ItemListTrenings";
+import { ViewListTrenings } from "../../../View/ViewListTrenings/ViewListTrenings";
 
 import {
     filtredItems,
@@ -15,7 +10,7 @@ import {
     statusTrenings,
 } from "./sliceListTrenings";
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -65,29 +60,7 @@ export const ListTrenings = () => {
     };
 
     const itemsTrening = createItems(itemsList, visibleView);
-    console.log(loadingStatus)
-
     //console.log("рендер листайтема");
 
-    return (
-        <div className={`${s.listTrenings} bBlock `}>
-            <div className={`${s.listTrenings__wrapper} bWrapperStyle bElement`}>
-                <div className={`${s.listTrenings__title} bElement`}>
-                    <CustomTitleBase
-                        title={"List trenings"}
-                        subtile={
-                            "You can find in search, delete trening or trenings, add to favorite and add to edit trenings"
-                        }
-                        nameSvg={"list"}
-                    ></CustomTitleBase>
-                </div>
-                <ContentLoading
-                    loadingStatus={loadingStatus}
-                    itemsTrening={itemsTrening}
-                    errorStatus={errorStatus}
-                    textLoading={"Loading list items..."}
-                />
-            </div>
-        </div>
-    );
+    return <ViewListTrenings loadingStatus={loadingStatus} itemsTrening={itemsTrening} errorStatus={errorStatus} />;
 };

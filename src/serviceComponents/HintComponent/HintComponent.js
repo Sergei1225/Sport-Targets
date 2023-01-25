@@ -1,6 +1,6 @@
 import s from "./hintComponent.module.scss";
 
-export const HintComponent = ({ styleTiangle, styleText, styleContent, inner, top, left, children }) => {
+export const HintComponent = ({ styleTiangle, styleText, styleContent, inner, top= "-12", left="-95", children }) => {
     if(!inner) inner = 'hint'
     return (
         <div className={`${s.hint}`}>

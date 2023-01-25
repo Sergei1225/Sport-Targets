@@ -4,7 +4,7 @@ import { GetSvg } from "../GetSvg/GetSvg";
 import { HintComponent } from "../HintComponent/HintComponent";
 
 
-export const IconList = ({data, funcComp, styleWrapper, styleHint, styleSvg}) => {
+export const IconList = ({data, funcComp, styleWrapper, styleHint, styleSvg, positionHint}) => {
     if(!data) return null;
 
     if(!styleWrapper) styleWrapper = "bElement bFlex ";
@@ -18,7 +18,7 @@ export const IconList = ({data, funcComp, styleWrapper, styleHint, styleSvg}) =>
                 onClick={() => funcComp && funcComp(nameFunct)}
                 className={`${s.iconList__icon} `}
             >
-                <HintComponent inner={hint} styleContent={styleHint}>
+                <HintComponent left={positionHint} inner={hint} styleContent={styleHint}>
                     <div className={`${s.iconList__icon} bSizeIconSmall`}>
                         <GetSvg nameSvg={nameSvg} styleSvg={`${styleSvg} ${s.iconList__svgFunc}`} />
                     </div>

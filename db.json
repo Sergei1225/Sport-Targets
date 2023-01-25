@@ -55,12 +55,12 @@
         "id": "fd7j3jj7hsdjskskdgJksdHHsg"
       },
       {
-        "id": "shJjsjewiuwe3478hGGSJsjsashy7u32uh",
-        "result": 200
-      },
-      {
         "id": "VbgFh12323267K1k-Ztlz6T60-5k4C30zm-y8",
         "result": 91
+      },
+      {
+        "id": "shJjsjewiuwe3478hGGSJsjsashy7u32uh",
+        "result": 200
       }
     ]
   },
@@ -522,7 +522,7 @@
       "date": "12.01.2022",
       "forDelete": false,
       "order": 2,
-      "favorite": false,
+      "favorite": true,
       "status": "past",
       "listExersises": [
         {
@@ -582,7 +582,25 @@
       ]
     }
   ],
-  "selectedExercises": [],
+  "selectedExercises": [
+    {
+      "forDelete": false,
+      "priority": false,
+      "order": 3,
+      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
+      "name": "French press",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "triceps"
+      ],
+      "typeOfExercise": "base",
+      "repeats": [],
+      "weight": []
+    }
+  ],
   "listExersises": [
     {
       "forDelete": false,
@@ -637,23 +655,6 @@
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
         "legs"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 3,
-      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
-      "name": "French press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "triceps"
       ],
       "typeOfExercise": "base",
       "repeats": [],

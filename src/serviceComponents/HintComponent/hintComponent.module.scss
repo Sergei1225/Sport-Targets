@@ -9,24 +9,24 @@
     &__content {
         position: absolute;
         top: -12px;
-        left: -87px;
+        left: -95px;
         min-width: 130px;
         transition: all 0.5s linear;
         font-size: 20px;
         line-height: 24px;
         opacity: 0;
+        color: white;
     }
     &__text {
         padding: 3px 5px;
         background-color: grey;
-        color: white(44, 44, 44);
         border-radius: 10px;
         border: 2px solid grey;
         position: absolute;
         top: -35px;
         right: 0;
         pointer-events: none;
-        z-index: 5;      
+        z-index: 5;
     }
     &__triangle {
         position: absolute;

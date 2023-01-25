@@ -22,15 +22,6 @@ export const FlipItem = (props) => {
     const styleCoup = coup ? s.flipItem__coup : "";
     const styleHover = hoverBack ? s.flipItem__hoverBack : "";
 
-    /// bFlexColumn
-    /// baseImgCover
-    /// bTitleSmall
-    /// bFlexColumnCenter
-    /// bElement
-    /// bFlexColumnCenter
-    /// bFlexColumnCenter
-    /// bFlexColumnCenter
-
     return (
         <div className={`${s.flipItem} bFlexColumn`}>
             <div className={`${s.flipItem__size} bFlexColumn ${styleHover}`}>

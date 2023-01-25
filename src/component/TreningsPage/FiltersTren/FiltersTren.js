@@ -1,9 +1,7 @@
-import s from "./FiltersTren.module.scss";
-
-import { CBtnStyled, CustomSelect } from "../../BaseComponents/CustomComponents";
+import { ViewFiltersTrenings } from "../../../View/ViewFiltersTrenings/ViewFiltersTrenings";
 
 import { changeFilterTren, changeSort } from "./sliceFilterTren";
-import { deleteSomeTrening } from "../ListTrenings/sliceListTrenings";
+import { deleteSomeTrening, changeStatusModal } from "../ListTrenings/sliceListTrenings";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,7 +18,8 @@ export const FiltersTren = () => {
     };
 
     const deleteListForDelete = () => {
-        dispatch(deleteSomeTrening());
+        //dispatch(deleteSomeTrening());
+        dispatch(changeStatusModal('deleteSomeTrenings'));
     };
 
     const comparisonValues = (value, currentValue) => {
@@ -28,34 +27,16 @@ export const FiltersTren = () => {
         else return;
     };
 
-    const filtredItems = (data) => {
-        return data.map((item) => {
-            return (
-                <CBtnStyled
-                    key={item.id}
-                    funk={() => comparisonValues(item.value, filterValue)}
-                    innerValue={item.text}
-                    active={item.value === filterValue}
-                />
-            );
-        });
-    };
-
-    const contentItems = filtredItems(dataFilters);
-
     console.log("фильтры");
     return (
-        <div className={`${s.filters}`}>           
-            <div className={`${""} bElement bFlex bFlexJCSB bFlexWrap`}>
-                <CustomSelect
-                    changeProp={changeProp}
-                    styleItem={s.headerTrening__sort_select}
-                    dataOption={dataOption}
-                    valueSelect={valueSelect}
-                />
-                <CBtnStyled funk={deleteListForDelete} innerValue={"Delete selected"} />
-            </div>
-            <div className={`${s.filters__filtersValue} bFlex bFlexJCSB bFlexWrap bElement`}>{contentItems}</div>
-        </div>
+        <ViewFiltersTrenings
+            comparisonValues={comparisonValues}
+            changeProp={changeProp}
+            deleteListForDelete={deleteListForDelete}
+            filterValue={filterValue}
+            dataFilters={dataFilters}
+            dataOption={dataOption}
+            valueSelect={valueSelect}
+        />
     );
 };

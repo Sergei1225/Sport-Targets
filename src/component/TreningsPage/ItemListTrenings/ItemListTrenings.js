@@ -1,4 +1,4 @@
-import { ViewItemListTreningsA } from "../../../../View/ViewItemListTrenings/ViewItemListTrenings";
+import { ViewItemListTrenings } from "../../../View/ViewItemListTrenings/ViewItemListTrenings";
 
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ export const ItemListTrenings = (props) => {
     };
 
     return (
-        <ViewItemListTreningsA
+        <ViewItemListTrenings
             id={id}
             date={date}
             status={status}

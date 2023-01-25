@@ -3,7 +3,7 @@ import s from "./ViewItemListTrenings.module.scss";
 import { ComponentSwitch } from "../../serviceComponents/ComponentSwitch/ComponentSwitch";
 import { IconList } from "../../serviceComponents/IconList/IconList";
 
-export const ViewItemListTreningsA = ({
+export const ViewItemListTrenings = ({
     id,
     date,
     status,
@@ -43,6 +43,7 @@ export const ViewItemListTreningsA = ({
                         funcComp={functionsItems}
                         data={dataFavorite}
                         styleWrapper={""}
+                        positionHint={"-103"}
                     />
                 </div>
                 <div className={`${s.itemTrenings__date} bContentBig bBold `}>
@@ -60,6 +61,7 @@ export const ViewItemListTreningsA = ({
                 <div className={`${s.itemTrenings__exercise} bContent`}>{lineExercise}</div>
                 <div className={`${s.itemTrenings__func}  `}>
                     <IconList
+                        positionHint={"-103"}
                         styleHint={s.itemTrenings__hint}
                         funcComp={functionsItems}
                         data={dataItemsFunction}

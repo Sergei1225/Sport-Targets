@@ -84,6 +84,7 @@ export const ListEditorTrening = (props) => {
 
     return (
         <div className={`${s.listEditorTrening} bBlock`}>
+            {/* <div className={`${s.listEditorTrening__modal} `}>Modal</div> */}
             <div className={`${s.listEditorTrening__wrapper}  `}>
                 <div className={`${s.listEditorTrening__btns} bElement bWrapperStyle bFlex`}>
                     <CBtnStyled funk={deleteSomeTren} innerValue={"Delete list exercises"} />

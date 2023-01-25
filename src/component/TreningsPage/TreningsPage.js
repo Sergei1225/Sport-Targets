@@ -1,10 +1,11 @@
-
 import { ListTrenings } from "./ListTrenings/ListTrenings";
 import { FiltersTren } from "./FiltersTren/FiltersTren";
 import { SearchTrenings } from "./SearchTrenings/SearchTrenings";
 import { TargetShow } from "../TargetPage/TargetShow/TargetShow";
 import { BaseHeader } from "../BaseHeader/BaseHeader";
 import { srcImages } from "../../img/srcImages";
+import { Modal } from "../../serviceComponents/Modal/Modal";
+import { ModalTrenings } from "./ModalTrenings/ModalTrenings";
 
 export const TreningsPage = () => {
     return (
@@ -14,6 +15,9 @@ export const TreningsPage = () => {
             <SearchTrenings />
             <FiltersTren />
             <ListTrenings />
+            <Modal>
+                <ModalTrenings/>
+            </Modal>
         </section>
     );
 };

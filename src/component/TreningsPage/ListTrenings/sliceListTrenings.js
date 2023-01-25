@@ -100,6 +100,7 @@ const sliceListTrenings = createSlice({
         errorStatus: "",
         listForDelete: [],
         upDateItem: "",
+        modalAction: ""
     }),
     reducers: {
         addToDelete: {
@@ -112,6 +113,9 @@ const sliceListTrenings = createSlice({
             },
             prepare: (id, forDelete) => ({ payload: { id, forDelete } }),
         },
+        changeStatusModal: (state, { payload }) => {
+            state.modalAction = payload;
+        } 
     },
     extraReducers: (builder) => {
         builder.addCase(getMyTreningItems.fulfilled, (state, { payload }) => {
@@ -224,4 +228,4 @@ export const filtredItems = createSelector(
     }
 );
 
-export const { addToDelete } = actions;
+export const { addToDelete, changeStatusModal } = actions;

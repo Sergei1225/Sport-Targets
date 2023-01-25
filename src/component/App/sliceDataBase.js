@@ -27,9 +27,6 @@ const sliceDataBase = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(setDataTrening.pending, (state, action) => {
-            //console.log(action);
-        });
         builder.addCase(setDataTrening.fulfilled, (state, { payload }) => {
             const [base, aerobic, trenings ] = payload;
             state.dataBase = base;

@@ -38,12 +38,8 @@ export const getDataTargetWeigth = createAsyncThunk("showTargetWeigth/getDataTar
     }
 });
 
-export const getDataTargetWeigthA = createAsyncThunk("showTargetWeigth/getDataTargetWeigthA", async () => {
-    return simpleReqest("newTargetWeigth");
-});
-
 const initialState = {
-    statusLoading: "loading",
+    statusLoading: "loadingTargets",
     errorStatus: '',
     weigthTarget: null,
     fullTarget: []
