@@ -100,7 +100,7 @@ const sliceListTrenings = createSlice({
         errorStatus: "",
         listForDelete: [],
         upDateItem: "",
-        modalAction: ""
+        modalAction: {name: '', inner: ''}
     }),
     reducers: {
         addToDelete: {
@@ -114,7 +114,13 @@ const sliceListTrenings = createSlice({
             prepare: (id, forDelete) => ({ payload: { id, forDelete } }),
         },
         changeStatusModal: (state, { payload }) => {
-            state.modalAction = payload;
+            const charUpper = (str) => `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
+            const arrValues = Object.entries(state.entities).reduce((sum, item) => {
+                const [idItem, innerItem] = item;
+                if(state.listForDelete.some(i => i === idItem)) sum.push(charUpper(innerItem.name))
+                return sum;
+            }, []) 
+            state.modalAction = {name: payload, inner: `${arrValues.join(", ")} will be delete. Are you sure ?`};
         } 
     },
     extraReducers: (builder) => {

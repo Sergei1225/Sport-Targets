@@ -27,10 +27,10 @@
       "trenings": 90,
       "parametrs": {
         "paramProgress": "trenings",
-        "remainder": 87,
+        "remainder": 88,
         "target": 90,
-        "valueAbsolute": 3,
-        "valuePercent": 3.33
+        "valueAbsolute": 2,
+        "valuePercent": 2.22
       }
     },
     "timeToTarget": {
@@ -43,20 +43,16 @@
       },
       "parametrs": {
         "paramProgress": "days",
-        "remainder": 357,
+        "remainder": 356,
         "target": 365,
-        "valueAbsolute": 8,
-        "valuePercent": 2.19
+        "valueAbsolute": 9,
+        "valuePercent": 2.47
       }
     },
     "targetAchievement": [
       {
         "result": 65,
         "id": "fd7j3jj7hsdjskskdgJksdHHsg"
-      },
-      {
-        "id": "VbgFh12323267K1k-Ztlz6T60-5k4C30zm-y8",
-        "result": 91
       },
       {
         "id": "shJjsjewiuwe3478hGGSJsjsashy7u32uh",
@@ -403,7 +399,7 @@
       "date": "12.02.2022",
       "forDelete": false,
       "order": 0,
-      "favorite": true,
+      "favorite": false,
       "status": "future",
       "listExersises": [
         {
@@ -447,8 +443,8 @@
       "date": "12.19.2022",
       "forDelete": false,
       "order": 1,
-      "favorite": true,
-      "status": "past",
+      "favorite": false,
+      "status": "future",
       "listExersises": [
         {
           "forDelete": false,
@@ -522,7 +518,7 @@
       "date": "12.01.2022",
       "forDelete": false,
       "order": 2,
-      "favorite": true,
+      "favorite": false,
       "status": "past",
       "listExersises": [
         {
@@ -586,19 +582,18 @@
     {
       "forDelete": false,
       "priority": false,
-      "order": 3,
-      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
-      "name": "French press",
+      "order": 2,
+      "id": "1P94lOd68_kyO78131_I17hB0c5_Sz",
+      "name": "Run",
       "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
       ],
       "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
       "workingParts": [
-        "triceps"
+        "legs"
       ],
-      "typeOfExercise": "base",
-      "repeats": [],
-      "weight": []
+      "typeOfExercise": "aerobic",
+      "fullTime": 189
     }
   ],
   "listExersises": [
@@ -631,22 +626,6 @@
       "forDelete": false,
       "priority": false,
       "order": 2,
-      "id": "1P94lOd68_kyO78131_I17hB0c5_Sz",
-      "name": "Run",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdzEg0xyZmFoji0JHa1nYN-nhHi2nVjkPeCQ&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "legs"
-      ],
-      "typeOfExercise": "aerobic",
-      "fullTime": 189
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 2,
       "id": "3IltN4zaw-Fo9P9U0U_W1hN5yKw-6X",
       "name": "Squats",
       "img": [
@@ -659,6 +638,45 @@
       "typeOfExercise": "base",
       "repeats": [],
       "weight": []
+    },
+    {
+      "forDelete": false,
+      "priority": false,
+      "order": 3,
+      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
+      "name": "French press",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "triceps"
+      ],
+      "typeOfExercise": "base",
+      "repeats": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "weight": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ]
     }
   ],
   "dataBase": [

@@ -15,9 +15,7 @@ export const TreningsPage = () => {
             <SearchTrenings />
             <FiltersTren />
             <ListTrenings />
-            <Modal>
-                <ModalTrenings/>
-            </Modal>
+            <ModalTrenings/>
         </section>
     );
 };
