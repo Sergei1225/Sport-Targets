@@ -43,10 +43,10 @@
       },
       "parametrs": {
         "paramProgress": "days",
-        "remainder": 356,
+        "remainder": 355,
         "target": 365,
-        "valueAbsolute": 9,
-        "valuePercent": 2.47
+        "valueAbsolute": 10,
+        "valuePercent": 2.74
       }
     },
     "targetAchievement": [
@@ -399,7 +399,7 @@
       "date": "12.02.2022",
       "forDelete": false,
       "order": 0,
-      "favorite": false,
+      "favorite": true,
       "status": "future",
       "listExersises": [
         {
@@ -443,7 +443,7 @@
       "date": "12.19.2022",
       "forDelete": false,
       "order": 1,
-      "favorite": false,
+      "favorite": true,
       "status": "future",
       "listExersises": [
         {
@@ -518,7 +518,7 @@
       "date": "12.01.2022",
       "forDelete": false,
       "order": 2,
-      "favorite": false,
+      "favorite": true,
       "status": "past",
       "listExersises": [
         {
@@ -665,18 +665,7 @@
         40,
         40
       ],
-      "weight": [
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40
-      ]
+      "weight": []
     }
   ],
   "dataBase": [

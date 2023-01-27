@@ -100,7 +100,7 @@ const sliceListTrenings = createSlice({
         errorStatus: "",
         listForDelete: [],
         upDateItem: "",
-        modalAction: {name: '', inner: ''}
+        modalAction: { name: "", inner: "" },
     }),
     reducers: {
         addToDelete: {
@@ -117,11 +117,14 @@ const sliceListTrenings = createSlice({
             const charUpper = (str) => `${str.slice(0, 1).toUpperCase()}${str.slice(1)}`;
             const arrValues = Object.entries(state.entities).reduce((sum, item) => {
                 const [idItem, innerItem] = item;
-                if(state.listForDelete.some(i => i === idItem)) sum.push(charUpper(innerItem.name))
+                if (state.listForDelete.some((i) => i === idItem)) sum.push(charUpper(innerItem.name));
                 return sum;
-            }, []) 
-            state.modalAction = {name: payload, inner: `${arrValues.join(", ")} will be delete. Are you sure ?`};
-        } 
+            }, []);
+            if (arrValues.length === 0) return;
+            else {
+                state.modalAction = { name: payload, inner: `${arrValues.join(", ")} will be delete. Are you sure ?` };
+            }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getMyTreningItems.fulfilled, (state, { payload }) => {
@@ -129,18 +132,18 @@ const sliceListTrenings = createSlice({
             state.loadingStatus = "contentTransition";
             console.log("данные получены тренировок");
         });
-        builder.addCase(getMyTreningItems.rejected, (state, {error}) => {
+        builder.addCase(getMyTreningItems.rejected, (state, { error }) => {
             console.log("произошла ошибка getMyTreningItems");
             state.loadingStatus = "error";
-            state.errorStatus = {name: error.name, message: error.message}
+            state.errorStatus = { name: error.name, message: error.message };
         });
         builder.addCase(favoriteTrening.fulfilled, (state, { payload }) => {
             listAdapter.upsertOne(state, { id: payload.id, favorite: !payload.favorite });
             console.log("Изменение приоритетности тренировки");
         });
-        builder.addCase(favoriteTrening.rejected, (state, {error}) => {
+        builder.addCase(favoriteTrening.rejected, (state, { error }) => {
             state.loadingStatus = "error";
-            state.errorStatus = {name: error.name, message: error.message}
+            state.errorStatus = { name: error.name, message: error.message };
             console.log("ошибка изменения приоритетности тренировки");
         });
         builder.addCase(statusTrenings.fulfilled, (state, { payload }) => {
@@ -149,18 +152,18 @@ const sliceListTrenings = createSlice({
             else state.upDateItem = payload.id;
             console.log("Изменение статуса тренировки");
         });
-        builder.addCase(statusTrenings.rejected, (state, {error}) => {
+        builder.addCase(statusTrenings.rejected, (state, { error }) => {
             state.loadingStatus = "error";
-            state.errorStatus = {name: error.name, message: error.message}
+            state.errorStatus = { name: error.name, message: error.message };
             console.log("ошибка изменения статуса тренировки");
         });
         builder.addCase(deleteOneTrening.fulfilled, (state, { payload }) => {
             listAdapter.removeOne(state, payload);
             console.log("удалено одна тренировка ");
         });
-        builder.addCase(deleteOneTrening.rejected, (state, {error}) => {
+        builder.addCase(deleteOneTrening.rejected, (state, { error }) => {
             state.loadingStatus = "error";
-            state.errorStatus = {name: error.name, message: error.message}
+            state.errorStatus = { name: error.name, message: error.message };
             console.log("произошла ошибка удаления тренировки");
         });
         builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
@@ -170,9 +173,9 @@ const sliceListTrenings = createSlice({
             state.listForDelete = [];
             console.log("удалено много тренировок");
         });
-        builder.addCase(deleteSomeTrening.rejected, (state, {error}) => {
+        builder.addCase(deleteSomeTrening.rejected, (state, { error }) => {
             state.loadingStatus = "error";
-            state.errorStatus = {name: error.name, message: error.message}
+            state.errorStatus = { name: error.name, message: error.message };
             console.log("произошла ошибка много удалений тренировок");
         });
     },

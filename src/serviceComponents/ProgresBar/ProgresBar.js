@@ -24,26 +24,26 @@ const ProgressProvider = ({ valueStart, valueEnd, children }) => {
 
 export const ProgresBar = (props) => {
     let { 
-        value, 
-        min,
-        max, 
-        param, 
-        remainder, 
-        nameSvg,
+        value = 0, 
+        min = 0,
+        max = 100, 
+        param = "kg", 
+        remainder = 0, 
+        nameSvg = "gantel",
         styleSvg
     } = props;
 
     //console.log("рендер прогрессбара");
     // minmax
-    if (!min) min = 0;
-    if (!max) max = 100;
-    // cample
-    if (!value) value = 0;
-    // inner value
-    if (!param) param = "kg";
-    if (!remainder) remainder = 0;
+    // if (!min) min = 0;
+    // if (!max) max = 100;
+    // // cample
+    // if (!value) value = 0;
+    // // inner value
+    // if (!param) param = "kg";
+    // if (!remainder) remainder = 0;
     
-    if (!nameSvg) nameSvg = "gantel";
+    // if (!nameSvg) nameSvg = "gantel";
 
     const mark = value > 100 ? 'above' : 'left';
 

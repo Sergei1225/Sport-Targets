@@ -4,7 +4,7 @@ import { SearchTrenings } from "./SearchTrenings/SearchTrenings";
 import { TargetShow } from "../TargetPage/TargetShow/TargetShow";
 import { BaseHeader } from "../BaseHeader/BaseHeader";
 import { srcImages } from "../../img/srcImages";
-import { Modal } from "../../serviceComponents/Modal/Modal";
+import { ModalA, ModalWindow } from "../../serviceComponents/Modal/Modal";
 import { ModalTrenings } from "./ModalTrenings/ModalTrenings";
 
 export const TreningsPage = () => {
