@@ -400,7 +400,7 @@
       "forDelete": false,
       "order": 0,
       "favorite": true,
-      "status": "future",
+      "status": "past",
       "listExersises": [
         {
           "forDelete": false,

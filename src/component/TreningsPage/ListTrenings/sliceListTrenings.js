@@ -87,7 +87,11 @@ export const deleteOneTrening = createAsyncThunk("listTrenings/deleteOneTrening"
 export const deleteSomeTrening = createAsyncThunk("listTrenings/deleteSomeTrening", async (_, { getState }) => {
     const ids = getState().listTrenings.listForDelete;
     if (!ids || ids.length === 0) return;
-    await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
+    await new Promise((res) => {
+        setTimeout(() => res(console.log(1)), 2000);
+    });
+    console.log(2);
+    //await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
     return ids;
 });
 
@@ -100,7 +104,7 @@ const sliceListTrenings = createSlice({
         errorStatus: "",
         listForDelete: [],
         upDateItem: "",
-        modalAction: { name: "", inner: "" },
+        modalAction: { name: "", inner: "", loading: "" },
     }),
     reducers: {
         addToDelete: {
@@ -120,10 +124,23 @@ const sliceListTrenings = createSlice({
                 if (state.listForDelete.some((i) => i === idItem)) sum.push(charUpper(innerItem.name));
                 return sum;
             }, []);
-            if (arrValues.length === 0) return;
-            else {
-                state.modalAction = { name: payload, inner: `${arrValues.join(", ")} will be delete. Are you sure ?` };
+            if (arrValues.length === 0){
+                state.modalAction = {
+                    name: 'message',
+                    inner: `Not trenings in delete list`,
+                    loading: "",
+                };
             }
+            else {
+                state.modalAction = {
+                    name: payload,
+                    inner: `${arrValues.join(", ")} will be delete. Are you sure ?`,
+                    loading: "",
+                };
+            }
+        },
+        changeStatusModalOnly: (state, { payload }) => {
+            state.modalAction = payload;
         },
     },
     extraReducers: (builder) => {
@@ -166,11 +183,15 @@ const sliceListTrenings = createSlice({
             state.errorStatus = { name: error.name, message: error.message };
             console.log("произошла ошибка удаления тренировки");
         });
+        builder.addCase(deleteSomeTrening.pending, (state, { payload }) => {
+            state.modalAction = { ...state.modalAction, loading: "loading" };
+        });
         builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
             console.log(payload);
             if (!payload || payload.length === 0) return;
             listAdapter.removeMany(state, [...state.listForDelete]);
             state.listForDelete = [];
+            state.modalAction = { ...state.modalAction, loading: "endLoading" };
             console.log("удалено много тренировок");
         });
         builder.addCase(deleteSomeTrening.rejected, (state, { error }) => {
@@ -237,4 +258,4 @@ export const filtredItems = createSelector(
     }
 );
 
-export const { addToDelete, changeStatusModal } = actions;
+export const { addToDelete, changeStatusModal, changeStatusModalOnly } = actions;
