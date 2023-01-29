@@ -18,15 +18,15 @@ export const ModalTrenings = () => {
 
     const { name: modalAction, inner: subtitle, loading } = useSelector((state) => state.listTrenings.modalAction);
 
-    useEffect(() => {
-        if(modalAction === 'message') modalActions(modalAction)
-        else if (modalAction) setActive(true);
-    }, [modalAction]);
+    console.log(componentsView);
 
     useEffect(() => {
-        if (loading) {
-            modalActions(loading)
-        }
+        staticAction(modalAction);
+        if (modalAction) setActive(true);
+    }, [modalAction, loading]);
+
+    useEffect(() => {
+        if (loading) staticAction(loading);
     }, [loading]);
 
     const staticAction = (modalAction) => {
@@ -39,7 +39,7 @@ export const ModalTrenings = () => {
                 setTimeout(() => {
                     setComponentsView(false);
                     dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                }, 1000)
+                }, 1000);
                 break;
             case "message":
                 setActive(true);
@@ -49,12 +49,12 @@ export const ModalTrenings = () => {
                     setTimeout(() => {
                         setComponentsView(false);
                         dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                    }, 1000)
-                }, 3000)
+                    }, 1000);
+                }, 3000);
                 break;
             default:
         }
-    }
+    };
 
     const modalActions = (modalAction) => {
         switch (modalAction) {
@@ -65,27 +65,6 @@ export const ModalTrenings = () => {
             case "close":
                 changeModal(false);
                 dispatch(changeStatusModal(""));
-                break;
-            case "loading":
-                setComponentsView(true);
-                break;
-            case "endLoading":
-                setActive(false);
-                setTimeout(() => {
-                    setComponentsView(false);
-                    dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                }, 1000)
-                break;
-            case "message":
-                setActive(true);
-                setComponentsView(true);
-                setTimeout(() => {
-                    setActive(false);
-                    setTimeout(() => {
-                        setComponentsView(false);
-                        dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                    }, 1000)
-                }, 3000)
                 break;
             default:
         }
@@ -104,7 +83,7 @@ export const ModalTrenings = () => {
         >
             <div onClick={(e) => e.stopPropagation()} className={s.modalWindow__window}>
                 <div className={`${s.modalWindow__wrapper} bWrapperStyle bElement bFlexColumnCenter`}>
-                    {componentsView && modalAction !== 'message' ? (
+                    {componentsView && modalAction !== "message" ? (
                         <SpinnerComp />
                     ) : (
                         <>
@@ -127,7 +106,6 @@ export const ModalTrenings = () => {
                             </div>
                         </HintComponent>
                     </div>
-                    <button onClick={() => setComponentsView((componentsView) => !componentsView)}>test</button>
                 </div>
             </div>
         </div>

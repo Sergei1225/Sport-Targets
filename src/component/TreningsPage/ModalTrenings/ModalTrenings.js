@@ -10,69 +10,65 @@ import { changeStatusModal, deleteSomeTrening, changeStatusModalOnly } from "../
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-export const ModalTrenings = () => {
+const ModalWindow = ({
+    control,
+    clearControl,
+    title,
+    subtitle,
+    functionAction,
+    loading = "Loading...",
+    endLoading = "End loading",
+}) => {
     const [active, setActive] = useState(false);
     const [componentsView, setComponentsView] = useState(true);
-
-    const dispatch = useDispatch();
-
-    const { name: modalAction, inner: subtitle, loading } = useSelector((state) => state.listTrenings.modalAction);
-
-    console.log(componentsView);
+    const [text, setText] = useState({ title: "Title", subtitle: "Subtitle" });
 
     useEffect(() => {
-        staticAction(modalAction);
-        if (modalAction) setActive(true);
-    }, [modalAction, loading]);
+        if (control) modelsBehavior(control, clearControl);
+    }, [control]);
 
-    useEffect(() => {
-        if (loading) staticAction(loading);
-    }, [loading]);
-
-    const staticAction = (modalAction) => {
+    const modelsBehavior = (modalAction, clearControl) => {
         switch (modalAction) {
-            case "loading":
+            case "function":
+                setText({ title, subtitle });
                 setComponentsView(true);
-                break;
-            case "endLoading":
-                setActive(false);
-                setTimeout(() => {
-                    setComponentsView(false);
-                    dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                }, 1000);
+                setActive(true);
                 break;
             case "message":
+                setComponentsView(false);
+                setText({ title, subtitle });
                 setActive(true);
-                setComponentsView(true);
                 setTimeout(() => {
                     setActive(false);
-                    setTimeout(() => {
-                        setComponentsView(false);
-                        dispatch(changeStatusModalOnly({ name: "", inner: "", loading: "" }));
-                    }, 1000);
-                }, 3000);
+                    clearControl();
+                }, 2000);
+                break;
+            case "loading":
+                setComponentsView(false);
+                setText({ title: "", subtitle: loading });
+                setTimeout(() => setActive(true), 310);
+                break;
+            case "endLoading":
+                setText({ title: "", subtitle: endLoading });
+                setTimeout(() => setActive(false), 2310);
                 break;
             default:
+                return null;
         }
     };
 
-    const modalActions = (modalAction) => {
-        switch (modalAction) {
-            case "deleteSomeTrenings":
-                dispatch(deleteSomeTrening(deleteSomeTrening));
-                dispatch(changeStatusModalOnly({ name: modalAction, inner: subtitle, loading: "loading" }));
+    const modalActions = (param) => {
+        if (control !== "function") return;
+        switch (param) {
+            case "action":
+                functionAction();
+                clearControl();
                 break;
             case "close":
-                changeModal(false);
-                dispatch(changeStatusModal(""));
+                setActive(false);
+                clearControl();
                 break;
             default:
-        }
-    };
-
-    const changeModal = () => {
-        if (!componentsView) {
-            setActive((active) => !active);
         }
     };
 
@@ -83,22 +79,22 @@ export const ModalTrenings = () => {
         >
             <div onClick={(e) => e.stopPropagation()} className={s.modalWindow__window}>
                 <div className={`${s.modalWindow__wrapper} bWrapperStyle bElement bFlexColumnCenter`}>
-                    {componentsView && modalAction !== "message" ? (
-                        <SpinnerComp />
+                    {!componentsView && control === "loading" ? (
+                        <SpinnerComp text={text.title} styleText={s.modalWindow__textLoading} />
                     ) : (
                         <>
-                            <div className={`${s.modalWindow__title} bElement bTitleSmall bBold`}>Title modal</div>
-                            <div className={`${s.modalWindow__message} bElement bContentBig`}>{subtitle}</div>
+                            <div className={`${s.modalWindow__title} bElement bTitleSmall bBold`}>{text.title}</div>
+                            <div className={`${s.modalWindow__message} bElement bContentBig`}>{text.subtitle}</div>
                         </>
                     )}
 
-                    <div className={`${s.modalWindow__btns} ${!componentsView && s.modalWindow__active} bFlex`}>
-                        <CBtnStyled funk={() => modalActions(modalAction)} innerValue={"Add action"} />
+                    <div className={`${s.modalWindow__btns} ${componentsView && s.modalWindow__active} bFlex`}>
+                        <CBtnStyled innerValue={"Add action"} />
                         <CBtnStyled funk={() => modalActions("close")} innerValue={"Cancel"} />
                     </div>
                     <div
                         onClick={() => modalActions("close")}
-                        className={`${s.modalWindow__icon} ${!componentsView && s.modalWindow__active} bSizeIconSmall`}
+                        className={`${s.modalWindow__icon} ${componentsView && s.modalWindow__active} bSizeIconSmall`}
                     >
                         <HintComponent inner={"Close window"}>
                             <div className={`${""} bSizeIconSmall`}>
@@ -109,5 +105,59 @@ export const ModalTrenings = () => {
                 </div>
             </div>
         </div>
+    );
+};
+
+export const ModalTrenings = () => {
+    const dispatch = useDispatch();
+
+    const { nameFunc, control, subtitle } = useSelector((state) => state.listTrenings.modalAction);
+
+    useEffect(() => {
+        //if (control) modelsBehavior(control, clearControl);
+    }, [control]);
+
+    console.log("modal window");
+
+    const createValuesInner = (name, subtitle) => {
+        const valuesInner = [
+            {
+                name: "deleteSomeTrenings",
+                title: "Delete some trenings",
+                subtitle: subtitle ? `${subtitle} will be delete. Are you sure ?` : "Not trenings for delete.",
+                loading: "Deleting trenings",
+                endLoading: `${subtitle} deleted`,
+            },
+        ];
+
+        return valuesInner.filter((item) => item.name === name)[0];
+    };
+
+    const clearControl = () => {
+        dispatch(changeStatusModalOnly(""));
+    };
+
+    const functionAction = (param) => {
+        switch (param) {
+            case "action":
+                break;
+            case "close":
+                break;
+            default:
+        }
+    };
+
+    const valuesItem = nameFunc ? createValuesInner(nameFunc, subtitle) : null;
+
+    return (
+        <ModalWindow
+            control={control}
+            clearControl={clearControl}
+            title={valuesItem?.title}
+            subtitle={valuesItem?.subtitle}
+            functionAction={functionAction}
+            loading={valuesItem?.loading}
+            endLoading={valuesItem?.endLoading}
+        />
     );
 };

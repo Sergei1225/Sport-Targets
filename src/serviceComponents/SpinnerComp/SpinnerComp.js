@@ -9,6 +9,7 @@ export const SpinnerComp = ({
     sizeWrapper = "small",
     text = "Loading...",
     styleSpinner,
+    styleText
 }) => {
     if (size === "small") {
         width = 100;
@@ -34,7 +35,7 @@ export const SpinnerComp = ({
                 >
                     <Spinner />
                 </div>
-                <div className={`${s.spinnerComp__text} bTitleSmall bBold`}>{text}</div>
+                <div className={`${s.spinnerComp__text} ${styleText} bTitleSmall bBold`}>{text}</div>
             </div>
         </div>
     );

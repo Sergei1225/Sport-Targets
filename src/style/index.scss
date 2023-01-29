@@ -4,14 +4,22 @@
 @import "./baseClasses.scss";
 @import "./Transition.scss";
 
-body {
+html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    body {
+        margin: 0;
+        padding: 0;
+    }
     a {
         text-decoration: none;
         text-decoration-thickness: none;
         display: inline-block;
+        color: inherit;
+    }
+    li {
+        list-style: none;
     }
     font-family: "Roboto Condensed", sans-serif;
 

@@ -43,10 +43,10 @@
       },
       "parametrs": {
         "paramProgress": "days",
-        "remainder": 355,
+        "remainder": 353,
         "target": 365,
-        "valueAbsolute": 10,
-        "valuePercent": 2.74
+        "valueAbsolute": 12,
+        "valuePercent": 3.29
       }
     },
     "targetAchievement": [
@@ -594,6 +594,34 @@
       ],
       "typeOfExercise": "aerobic",
       "fullTime": 189
+    },
+    {
+      "forDelete": false,
+      "priority": false,
+      "order": 3,
+      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
+      "name": "French press",
+      "img": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
+      ],
+      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
+      "workingParts": [
+        "triceps"
+      ],
+      "typeOfExercise": "base",
+      "repeats": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "weight": []
     }
   ],
   "listExersises": [
@@ -637,34 +665,6 @@
       ],
       "typeOfExercise": "base",
       "repeats": [],
-      "weight": []
-    },
-    {
-      "forDelete": false,
-      "priority": false,
-      "order": 3,
-      "id": "MF8D0h140_34s3664J-O4P83I2o-V7",
-      "name": "French press",
-      "img": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNOCg4lkBkwuFgv92gZtIR4YtMAovudS4Ogw&usqp=CAU"
-      ],
-      "descr": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum placeat culpa, at eum maiores inventore mollitia amet ullam rem fuga laboriosam necessitatibus sit? Nesciunt quos alias ipsam quasi dicta hic.",
-      "workingParts": [
-        "triceps"
-      ],
-      "typeOfExercise": "base",
-      "repeats": [
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40,
-        40
-      ],
       "weight": []
     }
   ],

@@ -13,7 +13,7 @@ import {
     saveTargetTrenings,
     saveTargetWeigthEnd,
     changeStatusPage,
-    deleteTargetWeigth
+    deleteTargetWeigth,
 } from "./sliceTargetPage";
 import { changeParamTrening } from "./sliceTargetPage";
 
@@ -88,15 +88,23 @@ export const TargetPage = () => {
 
     const changeStatus = (value) => {
         console.log(value);
-        dispatch(changeStatusPage(value))
-    }
+        dispatch(changeStatusPage(value));
+    };
     const deleteTarget = () => {
-        dispatch(deleteTargetWeigth())
-    }
+        dispatch(deleteTargetWeigth());
+    };
 
     return (
         <div className={`${s.targetPage}`}>
-            <TargetItem
+            <div className={`${s.readyTrenigs}`}>
+                <div  className={`${s.readyTrenigs__wrapper}`}>
+                    <div data-area="header" id="header" className={`${s.readyTrenigs__header}`}></div>
+                    <div data-area="content" className={`${s.readyTrenigs__content}`}></div>
+                    <div data-area="footer" className={`${s.readyTrenigs__footer}`}></div>
+                    <div data-area="sidepanel" className={`${s.readyTrenigs__sidepanel}`}></div>
+                </div>
+            </div>
+            {/* <TargetItem
                 title={"Weigth Target"}
                 subtitle={"set a goal to reach a certain weight in the exercise"}
                 linkTo={"/chooseExerciseTargetWeigth"}
@@ -130,7 +138,7 @@ export const TargetPage = () => {
                         paramValues={paramValues}
                     />
                 </>
-            ) : null}
+            ) : null} */}
         </div>
     );
 };

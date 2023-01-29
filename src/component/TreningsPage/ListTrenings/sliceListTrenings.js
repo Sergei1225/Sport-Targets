@@ -104,7 +104,7 @@ const sliceListTrenings = createSlice({
         errorStatus: "",
         listForDelete: [],
         upDateItem: "",
-        modalAction: { name: "", inner: "", loading: "" },
+        modalAction: { name: "", subtitle: "", loading: "", title: "" },
     }),
     reducers: {
         addToDelete: {
@@ -126,21 +126,28 @@ const sliceListTrenings = createSlice({
             }, []);
             if (arrValues.length === 0){
                 state.modalAction = {
-                    name: 'message',
-                    inner: `Not trenings in delete list`,
-                    loading: "",
+                    control: 'message',
+                    nameFunc: 'deleteSomeTrenings',
+                    subtitle: "",
+                    title: "Delete some trenings",
                 };
             }
             else {
                 state.modalAction = {
-                    name: payload,
-                    inner: `${arrValues.join(", ")} will be delete. Are you sure ?`,
-                    loading: "",
+                    control: 'function',
+                    nameFunc: payload,
+                    title: "Delete some trenings",
+                    subtitle: arrValues.join(", "),
                 };
             }
         },
         changeStatusModalOnly: (state, { payload }) => {
-            state.modalAction = payload;
+            state.modalAction = {
+                control: payload,
+                nameFunc: "",
+                title: "",
+                inner: "",
+            };;
         },
     },
     extraReducers: (builder) => {
