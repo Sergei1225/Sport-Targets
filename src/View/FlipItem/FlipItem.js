@@ -28,7 +28,7 @@ export const FlipItem = (props) => {
                 <div className={`${s.flipItem__wrapper} ${styleCoup} `}>
                     <div className={`${s.flipItem__front} `}>
                         <div className={`${s.flipItem__img} `}>
-                            <img className={`baseImgCover `} src={baseImg} alt="flipItem" />
+                            <img className={`bImgCover `} src={baseImg} alt="flipItem" />
                         </div>
                         <div className={`${s.flipItem__name} bTitleSmall bBold`}>{name}</div>
                     </div>

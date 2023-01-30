@@ -1,20 +1,20 @@
 .baseTransition-enter {
     transition: all 500ms ease-in;
     opacity: 0;
-    background-color: blue;
+    //background-color: blue;
     transform: scale(0.5);
 }
 .baseTransition-enter-active {
     transition: all 500ms ease-in;
     opacity: 1;
     transform: scale(1.0);
-    background-color: blue;
+    //background-color: blue;
     color: white;
 }
 .baseTransition-exit {
     transition: all 500ms ease-in;
     opacity: 1;
-    background-color: red;
+    // background-color: red;
     color: white;
     transform: scale(0.8);
 }

@@ -1,3 +1,9 @@
+@import "./baseVisual.scss";
+@import "./baseIcons.scss";
+@import "./baseAnimation.scss";
+/// новое
+@import "./baseFontsSizeMini.scss";
+@import "./baseStyledComponent.scss";
 @import './baseFlex.scss';
 
 .bBlock {
@@ -95,6 +101,10 @@
 }
 .bPaddingTop20 {
     padding-top: 20px;
+}
+
+.footerDown {
+    min-height: 100vh;
 }
 
 

@@ -5,6 +5,43 @@ import { dataIconsFunction } from "./dataFunctions";
 import { GetSvg } from "../../../serviceComponents/GetSvg/GetSvg";
 import { IconList } from "../../../serviceComponents/IconList/IconList";
 
+const BaseItem = ({ repeatsItems, weightItems }) => {
+    return (
+        <>
+            <div className={`${s.itemList__path} bElement  bContent `}>
+                <div className="bFlex">
+                    <div className="bSizeIconSmall">
+                        <GetSvg nameSvg={"pencilIcon"} styleSvg={s.itemList__svgStyle} />
+                    </div>
+                    <div className={`bBold bContentBig`}>Repeats: </div>
+                </div>
+                <div className="bMarginTop">{repeatsItems}</div>
+            </div>
+            <div className={`${s.itemList__path}  bElement bContent`}>
+                <div className="bFlex">
+                    <div className="bSizeIconSmall">
+                        <GetSvg nameSvg={"locker"} styleSvg={s.itemList__svgStyle} />
+                    </div>
+                    <div className={`bBold bContentBig`}>Weight: </div>
+                </div>
+                <div className="bMarginTop">{weightItems}</div>
+            </div>
+        </>
+    );
+};
+
+const AerobicItem = ({ fullTime }) => {
+    return (
+        <div className={`${s.itemList__path} bElement bContent bFlex bAlignItems`}>
+            <div className="bSizeIconSmall">
+                <GetSvg nameSvg={"timer"} styleSvg={s.itemList__svgStyle} />
+            </div>
+            <div className={`bBold bContentBig`}>Time: </div>
+            {fullTime}min
+        </div>
+    );
+};
+
 export const ItemList = (props) => {
     let {
         id,
@@ -18,7 +55,7 @@ export const ItemList = (props) => {
         priorityTren,
         deleteOneTren,
         typeOfExercise,
-        fullTime,
+        fullTime = 1000,
         editor,
     } = props;
 
@@ -30,7 +67,6 @@ export const ItemList = (props) => {
 
     if (forDelete) styleWrapper += ` ${s.itemList__forDelete}`;
     if (priority) styleWrapper += ` ${s.itemList__priority}`;
-    if (!fullTime) fullTime = 1000;
 
     const repeatsItems = repeats.join(" / ");
     const weightItems = weight.join(" / ");
@@ -55,7 +91,7 @@ export const ItemList = (props) => {
     };
 
     return (
-        <div draggable={false} key={id} className={`${s.itemList} bElement `}>
+        <div className={`${s.itemList} bElement `}>
             <div className={`${s.itemList__wrapper} ${styleWrapper} bFlex bWrapperStyleElem`}>
                 <div className=" bContent bFlexColumn bAlignItems bFlexJCSC">
                     <div className={`${s.itemList__img} bElement`}>
@@ -75,36 +111,8 @@ export const ItemList = (props) => {
                         </div>
                         {name.toUpperCase()}
                     </div>
-                    {typeOfExercise === "base" ? (
-                        <>
-                            <div className={`${s.itemList__path} bElement  bContent `}>
-                                <div className="bFlex">
-                                    <div className="bSizeIconSmall">
-                                        <GetSvg nameSvg={"pencilIcon"} styleSvg={s.itemList__svgStyle} />
-                                    </div>
-                                    <div className={`bBold bContentBig`}>Repeats: </div>
-                                </div>
-                                <div className="bMarginTop">{repeatsItems}</div>
-                            </div>
-                            <div className={`${s.itemList__path}  bElement bContent`}>
-                                <div className="bFlex">
-                                    <div className="bSizeIconSmall">
-                                        <GetSvg nameSvg={"locker"} styleSvg={s.itemList__svgStyle} />
-                                    </div>
-                                    <div className={`bBold bContentBig`}>Weight: </div>
-                                </div>
-                                <div className="bMarginTop">{weightItems}</div>
-                            </div>
-                        </>
-                    ) : (
-                        <div className={`${s.itemList__path} bElement bContent bFlex bAlignItems`}>
-                            <div className="bSizeIconSmall">
-                                <GetSvg nameSvg={"timer"} styleSvg={s.itemList__svgStyle} />
-                            </div>
-                            <div className={`bBold bContentBig`}>Time: </div>
-                            {fullTime}min
-                        </div>
-                    )}
+                    {typeOfExercise === "base" && <BaseItem repeatsItems={repeatsItems} weightItems={weightItems} /> }
+                    {typeOfExercise === "aerobic" && <AerobicItem fullTime={fullTime} />}
                 </div>
             </div>
         </div>

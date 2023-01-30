@@ -7,7 +7,7 @@ import { SliderCarusel } from "../../../serviceComponents/Sliders/SliderCarusel"
 import { ContentLoading } from "../../../serviceComponents/ContentLoading/ContentLoading";
 
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 export const TargetShow = ({ stateSlider, loadingData = "local", stateData }) => {
     const [activeLine, setActiveLine] = useState(stateSlider);
@@ -45,7 +45,9 @@ export const TargetShow = ({ stateSlider, loadingData = "local", stateData }) =>
         }
     }, []);
 
-    const createItemsWeigth = (data, activeLine) => {
+    console.log('render target show')
+
+    const createItemsWeigth =  (data, activeLine) => {
         if (!data) return null;
         const items = data.map((item) => {
             return (
@@ -70,7 +72,7 @@ export const TargetShow = ({ stateSlider, loadingData = "local", stateData }) =>
         }
     };
 
-    const itemsWeigth = createItemsWeigth(dataWeigth, activeLine);
+    const itemsWeigth = useMemo(() => createItemsWeigth(dataWeigth, activeLine), [dataWeigth, activeLine]);
 
     return (
         <div className={`${s.targetShow}`}>

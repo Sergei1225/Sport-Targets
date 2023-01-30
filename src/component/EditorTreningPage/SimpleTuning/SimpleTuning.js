@@ -9,8 +9,6 @@ import { useState } from "react";
 export const SimpleTuning = (props) => {
     const { title, id, deleteItem, imgSrc, saveItem, order, fullTime } = props;
 
-    
-
     const [valueError, setValueError] = useState(null);
 
     const getValue = (value) => {

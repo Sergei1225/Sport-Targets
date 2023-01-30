@@ -87,11 +87,7 @@ export const deleteOneTrening = createAsyncThunk("listTrenings/deleteOneTrening"
 export const deleteSomeTrening = createAsyncThunk("listTrenings/deleteSomeTrening", async (_, { getState }) => {
     const ids = getState().listTrenings.listForDelete;
     if (!ids || ids.length === 0) return;
-    await new Promise((res) => {
-        setTimeout(() => res(console.log(1)), 2000);
-    });
-    console.log(2);
-    //await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
+    await Promise.all(ids.map((id) => simpleReqest(`listTrenings/${id}`, "DELETE")));
     return ids;
 });
 
@@ -124,19 +120,15 @@ const sliceListTrenings = createSlice({
                 if (state.listForDelete.some((i) => i === idItem)) sum.push(charUpper(innerItem.name));
                 return sum;
             }, []);
-            if (arrValues.length === 0){
+            if (arrValues.length === 0) {
                 state.modalAction = {
-                    control: 'message',
-                    nameFunc: 'deleteSomeTrenings',
-                    subtitle: "",
-                    title: "Delete some trenings",
+                    control: "message",
+                    nameFunc: "deleteSomeTrenings",
                 };
-            }
-            else {
+            } else {
                 state.modalAction = {
-                    control: 'function',
+                    control: "function",
                     nameFunc: payload,
-                    title: "Delete some trenings",
                     subtitle: arrValues.join(", "),
                 };
             }
@@ -147,7 +139,7 @@ const sliceListTrenings = createSlice({
                 nameFunc: "",
                 title: "",
                 inner: "",
-            };;
+            };
         },
     },
     extraReducers: (builder) => {
@@ -191,14 +183,14 @@ const sliceListTrenings = createSlice({
             console.log("произошла ошибка удаления тренировки");
         });
         builder.addCase(deleteSomeTrening.pending, (state, { payload }) => {
-            state.modalAction = { ...state.modalAction, loading: "loading" };
+            state.modalAction = { ...state.modalAction, control: "loading" };
         });
         builder.addCase(deleteSomeTrening.fulfilled, (state, { payload }) => {
             console.log(payload);
             if (!payload || payload.length === 0) return;
             listAdapter.removeMany(state, [...state.listForDelete]);
             state.listForDelete = [];
-            state.modalAction = { ...state.modalAction, loading: "endLoading" };
+            state.modalAction = { ...state.modalAction, control: "endLoading" };
             console.log("удалено много тренировок");
         });
         builder.addCase(deleteSomeTrening.rejected, (state, { error }) => {

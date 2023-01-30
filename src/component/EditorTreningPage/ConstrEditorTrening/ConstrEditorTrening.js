@@ -1,13 +1,12 @@
-import s from "./ConstrTrening.module.scss";
-
-import { CBtnStyled, CustomTitleBase } from "../../BaseComponents/CustomComponents";
 import { TuningTrening } from "../TuningTrening/TuningTrening";
 import { SimpleTuning } from "../SimpleTuning/SimpleTuning";
+
+import { ViewConstrEditorTrening } from "../../../View/ViewConstrEditorTrening/ViewConstrEditorTrening";
 
 import { getSelectedItems, deleteSelectedItem, deleteAllSelectedItem } from "./sliceConstrEditorTrenings";
 import { addTunigedTrening } from "../ListEditorTrening/sliceListEditorTrening";
 
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -83,32 +82,13 @@ export const ConstrEditorTrening = (props) => {
     };
 
     const tuningItems = tuningTrenings(itemsForTuning);
+    const functionChoose = () => navigate(pathLinkChoose);
 
     return (
-        <div className={`${s.constrTren}  ${" bBlock"}`}>
-            <div className={`${s.constrTren__header} ${" bWrapperStyle bElement"}`}>
-                <CustomTitleBase
-                    title={"Choose and customize exercises"}
-                    subtile={"You can quickly select the desired exercises and customize"}
-                    nameSvg={"bottle"}
-                    styleSvg={""}
-                />
-                <div className={`${s.constrTren__link} ${"bElement"}`}>
-                    <CBtnStyled funk={() => navigate(pathLinkChoose)} innerValue={"Choose exercise"} />
-                </div>
-            </div>
-            <div className={`${s.constrTren__list}  ${" bWrapperStyle bElement"}`}>
-                <CustomTitleBase
-                    title={"Tuning"}
-                    subtile={"You can quickly select the desired exercises and customize"}
-                    nameSvg={"bagIcon"}
-                    styleSvg={""}
-                />
-                <TransitionGroup>{tuningItems}</TransitionGroup>
-                <div className={`${s.constrTren__btns} ${"bElement "}`}>
-                    <CBtnStyled funk={deleteAllTunnings} innerValue={"Clear tuning"} />
-                </div>
-            </div>
-        </div> 
+        <ViewConstrEditorTrening  
+            functionChoose={functionChoose} 
+            tuningItems={tuningItems} 
+            deleteAllTunnings={deleteAllTunnings} 
+        />
     );
 };
